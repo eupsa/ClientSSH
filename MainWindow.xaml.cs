@@ -31,7 +31,25 @@ namespace ClientSSH
             SetTitleBar(TitleBar);
             AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
             AppWindow.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            // The caption buttons follow the system theme, not the app's: color them from the palette.
+            var root = (FrameworkElement)Content;
+            root.ActualThemeChanged += (_, _) => ColorCaptionButtons(root);
+            ColorCaptionButtons(root);
             AppWindow.Resize(new Windows.Graphics.SizeInt32(1180, 760));
+        }
+
+        private void ColorCaptionButtons(FrameworkElement root)
+        {
+            var key = root.ActualTheme == ElementTheme.Dark ? "Dark" : "Light";
+            var theme = (ResourceDictionary)Application.Current.Resources.ThemeDictionaries[key];
+            var text = (Windows.UI.Color)theme["TextColor"];
+            var titleBar = AppWindow.TitleBar;
+            titleBar.ButtonForegroundColor = text;
+            titleBar.ButtonInactiveForegroundColor = Windows.UI.Color.FromArgb(0x99, text.R, text.G, text.B);
+            titleBar.ButtonHoverForegroundColor = text;
+            titleBar.ButtonPressedForegroundColor = text;
+            titleBar.ButtonHoverBackgroundColor = Windows.UI.Color.FromArgb(0x22, text.R, text.G, text.B);
+            titleBar.ButtonPressedBackgroundColor = Windows.UI.Color.FromArgb(0x33, text.R, text.G, text.B);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
