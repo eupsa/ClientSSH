@@ -42,6 +42,8 @@ Optional. Share this PC's screen, or watch and control another PC, **directly be
 2. On the other PC, **Remote** > paste it under **Connect to a PC**. A reply code appears: send it back.
 3. Paste the reply code on the first PC. The person at that PC sees a **security code** and chooses **Allow control**, **View only** or **Deny**. Read the six digits out loud to each other (call or voice message): if they differ, someone is in the middle, choose Deny.
 
+**Short code (optional, still no server of ours).** Tick "Also install the rendezvous server" in the installer on a PC you own (or run `server/ClientSSH.Rendezvous`), open TCP port 47800 to it, and type its address under **Rendezvous server** on both PCs. **Share this PC** then shows a 9-digit code; the other person types it under **Connect to a PC** and you are asked to allow. The server only holds the two public codes for 10 minutes, in memory, and never sees keys, screen or input; if it were dishonest it could only swap the codes, which the six-digit security code reveals.
+
 How it works: both PCs ask a public STUN server (Google's and Cloudflare's by default, editable as `RemoteStunServers` in `settings.json`) for their public address, then send packets to each other at the same moment to open the way through their routers (UDP hole punching). A STUN server only sees the public address and port, never the content. Everything after that is end to end: a one-time key pair per session (ECDH P-256), keys derived from both codes (HKDF-SHA256), every packet encrypted and authenticated (AES-256-GCM).
 
 Limits, honestly:

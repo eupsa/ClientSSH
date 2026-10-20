@@ -41,6 +41,8 @@ Opcional. Compartilhe a tela deste PC, ou veja e controle outro PC, **direto ent
 2. No outro PC, **Remoto** > cole em **Conectar a um PC**. Aparece um código de resposta: envie de volta.
 3. Cole o código de resposta no primeiro PC. A pessoa desse PC vê um **código de segurança** e escolhe **Permitir controle**, **Só visualizar** ou **Negar**. Leiam os seis dígitos em voz alta um para o outro (ligação ou áudio): se forem diferentes, há alguém no meio, escolha Negar.
 
+**Código curto (opcional, ainda sem servidor nosso).** Marque "Instalar também o servidor de encontro" no instalador de um PC seu (ou rode `server/ClientSSH.Rendezvous`), libere a porta TCP 47800 nele e digite o endereço em **Servidor de encontro** nos dois PCs. **Compartilhar este PC** passa a mostrar um código de 9 dígitos; a outra pessoa digita em **Conectar a um PC** e você é perguntado se permite. O servidor só guarda os dois códigos públicos por 10 minutos, em memória, e nunca vê chaves, tela ou entrada; se fosse desonesto só poderia trocar os códigos, o que o código de segurança de seis dígitos denuncia.
+
 Como funciona: os dois PCs perguntam a um servidor STUN público (o do Google e o da Cloudflare, por padrão; editável como `RemoteStunServers` no `settings.json`) qual é o seu endereço público e depois mandam pacotes um para o outro ao mesmo tempo, para abrir caminho pelos roteadores (UDP hole punching). O STUN só vê o endereço e a porta públicos, nunca o conteúdo. Daí em diante é ponta a ponta: um par de chaves descartável por sessão (ECDH P-256), chaves derivadas dos dois códigos (HKDF-SHA256), cada pacote cifrado e autenticado (AES-256-GCM).
 
 Limites, com honestidade:

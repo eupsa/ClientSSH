@@ -4,6 +4,9 @@
 #endif
 #define AppName "ClientSSH"
 #define PublishDir "..\artifacts\publish"
+#ifndef RendezvousDir
+  #define RendezvousDir "..rtifactsendezvous"
+#endif
 
 [Setup]
 AppId={{6B0E5C1A-3D52-4F0B-9C55-1F7A2E8D4C10}
@@ -62,7 +65,8 @@ brazilianportuguese.RendezvousTask=Instalar também o servidor de encontro do ac
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppName}.exe"
-Name: "{group}\ClientSSH rendezvous server"; Filename: "{app}endezvous\ClientSSH.Rendezvous.exe"; Tasks: rendezvous
+Name: "{group}\ClientSSH rendezvous server"; Filename: "{app}
+endezvous\ClientSSH.Rendezvous.exe"; Tasks: rendezvous
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
 
 [Run]

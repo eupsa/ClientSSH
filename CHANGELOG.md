@@ -20,6 +20,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 - Remote access between two PCs with no server of ours: share this PC's screen, or watch and control another PC, by swapping two codes in any chat app. Direct UDP between the PCs (public STUN only to learn the public address), end-to-end encrypted, with a six-digit code to compare out loud and a per-session choice of view only, control or deny. May not connect through CGNAT or symmetric NAT.
 
+- Short 9-digit code for remote access through an optional rendezvous server that you run on your own PC (installer option or `server/ClientSSH.Rendezvous`); swapping long codes by hand still works.
+
 ### Changed
 - The "+" button in the tab bar lists your saved hosts next to it and opens the new tab there, instead of going back to the hosts page.
 - Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.
