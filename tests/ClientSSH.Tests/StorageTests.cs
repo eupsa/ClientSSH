@@ -24,40 +24,6 @@ public sealed class StorageTests : IDisposable
         new(Guid.NewGuid(), name, name + ".local", 22, "root", Favorite: favorite);
 
     [Fact]
-    public void RemoteDesktopKindRoundTrips()
-    {
-        var store = new HostStore(_database);
-        var rdp = NewHost("pc") with { Port = 3389, Kind = HostKind.Rdp };
-        store.Save([rdp]);
-
-        Assert.Equal(HostKind.Rdp, store.Load().Single().Kind);
-    }
-
-    [Fact]
-    public void HostsSavedByTheFirstSchemaStaySsh()
-    {
-        var path = Path.Combine(_folder, "old.db");
-        using (var old = new Microsoft.Data.Sqlite.SqliteConnection($"Data Source={path};Pooling=False"))
-        {
-            old.Open();
-            using var create = old.CreateCommand();
-            create.CommandText = """
-                CREATE TABLE hosts (id TEXT PRIMARY KEY, name TEXT NOT NULL, address TEXT NOT NULL, port INTEGER NOT NULL,
-                    user TEXT NOT NULL, group_name TEXT, favorite INTEGER NOT NULL DEFAULT 0, position INTEGER NOT NULL DEFAULT 0);
-                CREATE TABLE history (id INTEGER PRIMARY KEY AUTOINCREMENT, host_id TEXT NOT NULL, connected_utc TEXT NOT NULL);
-                INSERT INTO hosts (id, name, address, port, user) VALUES ('11111111-1111-1111-1111-111111111111', 'old', 'old.local', 22, 'root');
-                PRAGMA user_version = 1;
-                """;
-            create.ExecuteNonQuery();
-        }
-
-        var host = new HostStore(new Database(path)).Load().Single();
-
-        Assert.Equal("old", host.Name);
-        Assert.Equal(HostKind.Ssh, host.Kind);
-    }
-
-    [Fact]
     public void SavesAndLoadsHostsInOrder()
     {
         var store = new HostStore(_database);

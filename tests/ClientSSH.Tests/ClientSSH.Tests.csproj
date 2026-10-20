@@ -18,8 +18,6 @@
     <Compile Include="..\..\Terminal\PasteText.cs" Link="PasteText.cs" />
     <Compile Include="..\..\Terminal\SimulatedProcess.cs" Link="SimulatedProcess.cs" />
     <Compile Include="..\..\Models\Host.cs" Link="Host.cs" />
-    <Compile Include="..\..\Terminal\SshCommand.cs" Link="SshCommand.cs" />
-    <Compile Include="..\..\Services\Remote\RdpLauncher.cs" Link="RdpLauncher.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
     <Compile Include="..\..\Services\Assistant\CommandText.cs" Link="CommandText.cs" />
     <Compile Include="..\..\Services\Assistant\AiProvider.cs" Link="AiProvider.cs" />

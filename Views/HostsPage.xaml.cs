@@ -31,13 +31,6 @@ public sealed partial class HostsPage : Page
     // Filled star for favorites, outline otherwise.
     public static string StarGlyph(bool favorite) => favorite ? "\uE735" : "\uE734";
 
-    // Terminal glyph for SSH, monitor for Remote Desktop.
-    public static string KindGlyph(Models.HostKind kind) => kind == Models.HostKind.Rdp ? "\uE7F4" : "\uE756";
-
-    // Remote Desktop hosts may have no user: then it is just address:port.
-    public static string Describe(string user, string address, int port) =>
-        (user.Length > 0 ? user + "@" : "") + address + ":" + port;
-
     public static string LastConnectedText(DateTime? utc) =>
         utc is null ? "" : string.Format(Loc.Get("Hosts_LastConnected"), RelativeTime.Describe(utc.Value));
 

@@ -55,13 +55,14 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon Glyph="{x:Bind local:HostsPage.KindGlyph(Kind)}" FontSize="22" Foreground="{ThemeResource TextSecondaryBrush}" VerticalAlignment="Center" />
+                            <FontIcon Glyph="&#xE756;" FontSize="22" Foreground="{ThemeResource TextSecondaryBrush}" VerticalAlignment="Center" />
                             <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
                                 <TextBlock Text="{x:Bind Name}" FontSize="16" FontWeight="SemiBold"
                                            Foreground="{ThemeResource TextBrush}" />
                                 <TextBlock FontFamily="Cascadia Mono, Consolas" FontSize="12"
-                                           Text="{x:Bind local:HostsPage.Describe(User, Address, Port)}"
-                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                                           Foreground="{ThemeResource TextSecondaryBrush}">
+                                    <Run Text="{x:Bind User}" /><Run Text="@" /><Run Text="{x:Bind Address}" /><Run Text=":" /><Run Text="{x:Bind Port}" />
+                                </TextBlock>
                                 <TextBlock Text="{x:Bind local:HostsPage.LastConnectedText(LastConnectedUtc)}" FontSize="12"
                                            Foreground="{ThemeResource TextSecondaryBrush}" />
                             </StackPanel>

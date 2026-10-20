@@ -154,9 +154,4 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Показать доступные модели</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Если вы не выбрали модель, модель по умолчанию могла быть снята с поддержки: нажмите «Показать доступные модели» и выберите одну.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>Загружено моделей: {0}.</value></data>
-  <data name="Editor_Kind.Header" xml:space="preserve"><value>Тип</value></data>
-  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (терминал)</value></data>
-  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>Удалённый рабочий стол (RDP)</value></data>
-  <data name="Remote_Failed" xml:space="preserve"><value>Не удалось открыть удалённый рабочий стол: {0}</value></data>
-  <data name="Dialog_Ok" xml:space="preserve"><value>ОК</value></data>
 </root>

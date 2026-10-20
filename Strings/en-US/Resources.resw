@@ -154,9 +154,4 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>List available models</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>If you did not pick a model, the default may have been retired: use "List available models" and choose one.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} models loaded.</value></data>
-  <data name="Editor_Kind.Header" xml:space="preserve"><value>Type</value></data>
-  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (terminal)</value></data>
-  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>Remote Desktop (RDP)</value></data>
-  <data name="Remote_Failed" xml:space="preserve"><value>Could not open Remote Desktop: {0}</value></data>
-  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
 </root>

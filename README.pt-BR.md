@@ -33,10 +33,6 @@ Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
 
-## Área de Trabalho Remota (Windows para Windows)
-
-Ao adicionar um host, escolha **Área de Trabalho Remota (RDP)** em vez de SSH. **Conectar** abre o cliente de Área de Trabalho Remota do Windows (`mstsc`) direto para aquele PC: sem servidor do ClientSSH, sem conta, sem relay, e o ClientSSH nunca vê a senha (o Windows pede). O outro PC precisa ter a Área de Trabalho Remota ligada (Configurações > Sistema > Área de Trabalho Remota) e estar acessível a partir do seu, na mesma rede ou por uma VPN como Tailscale ou WireGuard. Não exponha a porta 3389 na internet.
-
 ## Janela
 
 A janela abre centralizada na primeira vez e depois lembra posição, tamanho e se estava maximizada.

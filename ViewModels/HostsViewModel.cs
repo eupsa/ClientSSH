@@ -1,8 +1,6 @@
 using System.Collections.ObjectModel;
 using ClientSSH.Models;
 using ClientSSH.Services.Demo;
-using ClientSSH.Services.Localization;
-using ClientSSH.Services.Remote;
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Shell;
 using ClientSSH.Services.Storage;
@@ -73,30 +71,10 @@ public sealed partial class HostsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task ConnectAsync(Host host)
+    private void Connect(Host host)
     {
-        if (host.Kind == HostKind.Rdp)
-        {
-            await OpenRemoteDesktopAsync(host);
-            return;
-        }
-
         OpenSession(host);
         _navigation.NavigateTo(PageKey.Sessions);
-    }
-
-    // Remote Desktop opens in its own Windows window: no tab and no page change here.
-    private async Task OpenRemoteDesktopAsync(Host host)
-    {
-        try
-        {
-            RdpLauncher.Open(host);
-            RecordUse(host);
-        }
-        catch (Exception e) when (e is InvalidOperationException or System.ComponentModel.Win32Exception or IOException)
-        {
-            await _dialogs.ShowMessageAsync(string.Format(Loc.Get("Remote_Failed"), e.Message));
-        }
     }
 
     /// <summary>Opens another tab from the sessions page itself (the "+" button), without leaving it.</summary>
@@ -105,17 +83,14 @@ public sealed partial class HostsViewModel : ObservableObject
 
     private void OpenSession(Host host)
     {
-        RecordUse(host);
+        if (_settings.Current.SaveHistory && !DemoHost.Is(host))
+        {
+            var when = _history.Record(host.Id);
+            var index = Hosts.IndexOf(host);
+            if (index >= 0) Hosts[index] = host with { LastConnectedUtc = when };
+        }
+
         _sessions.Open(host);
-    }
-
-    private void RecordUse(Host host)
-    {
-        if (!_settings.Current.SaveHistory || DemoHost.Is(host)) return;
-
-        var when = _history.Record(host.Id);
-        var index = Hosts.IndexOf(host);
-        if (index >= 0) Hosts[index] = host with { LastConnectedUtc = when };
     }
 
     private void Persist() => _store.Save(Hosts.Where(h => !DemoHost.Is(h)));

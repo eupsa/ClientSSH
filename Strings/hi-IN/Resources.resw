@@ -154,9 +154,4 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>उपलब्ध मॉडल दिखाएँ</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>यदि आपने कोई मॉडल नहीं चुना है, तो डिफ़ॉल्ट मॉडल बंद हो गया होगा: "उपलब्ध मॉडल दिखाएँ" का उपयोग करें और एक चुनें।</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} मॉडल लोड हुए।</value></data>
-  <data name="Editor_Kind.Header" xml:space="preserve"><value>प्रकार</value></data>
-  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (टर्मिनल)</value></data>
-  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>रिमोट डेस्कटॉप (RDP)</value></data>
-  <data name="Remote_Failed" xml:space="preserve"><value>रिमोट डेस्कटॉप नहीं खुल सका: {0}</value></data>
-  <data name="Dialog_Ok" xml:space="preserve"><value>ठीक है</value></data>
 </root>

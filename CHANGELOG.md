@@ -18,8 +18,6 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 - The installer wizard follows the Windows language: English, Portuguese (Brazil), Spanish, French, German, Italian, Russian, Japanese, Korean, Arabic, Turkish and Dutch. Chinese and Hindi fall back to English (Inno Setup has no translation for them).
 
-- Remote Desktop (RDP) hosts: pick the type when you add a host and **Connect** opens the Windows Remote Desktop client (mstsc) straight to that PC. No server in between and no password handled by ClientSSH (Windows asks for it). Works on a local network or over a VPN.
-
 ### Changed
 - The "+" button in the tab bar lists your saved hosts next to it and opens the new tab there, instead of going back to the hosts page.
 - Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.

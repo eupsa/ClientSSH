@@ -20,7 +20,7 @@ public sealed class HostStore(Database database) : IHostStore
         using var command = connection.CreateCommand();
         command.CommandText = """
             SELECT id, name, address, port, user, group_name, favorite,
-                   (SELECT MAX(connected_utc) FROM history WHERE host_id = hosts.id), kind
+                   (SELECT MAX(connected_utc) FROM history WHERE host_id = hosts.id)
             FROM hosts
             ORDER BY favorite DESC, position
             """;
@@ -37,8 +37,7 @@ public sealed class HostStore(Database database) : IHostStore
                 reader.GetString(4),
                 reader.IsDBNull(5) ? null : reader.GetString(5),
                 reader.GetInt32(6) != 0,
-                reader.IsDBNull(7) ? null : DateTime.Parse(reader.GetString(7), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind),
-                (HostKind)reader.GetInt32(8)));
+                reader.IsDBNull(7) ? null : DateTime.Parse(reader.GetString(7), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind)));
         }
 
         return hosts;
@@ -60,8 +59,8 @@ public sealed class HostStore(Database database) : IHostStore
         {
             using var insert = connection.CreateCommand();
             insert.CommandText = """
-                INSERT INTO hosts (id, name, address, port, user, group_name, favorite, position, kind)
-                VALUES ($id, $name, $address, $port, $user, $group, $favorite, $position, $kind)
+                INSERT INTO hosts (id, name, address, port, user, group_name, favorite, position)
+                VALUES ($id, $name, $address, $port, $user, $group, $favorite, $position)
                 """;
             insert.Parameters.AddWithValue("$id", host.Id.ToString());
             insert.Parameters.AddWithValue("$name", host.Name);
@@ -71,7 +70,6 @@ public sealed class HostStore(Database database) : IHostStore
             insert.Parameters.AddWithValue("$group", (object?)host.Group ?? DBNull.Value);
             insert.Parameters.AddWithValue("$favorite", host.Favorite ? 1 : 0);
             insert.Parameters.AddWithValue("$position", position++);
-            insert.Parameters.AddWithValue("$kind", (int)host.Kind);
             insert.ExecuteNonQuery();
         }
 

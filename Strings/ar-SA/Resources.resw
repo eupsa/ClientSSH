@@ -154,9 +154,4 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>عرض النماذج المتاحة</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>إذا لم تختر نموذجًا، فقد يكون النموذج الافتراضي قد أُوقف: استخدم «عرض النماذج المتاحة» واختر واحدًا.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>تم تحميل {0} نموذجًا.</value></data>
-  <data name="Editor_Kind.Header" xml:space="preserve"><value>النوع</value></data>
-  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (الطرفية)</value></data>
-  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>سطح المكتب البعيد (RDP)</value></data>
-  <data name="Remote_Failed" xml:space="preserve"><value>تعذّر فتح سطح المكتب البعيد: {0}</value></data>
-  <data name="Dialog_Ok" xml:space="preserve"><value>موافق</value></data>
 </root>
