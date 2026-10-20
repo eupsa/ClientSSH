@@ -29,6 +29,20 @@ namespace ClientSSH
             Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride =
                 GetService<ISettingsStore>().Current.Language;
             InitializeComponent();
+            UnhandledException += (_, e) => LogCrash(e.Exception);
+            AppDomain.CurrentDomain.UnhandledException += (_, e) => LogCrash(e.ExceptionObject as Exception);
+        }
+
+        // Local only (nothing is sent): crashes are appended to crash.log next to the database, to attach to a bug report.
+        private static void LogCrash(Exception? exception)
+        {
+            try
+            {
+                File.AppendAllText(Path.Combine(LocalData.Dir, "crash.log"), $"{DateTime.Now:O}{Environment.NewLine}{exception}{Environment.NewLine}{Environment.NewLine}");
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException)
+            {
+            }
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)

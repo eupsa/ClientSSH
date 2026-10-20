@@ -29,6 +29,11 @@
     <Content Include="brand\ico\ClientSSH.ico" Link="Assets\ClientSSH.ico" />
   </ItemGroup>
 
+  <!-- Unpackaged publish (Setup.exe) skips Content unless asked; without Assets\ the app crashes on a missing file. -->
+  <ItemGroup Condition="'$(WindowsPackageType)' == 'None'">
+    <Content Update="@(Content)" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
