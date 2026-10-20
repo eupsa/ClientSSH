@@ -154,4 +154,9 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Beschikbare modellen tonen</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Als je geen model hebt gekozen, is het standaardmodel mogelijk ingetrokken: gebruik "Beschikbare modellen tonen" en kies er een.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modellen geladen.</value></data>
+  <data name="Editor_Kind.Header" xml:space="preserve"><value>Type</value></data>
+  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (terminal)</value></data>
+  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>Extern bureaublad (RDP)</value></data>
+  <data name="Remote_Failed" xml:space="preserve"><value>Extern bureaublad kon niet worden geopend: {0}</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
 </root>

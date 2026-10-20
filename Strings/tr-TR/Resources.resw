@@ -154,4 +154,9 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Kullanılabilir modelleri listele</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Bir model seçmediyseniz varsayılan model kaldırılmış olabilir: "Kullanılabilir modelleri listele" seçeneğini kullanıp bir model seçin.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} model yüklendi.</value></data>
+  <data name="Editor_Kind.Header" xml:space="preserve"><value>Tür</value></data>
+  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (terminal)</value></data>
+  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>Uzak Masaüstü (RDP)</value></data>
+  <data name="Remote_Failed" xml:space="preserve"><value>Uzak Masaüstü açılamadı: {0}</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>Tamam</value></data>
 </root>

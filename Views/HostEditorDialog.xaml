@@ -8,6 +8,10 @@
     IsPrimaryButtonEnabled="{x:Bind ViewModel.IsValid, Mode=OneWay}">
 
     <StackPanel Spacing="12" MinWidth="360">
+        <ComboBox x:Uid="Editor_Kind" HorizontalAlignment="Stretch" SelectedIndex="{x:Bind ViewModel.KindIndex, Mode=TwoWay}">
+            <ComboBoxItem x:Uid="Editor_Kind_Ssh" />
+            <ComboBoxItem x:Uid="Editor_Kind_Rdp" />
+        </ComboBox>
         <TextBox x:Uid="Editor_Name" Text="{x:Bind ViewModel.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox x:Uid="Editor_Address" Text="{x:Bind ViewModel.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox x:Uid="Editor_User" Text="{x:Bind ViewModel.User, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

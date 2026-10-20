@@ -154,4 +154,9 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Listar modelos disponíveis</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Se você não escolheu um modelo, o padrão pode ter sido aposentado: use "Listar modelos disponíveis" e escolha um.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modelos carregados.</value></data>
+  <data name="Editor_Kind.Header" xml:space="preserve"><value>Tipo</value></data>
+  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH (terminal)</value></data>
+  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>Área de Trabalho Remota (RDP)</value></data>
+  <data name="Remote_Failed" xml:space="preserve"><value>Não foi possível abrir a Área de Trabalho Remota: {0}</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
 </root>

@@ -34,6 +34,10 @@ Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
 
+## Remote Desktop (Windows to Windows)
+
+When you add a host, choose **Remote Desktop (RDP)** instead of SSH. **Connect** opens the Windows Remote Desktop client (`mstsc`) directly to that PC: no ClientSSH server, no account, no relay, and ClientSSH never sees the password (Windows asks for it). The other PC must have Remote Desktop turned on (Settings > System > Remote Desktop) and be reachable from yours, on the same network or through a VPN such as Tailscale or WireGuard. Do not expose port 3389 to the internet.
+
 ## Window
 
 The window opens centered the first time and then remembers its position, size and maximized state.

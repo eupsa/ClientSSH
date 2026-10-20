@@ -59,7 +59,7 @@ public sealed partial class SessionsPage : Page
     private void OnAddTabButtonClick(TabView sender, object args)
     {
         var menu = new MenuFlyout();
-        foreach (var host in _hosts.Hosts)
+        foreach (var host in _hosts.Hosts.Where(h => h.Kind == HostKind.Ssh))
         {
             var item = new MenuFlyoutItem { Text = host.Name, Tag = host };
             item.Click += OnHostMenuClick;

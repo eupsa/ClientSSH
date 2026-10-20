@@ -154,4 +154,9 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>列出可用模型</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>如果你没有选择模型，默认模型可能已停用：请使用“列出可用模型”并选择一个。</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>已加载 {0} 个模型。</value></data>
+  <data name="Editor_Kind.Header" xml:space="preserve"><value>类型</value></data>
+  <data name="Editor_Kind_Ssh.Content" xml:space="preserve"><value>SSH（终端）</value></data>
+  <data name="Editor_Kind_Rdp.Content" xml:space="preserve"><value>远程桌面 (RDP)</value></data>
+  <data name="Remote_Failed" xml:space="preserve"><value>无法打开远程桌面：{0}</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>确定</value></data>
 </root>
