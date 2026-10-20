@@ -4,7 +4,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-10-19
+## [0.2.0] - 2026-10-19
 
 ### Added
 - WinUI 3 app with splash, welcome screen and guided tour with a simulated host.

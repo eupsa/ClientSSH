@@ -26,7 +26,7 @@ Thanks for helping. This is a small project, so the rules are short.
 Needs the .NET 8 SDK and [Inno Setup 6](https://jrsoftware.org/isinfo.php) (`winget install JRSoftware.InnoSetup`):
 
 ```bash
-powershell -File installer/build.ps1 -Version 0.1.0
+powershell -File installer/build.ps1 -Version 0.2.0
 ```
 
 This publishes an unpackaged, self-contained build and writes `artifacts/ClientSSH-Setup-<version>.exe`. Run it afterwards with a normal packaged rebuild if you keep working in Visual Studio, because the publish changes `obj/`. Releases are published by hand on GitHub with a `vX.Y.Z` tag; the in-app update check reads the latest one.
