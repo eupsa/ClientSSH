@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>Einfache SSH-Verbindungen. Ihre Daten bleiben auf diesem PC.</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>Willkommen bei ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>Ein einfacher, schneller SSH-Client für Windows.</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>Alles bleibt auf Ihrem PC</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>Hosts und Einstellungen werden nur auf diesem Computer gespeichert. Es wird nichts an einen Server gesendet.</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>Schnelle Verbindungen</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>Host auswählen und verbinden. Kein Konto, keine Anmeldung, keine Cloud.</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>Jede Anmeldemethode</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>Kennwort, privater Schlüssel, SSH-Agent und Sicherheitsschlüssel, mit Windows OpenSSH.</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>Tour starten</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>Neuer Host</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Host entfernen</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>Neuer Host</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Speichern</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>Name</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>Adresse</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>Benutzer</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>Port</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>Überspringen</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>Hosts hinzufügen</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>Klicken Sie hier, um einen Host hinzuzufügen. Alles wird nur auf diesem PC gespeichert.</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>Weiter</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>Tour überspringen</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>Demo-Host</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>Dieser Host wird in der App simuliert, ohne Netzwerk, nur für die Tour. Er verschwindet, wenn die Tour endet.</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>Mit Demo verbinden</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>Tour überspringen</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>Das Terminal</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>Geben Sie hier Befehle ein. Probieren Sie help, ls oder pwd und drücken Sie Enter.</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>Weiter</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>Tour überspringen</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>Seitenleiste</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>Beim Verbinden wird die Seitenleiste eingeklappt, um Platz für das Terminal zu schaffen. Mit diesem Symbol kehren Sie zur Hostliste zurück.</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>Fertig</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>Tour überspringen</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>Demo-Host</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>Simulierte Sitzung: Nichts verlässt Ihren PC. Geben Sie help ein, um die Befehle zu sehen.</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>Verfügbare Befehle: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>Befehl nicht gefunden (dies ist eine simulierte Sitzung)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>Ihre Server, nur auf diesem PC gespeichert.</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>Noch keine Hosts</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>Fügen Sie Ihren ersten Host hinzu, um sich mit wenigen Klicks per SSH zu verbinden.</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>Einstellungen</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>Passen Sie die App an.</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>Darstellung</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>Design</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>Wählen Sie Hell, Dunkel oder folgen Sie Windows.</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Windows folgen</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>Hell</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>Dunkel</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>Schriftgröße des Terminals</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>Wird beim nächsten Öffnen eines Terminals angewendet.</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>App</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>Willkommenstour</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>Die Einführung in die App erneut ansehen.</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>Tour wiederholen</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>Lokale Daten</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>Hosts und Einstellungen bleiben nur auf diesem PC, in diesem Ordner:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>Ordner öffnen</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>Info</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>Open-Source-SSH-Client (MIT-Lizenz). Nichts verlässt Ihren PC: kein Konto, keine Cloud, keine Telemetrie.</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>Sprache</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Sprache der App-Oberfläche.</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Starten Sie die App neu, um die Sprache anzuwenden.</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Updates</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Prüft die im GitHub-Repository veröffentlichten Releases. Wird beim Klicken und bei jedem Start der App ausgeführt (unten abschaltbar). Ohne Ihren Klick wird nichts installiert; nur die Anfrage selbst wird gesendet.</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Nach Updates suchen</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Release-Seite öffnen</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Überprüfung...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>Sie verwenden die neueste Version ({0}).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Neue Version verfügbar: {0}.</value></data>
+  <data name="Update_None" xml:space="preserve"><value>Noch keine Releases veröffentlicht.</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>Überprüfung nicht möglich. Bitte prüfen Sie Ihre Verbindung.</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Mit Windows starten</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Öffnet ClientSSH automatisch, wenn Sie sich bei Windows anmelden.</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows hat den automatischen Start dieser App blockiert. Aktivieren Sie ClientSSH in der Liste der Startup-Apps.</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Windows-Einstellungen öffnen</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>Minimiert starten</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>Wenn Windows die App startet, bleibt sie im Infobereich und öffnet das Fenster nicht.</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>Beim Schließen im Infobereich behalten</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>Beim Schließen wird das Fenster nur ausgeblendet, und die App läuft im Infobereich weiter. Beenden Sie sie über das Menü des Infobereichs.</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>ClientSSH öffnen</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>Beenden</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Update-Repository (Besitzer/Name)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Mit Windows starten</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Minimiert starten</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Beim Schließen im Infobereich behalten</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>Der OpenSSH-Client ist nicht installiert. Aktivieren Sie ihn unter Windows-Einstellungen &gt; System &gt; Optionale Features.</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>Ungültiger Host, Benutzer oder Port.</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>Die Verbindung konnte nicht gestartet werden: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>Sitzung beendet (Code {0}).</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>Erneut verbinden</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>Sitzungen</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Keine offenen Sitzungen</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Verbinden Sie sich mit einem Host, um eine Sitzung zu öffnen. Es können mehrere gleichzeitig geöffnet sein.</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Host auswählen</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>Letzte Verbindung: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>gerade eben</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>vor {0} Min.</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>vor {0} Std.</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>vor {0} T.</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Favorit</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Favorit</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>Datenschutz</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>Verbindungsverlauf speichern</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Speichert nur den Host sowie Datum und Uhrzeit jeder Verbindung, auf diesem PC. Nie Befehle oder Terminalausgaben. Das Abschalten löscht bereits Gespeichertes nicht.</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Verbindungsverlauf speichern</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Verlauf löschen</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Entfernt den Eintrag aller Verbindungen.</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Löschen</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>Verlauf gelöscht.</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>Jetzt aktualisieren</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Update wird heruntergeladen und geprüft...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>Es konnte kein gültiges Update heruntergeladen werden. Versuchen Sie es später erneut oder nutzen Sie die Release-Seite.</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Beim Start der App automatisch prüfen</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>KI-Assistent</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>KI-Assistent</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>KI-Assistent</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Beschreiben Sie, was Sie möchten. Der Befehl wird ohne Enter an der Eingabeaufforderung eingetippt, sodass Sie ihn zuerst prüfen können. Nur Ihr Text wird an den gewählten Anbieter gesendet, niemals Terminal, Hosts oder Verlauf.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>z. B. Dateien größer als 500 MB finden</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>Was möchten Sie tun?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>Befehl eintippen</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>Anbieter und API-Schlüssel</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>Anbieter</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>Modell (optional)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API-Schlüssel</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>Schlüssel speichern</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>Schlüssel entfernen</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>Für diesen Anbieter ist ein Schlüssel gespeichert, verschlüsselt für Ihr Windows-Konto.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>Schlüssel auf diesem PC gespeichert.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>Fügen Sie zuerst einen API-Schlüssel für diesen Anbieter hinzu.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>Ungültiger Modellname.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>Öffnen Sie zuerst eine Sitzung: Der Befehl wird in deren Terminal eingetippt.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>Denkt nach...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>Befehl eingetippt. Prüfen Sie ihn und drücken Sie Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>Der Assistent hat keinen Befehl zurückgegeben.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} hat einen Fehler zurückgegeben (HTTP {1}). Prüfen Sie Schlüssel und Modell.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>Der Anbieter ist nicht erreichbar. Prüfen Sie Ihre Verbindung.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>Hosts verwalten...</value></data>
+</root>

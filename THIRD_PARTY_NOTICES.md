@@ -1,6 +1,6 @@
 # Third-party notices
 
-## flag-icons (Assets/Flags/br.svg, us.svg)
+## flag-icons (Assets/Flags/*.svg)
 
 Source: https://github.com/lipis/flag-icons (flags/4x3). License text below.
 

@@ -35,6 +35,9 @@ namespace ClientSSH
             var root = (FrameworkElement)Content;
             root.ActualThemeChanged += (_, _) => ColorCaptionButtons(root);
             ColorCaptionButtons(root);
+            // Right-to-left languages (Arabic) mirror the interface; the terminal view stays left to right.
+            if (new System.Globalization.CultureInfo(App.GetService<Services.Storage.ISettingsStore>().Current.Language).TextInfo.IsRightToLeft)
+                root.FlowDirection = FlowDirection.RightToLeft;
             App.GetService<WindowStateService>().Attach(this, 1180, 760);
         }
 

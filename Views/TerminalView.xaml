@@ -3,7 +3,7 @@
     x:Class="ClientSSH.Views.TerminalView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    IsTabStop="True" UseSystemFocusVisuals="False"
+    IsTabStop="True" UseSystemFocusVisuals="False" FlowDirection="LeftToRight"
     Loaded="OnLoaded" Unloaded="OnUnloaded" SizeChanged="OnSizeChanged"
     KeyDown="OnKeyDown" CharacterReceived="OnCharacterReceived"
     PointerPressed="OnPointerPressed" PointerWheelChanged="OnPointerWheelChanged"

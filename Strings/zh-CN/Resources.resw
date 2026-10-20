@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>主机</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>简单的 SSH 连接。你的数据保留在这台电脑上。</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>欢迎使用 ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>适用于 Windows 的简单、快速的 SSH 客户端。</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>一切都保留在你的电脑上</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>主机和设置仅保存在这台电脑上。不会向任何服务器发送任何内容。</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>快速连接</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>选择主机即可连接。无需账户，无需登录，无需云。</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>支持所有登录方式</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>密码、私钥、SSH 代理和安全密钥，使用 Windows OpenSSH。</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>开始导览</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>主机</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>新建主机</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>连接</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>删除主机</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>新建主机</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>保存</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>取消</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>昵称</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>地址</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>用户</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>端口</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>跳过</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>添加你的主机</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>单击此处添加主机。所有内容仅保存在这台电脑上。</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>下一步</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>跳过导览</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>演示主机</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>此主机在应用内模拟，无需网络，仅用于导览。导览结束后会消失。</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>连接到演示</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>跳过导览</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>终端</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>在此输入命令。试试 help、ls 或 pwd，然后按 Enter。</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>下一步</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>跳过导览</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>侧边栏</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>连接后，侧边栏会折叠，为终端腾出空间。使用此图标可返回主机列表。</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>完成</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>跳过导览</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>演示主机</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>模拟会话：任何内容都不会离开你的电脑。输入 help 查看命令。</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>可用命令：help、ls、pwd、whoami、hostname、echo、clear、exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>未找到命令（这是模拟会话）</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>你的服务器，仅保存在这台电脑上。</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>还没有主机</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>添加你的第一个主机，只需点几下即可通过 SSH 连接。</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>设置</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>设置</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>让应用更符合你的习惯。</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>外观</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>主题</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>选择浅色、深色，或跟随 Windows。</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>跟随 Windows</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>浅色</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>深色</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>终端字号</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>下次打开终端时生效。</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>应用</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>欢迎导览</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>再次查看应用介绍。</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>重新播放导览</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>本地数据</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>主机和设置仅保存在这台电脑上，位于此文件夹：</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>打开文件夹</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>关于</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>开源 SSH 客户端（MIT 许可证）。任何内容都不会离开你的电脑：无账户、无云、无遥测。</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>语言</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>应用界面的语言。</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>重启应用以应用语言设置。</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>更新</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>检查 GitHub 存储库上发布的版本。在你单击时以及每次打开应用时运行（可在下方关闭）。未经你单击不会安装任何内容；只会发送请求本身。</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>检查更新</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>打开发布页面</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>正在检查...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>你使用的已是最新版本 ({0})。</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>有新版本可用：{0}。</value></data>
+  <data name="Update_None" xml:space="preserve"><value>尚未发布任何版本。</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>无法检查。请检查你的网络连接。</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>系统</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>随 Windows 启动</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>登录 Windows 时自动打开 ClientSSH。</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows 已阻止此应用自动启动。请在启动应用列表中启用 ClientSSH。</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>打开 Windows 设置</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>最小化启动</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>Windows 启动应用时，应用会留在托盘中，不打开窗口。</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>关闭时保留在托盘</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>关闭窗口只会将其隐藏，应用会继续在托盘中运行。请使用托盘菜单退出。</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>打开 ClientSSH</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>退出</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>更新存储库（所有者/名称）</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>随 Windows 启动</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>最小化启动</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>关闭时保留在托盘</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>未安装 OpenSSH 客户端。请在 Windows 设置 &gt; 系统 &gt; 可选功能中启用。</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>主机、用户或端口无效。</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>无法启动连接：{0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>会话已结束（代码 {0}）。</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>重新连接</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>会话</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>没有打开的会话</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>连接到主机以打开会话。你可以同时保持多个会话打开。</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>选择主机</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>连接</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>上次连接：{0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>刚刚</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} 分钟前</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} 小时前</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} 天前</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>收藏</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>收藏</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>隐私</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>保留连接历史记录</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>仅在这台电脑上保存主机以及每次连接的日期和时间。绝不保存命令或终端输出。关闭此选项不会删除已保存的内容。</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>保留连接历史记录</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>清除历史记录</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>删除所有连接的记录。</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>清除</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>历史记录已清除。</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>立即更新</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>正在下载并检查更新...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>无法下载有效的更新。请稍后重试或使用发布页面。</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>打开应用时自动检查</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>描述你想做什么。命令会输入到提示符处但不按 Enter，方便你先检查。只会将你的文字发送给你选择的提供商，绝不会发送终端、主机或历史记录。</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>例如：查找大于 500 MB 的文件</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>你想做什么？</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>输入命令</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>提供商和 API 密钥</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>提供商</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>模型（可选）</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API 密钥</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>保存密钥</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>删除密钥</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>已为此提供商保存了密钥，并已针对你的 Windows 账户加密。</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>密钥已保存在这台电脑上。</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>请先为此提供商添加 API 密钥。</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>模型名称无效。</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>请先打开一个会话：命令会输入到其终端中。</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>正在思考...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>命令已输入。请检查后按 Enter。</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>助手没有返回命令。</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} 返回了错误 (HTTP {1})。请检查密钥和模型。</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>无法连接到提供商。请检查你的网络连接。</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>管理主机...</value></data>
+</root>

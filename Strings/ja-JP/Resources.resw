@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>ホスト</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>シンプルな SSH 接続。データはこの PC にだけ保存されます。</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>ClientSSH へようこそ</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>Windows 向けのシンプルで高速な SSH クライアントです。</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>すべてがお使いの PC に残ります</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>ホストと設定はこのコンピューターにのみ保存されます。サーバーには何も送信されません。</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>高速な接続</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>ホストを選んで接続するだけ。アカウントもサインインもクラウドも不要です。</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>あらゆるサインイン方法に対応</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>パスワード、秘密キー、SSH エージェント、セキュリティ キーを Windows の OpenSSH で利用できます。</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>ツアーを開始</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>ホスト</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>新しいホスト</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>接続</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>ホストを削除</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>新しいホスト</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>保存</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>ニックネーム</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>アドレス</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>ユーザー</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>ポート</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>スキップ</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>ホストを追加</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>ここをクリックしてホストを追加します。すべてこの PC にのみ保存されます。</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>次へ</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>ツアーをスキップ</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>デモ ホスト</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>このホストはツアー専用に、ネットワークなしでアプリ内でシミュレートされます。ツアーが終わると消えます。</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>デモに接続</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>ツアーをスキップ</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>ターミナル</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>ここにコマンドを入力します。help、ls、pwd を試して Enter キーを押してください。</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>次へ</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>ツアーをスキップ</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>サイドバー</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>接続すると、ターミナルの領域を確保するためにサイドバーが折りたたまれます。このアイコンでホスト一覧に戻れます。</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>完了</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>ツアーをスキップ</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>デモ ホスト</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>シミュレートされたセッション: PC の外には何も送信されません。help と入力するとコマンドを確認できます。</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>使用できるコマンド: help、ls、pwd、whoami、hostname、echo、clear、exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>コマンドが見つかりません (これはシミュレートされたセッションです)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>サーバーはこの PC にのみ保存されます。</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>ホストがまだありません</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>最初のホストを追加すると、数回のクリックで SSH 接続できます。</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>設定</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>設定</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>アプリを自分好みに設定します。</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>外観</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>テーマ</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>ライト、ダーク、または Windows の設定に従うかを選択します。</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Windows の設定を使用</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>ライト</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>ダーク</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>ターミナルのフォント サイズ</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>次回ターミナルを開いたときに適用されます。</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>アプリ</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>ウェルカム ツアー</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>アプリの紹介をもう一度表示します。</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>ツアーを再生</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>ローカル データ</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>ホストと設定は、このフォルダー内のこの PC にのみ保存されます:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>フォルダーを開く</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>バージョン情報</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>オープンソースの SSH クライアント (MIT ライセンス)。PC の外には何も送信されません。アカウント、クラウド、テレメトリはありません。</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>言語</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>アプリのインターフェイスの言語です。</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>言語を適用するにはアプリを再起動してください。</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>更新</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>GitHub リポジトリで公開されているリリースを確認します。クリックしたときと、アプリを開くたびに実行されます (下でオフにできます)。クリックしない限り何もインストールされず、送信されるのはリクエストそのものだけです。</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>更新を確認</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>リリース ページを開く</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>確認中...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>最新バージョン ({0}) をお使いです。</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>新しいバージョンがあります: {0}。</value></data>
+  <data name="Update_None" xml:space="preserve"><value>公開されているリリースはまだありません。</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>確認できませんでした。接続を確認してください。</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>システム</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Windows と同時に起動</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Windows にサインインすると ClientSSH を自動的に開きます。</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows がこのアプリの自動起動をブロックしました。スタートアップ アプリの一覧で ClientSSH を有効にしてください。</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Windows の設定を開く</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>最小化して起動</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>Windows がアプリを起動した場合、ウィンドウは開かず、トレイに常駐します。</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>閉じたときにトレイに常駐</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>ウィンドウを閉じても非表示になるだけで、アプリはトレイで動作し続けます。終了するにはトレイのメニューを使用してください。</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>ClientSSH を開く</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>終了</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>更新リポジトリ (owner/name)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows と同時に起動</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>最小化して起動</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>閉じたときにトレイに常駐</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH クライアントがインストールされていません。Windows の設定 &gt; システム &gt; オプション機能 で有効にしてください。</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>ホスト、ユーザー、またはポートが無効です。</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>接続を開始できませんでした: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>セッションが終了しました (コード {0})。</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>再接続</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>セッション</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>開いているセッションはありません</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>ホストに接続してセッションを開きます。複数のセッションを同時に開いておけます。</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>ホストを選択</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>接続</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>前回の接続: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>たった今</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} 分前</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} 時間前</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} 日前</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>お気に入り</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>お気に入り</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>プライバシー</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>接続履歴を保持</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>ホストと各接続の日時のみをこの PC に保存します。コマンドやターミナルの出力は保存されません。オフにしても、すでに保存された内容は削除されません。</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>接続履歴を保持</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>履歴を消去</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>すべての接続の記録を削除します。</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>消去</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>履歴を消去しました。</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>今すぐ更新</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>更新をダウンロードして確認しています...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>有効な更新をダウンロードできませんでした。後でもう一度お試しいただくか、リリース ページをご利用ください。</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>アプリを開いたときに自動で確認</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI アシスタント</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI アシスタント</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>AI アシスタント</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>やりたいことを説明してください。コマンドは Enter を押さずにプロンプトへ入力されるので、先に確認できます。選択したプロバイダーには入力したテキストだけが送信され、ターミナル、ホスト、履歴は送信されません。</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>例: 500 MB より大きいファイルを検索</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>何をしますか?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>コマンドを入力</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>プロバイダーと API キー</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>プロバイダー</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>モデル (省略可)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API キー</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>キーを保存</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>キーを削除</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>このプロバイダーのキーが、お使いの Windows アカウント用に暗号化されて保存されています。</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>キーをこの PC に保存しました。</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>先にこのプロバイダーの API キーを追加してください。</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>モデル名が無効です。</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>先にセッションを開いてください。コマンドはそのターミナルに入力されます。</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>考え中...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>コマンドを入力しました。確認して Enter キーを押してください。</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>アシスタントからコマンドが返されませんでした。</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} がエラーを返しました (HTTP {1})。キーとモデルを確認してください。</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>プロバイダーに接続できませんでした。接続を確認してください。</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>ホストを管理...</value></data>
+</root>

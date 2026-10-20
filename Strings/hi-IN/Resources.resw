@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>होस्ट</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>सरल SSH कनेक्शन। आपका डेटा इसी पीसी पर रहता है।</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>ClientSSH में आपका स्वागत है</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>Windows के लिए एक सरल और तेज़ SSH क्लाइंट।</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>सब कुछ आपके पीसी पर रहता है</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>होस्ट और सेटिंग केवल इसी कंप्यूटर पर सहेजे जाते हैं। किसी भी सर्वर को कुछ नहीं भेजा जाता।</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>तेज़ कनेक्शन</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>एक होस्ट चुनें और कनेक्ट करें। कोई खाता नहीं, कोई साइन-इन नहीं, कोई क्लाउड नहीं।</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>साइन-इन के सभी तरीके</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>Windows OpenSSH के साथ पासवर्ड, निजी कुंजी, SSH एजेंट और सुरक्षा कुंजी।</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>टूर शुरू करें</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>होस्ट</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>नया होस्ट</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>कनेक्ट करें</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>होस्ट हटाएँ</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>नया होस्ट</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>सहेजें</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>रद्द करें</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>उपनाम</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>पता</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>उपयोगकर्ता</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>पोर्ट</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>छोड़ें</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>अपने होस्ट जोड़ें</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>होस्ट जोड़ने के लिए यहाँ क्लिक करें। सब कुछ केवल इसी पीसी पर सहेजा जाता है।</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>आगे</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>टूर छोड़ें</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>डेमो होस्ट</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>यह होस्ट केवल टूर के लिए, बिना नेटवर्क के, ऐप के अंदर सिमुलेट किया गया है। टूर खत्म होने पर यह गायब हो जाता है।</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>डेमो से कनेक्ट करें</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>टूर छोड़ें</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>टर्मिनल</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>यहाँ कमांड लिखें। help, ls या pwd आज़माएँ और Enter दबाएँ।</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>आगे</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>टूर छोड़ें</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>साइडबार</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>कनेक्ट करने पर टर्मिनल के लिए जगह बनाने हेतु साइडबार सिकुड़ जाता है। होस्ट सूची पर लौटने के लिए इस आइकन का उपयोग करें।</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>समाप्त</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>टूर छोड़ें</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>डेमो होस्ट</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>सिमुलेटेड सत्र: कुछ भी आपके पीसी से बाहर नहीं जाता। कमांड देखने के लिए help लिखें।</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>उपलब्ध कमांड: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>कमांड नहीं मिला (यह एक सिमुलेटेड सत्र है)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>आपके सर्वर, केवल इसी पीसी पर सहेजे गए।</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>अभी कोई होस्ट नहीं है</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>कुछ ही क्लिक में SSH से कनेक्ट करने के लिए अपना पहला होस्ट जोड़ें।</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>सेटिंग</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>सेटिंग</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>ऐप को अपने अनुसार बनाएँ।</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>रूप-रंग</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>थीम</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>हल्की, गहरी चुनें या Windows का अनुसरण करें।</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Windows का अनुसरण करें</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>हल्की</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>गहरी</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>टर्मिनल फ़ॉन्ट आकार</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>अगली बार टर्मिनल खोलने पर लागू होगा।</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>ऐप</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>स्वागत टूर</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>ऐप का परिचय फिर से देखें।</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>टूर फिर से चलाएँ</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>स्थानीय डेटा</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>होस्ट और सेटिंग केवल इसी पीसी पर, इस फ़ोल्डर में रहते हैं:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>फ़ोल्डर खोलें</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>बारे में</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>ओपन सोर्स SSH क्लाइंट (MIT लाइसेंस)। कुछ भी आपके पीसी से बाहर नहीं जाता: कोई खाता नहीं, कोई क्लाउड नहीं, कोई टेलीमेट्री नहीं।</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>भाषा</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>ऐप इंटरफ़ेस की भाषा।</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>भाषा लागू करने के लिए ऐप को पुनः आरंभ करें।</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>अपडेट</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>GitHub रिपॉज़िटरी पर प्रकाशित रिलीज़ की जाँच करता है। क्लिक करने पर और ऐप खुलने पर हर बार चलता है (इसे नीचे बंद कर सकते हैं)। आपके क्लिक के बिना कुछ भी इंस्टॉल नहीं होता; केवल अनुरोध ही भेजा जाता है।</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>अपडेट जाँचें</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>रिलीज़ पेज खोलें</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>जाँच हो रही है...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>आप नवीनतम संस्करण ({0}) पर हैं।</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>नया संस्करण उपलब्ध है: {0}।</value></data>
+  <data name="Update_None" xml:space="preserve"><value>अभी तक कोई रिलीज़ प्रकाशित नहीं हुई है।</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>जाँच नहीं हो सकी। कृपया अपना कनेक्शन जाँचें।</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>सिस्टम</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Windows के साथ शुरू करें</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Windows में साइन इन करने पर ClientSSH अपने आप खुलता है।</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows ने इस ऐप का स्वचालित स्टार्टअप रोक दिया है। स्टार्टअप ऐप्स की सूची में ClientSSH चालू करें।</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Windows सेटिंग खोलें</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>छोटा करके शुरू करें</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>जब Windows ऐप शुरू करता है, तो वह ट्रे में रहता है और विंडो नहीं खुलती।</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>बंद करने पर ट्रे में रखें</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>विंडो बंद करने पर वह केवल छिपती है और ऐप ट्रे में चलता रहता है। बाहर निकलने के लिए ट्रे मेनू का उपयोग करें।</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>ClientSSH खोलें</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>बाहर निकलें</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>अपडेट रिपॉज़िटरी (owner/name)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows के साथ शुरू करें</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>छोटा करके शुरू करें</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>बंद करने पर ट्रे में रखें</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH क्लाइंट इंस्टॉल नहीं है। इसे Windows सेटिंग &gt; सिस्टम &gt; वैकल्पिक सुविधाएँ में चालू करें।</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>होस्ट, उपयोगकर्ता या पोर्ट अमान्य है।</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>कनेक्शन शुरू नहीं हो सका: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>सत्र समाप्त हुआ (कोड {0})।</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>फिर से कनेक्ट करें</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>सत्र</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>कोई खुला सत्र नहीं</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>सत्र खोलने के लिए किसी होस्ट से कनेक्ट करें। आप एक साथ कई सत्र खुले रख सकते हैं।</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>होस्ट चुनें</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>कनेक्ट करें</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>पिछला कनेक्शन: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>अभी-अभी</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} मिनट पहले</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} घंटे पहले</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} दिन पहले</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>पसंदीदा</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>पसंदीदा</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>गोपनीयता</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>कनेक्शन इतिहास रखें</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>इस पीसी पर केवल होस्ट और हर कनेक्शन की तारीख व समय सहेजता है। कमांड या टर्मिनल आउटपुट कभी नहीं। इसे बंद करने से पहले से सहेजा गया डेटा नहीं हटता।</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>कनेक्शन इतिहास रखें</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>इतिहास साफ़ करें</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>सभी कनेक्शनों का रिकॉर्ड हटाता है।</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>साफ़ करें</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>इतिहास साफ़ हो गया।</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>अभी अपडेट करें</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>अपडेट डाउनलोड और जाँचा जा रहा है...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>मान्य अपडेट डाउनलोड नहीं हो सका। बाद में फिर प्रयास करें या रिलीज़ पेज का उपयोग करें।</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>ऐप खुलने पर अपने आप जाँचें</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI सहायक</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI सहायक</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>AI सहायक</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>बताएँ कि आप क्या चाहते हैं। कमांड Enter के बिना प्रॉम्प्ट पर लिखा जाता है, ताकि आप पहले उसे जाँच सकें। आपके चुने प्रदाता को केवल आपका टेक्स्ट भेजा जाता है, टर्मिनल, होस्ट या इतिहास कभी नहीं।</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>उदा. 500 MB से बड़ी फ़ाइलें खोजें</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>आप क्या करना चाहते हैं?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>कमांड लिखें</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>प्रदाता और API कुंजी</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>प्रदाता</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>मॉडल (वैकल्पिक)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API कुंजी</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>कुंजी सहेजें</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>कुंजी हटाएँ</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>इस प्रदाता के लिए एक कुंजी सहेजी गई है, जो आपके Windows खाते के लिए एन्क्रिप्ट की गई है।</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>कुंजी इस पीसी पर सहेजी गई।</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>पहले इस प्रदाता के लिए एक API कुंजी जोड़ें।</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>मॉडल का नाम अमान्य है।</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>पहले एक सत्र खोलें: कमांड उसके टर्मिनल में लिखा जाता है।</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>सोच रहा है...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>कमांड लिख दिया गया। उसे जाँचें और Enter दबाएँ।</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>सहायक ने कोई कमांड नहीं लौटाया।</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} ने त्रुटि लौटाई (HTTP {1})। कुंजी और मॉडल जाँचें।</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>प्रदाता तक नहीं पहुँचा जा सका। अपना कनेक्शन जाँचें।</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>होस्ट प्रबंधित करें...</value></data>
+</root>

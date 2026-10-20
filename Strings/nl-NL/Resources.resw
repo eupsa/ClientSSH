@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>Eenvoudige SSH-verbindingen. Je gegevens blijven op deze pc.</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>Welkom bij ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>Een eenvoudige, snelle SSH-client voor Windows.</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>Alles blijft op je pc</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>Hosts en instellingen worden alleen op deze computer opgeslagen. Er wordt niets naar een server verzonden.</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>Snelle verbindingen</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>Kies een host en maak verbinding. Geen account, geen aanmelding, geen cloud.</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>Elke aanmeldmethode</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>Wachtwoord, persoonlijke sleutel, SSH-agent en beveiligingssleutel, met Windows OpenSSH.</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>Rondleiding starten</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>Nieuwe host</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Host verwijderen</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>Nieuwe host</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Opslaan</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>Annuleren</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>Naam</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>Adres</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>Gebruiker</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>Poort</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>Overslaan</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>Voeg je hosts toe</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>Klik hier om een host toe te voegen. Alles wordt alleen op deze pc opgeslagen.</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>Volgende</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>Rondleiding overslaan</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>Demohost</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>Deze host wordt gesimuleerd in de app, zonder netwerk, alleen voor de rondleiding. Hij verdwijnt zodra de rondleiding eindigt.</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>Verbinden met demo</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>Rondleiding overslaan</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>De terminal</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>Typ hier opdrachten. Probeer help, ls of pwd en druk op Enter.</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>Volgende</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>Rondleiding overslaan</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>Zijbalk</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>Wanneer je verbinding maakt, klapt de zijbalk in om ruimte te maken voor de terminal. Gebruik dit pictogram om terug te gaan naar de lijst met hosts.</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>Voltooien</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>Rondleiding overslaan</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>Demohost</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>Gesimuleerde sessie: er verlaat niets je pc. Typ help om de opdrachten te zien.</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>Beschikbare opdrachten: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>opdracht niet gevonden (dit is een gesimuleerde sessie)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>Je servers, alleen op deze pc opgeslagen.</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>Nog geen hosts</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>Voeg je eerste host toe om met een paar klikken via SSH verbinding te maken.</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>Instellingen</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>Instellingen</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>Pas de app aan naar wens.</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>Weergave</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>Thema</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>Kies licht, donker of volg Windows.</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Windows volgen</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>Licht</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>Donker</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>Lettergrootte van de terminal</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>Wordt toegepast wanneer je de volgende keer een terminal opent.</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>App</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>Welkomstrondleiding</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>Bekijk de introductie van de app opnieuw.</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>Rondleiding herhalen</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>Lokale gegevens</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>Hosts en instellingen blijven alleen op deze pc, in deze map:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>Map openen</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>Over</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>Open-source SSH-client (MIT-licentie). Er verlaat niets je pc: geen account, geen cloud, geen telemetrie.</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>Taal</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Taal van de gebruikersinterface van de app.</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Start de app opnieuw om de taal toe te passen.</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Updates</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Controleert de releases die in de GitHub-repository zijn gepubliceerd. Wordt uitgevoerd wanneer je klikt en elke keer dat de app wordt geopend (hieronder uit te schakelen). Er wordt niets geïnstalleerd zonder jouw klik; alleen het verzoek zelf wordt verzonden.</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Controleren op updates</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Releasepagina openen</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Controleren...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>Je gebruikt de nieuwste versie ({0}).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Nieuwe versie beschikbaar: {0}.</value></data>
+  <data name="Update_None" xml:space="preserve"><value>Er zijn nog geen releases gepubliceerd.</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>Controleren mislukt. Controleer je verbinding.</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>Systeem</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Starten met Windows</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Opent ClientSSH automatisch wanneer je je aanmeldt bij Windows.</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows heeft het automatisch starten van deze app geblokkeerd. Schakel ClientSSH in in de lijst met opstart-apps.</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Windows-instellingen openen</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>Geminimaliseerd starten</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>Wanneer Windows de app start, blijft die in het systeemvak en wordt het venster niet geopend.</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>In het systeemvak houden bij sluiten</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>Bij het sluiten wordt het venster alleen verborgen en blijft de app draaien in het systeemvak. Gebruik het menu van het systeemvak om af te sluiten.</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>ClientSSH openen</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>Afsluiten</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Updatesrepository (eigenaar/naam)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Starten met Windows</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Geminimaliseerd starten</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>In het systeemvak houden bij sluiten</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>De OpenSSH-client is niet geïnstalleerd. Schakel deze in via Windows-instellingen &gt; Systeem &gt; Optionele functies.</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>Ongeldige host, gebruiker of poort.</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>Kan de verbinding niet starten: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>Sessie beëindigd (code {0}).</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>Opnieuw verbinden</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>Sessies</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Geen geopende sessies</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Maak verbinding met een host om een sessie te openen. Je kunt er meerdere tegelijk open houden.</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Kies een host</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>Laatste verbinding: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>zojuist</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min geleden</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} u geleden</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} d geleden</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Favoriet</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Favoriet</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>Privacy</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>Verbindingsgeschiedenis bewaren</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Slaat alleen de host en de datum en tijd van elke verbinding op, op deze pc. Nooit opdrachten of terminaluitvoer. Uitschakelen verwijdert niet wat al is opgeslagen.</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Verbindingsgeschiedenis bewaren</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Geschiedenis wissen</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Verwijdert de registratie van alle verbindingen.</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Wissen</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>Geschiedenis gewist.</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>Nu bijwerken</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Update downloaden en controleren...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>Kan geen geldige update downloaden. Probeer het later opnieuw of gebruik de releasepagina.</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Automatisch controleren wanneer de app wordt geopend</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI-assistent</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI-assistent</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>AI-assistent</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Beschrijf wat je wilt. De opdracht wordt zonder Enter bij de prompt getypt, zodat je hem eerst kunt controleren. Alleen je tekst wordt naar de gekozen provider verzonden, nooit de terminal, hosts of geschiedenis.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>bijv. bestanden groter dan 500 MB zoeken</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>Wat wil je doen?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>Opdracht typen</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>Provider en API-sleutel</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>Provider</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>Model (optioneel)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API-sleutel</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>Sleutel opslaan</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>Sleutel verwijderen</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>Er is een sleutel opgeslagen voor deze provider, versleuteld voor je Windows-account.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>Sleutel opgeslagen op deze pc.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>Voeg eerst een API-sleutel voor deze provider toe.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>Ongeldige modelnaam.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>Open eerst een sessie: de opdracht wordt in de bijbehorende terminal getypt.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>Bezig met nadenken...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>Opdracht getypt. Controleer hem en druk op Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>De assistent heeft geen opdracht teruggegeven.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} gaf een fout terug (HTTP {1}). Controleer de sleutel en het model.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>Kan de provider niet bereiken. Controleer je verbinding.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>Hosts beheren...</value></data>
+</root>

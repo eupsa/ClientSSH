@@ -3,7 +3,8 @@
     x:Class="ClientSSH.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ClientSSH.Views">
+    xmlns:local="using:ClientSSH.Views"
+    xmlns:models="using:ClientSSH.Models">
 
     <ScrollViewer>
         <StackPanel MaxWidth="820" Padding="40,16,40,40" Spacing="28" HorizontalAlignment="Stretch">
@@ -35,23 +36,18 @@
                                            Visibility="{x:Bind ViewModel.LanguageChanged, Mode=OneWay}" />
                             </StackPanel>
                             <!-- Language names stay in their own language on purpose. -->
-                            <ComboBox Grid.Column="2" MinWidth="220" SelectedIndex="{x:Bind ViewModel.LanguageIndex, Mode=TwoWay}">
-                                <ComboBoxItem>
-                                    <StackPanel Orientation="Horizontal" Spacing="10">
-                                        <Border CornerRadius="3" Width="24" Height="18">
-                                            <Image Source="ms-appx:///Assets/Flags/br.svg" Stretch="UniformToFill" />
-                                        </Border>
-                                        <TextBlock Text="Português (Brasil)" />
-                                    </StackPanel>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <StackPanel Orientation="Horizontal" Spacing="10">
-                                        <Border CornerRadius="3" Width="24" Height="18">
-                                            <Image Source="ms-appx:///Assets/Flags/us.svg" Stretch="UniformToFill" />
-                                        </Border>
-                                        <TextBlock Text="English (United States)" />
-                                    </StackPanel>
-                                </ComboBoxItem>
+                            <ComboBox x:Name="LanguageBox" Grid.Column="2" MinWidth="220" ItemsSource="{x:Bind ViewModel.Languages}"
+                                      Loaded="OnLanguageBoxLoaded">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="models:LanguageOption">
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                            <Border CornerRadius="3" Width="24" Height="18">
+                                                <Image Source="{x:Bind FlagUri}" Stretch="UniformToFill" />
+                                            </Border>
+                                            <TextBlock Text="{x:Bind Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
                         </Grid>
                         <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />

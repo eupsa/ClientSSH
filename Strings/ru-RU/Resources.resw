@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>Хосты</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>Простые SSH-подключения. Ваши данные остаются на этом компьютере.</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>Добро пожаловать в ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>Простой и быстрый SSH-клиент для Windows.</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>Всё остаётся на вашем компьютере</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>Хосты и настройки хранятся только на этом компьютере. Ничего не отправляется на серверы.</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>Быстрые подключения</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>Выберите хост и подключитесь. Без учётной записи, без входа, без облака.</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>Любой способ входа</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>Пароль, закрытый ключ, агент SSH и ключ безопасности — через Windows OpenSSH.</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>Начать обзор</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>Хосты</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>Новый хост</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>Подключиться</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Удалить хост</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>Новый хост</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Сохранить</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>Название</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>Адрес</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>Пользователь</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>Порт</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>Пропустить</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>Добавьте свои хосты</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>Нажмите здесь, чтобы добавить хост. Всё хранится только на этом компьютере.</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>Далее</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>Пропустить обзор</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>Демо-хост</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>Этот хост имитируется внутри приложения, без сети, только для обзора. Он исчезнет после завершения обзора.</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>Подключиться к демо</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>Пропустить обзор</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>Терминал</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>Вводите команды здесь. Попробуйте help, ls или pwd и нажмите Enter.</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>Далее</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>Пропустить обзор</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>Боковая панель</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>При подключении боковая панель сворачивается, освобождая место для терминала. Этим значком можно вернуться к списку хостов.</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>Готово</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>Пропустить обзор</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>Демо-хост</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>Имитация сеанса: ничто не покидает ваш компьютер. Введите help, чтобы увидеть команды.</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>Доступные команды: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>команда не найдена (это имитация сеанса)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>Ваши серверы, сохранённые только на этом компьютере.</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>Хостов пока нет</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>Добавьте первый хост, чтобы подключаться по SSH в несколько кликов.</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>Параметры</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>Параметры</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>Настройте приложение под себя.</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>Оформление</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>Тема</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>Выберите светлую, тёмную или следуйте теме Windows.</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Как в Windows</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>Светлая</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>Тёмная</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>Размер шрифта терминала</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>Применяется при следующем открытии терминала.</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>Приложение</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>Приветственный обзор</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>Посмотреть знакомство с приложением ещё раз.</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>Повторить обзор</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>Локальные данные</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>Хосты и настройки хранятся только на этом компьютере, в этой папке:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>О программе</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>SSH-клиент с открытым исходным кодом (лицензия MIT). Ничто не покидает ваш компьютер: без учётной записи, без облака, без телеметрии.</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>Язык</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Язык интерфейса приложения.</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Перезапустите приложение, чтобы применить язык.</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Обновления</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Проверяет выпуски, опубликованные в репозитории GitHub. Запускается по нажатию и при каждом открытии приложения (это можно отключить ниже). Ничего не устанавливается без вашего нажатия; отправляется только сам запрос.</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Проверить обновления</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Открыть страницу выпуска</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Проверка...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>У вас установлена последняя версия ({0}).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>Доступна новая версия: {0}.</value></data>
+  <data name="Update_None" xml:space="preserve"><value>Выпусков пока нет.</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>Не удалось проверить. Проверьте подключение.</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>Система</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Запускать вместе с Windows</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Автоматически открывает ClientSSH при входе в Windows.</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows заблокировала автозапуск этого приложения. Включите ClientSSH в списке автозагружаемых приложений.</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Открыть параметры Windows</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>Запускать свёрнутым</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>Когда Windows запускает приложение, оно остаётся в области уведомлений и не открывает окно.</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>Оставлять в области уведомлений при закрытии</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>Закрытие окна лишь скрывает его, а приложение продолжает работать в области уведомлений. Для выхода используйте её меню.</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>Открыть ClientSSH</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>Выйти</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Репозиторий обновлений (владелец/имя)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Запускать вместе с Windows</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Запускать свёрнутым</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Оставлять в области уведомлений при закрытии</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>Клиент OpenSSH не установлен. Включите его в разделе «Параметры Windows» &gt; «Система» &gt; «Дополнительные компоненты».</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>Недопустимый хост, пользователь или порт.</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>Не удалось начать подключение: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>Сеанс завершён (код {0}).</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>Переподключиться</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>Сеансы</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Нет открытых сеансов</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Подключитесь к хосту, чтобы открыть сеанс. Одновременно можно держать открытыми несколько сеансов.</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Выбрать хост</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Подключиться</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>Последнее подключение: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>только что</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} мин назад</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} ч назад</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} дн. назад</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Избранное</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Избранное</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>Конфиденциальность</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>Сохранять журнал подключений</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Сохраняет только хост, дату и время каждого подключения на этом компьютере. Никогда не сохраняет команды и вывод терминала. Отключение не удаляет уже сохранённое.</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Сохранять журнал подключений</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Очистить журнал</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Удаляет запись обо всех подключениях.</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Очистить</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>Журнал очищен.</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>Обновить сейчас</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Загрузка и проверка обновления...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>Не удалось загрузить допустимое обновление. Повторите попытку позже или используйте страницу выпуска.</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Проверять автоматически при открытии приложения</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>ИИ-помощник</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>ИИ-помощник</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>ИИ-помощник</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Опишите, что вам нужно. Команда вводится в строку приглашения без Enter, чтобы вы могли её проверить. Выбранному поставщику отправляется только ваш текст, но не терминал, хосты или журнал.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>напр. найти файлы больше 500 МБ</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>Что вы хотите сделать?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>Ввести команду</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>Поставщик и ключ API</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>Поставщик</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>Модель (необязательно)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>Ключ API</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>Сохранить ключ</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>Удалить ключ</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>Для этого поставщика сохранён ключ, зашифрованный для вашей учётной записи Windows.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>Ключ сохранён на этом компьютере.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>Сначала добавьте ключ API для этого поставщика.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>Недопустимое имя модели.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>Сначала откройте сеанс: команда вводится в его терминале.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>Думаю...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>Команда введена. Проверьте её и нажмите Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>Помощник не вернул команду.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} вернул ошибку (HTTP {1}). Проверьте ключ и модель.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>Не удалось связаться с поставщиком. Проверьте подключение.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>Управление хостами...</value></data>
+</root>

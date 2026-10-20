@@ -8,7 +8,7 @@ A simple, fast SSH client for Windows. Open source, built with WinUI 3.
 
 - **Your data stays on your PC.** Hosts and settings are saved locally. There is no account, no cloud and no telemetry.
 - **Easy to connect.** Pick a host and connect. Sign-in is handled by the Windows OpenSSH client, so passwords, private keys, the SSH agent, security keys and your `known_hosts` all work as usual.
-- **Modern Windows look.** WinUI 3, Fluent controls, light and dark themes, English and Brazilian Portuguese.
+- **Modern Windows look.** WinUI 3, Fluent controls, light and dark themes, 14 languages (Brazilian Portuguese, English, Spanish, French, German, Italian, Russian, Chinese, Japanese, Korean, Arabic, Hindi, Turkish, Dutch; translations beyond pt-BR and en-US are machine-made, corrections welcome).
 
 ## Features
 

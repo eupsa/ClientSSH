@@ -48,8 +48,7 @@ public sealed partial class SettingsViewModel : ObservableObject
 
     public bool IsNotChecking => !IsChecking;
 
-    // Same order as the ComboBox items in SettingsPage.
-    private static readonly string[] Languages = ["pt-BR", "en-US"];
+    public IReadOnlyList<LanguageOption> Languages => LanguageOption.All;
 
     public SettingsViewModel(ISettingsStore store, ThemeService theme, TourViewModel tour, IUpdateService updates,
         IStartupService startup, TrayService tray, IHistoryStore history)
@@ -65,7 +64,7 @@ public sealed partial class SettingsViewModel : ObservableObject
         UpdateRepo = store.Current.UpdateRepo;
         ThemeIndex = (int)store.Current.Theme;
         FontSize = store.Current.TerminalFontSize;
-        LanguageIndex = Math.Max(0, Array.IndexOf(Languages, store.Current.Language));
+        LanguageIndex = Math.Max(0, LanguageOption.All.ToList().FindIndex(l => l.Tag == store.Current.Language));
         SaveHistory = store.Current.SaveHistory;
         AutoUpdateCheck = store.Current.AutoUpdateCheck;
         StartMinimized = store.Current.StartMinimized;
@@ -147,7 +146,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     partial void OnLanguageIndexChanged(int value)
     {
         if (!_ready || value < 0) return;
-        _store.Save(_store.Current with { Language = Languages[value] });
+        _store.Save(_store.Current with { Language = LanguageOption.All[value].Tag });
         LanguageChanged = true;
     }
 

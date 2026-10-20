@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>المضيفات</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>اتصالات SSH بسيطة. تبقى بياناتك على هذا الكمبيوتر.</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>مرحبًا بك في ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>عميل SSH بسيط وسريع لنظام Windows.</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>كل شيء يبقى على كمبيوترك</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>تُحفظ المضيفات والإعدادات على هذا الكمبيوتر فقط. لا يُرسل أي شيء إلى أي خادم.</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>اتصالات سريعة</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>اختر مضيفًا واتصل. بلا حساب، بلا تسجيل دخول، بلا سحابة.</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>كل طرق تسجيل الدخول</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>كلمة المرور، المفتاح الخاص، وكيل SSH ومفتاح الأمان، باستخدام Windows OpenSSH.</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>بدء الجولة</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>المضيفات</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>مضيف جديد</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>اتصال</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>إزالة المضيف</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>مضيف جديد</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>حفظ</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>الاسم المستعار</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>العنوان</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>المستخدم</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>المنفذ</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>تخطي</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>أضف مضيفاتك</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>انقر هنا لإضافة مضيف. يُحفظ كل شيء على هذا الكمبيوتر فقط.</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>التالي</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>تخطي الجولة</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>مضيف تجريبي</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>هذا المضيف محاكى داخل التطبيق، بلا شبكة، وللجولة فقط. يختفي عند انتهاء الجولة.</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>الاتصال بالمضيف التجريبي</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>تخطي الجولة</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>الطرفية</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>اكتب الأوامر هنا. جرّب help أو ls أو pwd ثم اضغط Enter.</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>التالي</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>تخطي الجولة</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>الشريط الجانبي</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>عند الاتصال، ينطوي الشريط الجانبي ليفسح المجال للطرفية. استخدم هذه الأيقونة للعودة إلى قائمة المضيفات.</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>إنهاء</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>تخطي الجولة</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>مضيف تجريبي</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>جلسة محاكاة: لا شيء يغادر كمبيوترك. اكتب help لعرض الأوامر.</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>الأوامر المتاحة: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>الأمر غير موجود (هذه جلسة محاكاة)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>خوادمك، محفوظة على هذا الكمبيوتر فقط.</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>لا توجد مضيفات بعد</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>أضف أول مضيف لك للاتصال عبر SSH ببضع نقرات.</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>خصّص التطبيق كما تريد.</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>المظهر</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>السمة</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>اختر الفاتح أو الداكن أو اتبع Windows.</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>اتباع Windows</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>فاتح</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>داكن</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>حجم خط الطرفية</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>يُطبَّق عند فتح الطرفية في المرة القادمة.</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>التطبيق</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>جولة الترحيب</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>شاهد مقدمة التطبيق مرة أخرى.</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>إعادة الجولة</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>البيانات المحلية</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>تبقى المضيفات والإعدادات على هذا الكمبيوتر فقط، في هذا المجلد:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>فتح المجلد</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>حول</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>عميل SSH مفتوح المصدر (ترخيص MIT). لا شيء يغادر كمبيوترك: بلا حساب، بلا سحابة، بلا قياس عن بُعد.</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>اللغة</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>لغة واجهة التطبيق.</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>أعد تشغيل التطبيق لتطبيق اللغة.</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>التحديثات</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>يتحقق من الإصدارات المنشورة في مستودع GitHub. يعمل عند النقر وفي كل مرة يُفتح فيها التطبيق (يمكنك إيقاف ذلك أدناه). لا يُثبَّت شيء دون نقرتك؛ يُرسل الطلب نفسه فقط.</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>التحقق من التحديثات</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>فتح صفحة الإصدار</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>جارٍ التحقق...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>أنت تستخدم أحدث إصدار ({0}).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>يتوفر إصدار جديد: {0}.</value></data>
+  <data name="Update_None" xml:space="preserve"><value>لم تُنشر أي إصدارات بعد.</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>تعذّر التحقق. يرجى التحقق من اتصالك.</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>النظام</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>البدء مع Windows</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>يفتح ClientSSH تلقائيًا عند تسجيل الدخول إلى Windows.</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>حظر Windows البدء التلقائي لهذا التطبيق. فعّل ClientSSH في قائمة تطبيقات بدء التشغيل.</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>فتح إعدادات Windows</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>البدء مصغّرًا</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>عندما يشغّل Windows التطبيق، يبقى في منطقة الإعلام ولا يفتح النافذة.</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>الإبقاء في منطقة الإعلام عند الإغلاق</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>إغلاق النافذة يخفيها فقط ويستمر التطبيق في العمل في منطقة الإعلام. استخدم قائمة منطقة الإعلام للخروج.</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>فتح ClientSSH</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>خروج</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>مستودع التحديثات (المالك/الاسم)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>البدء مع Windows</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>البدء مصغّرًا</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>الإبقاء في منطقة الإعلام عند الإغلاق</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>عميل OpenSSH غير مثبّت. فعّله من إعدادات Windows &gt; النظام &gt; الميزات الاختيارية.</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>مضيف أو مستخدم أو منفذ غير صالح.</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>تعذّر بدء الاتصال: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>انتهت الجلسة (الرمز {0}).</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>إعادة الاتصال</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>الجلسات</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>لا توجد جلسات مفتوحة</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>اتصل بمضيف لفتح جلسة. يمكنك إبقاء عدة جلسات مفتوحة في الوقت نفسه.</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>اختيار مضيف</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>اتصال</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>آخر اتصال: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>الآن</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>منذ {0} دقيقة</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>منذ {0} ساعة</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>منذ {0} يوم</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>المفضلة</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>المفضلة</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>الخصوصية</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>الاحتفاظ بسجل الاتصالات</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>يحفظ المضيف وتاريخ ووقت كل اتصال فقط، على هذا الكمبيوتر. لا يحفظ الأوامر ولا مخرجات الطرفية أبدًا. إيقافه لا يحذف ما حُفظ سابقًا.</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>الاحتفاظ بسجل الاتصالات</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>مسح السجل</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>يزيل سجل كل الاتصالات.</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>مسح</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>تم مسح السجل.</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>التحديث الآن</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>جارٍ تنزيل التحديث والتحقق منه...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>تعذّر تنزيل تحديث صالح. حاول مرة أخرى لاحقًا أو استخدم صفحة الإصدار.</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>التحقق تلقائيًا عند فتح التطبيق</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>صِف ما تريده. يُكتب الأمر عند المحث دون Enter لتتحقق منه أولًا. لا يُرسل إلى المزوّد الذي تختاره سوى نصك، وليس الطرفية ولا المضيفات ولا السجل أبدًا.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>مثال: العثور على الملفات الأكبر من 500 ميغابايت</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>ماذا تريد أن تفعل؟</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>كتابة الأمر</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>المزوّد ومفتاح API</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>المزوّد</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>النموذج (اختياري)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>مفتاح API</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>حفظ المفتاح</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>إزالة المفتاح</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>يوجد مفتاح محفوظ لهذا المزوّد، مشفّر لحساب Windows الخاص بك.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>تم حفظ المفتاح على هذا الكمبيوتر.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>أضف مفتاح API لهذا المزوّد أولًا.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>اسم نموذج غير صالح.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>افتح جلسة أولًا: يُكتب الأمر في طرفيتها.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>جارٍ التفكير...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>تمت كتابة الأمر. تحقق منه واضغط Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>لم يُرجع المساعد أي أمر.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>أرجع {0} خطأ (HTTP {1}). تحقق من المفتاح والنموذج.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>تعذّر الوصول إلى المزوّد. تحقق من اتصالك.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>إدارة المضيفات...</value></data>
+</root>

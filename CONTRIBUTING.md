@@ -11,7 +11,7 @@ Thanks for helping. This is a small project, so the rules are short.
 ## Conventions
 
 - **MVVM.** View models hold state and commands and use no UI types (the few that do are noted in code). Code-behind is only view glue: events, focus, animations.
-- **No fixed text.** Every user-facing string lives in `Strings/<language>/Resources.resw`, used through `x:Uid` or `Loc.Get`. Add each new key to **both** `pt-BR` and `en-US`.
+- **No fixed text.** Every user-facing string lives in `Strings/<language>/Resources.resw`, used through `x:Uid` or `Loc.Get`. Add each new key to `pt-BR` and `en-US` (the source languages); the other languages in `Models/LanguageOption.cs` fall back to Portuguese (the default language) for a missing key, but please translate it too. To add a language: create `Strings/<tag>/Resources.resw`, add the flag SVG to `Assets/Flags/` and one line to `LanguageOption.All`.
 - **Colors and shape come from `Themes/Palette.xaml`.** Use `{ThemeResource XxxBrush}` and `CardCornerRadius`/`ControlCornerRadius`, never literal colors or radii. The app uses the brand palette: dark blue, black and white.
 - **Icons have no background of their own.** They sit on the background of the component they are in.
 - **Animate with native transitions** (`EntranceThemeTransition`, `ScalarTransition`, `NavigationTransitionInfo`) instead of custom code, and with the brand Lottie animations through `LottieView` (`brand/anim`).
