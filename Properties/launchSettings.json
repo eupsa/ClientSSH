@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ClientSSH (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ClientSSH (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
