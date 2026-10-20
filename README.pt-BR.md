@@ -23,7 +23,7 @@ O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com 
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria, com duas exceções: as sessões SSH que você inicia e a verificação de atualizações. A verificação roda quando você clica em **Verificar atualizações**, e também uma vez depois de o app fechar por erro ou quando o Windows o inicia. Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
+O ClientSSH não faz conexões por conta própria, com duas exceções: as sessões SSH que você inicia e a verificação de atualizações. A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 

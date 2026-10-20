@@ -49,8 +49,8 @@ public sealed partial class MainViewModel : ObservableObject
         await Task.Delay(500);
         IsSplashVisible = false;
 
-        // The only times the app checks for updates by itself: after a crash, or when Windows started it.
-        if (RunMarker.PreviousRunEndedBadly || App.LaunchedByStartup) await CheckForUpdateAsync();
+        // On by default, off in Settings. A run that ended badly checks even then, once, because an update may be the fix.
+        if (_settings.Current.AutoUpdateCheck || RunMarker.PreviousRunEndedBadly) await CheckForUpdateAsync();
     }
 
     private async Task CheckForUpdateAsync()

@@ -74,7 +74,7 @@
   <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Language of the app interface.</value></data>
   <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Restart the app to apply the language.</value></data>
   <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Updates</value></data>
-  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Checks the releases published on the GitHub repository. Runs when you click, and also once after the app closed by an error or when Windows starts it. Nothing is installed without your click; only the request itself is sent.</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Checks the releases published on the GitHub repository. Runs when you click and every time the app opens (you can turn that off below). Nothing is installed without your click; only the request itself is sent.</value></data>
   <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Check for updates</value></data>
   <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Open release page</value></data>
   <data name="Update_Checking" xml:space="preserve"><value>Checking...</value></data>
@@ -126,4 +126,5 @@
   <data name="Update_Install.Content" xml:space="preserve"><value>Update now</value></data>
   <data name="Update_Downloading" xml:space="preserve"><value>Downloading and checking the update...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Could not download a valid update. Try again later or use the release page.</value></data>
+  <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Check automatically when the app opens</value></data>
 </root>

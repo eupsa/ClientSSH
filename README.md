@@ -24,7 +24,7 @@ See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Window
 
 ## Privacy
 
-ClientSSH makes no network connection on its own, with two exceptions: the SSH sessions you start, and the update check. The check runs when you click **Check for updates**, and also once after the app closed by an error or when Windows starts it. It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
+ClientSSH makes no network connection on its own, with two exceptions: the SSH sessions you start, and the update check. The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 

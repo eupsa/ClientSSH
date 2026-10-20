@@ -221,6 +221,8 @@
                                            Foreground="{ThemeResource TextSecondaryBrush}" />
                                 <TextBox x:Uid="Settings_Update_Repo" Margin="0,8,0,0" MaxWidth="320" HorizontalAlignment="Left"
                                          Text="{x:Bind ViewModel.UpdateRepo, Mode=TwoWay}" />
+                                <ToggleSwitch x:Uid="Settings_Update_Auto" Margin="0,8,0,0" OnContent="" OffContent="" MinWidth="0"
+                                              IsOn="{x:Bind ViewModel.AutoUpdateCheck, Mode=TwoWay}" />
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                                 <local:LottieView Animation="loading-ring" Width="28" Height="28"

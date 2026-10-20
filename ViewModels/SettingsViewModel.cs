@@ -38,6 +38,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     [ObservableProperty] public partial string UpdateRepo { get; set; }
     [ObservableProperty] public partial bool HasUpdateMessage { get; set; }
     [ObservableProperty] public partial bool SaveHistory { get; set; }
+    [ObservableProperty] public partial bool AutoUpdateCheck { get; set; }
     [ObservableProperty] public partial bool HistoryCleared { get; set; }
     [ObservableProperty] public partial bool StartWithWindows { get; set; }
     [ObservableProperty] public partial bool StartupBlocked { get; set; }
@@ -66,6 +67,7 @@ public sealed partial class SettingsViewModel : ObservableObject
         FontSize = store.Current.TerminalFontSize;
         LanguageIndex = Math.Max(0, Array.IndexOf(Languages, store.Current.Language));
         SaveHistory = store.Current.SaveHistory;
+        AutoUpdateCheck = store.Current.AutoUpdateCheck;
         StartMinimized = store.Current.StartMinimized;
         CloseToTray = store.Current.CloseToTray;
         _ready = true;
@@ -102,6 +104,12 @@ public sealed partial class SettingsViewModel : ObservableObject
     {
         if (!_ready) return;
         _store.Save(_store.Current with { SaveHistory = value });
+    }
+
+    partial void OnAutoUpdateCheckChanged(bool value)
+    {
+        if (!_ready) return;
+        _store.Save(_store.Current with { AutoUpdateCheck = value });
     }
 
     [RelayCommand]

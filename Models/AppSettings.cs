@@ -10,7 +10,8 @@ public sealed record AppSettings(
     bool StartMinimized = false,
     bool CloseToTray = false,
     string UpdateRepo = AppSettings.DefaultUpdateRepo,
-    bool SaveHistory = false)
+    bool SaveHistory = false,
+    bool AutoUpdateCheck = true)
 {
     /// <summary>Open source: users can point the update check at their own fork.</summary>
     public const string DefaultUpdateRepo = "eupsa/client-ssh";
