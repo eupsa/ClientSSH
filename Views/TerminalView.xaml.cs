@@ -63,7 +63,9 @@ public sealed partial class TerminalView : UserControl
     {
         _loaded = true;
         Opacity = 1;
-        _canvas = new CanvasControl { ClearColor = Colors.Transparent };
+        // Not a tab stop: on a left click XAML focuses the clicked control itself after our PointerPressed, which would
+        // take focus from this view (a right click does not do that, so typing only worked after one).
+        _canvas = new CanvasControl { ClearColor = Colors.Transparent, IsTabStop = false };
         _canvas.Draw += OnDraw;
         CanvasHost.Children.Add(_canvas);
         // Redraw for the blink only when there is a cursor to blink: an idle terminal should cost nothing.
