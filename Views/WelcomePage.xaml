@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClientSSH.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientSSH.Views">
+
+    <ScrollViewer>
+        <StackPanel MaxWidth="900" Padding="40,16,40,40" Spacing="36" VerticalAlignment="Center">
+            <StackPanel.ChildrenTransitions><TransitionCollection><EntranceThemeTransition FromVerticalOffset="36" /></TransitionCollection></StackPanel.ChildrenTransitions>
+            <StackPanel Spacing="14" HorizontalAlignment="Center">
+                <local:LottieView Animation="logo-reveal" Loop="False" Width="120" Height="120" HorizontalAlignment="Center" />
+                <TextBlock x:Uid="Welcome_Title" FontSize="40" FontWeight="SemiBold" TextAlignment="Center"
+                           Foreground="{ThemeResource TextBrush}" />
+                <TextBlock x:Uid="Welcome_Subtitle" FontSize="16" TextAlignment="Center" TextWrapping="Wrap"
+                           Foreground="{ThemeResource TextSecondaryBrush}" />
+            </StackPanel>
+
+            <Grid ColumnSpacing="16">
+            <Grid.ChildrenTransitions><TransitionCollection><EntranceThemeTransition FromVerticalOffset="40" /></TransitionCollection></Grid.ChildrenTransitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{StaticResource FeatureCard}">
+                    <StackPanel Spacing="12">
+                        <FontIcon Glyph="&#xE72E;" Foreground="{ThemeResource TextBrush}" FontSize="24" HorizontalAlignment="Left" />
+                        <TextBlock x:Uid="Welcome_Card1_Title" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource TextBrush}" />
+                        <TextBlock x:Uid="Welcome_Card1_Body" TextWrapping="Wrap"
+                                   Foreground="{ThemeResource TextSecondaryBrush}" />
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource FeatureCard}">
+                    <StackPanel Spacing="12">
+                        <FontIcon Glyph="&#xE945;" Foreground="{ThemeResource TextBrush}" FontSize="24" HorizontalAlignment="Left" />
+                        <TextBlock x:Uid="Welcome_Card2_Title" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource TextBrush}" />
+                        <TextBlock x:Uid="Welcome_Card2_Body" TextWrapping="Wrap"
+                                   Foreground="{ThemeResource TextSecondaryBrush}" />
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Style="{StaticResource FeatureCard}">
+                    <StackPanel Spacing="12">
+                        <FontIcon Glyph="&#xE192;" Foreground="{ThemeResource TextBrush}" FontSize="24" HorizontalAlignment="Left" />
+                        <TextBlock x:Uid="Welcome_Card3_Title" FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{ThemeResource TextBrush}" />
+                        <TextBlock x:Uid="Welcome_Card3_Body" TextWrapping="Wrap"
+                                   Foreground="{ThemeResource TextSecondaryBrush}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+                <Button Style="{StaticResource BigButton}" Command="{x:Bind ViewModel.Tour.StartCommand}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon Glyph="&#xE768;" FontSize="14" />
+                        <TextBlock x:Uid="Welcome_Start" />
+                    </StackPanel>
+                </Button>
+                <Button x:Uid="Welcome_Skip" Padding="20,10"
+                        Command="{x:Bind ViewModel.Tour.FinishCommand}" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

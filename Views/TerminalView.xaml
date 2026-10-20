@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="ClientSSH.Views.TerminalView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    IsTabStop="True" UseSystemFocusVisuals="False"
+    Loaded="OnLoaded" Unloaded="OnUnloaded" SizeChanged="OnSizeChanged"
+    KeyDown="OnKeyDown" CharacterReceived="OnCharacterReceived"
+    PointerPressed="OnPointerPressed" PointerWheelChanged="OnPointerWheelChanged"
+    GotFocus="OnFocusChanged" LostFocus="OnFocusChanged" Opacity="0">
+
+    <UserControl.OpacityTransition>
+        <ScalarTransition Duration="0:0:0.4" />
+    </UserControl.OpacityTransition>
+
+    <Grid x:Name="CanvasHost" />
+</UserControl>

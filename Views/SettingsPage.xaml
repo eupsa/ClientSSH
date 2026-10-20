@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClientSSH.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientSSH.Views">
+
+    <ScrollViewer>
+        <StackPanel MaxWidth="820" Padding="40,16,40,40" Spacing="28" HorizontalAlignment="Stretch">
+            <StackPanel.ChildrenTransitions><TransitionCollection><EntranceThemeTransition FromVerticalOffset="28" /></TransitionCollection></StackPanel.ChildrenTransitions>
+            <StackPanel Spacing="4">
+                <TextBlock x:Uid="Settings_Title" Style="{StaticResource PageTitle}" />
+                <TextBlock x:Uid="Settings_Subtitle" Style="{StaticResource PageSubtitle}" />
+            </StackPanel>
+
+            <!-- Appearance -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_Appearance" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}" Padding="0">
+                    <StackPanel>
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE774;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Language_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Language_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                                <TextBlock x:Uid="Settings_Language_Restart" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource AccentForegroundBrush}"
+                                           Visibility="{x:Bind ViewModel.LanguageChanged, Mode=OneWay}" />
+                            </StackPanel>
+                            <!-- Language names stay in their own language on purpose. -->
+                            <ComboBox Grid.Column="2" MinWidth="220" SelectedIndex="{x:Bind ViewModel.LanguageIndex, Mode=TwoWay}">
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <Border CornerRadius="3" Width="24" Height="18">
+                                            <Image Source="ms-appx:///Assets/Flags/br.svg" Stretch="UniformToFill" />
+                                        </Border>
+                                        <TextBlock Text="Português (Brasil)" />
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <Border CornerRadius="3" Width="24" Height="18">
+                                            <Image Source="ms-appx:///Assets/Flags/us.svg" Stretch="UniformToFill" />
+                                        </Border>
+                                        <TextBlock Text="English (United States)" />
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE771;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Theme_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Theme_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <ComboBox Grid.Column="2" MinWidth="170" SelectedIndex="{x:Bind ViewModel.ThemeIndex, Mode=TwoWay}">
+                                <ComboBoxItem x:Uid="Settings_Theme_System" />
+                                <ComboBoxItem x:Uid="Settings_Theme_Light" />
+                                <ComboBoxItem x:Uid="Settings_Theme_Dark" />
+                            </ComboBox>
+                        </Grid>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE8E9;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_FontSize_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_FontSize_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <NumberBox Grid.Column="2" Width="130" Minimum="10" Maximum="24" SmallChange="1"
+                                       SpinButtonPlacementMode="Inline" Value="{x:Bind ViewModel.FontSize, Mode=TwoWay}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Privacy -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_Privacy" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}" Padding="0">
+                    <StackPanel>
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE81C;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_History_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_History_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <ToggleSwitch x:Uid="Settings_History_Toggle" Grid.Column="2" OnContent="" OffContent="" MinWidth="0" IsOn="{x:Bind ViewModel.SaveHistory, Mode=TwoWay}" />
+                        </Grid>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE74D;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_ClearHistory_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_ClearHistory_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <Button x:Uid="Settings_ClearHistory_Button" Grid.Column="2" Command="{x:Bind ViewModel.ClearHistoryCommand}" />
+                        </Grid>
+                        <InfoBar x:Uid="Settings_History_Cleared" Margin="16,0,16,16" IsClosable="False" Severity="Success"
+                                 IsOpen="{x:Bind ViewModel.HistoryCleared, Mode=OneWay}"
+                                 Visibility="{x:Bind ViewModel.HistoryCleared, Mode=OneWay}" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- System: startup and tray -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_System" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}" Padding="0">
+                    <StackPanel>
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE7E8;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Startup_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Startup_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <ToggleSwitch x:Uid="Settings_Startup_Toggle" Grid.Column="2" OnContent="" OffContent="" MinWidth="0" IsOn="{x:Bind ViewModel.StartWithWindows, Mode=TwoWay}" />
+                        </Grid>
+                        <InfoBar Margin="16,0,16,16" IsClosable="False" Severity="Warning"
+                                 IsOpen="{x:Bind ViewModel.StartupBlocked, Mode=OneWay}"
+                                 Visibility="{x:Bind ViewModel.StartupBlocked, Mode=OneWay}"
+                                 x:Uid="Settings_Startup_Blocked">
+                            <InfoBar.ActionButton>
+                                <Button x:Uid="Settings_Startup_OpenSettings" Command="{x:Bind ViewModel.OpenStartupSettingsCommand}" />
+                            </InfoBar.ActionButton>
+                        </InfoBar>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE921;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_StartMin_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_StartMin_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <ToggleSwitch x:Uid="Settings_StartMin_Toggle" Grid.Column="2" OnContent="" OffContent="" MinWidth="0" IsEnabled="{x:Bind ViewModel.StartWithWindows, Mode=OneWay}" IsOn="{x:Bind ViewModel.StartMinimized, Mode=TwoWay}" />
+                        </Grid>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE8A7;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Tray_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Tray_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <ToggleSwitch x:Uid="Settings_Tray_Toggle" Grid.Column="2" OnContent="" OffContent="" MinWidth="0" IsOn="{x:Bind ViewModel.CloseToTray, Mode=TwoWay}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- App -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_App" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}" Padding="0">
+                    <StackPanel>
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE895;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Update_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Update_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                                <TextBox x:Uid="Settings_Update_Repo" Margin="0,8,0,0" MaxWidth="320" HorizontalAlignment="Left"
+                                         Text="{x:Bind ViewModel.UpdateRepo, Mode=TwoWay}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                <local:LottieView Animation="loading-ring" Width="28" Height="28"
+                                                  Visibility="{x:Bind ViewModel.IsChecking, Mode=OneWay}" />
+                                <Button x:Uid="Settings_Update_Check" IsEnabled="{x:Bind ViewModel.IsNotChecking, Mode=OneWay}"
+                                        Command="{x:Bind ViewModel.CheckUpdatesCommand}" />
+                            </StackPanel>
+                        </Grid>
+                        <InfoBar Margin="16,0,16,16" IsClosable="False"
+                                 IsOpen="{x:Bind ViewModel.HasUpdateMessage, Mode=OneWay}"
+                                 Visibility="{x:Bind ViewModel.HasUpdateMessage, Mode=OneWay}"
+                                 Severity="{x:Bind ViewModel.UpdateSeverity, Mode=OneWay}"
+                                 Message="{x:Bind ViewModel.UpdateMessage, Mode=OneWay}">
+                            <InfoBar.ActionButton>
+                                <Button x:Uid="Settings_Update_Open" Visibility="{x:Bind ViewModel.HasUpdate, Mode=OneWay}"
+                                        Command="{x:Bind ViewModel.OpenReleaseCommand}" />
+                            </InfoBar.ActionButton>
+                        </InfoBar>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE768;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Tour_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Tour_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <Button Grid.Column="2" x:Uid="Settings_Tour_Button" Command="{x:Bind ViewModel.Tour.StartCommand}" />
+                        </Grid>
+                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE8B7;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Data_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Data_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                                <TextBlock Text="{x:Bind ViewModel.DataFolder}" FontFamily="Cascadia Mono, Consolas" FontSize="11"
+                                           IsTextSelectionEnabled="True" TextWrapping="Wrap"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <Button Grid.Column="2" x:Uid="Settings_Data_Button" Command="{x:Bind ViewModel.OpenDataFolderCommand}" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- About -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_About" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}">
+                    <StackPanel Spacing="6">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <TextBlock Text="ClientSSH" FontWeight="SemiBold" FontSize="16" Foreground="{ThemeResource TextBrush}" />
+                            <TextBlock Text="{x:Bind ViewModel.Version}" VerticalAlignment="Center"
+                                       Foreground="{ThemeResource TextSecondaryBrush}" />
+                        </StackPanel>
+                        <TextBlock x:Uid="Settings_About_Body" TextWrapping="Wrap" Foreground="{ThemeResource TextSecondaryBrush}" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ClientSSH.Views.SessionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClientSSH.Views"
+    xmlns:sessions="using:ClientSSH.Services.Sessions">
+
+    <Grid Padding="16,4,16,16" RowDefinitions="Auto,*">
+        <TabView x:Name="Tabs"
+                 TabItemsSource="{x:Bind ViewModel.Sessions.Tabs}"
+                 SelectedItem="{x:Bind ViewModel.Sessions.Selected, Mode=TwoWay}"
+                 Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}"
+                 CanReorderTabs="True" CloseButtonOverlayMode="Auto"
+                 AddTabButtonClick="OnAddTabButtonClick" TabCloseRequested="OnTabCloseRequested"
+                 GettingFocus="OnTabsGettingFocus" SelectionChanged="OnTabsSelectionChanged" Tapped="OnTabsTapped" Loaded="OnTabsLoaded">
+            <TabView.TabItemTemplate>
+                <DataTemplate x:DataType="sessions:SessionTab">
+                    <TabViewItem Header="{x:Bind Title, Mode=OneWay}">
+                        <TabViewItem.IconSource>
+                            <FontIconSource Glyph="&#xE756;" />
+                        </TabViewItem.IconSource>
+                    </TabViewItem>
+                </DataTemplate>
+            </TabView.TabItemTemplate>
+        </TabView>
+
+        <!-- The tab strip only picks the session; one view below shows the selected one, so its size is ours to control. -->
+        <local:SessionView x:Name="Current" Grid.Row="1" Tab="{x:Bind ViewModel.Sessions.Selected, Mode=OneWay}"
+                           Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}" />
+
+        <StackPanel Grid.RowSpan="2" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Visibility="{x:Bind ViewModel.IsEmpty, Mode=OneWay}">
+            <StackPanel.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition FromVerticalOffset="28" />
+                </TransitionCollection>
+            </StackPanel.ChildrenTransitions>
+            <local:LottieView Animation="running-command" Width="96" Height="96" HorizontalAlignment="Center" />
+            <TextBlock x:Uid="Sessions_EmptyTitle" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center"
+                       Foreground="{ThemeResource TextBrush}" />
+            <TextBlock x:Uid="Sessions_EmptyBody" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="380"
+                       TextWrapping="Wrap" Foreground="{ThemeResource TextSecondaryBrush}" />
+            <Button Style="{StaticResource BigButton}" HorizontalAlignment="Center" Margin="0,8,0,0"
+                    Command="{x:Bind ViewModel.NewSessionCommand}">
+                <TextBlock x:Uid="Sessions_EmptyButton" />
+            </Button>
+        </StackPanel>
+
+        <TeachingTip x:Uid="Tour_Step3" Target="{x:Bind Tabs}" IsOpen="{x:Bind Tour.IsStep3, Mode=OneWay}"
+                     IsLightDismissEnabled="False"
+                     ActionButtonCommand="{x:Bind Tour.NextCommand}" CloseButtonCommand="{x:Bind Tour.FinishCommand}" />
+    </Grid>
+</Page>

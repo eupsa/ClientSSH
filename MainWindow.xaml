@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ClientSSH.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    xmlns:local="using:ClientSSH.Views"
+    Title="ClientSSH">
+
+    <Grid x:Name="Root" Background="{ThemeResource AppBackgroundBrush}" Loaded="OnLoaded"
+          Opacity="0" Translation="0,28,0">
+        <Grid.OpacityTransition>
+            <ScalarTransition Duration="0:0:0.6" />
+        </Grid.OpacityTransition>
+        <Grid.TranslationTransition>
+            <Vector3Transition Duration="0:0:0.6" />
+        </Grid.TranslationTransition>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TitleBar x:Name="TitleBar" Title="ClientSSH" IsBackButtonVisible="False" IsPaneToggleButtonVisible="False">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="ms-appx:///Assets/Square44x44Logo.targetsize-24.png" />
+            </TitleBar.IconSource>
+        </TitleBar>
+
+        <NavigationView
+            x:Name="Nav"
+            Grid.Row="1"
+            PaneDisplayMode="Left"
+            OpenPaneLength="220"
+            CompactPaneLength="52"
+            IsPaneOpen="{x:Bind ViewModel.IsPaneOpen, Mode=TwoWay}"
+            IsPaneVisible="{x:Bind ViewModel.IsPaneVisible, Mode=OneWay}"
+            IsSettingsVisible="False"
+            IsBackButtonVisible="Collapsed"
+            Background="Transparent"
+            ItemInvoked="OnItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="HostsNavItem" x:Uid="Nav_Hosts" Tag="Hosts" Icon="Home" />
+                <NavigationViewItem x:Name="SessionsNavItem" x:Uid="Nav_Sessions" Tag="Sessions">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE756;" />
+                    </NavigationViewItem.Icon>
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge Style="{StaticResource AttentionValueInfoBadgeStyle}"
+                                   Value="{x:Bind ViewModel.SessionCount, Mode=OneWay}"
+                                   Visibility="{x:Bind ViewModel.HasSessions, Mode=OneWay}" />
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Name="SettingsNavItem" x:Uid="Nav_Settings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <AnimatedIcon>
+                            <AnimatedIcon.Source>
+                                <animatedvisuals:AnimatedSettingsVisualSource />
+                            </AnimatedIcon.Source>
+                            <AnimatedIcon.FallbackIconSource>
+                                <SymbolIconSource Symbol="Setting" />
+                            </AnimatedIcon.FallbackIconSource>
+                        </AnimatedIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="RootFrame" />
+        </NavigationView>
+
+        <TeachingTip x:Uid="Tour_Step4" Target="{x:Bind HostsNavItem}" IsOpen="{x:Bind Tour.IsStep4, Mode=OneWay}"
+                     IsLightDismissEnabled="False"
+                     ActionButtonCommand="{x:Bind Tour.NextCommand}" CloseButtonCommand="{x:Bind Tour.FinishCommand}" />
+
+        <!-- Splash: covers everything, fades out when the view model drops SplashOpacity to 0. -->
+        <Grid Grid.RowSpan="2" Background="{ThemeResource SplashBackgroundBrush}"
+              Opacity="{x:Bind ViewModel.SplashOpacity, Mode=OneWay}"
+              Visibility="{x:Bind ViewModel.IsSplashVisible, Mode=OneWay}">
+            <Grid.OpacityTransition>
+                <ScalarTransition Duration="0:0:0.45" />
+            </Grid.OpacityTransition>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <EntranceThemeTransition FromVerticalOffset="40" />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+                <local:LottieView Animation="logo-reveal" Loop="False" Width="168" Height="168" HorizontalAlignment="Center" />
+                <TextBlock Text="ClientSSH" FontSize="32" FontWeight="SemiBold"
+                           Foreground="{ThemeResource AccentTextBrush}" HorizontalAlignment="Center" />
+                <TextBlock x:Uid="Splash_Tagline" Foreground="{ThemeResource AccentTextBrush}" Opacity="0.75"
+                           HorizontalAlignment="Center" />
+                <local:LottieView Animation="loading-dots" Width="56" Height="28" HorizontalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
