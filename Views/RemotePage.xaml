@@ -17,6 +17,14 @@
 
                 <InfoBar x:Uid="Remote_NatWarning" Severity="Warning" IsClosable="False" IsOpen="{x:Bind Remote.NetworkWarning, Mode=OneWay}" />
 
+                <!-- Optional: the user's own rendezvous server, so short codes work -->
+                <StackPanel Spacing="4">
+                    <TextBox x:Uid="Remote_Server" MaxWidth="360" HorizontalAlignment="Left"
+                             Text="{x:Bind Remote.ServerAddress, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                             IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
+                    <TextBlock x:Uid="Remote_Server_Hint" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
+                </StackPanel>
+
                 <!-- Share this PC -->
                 <Border Style="{StaticResource FeatureCard}">
                     <StackPanel Spacing="12">
@@ -27,6 +35,12 @@
                         <TextBlock x:Uid="Remote_Share_Desc" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
                         <Button x:Uid="Remote_ShareButton" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left"
                                 Command="{x:Bind Remote.ShareCommand}" IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
+
+                        <StackPanel Spacing="2" Visibility="{x:Bind Remote.HasShortCode, Mode=OneWay}">
+                            <TextBlock x:Uid="Remote_ShortCode" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <TextBlock Text="{x:Bind Remote.ShortCode, Mode=OneWay}" IsTextSelectionEnabled="True" FontSize="32" FontWeight="SemiBold"
+                                       FontFamily="Cascadia Mono, Consolas" Foreground="{ThemeResource AccentForegroundBrush}" />
+                        </StackPanel>
 
                         <StackPanel Spacing="8" Visibility="{x:Bind Remote.IsHost, Mode=OneWay}">
                             <TextBox x:Uid="Remote_YourCode" IsReadOnly="True" TextWrapping="Wrap" Text="{x:Bind Remote.HostCode, Mode=OneWay}"

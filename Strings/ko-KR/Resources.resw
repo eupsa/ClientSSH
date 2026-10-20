@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>제어 허용</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>보기 전용</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>거부</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>랑데부 서버(선택 사항)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>ClientSSH 랑데부 서버를 실행하는 내 PC(설치 프로그램 옵션)입니다. 이를 사용하면 짧은 코드가 긴 코드를 대신합니다. 비워 두면 긴 코드를 직접 주고받습니다.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>내 연결 코드</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>랑데부 서버에 연결할 수 없습니다. 주소를 확인하세요.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>이 코드를 상대방에게 알려 주세요. 상대방이 연결하면 허용할지 묻습니다.</value></data>
 </root>

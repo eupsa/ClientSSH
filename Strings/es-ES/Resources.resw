@@ -200,4 +200,10 @@ Díselo en voz alta a la otra persona (llamada o mensaje de voz). Si no es el mi
   <data name="Remote_Request_Control" xml:space="preserve"><value>Permitir control</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Solo ver</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Denegar</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Servidor de encuentro (opcional)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>Un PC tuyo con el servidor de encuentro de ClientSSH (opción del instalador). Con él, un código corto sustituye a los largos. Déjalo vacío para intercambiar los códigos largos a mano.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Tu código de conexión</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>No se pudo contactar con el servidor de encuentro. Revisa la dirección.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Dile este código a la otra persona. Cuando se conecte, se te preguntará si lo permites.</value></data>
 </root>

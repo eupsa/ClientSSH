@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>नियंत्रण की अनुमति दें</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>केवल देखें</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>अस्वीकार करें</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>मिलन सर्वर (वैकल्पिक)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>आपका अपना PC जिस पर ClientSSH मिलन सर्वर चल रहा हो (इंस्टॉलर का विकल्प)। इसके साथ छोटा कोड लंबे कोड की जगह ले लेता है। खाली छोड़ें तो लंबे कोड हाथ से आपस में बदलें।</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>आपका कनेक्शन कोड</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>मिलन सर्वर तक नहीं पहुँच सके। पता जाँचें।</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>यह कोड दूसरे व्यक्ति को बताएँ। जब वह जुड़ेगा तो आपसे अनुमति पूछी जाएगी।</value></data>
 </root>

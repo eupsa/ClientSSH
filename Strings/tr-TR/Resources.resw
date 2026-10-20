@@ -200,4 +200,10 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Remote_Request_Control" xml:space="preserve"><value>Denetime izin ver</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Yalnızca görüntüle</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Reddet</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Buluşma sunucusu (isteğe bağlı)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>ClientSSH buluşma sunucusunu çalıştıran kendi bilgisayarınız (yükleyici seçeneği). Bununla kısa bir kod uzun kodların yerini alır. Uzun kodları elle değiş tokuş etmek için boş bırakın.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Bağlantı kodunuz</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Buluşma sunucusuna ulaşılamadı. Adresi kontrol edin.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Bu kodu karşıdaki kişiye söyleyin. Bağlandığında izin vermeniz istenecek.</value></data>
 </root>

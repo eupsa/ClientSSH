@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>السماح بالتحكم</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>عرض فقط</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>رفض</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>خادم اللقاء (اختياري)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>جهاز يخصّك يشغّل خادم اللقاء الخاص بـ ClientSSH (خيار في برنامج التثبيت). به يحلّ رمز قصير محل الرموز الطويلة. اتركه فارغًا لتبادل الرموز الطويلة يدويًا.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>رمز اتصالك</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>تعذّر الوصول إلى خادم اللقاء. تحقق من العنوان.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>أعطِ هذا الرمز للطرف الآخر. عندما يتصل سيُطلب منك السماح.</value></data>
 </root>

@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <Compile Remove="tests\**" />
+    <Compile Remove="server\**" />
+    <None Remove="server\**" />
     <None Remove="tests\**" />
     <Page Remove="tests\**" />
     <Content Include="Assets\*.png" />

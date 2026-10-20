@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>允许控制</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>仅查看</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>拒绝</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>会合服务器（可选）</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>你自己运行 ClientSSH 会合服务器的电脑（安装程序选项）。有了它，短代码可以代替长代码。留空则手动交换长代码。</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>你的连接代码</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>无法连接到会合服务器。请检查地址。</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>把这个代码告诉对方。对方连接时，你会被询问是否允许。</value></data>
 </root>

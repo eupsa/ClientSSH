@@ -48,12 +48,21 @@ Name: "dutch"; MessagesFile: "compiler:Languages\Dutch.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; Flags: unchecked
+Name: "rendezvous"; Description: "{cm:RendezvousTask}"; Flags: unchecked
 
 [Files]
 Source: "{#PublishDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
+Source: "{#RendezvousDir}\*"; DestDir: "{app}
+endezvous"; Flags: ignoreversion; Tasks: rendezvous
+
+[CustomMessages]
+english.RendezvousTask=Also install the remote-access rendezvous server (lets this PC introduce others by short code; not needed to use the app)
+brazilianportuguese.RendezvousTask=Instalar também o servidor de encontro do acesso remoto (permite que este PC apresente outros por código curto; não é necessário para usar o app)
+
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppName}.exe"
+Name: "{group}\ClientSSH rendezvous server"; Filename: "{app}endezvous\ClientSSH.Rendezvous.exe"; Tasks: rendezvous
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
 
 [Run]

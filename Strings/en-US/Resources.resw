@@ -200,4 +200,10 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Remote_Request_Control" xml:space="preserve"><value>Allow control</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>View only</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Deny</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Rendezvous server (optional)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>A PC of yours running the ClientSSH rendezvous server (installer option). With it, a short code replaces the long ones. Leave empty to swap long codes by hand.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Your connection code</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Could not reach the rendezvous server. Check the address.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Tell this code to the other person. When they connect, you will be asked to allow.</value></data>
 </root>

@@ -20,6 +20,7 @@
     <Compile Include="..\..\Models\Host.cs" Link="Host.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
     <Compile Include="..\..\Services\Remote\Stun.cs" Link="Stun.cs" />
+    <Compile Include="..\..\Services\Remote\Rendezvous.cs" Link="Rendezvous.cs" />
     <Compile Include="..\..\Services\Remote\RemoteCode.cs" Link="RemoteCode.cs" />
     <Compile Include="..\..\Services\Remote\RemoteChannel.cs" Link="RemoteChannel.cs" />
     <Compile Include="..\..\Services\Remote\InputEvent.cs" Link="InputEvent.cs" />

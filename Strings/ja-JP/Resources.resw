@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>操作を許可</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>表示のみ</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>拒否</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>ランデブーサーバー（任意）</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>ClientSSH のランデブーサーバーを動かしている自分の PC（インストーラーのオプション）。これがあると、長いコードの代わりに短いコードが使えます。空のままなら長いコードを手動で交換します。</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>あなたの接続コード</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>ランデブーサーバーに接続できません。アドレスを確認してください。</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>このコードを相手に伝えてください。相手が接続すると、許可するかどうか尋ねられます。</value></data>
 </root>

@@ -327,3 +327,70 @@ public sealed class RemoteSessionTests
         Assert.NotEqual(viewer.SecurityCode, intruder.SecurityCode);
     }
 }
+
+public class RendezvousTests
+{
+    private static readonly System.Net.IPAddress Ip = System.Net.IPAddress.Parse("203.0.113.9");
+    private const string Offer = "CSSH1-AAAA", Reply = "CSSH1-BBBB";
+
+    [Theory]
+    [InlineData("123 456 789", true)]
+    [InlineData("123-456-789", true)]
+    [InlineData("123456789", true)]
+    [InlineData("12345678", false)]
+    [InlineData("CSSH1-123456789", false)]
+    public void Short_codes_parse(string text, bool ok) => Assert.Equal(ok, RendezvousClient.TryParseCode(text, out _));
+
+    [Fact]
+    public void Mailbox_rules()
+    {
+        using var server = new RendezvousServer(0);
+        Assert.Equal("OK", server.Handle($"PUT 111222333 {Offer}", Ip));
+        Assert.Equal("TAKEN", server.Handle($"PUT 111222333 {Offer}", Ip));
+        Assert.Equal(Offer, server.Handle("GET 111222333", Ip));
+        Assert.Equal("NONE", server.Handle("POLL 111222333", Ip));
+        Assert.Equal("OK", server.Handle($"REPLY 111222333 {Reply}", Ip));
+        Assert.Equal("NONE", server.Handle($"REPLY 111222333 CSSH1-CCCC", Ip)); // the first reply wins
+        Assert.Equal(Reply, server.Handle("POLL 111222333", Ip));
+        Assert.Equal("OK", server.Handle("DEL 111222333", Ip));
+        Assert.Equal("NONE", server.Handle("GET 111222333", Ip));
+        Assert.Equal("BAD", server.Handle("PUT 1234 CSSH1-X", Ip));
+        Assert.Equal("BAD", server.Handle("PUT 111222333 not-a-code", Ip));
+    }
+
+    [Fact]
+    public void Too_many_requests_are_slowed_down()
+    {
+        using var server = new RendezvousServer(0);
+        var answers = Enumerable.Range(0, 70).Select(_ => server.Handle("GET 999999999", Ip)).ToList();
+        Assert.Equal("SLOW", answers[^1]);
+        Assert.Equal("NONE", answers[0]);
+    }
+
+    [Fact]
+    public async Task Two_peers_connect_with_only_a_short_code()
+    {
+        using var server = new RendezvousServer(0);
+        var address = $"127.0.0.1:{server.Port}";
+        var options = new RemoteOptions { IncludeLoopback = true };
+
+        using var host = await RemoteSession.CreateHostAsync(options, new NullScreen(), new NullSink());
+        var code = RendezvousClient.NewCode();
+        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"PUT {code} {host.Code}"));
+
+        var offer = await RendezvousClient.RequestAsync(address, $"GET {code}");
+        using var viewer = await RemoteSession.JoinAsync(offer, options);
+        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"REPLY {code} {viewer.Code}"));
+
+        string? seen = null;
+        host.PeerRequested += s => seen = s;
+        host.AcceptReply(await RendezvousClient.RequestAsync(address, $"POLL {code}"));
+
+        var until = DateTime.UtcNow.AddSeconds(10);
+        while (seen is null && DateTime.UtcNow < until) await Task.Delay(20);
+        Assert.Equal(viewer.SecurityCode, seen);
+    }
+
+    private sealed class NullScreen : IScreenSource { public byte[]? CaptureJpeg() => null; }
+    private sealed class NullSink : IInputSink { public void Apply(InputEvent input) { } }
+}

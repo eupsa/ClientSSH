@@ -200,4 +200,10 @@ Lisez-le à voix haute à l’autre personne (appel ou message vocal). S’il n�
   <data name="Remote_Request_Control" xml:space="preserve"><value>Autoriser le contrôle</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Lecture seule</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Refuser</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Serveur de rendez-vous (facultatif)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>Un de vos PC exécutant le serveur de rendez-vous ClientSSH (option de l'installateur). Avec lui, un code court remplace les longs. Laissez vide pour échanger les longs codes à la main.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Votre code de connexion</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Impossible de joindre le serveur de rendez-vous. Vérifiez l'adresse.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Donnez ce code à l'autre personne. Quand elle se connectera, on vous demandera d'autoriser.</value></data>
 </root>

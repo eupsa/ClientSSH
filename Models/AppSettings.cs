@@ -17,7 +17,8 @@ public sealed record AppSettings(
     AiProvider AiProvider = AiProvider.Claude,
     string AiModel = "",
     WindowState? Window = null,
-    string RemoteStunServers = AppSettings.DefaultStunServers)
+    string RemoteStunServers = AppSettings.DefaultStunServers,
+    string RendezvousAddress = "")
 {
     /// <summary>Open source: users can point the update check at their own fork.</summary>
     public const string DefaultUpdateRepo = "eupsa/client-ssh";

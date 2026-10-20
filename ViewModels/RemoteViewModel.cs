@@ -19,6 +19,8 @@ public sealed partial class RemoteViewModel : ObservableObject
     private readonly IDialogService _dialogs;
     private readonly DispatcherQueue _ui = DispatcherQueue.GetForCurrentThread();
     private RemoteSession? _session;
+    private CancellationTokenSource? _mailbox;
+    private string _serverCode = "";
 
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsIdle), nameof(IsHost), nameof(IsViewer))]
     public partial bool HasSession { get; set; }
@@ -34,6 +36,25 @@ public sealed partial class RemoteViewModel : ObservableObject
     [ObservableProperty, NotifyPropertyChangedFor(nameof(HasSecurityCode), nameof(SecurityText))]
     public partial string SecurityCode { get; set; } = "";
     [ObservableProperty] public partial bool NetworkWarning { get; set; }
+
+    /// <summary>The short code that stands for the host's long code, when a rendezvous server is set.</summary>
+    [ObservableProperty, NotifyPropertyChangedFor(nameof(HasShortCode))]
+    public partial string ShortCode { get; set; } = "";
+
+    public bool HasShortCode => ShortCode.Length > 0;
+
+    /// <summary>Address of the user's own rendezvous server ("host" or "host:port"); empty means codes are swapped by hand.</summary>
+    public string ServerAddress
+    {
+        get => _settings.Current.RendezvousAddress;
+        set
+        {
+            value = value.Trim();
+            if (value == _settings.Current.RendezvousAddress) return;
+            _settings.Save(_settings.Current with { RendezvousAddress = value });
+            OnPropertyChanged();
+        }
+    }
 
     /// <summary>The host's reply box is shown until the connection is made.</summary>
     [ObservableProperty] public partial bool AwaitingReply { get; set; }
@@ -91,12 +112,73 @@ public sealed partial class RemoteViewModel : ObservableObject
             AwaitingReply = true;
             NetworkWarning = session.NetworkMayBlockDirect;
             Status = Loc.Get("Remote_Status_SendCode");
+            await PublishShortCodeAsync(session);
         }
         catch (Exception e) when (e is RemoteCodeException or System.Net.Sockets.SocketException)
         {
             Reset(Loc.Get("Remote_Status_Failed"));
         }
     }
+
+    // With a server set, the host also gets a short code; the reply then arrives by itself and the paste box stays as a fallback.
+    private async Task PublishShortCodeAsync(RemoteSession session)
+    {
+        var server = ServerAddress;
+        if (RendezvousClient.ParseServer(server) is null) return;
+
+        try
+        {
+            for (var attempt = 0; attempt < 5 && _serverCode.Length == 0; attempt++)
+            {
+                var code = RendezvousClient.NewCode();
+                if (await RendezvousClient.RequestAsync(server, $"PUT {code} {session.Code}") == "OK") _serverCode = code;
+            }
+        }
+        catch (Exception e) when (IsNetworkError(e)) { }
+
+        if (_serverCode.Length == 0)
+        {
+            Status = Loc.Get("Remote_Status_ServerFail") + " " + Loc.Get("Remote_Status_SendCode");
+            return;
+        }
+
+        ShortCode = RendezvousClient.Format(_serverCode);
+        Status = Loc.Get("Remote_Status_ShareShort");
+        _mailbox = new CancellationTokenSource();
+        _ = PollReplyAsync(session, server, _serverCode, _mailbox.Token);
+    }
+
+    private async Task PollReplyAsync(RemoteSession session, string server, string code, CancellationToken token)
+    {
+        try
+        {
+            while (!token.IsCancellationRequested)
+            {
+                await Task.Delay(1500, token);
+                var answer = await RendezvousClient.RequestAsync(server, $"POLL {code}", token);
+                if (!answer.StartsWith(RemoteCode.Prefix, StringComparison.Ordinal)) continue;
+
+                _ui.TryEnqueue(() =>
+                {
+                    if (session != _session) return;
+                    HostReplyInput = answer;
+                    AcceptReply();
+                });
+                return;
+            }
+        }
+        catch (Exception e) when (e is OperationCanceledException || IsNetworkError(e)) { }
+    }
+
+    private sealed class ServerUnreachableException : Exception;
+
+    private async Task<string> AskServerAsync(string line)
+    {
+        try { return await RendezvousClient.RequestAsync(ServerAddress, line); }
+        catch (Exception e) when (IsNetworkError(e)) { throw new ServerUnreachableException(); }
+    }
+
+    private static bool IsNetworkError(Exception e) => e is System.Net.Sockets.SocketException or IOException or OperationCanceledException or FormatException;
 
     [RelayCommand]
     private void AcceptReply()
@@ -121,12 +203,30 @@ public sealed partial class RemoteViewModel : ObservableObject
         Begin(isHost: false, Loc.Get("Remote_Status_Preparing"));
         try
         {
-            var session = await RemoteSession.JoinAsync(OfferInput, Options);
+            var viaServer = RendezvousClient.TryParseCode(OfferInput, out var shortCode);
+            var offer = OfferInput;
+            if (viaServer)
+            {
+                offer = await AskServerAsync($"GET {shortCode}");
+                if (!offer.StartsWith(RemoteCode.Prefix, StringComparison.Ordinal)) throw new RemoteCodeException("Unknown code.");
+            }
+
+            var session = await RemoteSession.JoinAsync(offer, Options);
             Attach(session);
             ViewerReplyCode = session.Code;
             SecurityCode = session.SecurityCode ?? "";
             NetworkWarning = session.NetworkMayBlockDirect;
             Status = Loc.Get("Remote_Status_SendReply");
+
+            if (viaServer)
+            {
+                await AskServerAsync($"REPLY {shortCode} {session.Code}");
+                Status = Loc.Get("Remote_Status_WaitingPeer");
+            }
+        }
+        catch (ServerUnreachableException)
+        {
+            Reset(Loc.Get("Remote_Status_ServerFail"));
         }
         catch (RemoteCodeException)
         {
@@ -151,7 +251,7 @@ public sealed partial class RemoteViewModel : ObservableObject
         SessionIsHost = isHost;
         HasSession = true;
         Status = status;
-        HostCode = HostReplyInput = ViewerReplyCode = SecurityCode = "";
+        HostCode = HostReplyInput = ViewerReplyCode = SecurityCode = ShortCode = "";
         NetworkWarning = false;
     }
 
@@ -217,13 +317,24 @@ public sealed partial class RemoteViewModel : ObservableObject
         _session = null;
         session?.Dispose();
 
+        _mailbox?.Cancel();
+        _mailbox = null;
+        if (_serverCode.Length > 0) _ = ForgetShortCodeAsync(ServerAddress, _serverCode);
+        _serverCode = "";
+
         HasSession = false;
         AwaitingReply = false;
         IsSharing = false;
         IsViewing = false;
         Access = RemoteAccess.None;
-        HostCode = HostReplyInput = OfferInput = ViewerReplyCode = SecurityCode = "";
+        HostCode = HostReplyInput = OfferInput = ViewerReplyCode = SecurityCode = ShortCode = "";
         NetworkWarning = false;
         Status = status;
+    }
+
+    private static async Task ForgetShortCodeAsync(string server, string code)
+    {
+        try { await RendezvousClient.RequestAsync(server, $"DEL {code}"); }
+        catch (Exception e) when (IsNetworkError(e)) { }
     }
 }

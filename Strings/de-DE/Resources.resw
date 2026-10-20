@@ -200,4 +200,10 @@ Lies ihn der anderen Person laut vor (Anruf oder Sprachnachricht). Wenn er auf b
   <data name="Remote_Request_Control" xml:space="preserve"><value>Steuerung erlauben</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Nur ansehen</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Ablehnen</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Vermittlungsserver (optional)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>Ein PC von dir, auf dem der ClientSSH-Vermittlungsserver läuft (Option im Installer). Damit ersetzt ein kurzer Code die langen. Leer lassen, um die langen Codes von Hand auszutauschen.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Dein Verbindungscode</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Der Vermittlungsserver ist nicht erreichbar. Prüfe die Adresse.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Gib diesen Code an die andere Person weiter. Wenn sie sich verbindet, wirst du um Erlaubnis gefragt.</value></data>
 </root>

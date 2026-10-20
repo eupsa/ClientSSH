@@ -200,4 +200,10 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>Разрешить управление</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Только просмотр</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Отклонить</value></data>
+  <data name="Remote_Server.Header" xml:space="preserve"><value>Сервер встречи (необязательно)</value></data>
+  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
+  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>Ваш ПК с сервером встречи ClientSSH (опция установщика). С ним короткий код заменяет длинные. Оставьте пустым, чтобы обмениваться длинными кодами вручную.</value></data>
+  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Ваш код подключения</value></data>
+  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Не удалось связаться с сервером встречи. Проверьте адрес.</value></data>
+  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Сообщите этот код другому человеку. Когда он подключится, вас спросят о разрешении.</value></data>
 </root>
