@@ -1,3 +1,4 @@
+using ClientSSH.Services.Assistant;
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Shell;
 using ClientSSH.Services.Storage;
@@ -75,6 +76,9 @@ namespace ClientSSH
             .AddSingleton<SessionManager>()
             .AddSingleton<TrayService>()
             .AddSingleton<IUpdateService, UpdateService>()
+            .AddSingleton<AiKeyStore>()
+            .AddSingleton<IAssistantService, AssistantService>()
+            .AddSingleton<AssistantViewModel>()
             .AddSingleton<TourViewModel>()
             .AddTransient<SettingsViewModel>()
             .AddSingleton<HostsViewModel>()

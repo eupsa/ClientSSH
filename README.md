@@ -24,7 +24,7 @@ See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Window
 
 ## Privacy
 
-ClientSSH makes no network connection on its own, with two exceptions: the SSH sessions you start, and the update check. The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
+ClientSSH makes no network connection on its own, with three exceptions: the SSH sessions you start, the update check, and the AI assistant, which only runs when you send it a prompt. The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
@@ -33,6 +33,10 @@ Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites a
 Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. It installs for your user only (no administrator rights) and does not touch your data on uninstall.
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
+
+## AI assistant
+
+Optional. Open the panel from the tab bar, pick Claude, ChatGPT, Gemini or Groq, paste your own API key and describe what you want. The command the model returns is typed at the terminal prompt **without Enter**, so you read it and decide. Only your text and a fixed instruction are sent to the provider you chose: never terminal output, hosts or history. The key is stored encrypted with Windows DPAPI for your account and never leaves the PC except in the request to that provider.
 
 ## Requirements
 

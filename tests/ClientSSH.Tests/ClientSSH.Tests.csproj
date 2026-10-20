@@ -18,6 +18,7 @@
     <Compile Include="..\..\Terminal\SimulatedProcess.cs" Link="SimulatedProcess.cs" />
     <Compile Include="..\..\Models\Host.cs" Link="Host.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
+    <Compile Include="..\..\Services\Assistant\CommandText.cs" Link="CommandText.cs" />
     <Compile Include="..\..\Services\Storage\Database.cs" Link="Database.cs" />
     <Compile Include="..\..\Services\Storage\HostStore.cs" Link="HostStore.cs" />
     <Compile Include="..\..\Services\Storage\HistoryStore.cs" Link="HistoryStore.cs" />

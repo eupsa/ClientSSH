@@ -13,12 +13,26 @@ public sealed partial class SessionsPage : Page
 
     public TourViewModel Tour { get; } = App.GetService<TourViewModel>();
 
-    public SessionsPage() => InitializeComponent();
+    public AssistantViewModel Assistant { get; } = App.GetService<AssistantViewModel>();
+
+    public SessionsPage()
+    {
+        InitializeComponent();
+        Assistant.CommandInserted += FocusTerminalSoon;
+    }
 
     protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
+        Assistant.CommandInserted -= FocusTerminalSoon;
         ViewModel.Dispose();
         base.OnNavigatedFrom(e);
+    }
+
+    private void OnPromptKeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if (e.Key != Windows.System.VirtualKey.Enter) return;
+        e.Handled = true;
+        Assistant.AskCommand.Execute(null);
     }
 
     // The tab strip is only a picker: the keyboard belongs to the terminal. TabView moves focus onto its own

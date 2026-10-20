@@ -127,4 +127,27 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Downloading and checking the update...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Could not download a valid update. Try again later or use the release page.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Check automatically when the app opens</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI assistant</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI assistant</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>AI assistant</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Describe what you want. The command is typed at the prompt without Enter, so you check it first. Only your text is sent to the provider you choose, never the terminal, hosts or history.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>e.g. find files larger than 500 MB</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>What do you want to do?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>Type the command</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>Provider and API key</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>Provider</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>Model (optional)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>API key</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>Save key</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>Remove key</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>A key is saved for this provider, encrypted for your Windows account.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>Key saved on this PC.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>Add an API key for this provider first.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>Invalid model name.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>Open a session first: the command is typed in its terminal.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>Thinking...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>Command typed. Check it and press Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>The assistant returned no command.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} returned an error (HTTP {1}). Check the key and model.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>Could not reach the provider. Check your connection.</value></data>
 </root>

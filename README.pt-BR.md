@@ -23,7 +23,7 @@ O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com 
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria, com duas exceções: as sessões SSH que você inicia e a verificação de atualizações. A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
+O ClientSSH não faz conexões por conta própria, com três exceções: as sessões SSH que você inicia, a verificação de atualizações e o assistente de IA, que só roda quando você envia um pedido. A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
@@ -32,6 +32,10 @@ Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favorito
 Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.com/eupsa/client-ssh/releases) e execute. Ele instala só para o seu usuário (sem direitos de administrador) e não apaga seus dados ao desinstalar.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
+
+## Assistente de IA
+
+Opcional. Abra o painel na barra de abas, escolha Claude, ChatGPT, Gemini ou Groq, cole a sua chave de API e descreva o que quer. O comando devolvido é digitado no prompt do terminal **sem Enter**, para você ler e decidir. Só o seu texto e uma instrução fixa vão para o provedor escolhido: nunca a saída do terminal, os hosts ou o histórico. A chave fica criptografada com o DPAPI do Windows para a sua conta e só sai do PC na requisição ao provedor.
 
 ## Requisitos
 

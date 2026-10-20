@@ -127,4 +127,27 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Baixando e conferindo a atualização...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Não foi possível baixar uma atualização válida. Tente mais tarde ou use a página da versão.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Verificar automaticamente ao abrir o app</value></data>
+  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>Assistente de IA</value></data>
+  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Assistente de IA</value></data>
+  <data name="Assistant_Title.Text" xml:space="preserve"><value>Assistente de IA</value></data>
+  <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Descreva o que você quer. O comando é digitado no prompt sem Enter, para você conferir antes. Só o seu texto vai para o provedor escolhido, nunca o terminal, os hosts ou o histórico.</value></data>
+  <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>ex.: achar arquivos maiores que 500 MB</value></data>
+  <data name="Assistant_Prompt.Header" xml:space="preserve"><value>O que você quer fazer?</value></data>
+  <data name="Assistant_Send.Content" xml:space="preserve"><value>Digitar o comando</value></data>
+  <data name="Assistant_Settings.Header" xml:space="preserve"><value>Provedor e chave de API</value></data>
+  <data name="Assistant_Provider.Header" xml:space="preserve"><value>Provedor</value></data>
+  <data name="Assistant_Model.Header" xml:space="preserve"><value>Modelo (opcional)</value></data>
+  <data name="Assistant_Key.Header" xml:space="preserve"><value>Chave de API</value></data>
+  <data name="Assistant_SaveKey.Content" xml:space="preserve"><value>Salvar chave</value></data>
+  <data name="Assistant_RemoveKey.Content" xml:space="preserve"><value>Remover chave</value></data>
+  <data name="Assistant_HasKey.Text" xml:space="preserve"><value>Há uma chave salva para este provedor, criptografada para a sua conta do Windows.</value></data>
+  <data name="Assistant_KeySaved" xml:space="preserve"><value>Chave salva neste PC.</value></data>
+  <data name="Assistant_NoKey" xml:space="preserve"><value>Adicione primeiro uma chave de API deste provedor.</value></data>
+  <data name="Assistant_BadModel" xml:space="preserve"><value>Nome de modelo inválido.</value></data>
+  <data name="Assistant_NoSession" xml:space="preserve"><value>Abra uma sessão primeiro: o comando é digitado no terminal dela.</value></data>
+  <data name="Assistant_Thinking" xml:space="preserve"><value>Pensando...</value></data>
+  <data name="Assistant_Inserted" xml:space="preserve"><value>Comando digitado. Confira e aperte Enter.</value></data>
+  <data name="Assistant_Empty" xml:space="preserve"><value>O assistente não devolveu nenhum comando.</value></data>
+  <data name="Assistant_Failed" xml:space="preserve"><value>{0} devolveu um erro (HTTP {1}). Confira a chave e o modelo.</value></data>
+  <data name="Assistant_Offline" xml:space="preserve"><value>Não foi possível falar com o provedor. Confira sua conexão.</value></data>
 </root>

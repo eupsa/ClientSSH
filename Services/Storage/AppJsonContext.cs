@@ -9,4 +9,5 @@ namespace ClientSSH.Services.Storage;
 [JsonSerializable(typeof(List<Host>))]
 [JsonSerializable(typeof(AppSettings))]
 [JsonSerializable(typeof(ReleaseInfo))]
+[JsonSerializable(typeof(Dictionary<string, string>))]
 internal sealed partial class AppJsonContext : JsonSerializerContext;

@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow [SemVer](https://semver.org/).
 
@@ -14,6 +14,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Settings: theme, font size, language (pt-BR, en-US), start with Windows, minimize to tray, manual update check.
 - Brand palette in one file (`Themes/Palette.xaml`), Lottie animations.
 - Setup.exe installer (Inno Setup), per-user.
+- AI assistant side panel (Claude, ChatGPT, Gemini, Groq): your request becomes a command typed at the terminal prompt without Enter. Your own API key, encrypted with Windows DPAPI; only your text is sent.
 
 ### Changed
 - Update check also runs every time the app opens (can be turned off in Settings; a run after a crash still checks once). If a newer release exists, **Update now** downloads the installer, checks it against `SHA256SUMS.txt` and installs it. Nothing installs without a click.
