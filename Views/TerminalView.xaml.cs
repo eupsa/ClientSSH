@@ -120,7 +120,28 @@ public sealed partial class TerminalView : UserControl
 
     private void OnFocusChanged(object sender, RoutedEventArgs e) => _canvas?.Invalidate();
 
-    private void OnPointerPressed(object sender, PointerRoutedEventArgs e) => Focus(FocusState.Pointer);
+    // Right click pastes (like PuTTY and Windows Terminal); left click only takes focus.
+    private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        Focus(FocusState.Pointer);
+        if (!e.GetCurrentPoint(this).Properties.IsRightButtonPressed) return;
+        e.Handled = true;
+        _ = PasteAsync();
+    }
+
+    private async Task PasteAsync()
+    {
+        try
+        {
+            var content = Windows.ApplicationModel.DataTransfer.Clipboard.GetContent();
+            if (!content.Contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.Text)) return;
+            Send(PasteText.Clean(await content.GetTextAsync()));
+        }
+        catch (Exception e) when (e is System.Runtime.InteropServices.COMException or InvalidOperationException)
+        {
+            // The clipboard can be locked by another app for a moment: ignore, the user can paste again.
+        }
+    }
 
     // ---- layout ----
 
@@ -244,6 +265,13 @@ public sealed partial class TerminalView : UserControl
     private void OnKeyDown(object sender, KeyRoutedEventArgs e)
     {
         var ctrl = IsDown(VirtualKey.Control);
+        if (ctrl && e.Key == VirtualKey.V) // also Ctrl+Shift+V
+        {
+            _ = PasteAsync();
+            e.Handled = true;
+            return;
+        }
+
         var appKeys = _session?.Screen.AppCursorKeys ?? false;
         string? sequence = e.Key switch
         {
@@ -282,7 +310,7 @@ public sealed partial class TerminalView : UserControl
         e.Handled = true;
     }
 
-    // shortcut: no paste, no Alt combinations; add with selection support.
+    // shortcut: no Alt combinations; add with selection support.
     private void OnCharacterReceived(UIElement sender, CharacterReceivedRoutedEventArgs e)
     {
         var c = e.Character;
