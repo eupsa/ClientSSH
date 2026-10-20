@@ -1,5 +1,5 @@
 # Builds artifacts\ClientSSH-Setup-<version>.exe. Needs the .NET 8 SDK and Inno Setup 6 (ISCC.exe).
-param([string]$Version = "0.3.0")
+param([string]$Version = "0.4.0")
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot
 $out = Join-Path $root "artifacts"

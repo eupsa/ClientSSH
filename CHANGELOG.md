@@ -4,6 +4,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-20
+
+### Added
+- AI assistant side panel (Claude, ChatGPT, Gemini, Groq): describe what you want and the command is typed at the terminal prompt without Enter, so you check it before running. Uses your own API key, encrypted with Windows DPAPI. Only your text and a fixed instruction are sent, never terminal output, hosts or history.
+- The window opens centered the first time, and afterwards where and how big you left it (position, size, maximized). If a monitor is gone, it falls back to the center of the main one.
+
+### Changed
+- Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.
+- Connection animations are created only while they are visible, instead of two players for every open tab.
+- One shared Windows animation-settings object instead of one per animation load.
+
 ## [0.3.0] - 2026-10-20
 
 ### Added
@@ -14,7 +25,6 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Settings: theme, font size, language (pt-BR, en-US), start with Windows, minimize to tray, manual update check.
 - Brand palette in one file (`Themes/Palette.xaml`), Lottie animations.
 - Setup.exe installer (Inno Setup), per-user.
-- AI assistant side panel (Claude, ChatGPT, Gemini, Groq): your request becomes a command typed at the terminal prompt without Enter. Your own API key, encrypted with Windows DPAPI; only your text is sent.
 
 ### Changed
 - Update check also runs every time the app opens (can be turned off in Settings; a run after a crash still checks once). If a newer release exists, **Update now** downloads the installer, checks it against `SHA256SUMS.txt` and installs it. Nothing installs without a click.

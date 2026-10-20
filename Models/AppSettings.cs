@@ -15,7 +15,8 @@ public sealed record AppSettings(
     bool SaveHistory = false,
     bool AutoUpdateCheck = true,
     AiProvider AiProvider = AiProvider.Claude,
-    string AiModel = "")
+    string AiModel = "",
+    WindowState? Window = null)
 {
     /// <summary>Open source: users can point the update check at their own fork.</summary>
     public const string DefaultUpdateRepo = "eupsa/client-ssh";

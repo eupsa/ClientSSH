@@ -13,12 +13,13 @@
         </Border>
 
         <!-- Centered status animation: connecting until the first output, then a short "connected". -->
-        <local:LottieView Animation="{x:Bind Tab.ConnectingAnimation, Mode=OneWay}" Width="120" Height="120"
-                          HorizontalAlignment="Center" VerticalAlignment="Center"
-                          Visibility="{x:Bind Tab.IsConnecting, Mode=OneWay}" />
-        <local:LottieView Animation="connected" Loop="False" Width="120" Height="120"
-                          HorizontalAlignment="Center" VerticalAlignment="Center"
-                          Visibility="{x:Bind Tab.JustConnected, Mode=OneWay}" />
+        <!-- x:Load: the animations only exist while shown, instead of two players per open tab. -->
+        <local:LottieView x:Name="ConnectingAnimation" x:Load="{x:Bind Tab.IsConnecting, Mode=OneWay}"
+                          Animation="{x:Bind Tab.ConnectingAnimation, Mode=OneWay}" Width="120" Height="120"
+                          HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <local:LottieView x:Name="ConnectedAnimation" x:Load="{x:Bind Tab.JustConnected, Mode=OneWay}"
+                          Animation="connected" Loop="False" Width="120" Height="120"
+                          HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <InfoBar VerticalAlignment="Bottom" Margin="16" IsClosable="False"
                  IsOpen="{x:Bind Tab.HasNotice, Mode=OneWay}"

@@ -20,6 +20,9 @@ public sealed partial class LottieView : UserControl
 
     private static readonly string AnimationFolder = Path.Combine(AppContext.BaseDirectory, "Assets", "Animations");
 
+    // One per app: creating it per reload was needless work.
+    private static readonly UISettings WindowsSettings = new();
+
     private bool _loaded;
 
     /// <summary>File name without extension, e.g. "connecting".</summary>
@@ -63,7 +66,7 @@ public sealed partial class LottieView : UserControl
             Player.Source = source;
 
             // With animations off in Windows, show a still frame: the first for loops, the last for one-shots.
-            if (new UISettings().AnimationsEnabled) _ = Player.PlayAsync(0, 1, Loop);
+            if (WindowsSettings.AnimationsEnabled) _ = Player.PlayAsync(0, 1, Loop);
             else Player.SetProgress(Loop ? 0 : 1);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or InvalidOperationException or ArgumentException)

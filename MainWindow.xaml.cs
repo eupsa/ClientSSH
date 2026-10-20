@@ -35,7 +35,7 @@ namespace ClientSSH
             var root = (FrameworkElement)Content;
             root.ActualThemeChanged += (_, _) => ColorCaptionButtons(root);
             ColorCaptionButtons(root);
-            AppWindow.Resize(new Windows.Graphics.SizeInt32(1180, 760));
+            App.GetService<WindowStateService>().Attach(this, 1180, 760);
         }
 
         private void ColorCaptionButtons(FrameworkElement root)

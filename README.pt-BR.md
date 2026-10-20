@@ -33,6 +33,10 @@ Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
 
+## Janela
+
+A janela abre centralizada na primeira vez e depois lembra posição, tamanho e se estava maximizada.
+
 ## Assistente de IA
 
 Opcional. Abra o painel na barra de abas, escolha Claude, ChatGPT, Gemini ou Groq, cole a sua chave de API e descreva o que quer. O comando devolvido é digitado no prompt do terminal **sem Enter**, para você ler e decidir. Só o seu texto e uma instrução fixa vão para o provedor escolhido: nunca a saída do terminal, os hosts ou o histórico. A chave fica criptografada com o DPAPI do Windows para a sua conta e só sai do PC na requisição ao provedor.

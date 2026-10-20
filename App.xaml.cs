@@ -72,6 +72,7 @@ namespace ClientSSH
             .AddSingleton<IDialogService, DialogService>()
             .AddSingleton<MainViewModel>()
             .AddSingleton<ThemeService>()
+            .AddSingleton<WindowStateService>()
             .AddSingleton<IStartupService, StartupService>()
             .AddSingleton<SessionManager>()
             .AddSingleton<TrayService>()

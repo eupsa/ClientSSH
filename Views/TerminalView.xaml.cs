@@ -66,7 +66,11 @@ public sealed partial class TerminalView : UserControl
         _canvas = new CanvasControl { ClearColor = Colors.Transparent };
         _canvas.Draw += OnDraw;
         CanvasHost.Children.Add(_canvas);
-        _blink.Tick += () => _canvas?.Invalidate();
+        // Redraw for the blink only when there is a cursor to blink: an idle terminal should cost nothing.
+        _blink.Tick += () =>
+        {
+            if (FocusState != FocusState.Unfocused && _session?.Screen.CursorVisible == true) _canvas?.Invalidate();
+        };
         _blink.Start();
         Attach();
         Focus(FocusState.Programmatic);
@@ -171,10 +175,12 @@ public sealed partial class TerminalView : UserControl
         }
     }
 
+    private readonly StringBuilder _runText = new();
+
     private void DrawRow(CanvasDrawingSession ds, VtScreen screen, int row, Palette palette)
     {
         var y = row * _cellHeight;
-        var text = new StringBuilder();
+        var text = _runText;
         var col = 0;
         while (col < screen.Cols)
         {
