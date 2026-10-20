@@ -1,3 +1,5 @@
+using ClientSSH.Models;
+using ClientSSH.Services.Localization;
 using ClientSSH.ViewModels;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -12,6 +14,8 @@ public sealed partial class SessionsPage : Page
     public SessionsViewModel ViewModel { get; } = App.GetService<SessionsViewModel>();
 
     public TourViewModel Tour { get; } = App.GetService<TourViewModel>();
+
+    private readonly HostsViewModel _hosts = App.GetService<HostsViewModel>();
 
     public AssistantViewModel Assistant { get; } = App.GetService<AssistantViewModel>();
 
@@ -51,8 +55,38 @@ public sealed partial class SessionsPage : Page
     // After the tab strip finished its own focus handling.
     private void FocusTerminalSoon() => DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, Current.FocusTerminal);
 
-    // The "+" button starts another connection: pick a host.
-    private void OnAddTabButtonClick(TabView sender, object args) => ViewModel.NewSessionCommand.Execute(null);
+    // The "+" button lists the saved hosts next to it, so another tab opens without leaving the terminal.
+    private void OnAddTabButtonClick(TabView sender, object args)
+    {
+        var menu = new MenuFlyout();
+        foreach (var host in _hosts.Hosts)
+        {
+            var item = new MenuFlyoutItem { Text = host.Name, Tag = host };
+            item.Click += OnHostMenuClick;
+            menu.Items.Add(item);
+        }
+
+        if (menu.Items.Count > 0) menu.Items.Add(new MenuFlyoutSeparator());
+        var manage = new MenuFlyoutItem { Text = Loc.Get("Sessions_ManageHosts") };
+        manage.Click += (_, _) => ViewModel.NewSessionCommand.Execute(null);
+        menu.Items.Add(manage);
+
+        menu.ShowAt(FindByName(sender, "AddButton") ?? sender);
+    }
+
+    private void OnHostMenuClick(object sender, RoutedEventArgs e) =>
+        _hosts.OpenTabCommand.Execute(((MenuFlyoutItem)sender).Tag as Host);
+
+    private static FrameworkElement? FindByName(DependencyObject root, string name)
+    {
+        for (var i = 0; i < Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChildrenCount(root); i++)
+        {
+            var child = Microsoft.UI.Xaml.Media.VisualTreeHelper.GetChild(root, i);
+            if (child is FrameworkElement { Name: var n } element && n == name) return element;
+            if (FindByName(child, name) is { } found) return found;
+        }
+        return null;
+    }
 
     private void OnTabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) =>
         ViewModel.CloseTabCommand.Execute(args.Item);

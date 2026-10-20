@@ -73,6 +73,16 @@ public sealed partial class HostsViewModel : ObservableObject
     [RelayCommand]
     private void Connect(Host host)
     {
+        OpenSession(host);
+        _navigation.NavigateTo(PageKey.Sessions);
+    }
+
+    /// <summary>Opens another tab from the sessions page itself (the "+" button), without leaving it.</summary>
+    [RelayCommand]
+    private void OpenTab(Host host) => OpenSession(host);
+
+    private void OpenSession(Host host)
+    {
         if (_settings.Current.SaveHistory && !DemoHost.Is(host))
         {
             var when = _history.Record(host.Id);
@@ -81,7 +91,6 @@ public sealed partial class HostsViewModel : ObservableObject
         }
 
         _sessions.Open(host);
-        _navigation.NavigateTo(PageKey.Sessions);
     }
 
     private void Persist() => _store.Save(Hosts.Where(h => !DemoHost.Is(h)));

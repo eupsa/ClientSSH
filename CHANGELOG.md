@@ -11,6 +11,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - The window opens centered the first time, and afterwards where and how big you left it (position, size, maximized). If a monitor is gone, it falls back to the center of the main one.
 
 ### Changed
+- The "+" button in the tab bar lists your saved hosts next to it and opens the new tab there, instead of going back to the hosts page.
 - Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.
 - Connection animations are created only while they are visible, instead of two players for every open tab.
 - One shared Windows animation-settings object instead of one per animation load.

@@ -150,4 +150,5 @@
   <data name="Assistant_Empty" xml:space="preserve"><value>The assistant returned no command.</value></data>
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} returned an error (HTTP {1}). Check the key and model.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Could not reach the provider. Check your connection.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>Manage hosts...</value></data>
 </root>

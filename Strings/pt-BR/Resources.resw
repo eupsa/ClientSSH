@@ -150,4 +150,5 @@
   <data name="Assistant_Empty" xml:space="preserve"><value>O assistente não devolveu nenhum comando.</value></data>
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} devolveu um erro (HTTP {1}). Confira a chave e o modelo.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Não foi possível falar com o provedor. Confira sua conexão.</value></data>
+  <data name="Sessions_ManageHosts" xml:space="preserve"><value>Gerenciar hosts...</value></data>
 </root>
