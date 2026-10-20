@@ -27,6 +27,12 @@ O ClientSSH não faz conexões por conta própria. As únicas requisições são
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
+## Instalar
+
+Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.com/eupsa/client-ssh/releases) e execute. Ele instala só para o seu usuário (sem direitos de administrador) e não apaga seus dados ao desinstalar.
+
+O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
+
 ## Requisitos
 
 - Windows 10 1809 ou superior (Windows 11 recomendado)

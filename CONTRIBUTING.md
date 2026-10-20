@@ -21,6 +21,20 @@ Thanks for helping. This is a small project, so the rules are short.
 - **Test with a separate profile.** Set `CLIENTSSH_DATA_DIR` to a scratch folder so your own hosts are never touched.
 - **Comments explain why**, not what. Code is in English.
 
+## Build the installer
+
+Needs the .NET 8 SDK and [Inno Setup 6](https://jrsoftware.org/isinfo.php) (`winget install JRSoftware.InnoSetup`):
+
+```bash
+powershell -File installer/build.ps1 -Version 1.0.0
+```
+
+This publishes an unpackaged, self-contained build and writes `artifacts/ClientSSH-Setup-<version>.exe`. Run it afterwards with a normal packaged rebuild if you keep working in Visual Studio, because the publish changes `obj/`. Releases are published by hand on GitHub with a `vX.Y.Z` tag; the in-app update check reads the latest one.
+
+## Reporting and conduct
+
+Bugs and ideas go in [issues](https://github.com/eupsa/client-ssh/issues). Security problems: see [SECURITY.md](SECURITY.md). Everyone follows the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## Project layout
 
 See the table in [README.md](README.md#project-layout).

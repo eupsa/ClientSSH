@@ -1,0 +1,17 @@
+# Changelog
+
+Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions follow [SemVer](https://semver.org/).
+
+## [Unreleased]
+
+### Added
+- WinUI 3 app with splash, welcome screen and guided tour with a simulated host.
+- Real terminal: ConPTY running the Windows `ssh.exe`, own VT/ANSI parser, drawing with Win2D.
+- Multiple simultaneous sessions in tabs.
+- Hosts, favorites and optional history (opt-in, host and time only) in local SQLite.
+- Settings: theme, font size, language (pt-BR, en-US), start with Windows, minimize to tray, manual update check.
+- Brand palette in one file (`Themes/Palette.xaml`), Lottie animations.
+- Setup.exe installer (Inno Setup), per-user.
+
+### Fixed
+- Title bar buttons were invisible in the light theme.

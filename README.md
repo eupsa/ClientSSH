@@ -28,6 +28,12 @@ ClientSSH makes no network connection on its own. The only requests are the SSH 
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
+## Install
+
+Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. It installs for your user only (no administrator rights) and does not touch your data on uninstall.
+
+The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
+
 ## Requirements
 
 - Windows 10 1809 or later (Windows 11 recommended)
