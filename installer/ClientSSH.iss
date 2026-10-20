@@ -48,4 +48,4 @@ Filename: "{app}\{#AppName}.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; 
 
 [UninstallRun]
 ; The "start with Windows" entry of the unpackaged build lives in the user's Run key.
-Filename: "reg.exe"; Parameters: "delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v {#AppName} /f"; Flags: runhidden
+Filename: "reg.exe"; Parameters: "delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v {#AppName} /f"; RunOnceId: "RemoveStartupEntry"; Flags: runhidden
