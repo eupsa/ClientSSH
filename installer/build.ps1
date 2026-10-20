@@ -1,5 +1,5 @@
 # Builds artifacts\ClientSSH-Setup-<version>.exe. Needs the .NET 8 SDK and Inno Setup 6 (ISCC.exe).
-param([string]$Version = "1.0.0")
+param([string]$Version = "0.1.0")
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot
 $out = Join-Path $root "artifacts"
@@ -8,7 +8,7 @@ Remove-Item $out -Recurse -Force -ErrorAction SilentlyContinue
 # Unpackaged, self-contained build (the Setup.exe replaces MSIX). Trimming is off: it breaks WinUI/XAML reflection.
 dotnet publish "$root\ClientSSH.csproj" -c Release -r win-x64 -p:Platform=x64 `
     -p:WindowsPackageType=None -p:WindowsAppSDKSelfContained=true -p:SelfContained=true `
-    -p:PublishTrimmed=false -p:PublishProfile= -o "$out\publish"
+    -p:PublishTrimmed=false -p:Version=$Version -p:PublishProfile= -o "$out\publish"
 if ($LASTEXITCODE) { throw "publish failed" }
 
 # Wizard art from the brand kit: dark panel with the logo (side) and the icon (top-right corner).
