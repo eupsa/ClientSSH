@@ -68,6 +68,16 @@
             <Frame x:Name="RootFrame" />
         </NavigationView>
 
+        <InfoBar Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="16,8" MaxWidth="560"
+                 IsClosable="True" Severity="Informational"
+                 IsOpen="{x:Bind ViewModel.IsUpdateBarOpen, Mode=TwoWay}"
+                 Message="{x:Bind ViewModel.UpdateBarMessage, Mode=OneWay}">
+            <InfoBar.ActionButton>
+                <Button x:Uid="Update_Install" Command="{x:Bind ViewModel.InstallUpdateCommand}"
+                        IsEnabled="{x:Bind ViewModel.CanInstallUpdate, Mode=OneWay}" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+
         <TeachingTip x:Uid="Tour_Step4" Target="{x:Bind HostsNavItem}" IsOpen="{x:Bind Tour.IsStep4, Mode=OneWay}"
                      IsLightDismissEnabled="False"
                      ActionButtonCommand="{x:Bind Tour.NextCommand}" CloseButtonCommand="{x:Bind Tour.FinishCommand}" />

@@ -5,6 +5,10 @@
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>ClientSSH</RootNamespace>
     <Version>0.2.0</Version>
+    <!-- Task Manager shows FileDescription: keep the version out of the name (it stays in the Version column). -->
+    <AssemblyTitle>ClientSSH</AssemblyTitle>
+    <Description>ClientSSH</Description>
+    <Product>ClientSSH</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>

@@ -74,7 +74,7 @@
   <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Idioma da interface do app.</value></data>
   <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Reinicie o app para aplicar o idioma.</value></data>
   <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Atualizações</value></data>
-  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Consulta as versões publicadas no repositório do GitHub. Só acontece quando você clica; nada mais é enviado.</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Consulta as versões publicadas no repositório do GitHub. Roda quando você clica, e também uma vez depois de o app fechar por erro ou quando o Windows o inicia. Nada é instalado sem o seu clique; só a requisição é enviada.</value></data>
   <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Verificar atualizações</value></data>
   <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Abrir página da versão</value></data>
   <data name="Update_Checking" xml:space="preserve"><value>Verificando...</value></data>
@@ -123,4 +123,7 @@
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Remove o registro de todas as conexões.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Apagar</value></data>
   <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>Histórico apagado.</value></data>
+  <data name="Update_Install.Content" xml:space="preserve"><value>Atualizar agora</value></data>
+  <data name="Update_Downloading" xml:space="preserve"><value>Baixando e conferindo a atualização...</value></data>
+  <data name="Update_DownloadFailed" xml:space="preserve"><value>Não foi possível baixar uma atualização válida. Tente mais tarde ou use a página da versão.</value></data>
 </root>

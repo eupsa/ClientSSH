@@ -18,13 +18,13 @@ A simple, fast SSH client for Windows. Open source, built with WinUI 3.
 - Brand animations (Lottie) for the splash, empty states and connection status
 - Tabs: several simultaneous sessions, kept running while you browse hosts and settings
 - Settings: language, theme, terminal font size, start with Windows, start minimized, keep in tray when closed
-- Manual update check against the GitHub releases of a repository you can change
+- Update check against the GitHub releases of a repository you can change, with a one-click update (the download is checked against `SHA256SUMS.txt`)
 
 See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Windows, and more).
 
 ## Privacy
 
-ClientSSH makes no network connection on its own. The only requests are the SSH sessions you start and the update check you trigger by clicking **Check for updates**, which asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else.
+ClientSSH makes no network connection on its own, with two exceptions: the SSH sessions you start, and the update check. The check runs when you click **Check for updates**, and also once after the app closed by an error or when Windows starts it. It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
@@ -69,7 +69,7 @@ dotnet test tests/ClientSSH.Tests
 | `Views/` | XAML pages, dialogs and the Win2D `TerminalView` |
 | `Services/Storage` | SQLite (hosts, favorites, opt-in history) and JSON settings in `%LOCALAPPDATA%` |
 | `Services/Shell` | Navigation, dialogs, theme, tray icon, start with Windows |
-| `Services/Updates` | Manual update check |
+| `Services/Updates` | Update check, verified download, crash marker |
 | `Services/Localization` | Reads strings for text produced in code |
 | `Services/Sessions` | `SessionManager`: the open tabs and their live sessions |
 | `Services/Demo` | The tour's in-memory demo host |

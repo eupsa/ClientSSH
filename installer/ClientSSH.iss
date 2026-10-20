@@ -44,7 +44,7 @@ Name: "{group}\{#AppName}"; Filename: "{app}\{#AppName}.exe"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#AppName}.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{#AppName}.exe"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall
 
 [UninstallRun]
 ; The "start with Windows" entry of the unpackaged build lives in the user's Run key.

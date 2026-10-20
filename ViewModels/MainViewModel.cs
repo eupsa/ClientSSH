@@ -1,6 +1,8 @@
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Shell;
+using ClientSSH.Services.Localization;
 using ClientSSH.Services.Storage;
+using ClientSSH.Services.Updates;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -10,6 +12,8 @@ public sealed partial class MainViewModel : ObservableObject
 {
     private readonly INavigationService _nav;
     private readonly ISettingsStore _settings;
+    private readonly IUpdateService _updates;
+    private UpdateResult? _available;
 
     [ObservableProperty] public partial bool IsSplashVisible { get; set; }
     [ObservableProperty] public partial double SplashOpacity { get; set; }
@@ -17,11 +21,15 @@ public sealed partial class MainViewModel : ObservableObject
     [ObservableProperty] public partial bool IsPaneVisible { get; set; }
     [ObservableProperty] public partial int SessionCount { get; set; }
     [ObservableProperty] public partial bool HasSessions { get; set; }
+    [ObservableProperty] public partial bool IsUpdateBarOpen { get; set; }
+    [ObservableProperty] public partial string UpdateBarMessage { get; set; } = "";
+    [ObservableProperty] public partial bool CanInstallUpdate { get; set; }
 
-    public MainViewModel(INavigationService nav, ISettingsStore settings, SessionManager sessions)
+    public MainViewModel(INavigationService nav, ISettingsStore settings, SessionManager sessions, IUpdateService updates)
     {
         _nav = nav;
         _settings = settings;
+        _updates = updates;
         IsSplashVisible = true;
         SplashOpacity = 1;
         IsPaneOpen = true;
@@ -40,6 +48,39 @@ public sealed partial class MainViewModel : ObservableObject
         SplashOpacity = 0;
         await Task.Delay(500);
         IsSplashVisible = false;
+
+        // The only times the app checks for updates by itself: after a crash, or when Windows started it.
+        if (RunMarker.PreviousRunEndedBadly || App.LaunchedByStartup) await CheckForUpdateAsync();
+    }
+
+    private async Task CheckForUpdateAsync()
+    {
+        var result = await _updates.CheckAsync();
+        if (result.Status != UpdateStatus.Available) return;
+
+        _available = result;
+        CanInstallUpdate = result.InstallerUrl is not null && result.SumsUrl is not null;
+        UpdateBarMessage = string.Format(Loc.Get("Update_Available"), result.Version);
+        IsUpdateBarOpen = true;
+    }
+
+    [RelayCommand]
+    private async Task InstallUpdateAsync()
+    {
+        if (_available is null) return;
+
+        CanInstallUpdate = false;
+        UpdateBarMessage = Loc.Get("Update_Downloading");
+        var installer = await _updates.DownloadAsync(_available);
+        if (installer is null)
+        {
+            UpdateBarMessage = Loc.Get("Update_DownloadFailed");
+            return;
+        }
+
+        // The installer closes this app, replaces the files and starts it again.
+        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(installer, "/SILENT") { UseShellExecute = true });
+        Microsoft.UI.Xaml.Application.Current.Exit();
     }
 
     // Sidebar: hidden on welcome, open on hosts and settings, collapsed to the icon rail on the sessions page.

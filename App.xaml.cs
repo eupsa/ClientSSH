@@ -16,7 +16,7 @@ namespace ClientSSH
 
         public static Window MainWindow { get; private set; } = null!;
 
-        private static bool LaunchedByStartup =>
+        public static bool LaunchedByStartup =>
             Environment.GetCommandLineArgs().Contains(StartupService.StartupArgument) ||
             Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs().Kind ==
                 Microsoft.Windows.AppLifecycle.ExtendedActivationKind.StartupTask;
@@ -28,6 +28,7 @@ namespace ClientSSH
             // Must run before any UI loads so resources resolve in the chosen language.
             Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride =
                 GetService<ISettingsStore>().Current.Language;
+            RunMarker.Begin();
             InitializeComponent();
             UnhandledException += (_, e) => LogCrash(e.Exception);
             AppDomain.CurrentDomain.UnhandledException += (_, e) => LogCrash(e.ExceptionObject as Exception);

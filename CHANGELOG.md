@@ -15,5 +15,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Brand palette in one file (`Themes/Palette.xaml`), Lottie animations.
 - Setup.exe installer (Inno Setup), per-user.
 
+### Changed
+- Update check also runs once after a crash and when Windows starts the app. If a newer release exists, **Update now** downloads the installer, checks it against `SHA256SUMS.txt` and installs it. Nothing installs without a click.
+- Task Manager shows the name `ClientSSH` without the version.
+
 ### Fixed
 - Title bar buttons were invisible in the light theme.

@@ -17,13 +17,13 @@ Um cliente SSH simples e rápido para Windows. Código aberto, feito com WinUI 3
 - Terminal real: `ssh.exe` num pseudo-console do Windows (ConPTY), desenhado com Win2D
 - Abas: várias sessões simultâneas, que continuam ativas enquanto você navega por hosts e configurações
 - Configurações: idioma, tema, tamanho da fonte do terminal, iniciar com o Windows, iniciar minimizado, manter na bandeja ao fechar
-- Verificação manual de atualizações nas Releases do GitHub de um repositório que você pode trocar
+- Verificação de atualizações nas Releases do GitHub de um repositório que você pode trocar, com atualização em um clique (o download é conferido com o `SHA256SUMS.txt`)
 
 O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com o Windows, entre outros).
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria. As únicas requisições são as sessões SSH que você inicia e a verificação de atualizações que você aciona em **Verificar atualizações**, que consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada.
+O ClientSSH não faz conexões por conta própria, com duas exceções: as sessões SSH que você inicia e a verificação de atualizações. A verificação roda quando você clica em **Verificar atualizações**, e também uma vez depois de o app fechar por erro ou quando o Windows o inicia. Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
