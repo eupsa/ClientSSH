@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Beschikbare modellen tonen</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Als je geen model hebt gekozen, is het standaardmodel mogelijk ingetrokken: gebruik "Beschikbare modellen tonen" en kies er een.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modellen geladen.</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>Extern</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>Externe toegang</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Deel het scherm van deze pc, of bekijk en bestuur een andere pc, rechtstreeks tussen de twee. Geen server, geen account: jullie wisselen twee codes uit in een willekeurige chat-app.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Je netwerk blokkeert mogelijk directe verbindingen (bijvoorbeeld CGNAT). Lukt het niet, probeer dan een ander netwerk, een VPN of de hotspot van je telefoon.</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Deze pc delen</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Maakt een code. Stuur die naar de ander; die stuurt een antwoordcode terug, en dan kies jij wat de ander mag doen.</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Code maken</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Jouw code (stuur deze naar de ander)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>Kopiëren</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Antwoordcode van de ander</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Verbinden met een pc</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Plak de code die de ander heeft gemaakt. Je krijgt een antwoordcode om terug te sturen.</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Code van de andere pc</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Jouw antwoordcode (stuur deze terug)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>Stoppen</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Verbinding verbreken</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Je scherm wordt getoond aan een andere pc.</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>Delen stoppen</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>Besturing toegestaan</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>Alleen weergeven</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>Beveiligingscode: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Voorbereiden...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Stuur de code naar de ander en plak hieronder diens antwoordcode.</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Verbinding maken met de andere pc...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Stuur de antwoordcode terug naar de ander en wacht.</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>Starten is niet gelukt. Controleer je netwerkverbinding.</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>De andere pc heeft je bereikt. Wachten op je antwoord.</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Verbonden. Wachten tot de ander toegang toestaat...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>Delen actief. De andere pc kan je scherm zien.</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>Je bekijkt de andere pc.</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>Toegang is niet toegestaan.</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>De andere pc heeft de sessie beëindigd.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>De verbinding is verbroken of is nooit tot stand gekomen. Controleer of beide codes volledig zijn gekopieerd.</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>Sessie beëindigd.</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>Deze code werkt niet. Kopieer hem opnieuw, volledig, vanaf de andere pc.</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>Externe toegang toestaan?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>Een andere pc wil je scherm zien.
+
+Beveiligingscode: {0}
+
+Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de code op beide schermen niet hetzelfde is, kies dan Weigeren.</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>Besturing toestaan</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>Alleen weergeven</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>Weigeren</value></data>
 </root>

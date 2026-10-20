@@ -87,7 +87,7 @@ public sealed partial class MainViewModel : ObservableObject
     private void OnNavigated(PageKey key)
     {
         IsPaneVisible = key != PageKey.Welcome;
-        IsPaneOpen = key == PageKey.Hosts || key == PageKey.Settings;
+        IsPaneOpen = key is PageKey.Hosts or PageKey.Remote or PageKey.Settings;
     }
 
     [RelayCommand]

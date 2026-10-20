@@ -83,6 +83,7 @@ namespace ClientSSH
             .AddSingleton<AiKeyStore>()
             .AddSingleton<IAssistantService, AssistantService>()
             .AddSingleton<AssistantViewModel>()
+            .AddSingleton<RemoteViewModel>()
             .AddSingleton<TourViewModel>()
             .AddTransient<SettingsViewModel>()
             .AddSingleton<HostsViewModel>()

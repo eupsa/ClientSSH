@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>عرض النماذج المتاحة</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>إذا لم تختر نموذجًا، فقد يكون النموذج الافتراضي قد أُوقف: استخدم «عرض النماذج المتاحة» واختر واحدًا.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>تم تحميل {0} نموذجًا.</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>عن بُعد</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>الوصول عن بُعد</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>شارك شاشة هذا الكمبيوتر، أو شاهد كمبيوترًا آخر وتحكم به، مباشرةً بين الجهازين. بلا خادم ولا حساب: تتبادلان رمزين في أي تطبيق دردشة.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>قد تحظر شبكتك الاتصالات المباشرة (مثل CGNAT). إذا تعذّر الاتصال، جرّب شبكة أخرى أو VPN أو نقطة اتصال الهاتف.</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>مشاركة هذا الكمبيوتر</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>ينشئ رمزًا. أرسله إلى الشخص الآخر؛ سيرسل لك رمز رد، ثم تختار ما يُسمح له بفعله.</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>إنشاء رمز</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>رمزك (أرسله إلى الشخص الآخر)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>نسخ</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>رمز الرد من الشخص الآخر</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>اتصال</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>الاتصال بكمبيوتر</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>الصق الرمز الذي أنشأه الشخص الآخر. ستحصل على رمز رد لإرساله إليه.</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>رمز الكمبيوتر الآخر</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>اتصال</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>رمز الرد الخاص بك (أرسله إليه)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>إيقاف</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>قطع الاتصال</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>تُعرض شاشتك على كمبيوتر آخر.</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>إيقاف المشاركة</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>التحكم مسموح</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>عرض فقط</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>رمز الأمان: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>جارٍ التحضير...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>أرسل الرمز إلى الشخص الآخر، ثم الصق رمز الرد الخاص به أدناه.</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>جارٍ الاتصال بالكمبيوتر الآخر...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>أرسل رمز الرد إلى الشخص الآخر وانتظر.</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>تعذّر البدء. تحقق من اتصال الشبكة.</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>وصل إليك الكمبيوتر الآخر. بانتظار ردك.</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>تم الاتصال. بانتظار أن يسمح الشخص الآخر بالوصول...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>المشاركة جارية. يمكن للكمبيوتر الآخر رؤية شاشتك.</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>تشاهد الكمبيوتر الآخر.</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>لم يُسمح بالوصول.</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>أنهى الكمبيوتر الآخر الجلسة.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>فُقد الاتصال أو لم يُفتح قط. تأكد من نسخ الرمزين كاملين.</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>انتهت الجلسة.</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>هذا الرمز لا يعمل. انسخه مرة أخرى كاملًا من الكمبيوتر الآخر.</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>هل تسمح بالوصول عن بُعد؟</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>يريد كمبيوتر آخر رؤية شاشتك.
+
+رمز الأمان: {0}
+
+اقرأه بصوت عالٍ للشخص الآخر (عبر مكالمة أو رسالة صوتية). إذا لم يكن متطابقًا على الشاشتين، فاختر رفض.</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>السماح بالتحكم</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>عرض فقط</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>رفض</value></data>
 </root>

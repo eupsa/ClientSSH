@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>列出可用模型</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>如果你没有选择模型，默认模型可能已停用：请使用“列出可用模型”并选择一个。</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>已加载 {0} 个模型。</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>远程</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>远程访问</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>共享这台电脑的屏幕，或查看并控制另一台电脑，两台电脑之间直接连接。无需服务器和账户：只需在任意聊天应用中交换两个代码。</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>你的网络可能会阻止直接连接（例如 CGNAT）。如果无法连接，请尝试其他网络、VPN 或手机热点。</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>共享这台电脑</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>生成一个代码。将它发给对方；对方会回传一个回复代码，然后你来选择对方可以做什么。</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>生成代码</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>你的代码（发给对方）</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>复制</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>对方的回复代码</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>连接</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>连接到电脑</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>粘贴对方生成的代码。你会得到一个回复代码，需要发回给对方。</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>对方电脑的代码</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>连接</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>你的回复代码（发回给对方）</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>停止</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>断开连接</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>你的屏幕正在显示给另一台电脑。</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>停止共享</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>允许控制</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>仅查看</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>安全码：{0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>正在准备...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>将代码发给对方，然后在下方粘贴对方的回复代码。</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>正在连接到对方电脑...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>将回复代码发回给对方并等待。</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>无法启动。请检查网络连接。</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>对方电脑已连接到你。正在等待你的答复。</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>已连接。正在等待对方允许访问...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>正在共享。对方电脑可以看到你的屏幕。</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>正在查看对方电脑。</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>访问未被允许。</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>对方电脑已结束会话。</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>连接已断开或从未建立。请检查两个代码是否都已完整复制。</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>会话已结束。</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>该代码无效。请从对方电脑重新完整复制。</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>允许远程访问？</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>另一台电脑想要查看你的屏幕。
+
+安全码：{0}
+
+请通过通话或语音消息把它大声读给对方听。如果两边屏幕上的不一致，请选择拒绝。</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>允许控制</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>仅查看</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>拒绝</value></data>
 </root>

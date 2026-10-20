@@ -24,7 +24,7 @@ See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Window
 
 ## Privacy
 
-ClientSSH makes no network connection on its own, with three exceptions: the SSH sessions you start, the update check, and the AI assistant, which only runs when you send it a prompt. The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
+ClientSSH makes no network connection on its own, with four exceptions: the SSH sessions you start, the update check, the AI assistant (only when you send it a prompt) and remote access (only when you start it). The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
@@ -33,6 +33,23 @@ Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites a
 Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. The installer speaks your Windows language when it is one of 12 (English otherwise). It installs for your user only (no administrator rights) and does not touch your data on uninstall.
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
+
+## Remote access (PC to PC, no server)
+
+Optional. Share this PC's screen, or watch and control another PC, **directly between the two**: no ClientSSH server, no account, no relay.
+
+1. On the PC to be shared, open **Remote** > **Create a code** and send the code to the other person (any chat app).
+2. On the other PC, **Remote** > paste it under **Connect to a PC**. A reply code appears: send it back.
+3. Paste the reply code on the first PC. The person at that PC sees a **security code** and chooses **Allow control**, **View only** or **Deny**. Read the six digits out loud to each other (call or voice message): if they differ, someone is in the middle, choose Deny.
+
+How it works: both PCs ask a public STUN server (Google's and Cloudflare's by default, editable as `RemoteStunServers` in `settings.json`) for their public address, then send packets to each other at the same moment to open the way through their routers (UDP hole punching). A STUN server only sees the public address and port, never the content. Everything after that is end to end: a one-time key pair per session (ECDH P-256), keys derived from both codes (HKDF-SHA256), every packet encrypted and authenticated (AES-256-GCM).
+
+Limits, honestly:
+- **Without any server it cannot work on every network.** If one of the networks uses CGNAT or a symmetric NAT (common on mobile data and some ISPs), the direct path may never open. ClientSSH warns when it detects this. Try another network, a VPN or a phone hotspot.
+- IPv4 only, main monitor only, JPEG frames (around 8 per second), no sound, no clipboard or file transfer yet.
+- Input is sent as key codes, so different keyboard layouts on the two PCs can type different characters. Windows does not allow injecting input into administrator windows or the secure desktop.
+- The protocol is new and has had no outside security review. Review is welcome, see [SECURITY.md](SECURITY.md).
+- While your screen is shared, a banner with **Stop sharing** stays visible on every page.
 
 ## Window
 

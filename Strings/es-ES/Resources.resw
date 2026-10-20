@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Listar modelos disponibles</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Si no elegiste un modelo, es posible que el predeterminado se haya retirado: usa "Listar modelos disponibles" y elige uno.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modelos cargados.</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>Remoto</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>Acceso remoto</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Comparte la pantalla de este equipo, o ve y controla otro equipo, directamente entre los dos. Sin servidor ni cuenta: intercambiáis dos códigos en cualquier aplicación de chat.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Es posible que tu red bloquee las conexiones directas (por ejemplo, CGNAT). Si no se conecta, prueba con otra red, una VPN o la conexión compartida del móvil.</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Compartir este equipo</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Crea un código. Envíaselo a la otra persona; te devolverá un código de respuesta y entonces eliges qué puede hacer.</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Crear un código</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Tu código (envíaselo a la otra persona)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>Copiar</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Código de respuesta de la otra persona</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Conectar</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Conectar a un equipo</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Pega el código que creó la otra persona. Obtendrás un código de respuesta para devolverle.</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Código del otro equipo</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Conectar</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Tu código de respuesta (devuélveselo)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>Detener</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Desconectar</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Tu pantalla se está mostrando a otro equipo.</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>Dejar de compartir</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>Control permitido</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>Solo ver</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>Código de seguridad: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Preparando...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Envía el código a la otra persona y pega abajo su código de respuesta.</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Conectando con el otro equipo...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Devuelve el código de respuesta a la otra persona y espera.</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>No se pudo iniciar. Comprueba tu conexión de red.</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>El otro equipo ha contactado contigo. Esperando tu respuesta.</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Conectado. Esperando a que la otra persona permita el acceso...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>Compartiendo. El otro equipo puede ver tu pantalla.</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>Viendo el otro equipo.</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>No se permitió el acceso.</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>El otro equipo finalizó la sesión.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Se perdió la conexión o nunca se abrió. Comprueba que ambos códigos se copiaron completos.</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>Sesión finalizada.</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>Ese código no es válido. Cópialo de nuevo, completo, desde el otro equipo.</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>¿Permitir el acceso remoto?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>Otro equipo quiere ver tu pantalla.
+
+Código de seguridad: {0}
+
+Díselo en voz alta a la otra persona (llamada o mensaje de voz). Si no es el mismo en ambas pantallas, elige Denegar.</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>Permitir control</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>Solo ver</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>Denegar</value></data>
 </root>

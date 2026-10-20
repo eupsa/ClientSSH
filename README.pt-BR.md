@@ -23,7 +23,7 @@ O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com 
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria, com três exceções: as sessões SSH que você inicia, a verificação de atualizações e o assistente de IA, que só roda quando você envia um pedido. A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
+O ClientSSH não faz conexões por conta própria, com quatro exceções: as sessões SSH que você inicia, a verificação de atualizações, o assistente de IA (só quando você envia um pedido) e o acesso remoto (só quando você inicia). A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
@@ -32,6 +32,23 @@ Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favorito
 Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.com/eupsa/client-ssh/releases) e execute. O instalador fala o idioma do seu Windows quando é um de 12 (inglês nos demais). Ele instala só para o seu usuário (sem direitos de administrador) e não apaga seus dados ao desinstalar.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
+
+## Acesso remoto (PC para PC, sem servidor)
+
+Opcional. Compartilhe a tela deste PC, ou veja e controle outro PC, **direto entre os dois**: sem servidor do ClientSSH, sem conta, sem relay.
+
+1. No PC que será compartilhado, abra **Remoto** > **Criar um código** e envie o código para a outra pessoa (qualquer aplicativo de conversa).
+2. No outro PC, **Remoto** > cole em **Conectar a um PC**. Aparece um código de resposta: envie de volta.
+3. Cole o código de resposta no primeiro PC. A pessoa desse PC vê um **código de segurança** e escolhe **Permitir controle**, **Só visualizar** ou **Negar**. Leiam os seis dígitos em voz alta um para o outro (ligação ou áudio): se forem diferentes, há alguém no meio, escolha Negar.
+
+Como funciona: os dois PCs perguntam a um servidor STUN público (o do Google e o da Cloudflare, por padrão; editável como `RemoteStunServers` no `settings.json`) qual é o seu endereço público e depois mandam pacotes um para o outro ao mesmo tempo, para abrir caminho pelos roteadores (UDP hole punching). O STUN só vê o endereço e a porta públicos, nunca o conteúdo. Daí em diante é ponta a ponta: um par de chaves descartável por sessão (ECDH P-256), chaves derivadas dos dois códigos (HKDF-SHA256), cada pacote cifrado e autenticado (AES-256-GCM).
+
+Limites, com honestidade:
+- **Sem nenhum servidor não dá para funcionar em toda rede.** Se uma das redes usa CGNAT ou NAT simétrico (comum em dados móveis e em alguns provedores), o caminho direto pode nunca abrir. O ClientSSH avisa quando detecta isso. Tente outra rede, uma VPN ou o ponto de acesso do celular.
+- Só IPv4, só o monitor principal, quadros JPEG (cerca de 8 por segundo), sem som, sem área de transferência nem transferência de arquivos por enquanto.
+- O teclado é enviado como códigos de tecla, então layouts diferentes nos dois PCs podem digitar caracteres diferentes. O Windows não permite injetar entrada em janelas de administrador nem na área de trabalho segura.
+- O protocolo é novo e não teve revisão de segurança externa. Revisões são bem-vindas, veja o [SECURITY.md](SECURITY.md).
+- Enquanto sua tela está compartilhada, um aviso com **Parar de compartilhar** fica visível em todas as páginas.
 
 ## Janela
 

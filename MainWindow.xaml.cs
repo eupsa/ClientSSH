@@ -12,6 +12,8 @@ namespace ClientSSH
 
         public TourViewModel Tour { get; } = App.GetService<TourViewModel>();
 
+        public RemoteViewModel Remote { get; } = App.GetService<RemoteViewModel>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace ClientSSH
                 PageKey.Welcome => null,
                 PageKey.Settings => SettingsNavItem,
                 PageKey.Sessions => SessionsNavItem,
+                PageKey.Remote => RemoteNavItem,
                 _ => HostsNavItem,
             };
             App.GetService<ThemeService>().Attach((FrameworkElement)Content);

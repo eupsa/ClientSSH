@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>List available models</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>If you did not pick a model, the default may have been retired: use "List available models" and choose one.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} models loaded.</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>Remote</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>Remote access</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Share this PC's screen, or watch and control another PC, directly between the two. No server, no account: you swap two codes in any chat app.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Your network may block direct connections (for example CGNAT). If it does not connect, try another network, a VPN or a phone hotspot.</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Share this PC</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Creates a code. Send it to the other person; they send back a reply code, and then you choose what they may do.</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Create a code</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Your code (send it to the other person)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>Copy</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Reply code from the other person</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Connect</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Connect to a PC</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Paste the code the other person created. You get a reply code to send back to them.</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Code from the other PC</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Connect</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Your reply code (send it back)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>Stop</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Disconnect</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Your screen is being shown to another PC.</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>Stop sharing</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>Control allowed</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>View only</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>Security code: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Preparing...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Send the code to the other person, then paste their reply code below.</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Connecting to the other PC...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Send the reply code back to the other person and wait.</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>Could not start. Check your network connection.</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>The other PC reached you. Waiting for your answer.</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Connected. Waiting for the other person to allow access...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>Sharing. The other PC can see your screen.</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>Watching the other PC.</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>Access was not allowed.</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>The other PC ended the session.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>The connection was lost or never opened. Check that both codes were copied whole.</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>Session ended.</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>That code does not work. Copy it again, whole, from the other PC.</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>Allow remote access?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>Another PC wants to see your screen.
+
+Security code: {0}
+
+Read it out loud to the other person (call or voice message). If it is not the same on both screens, choose Deny.</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>Allow control</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>View only</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>Deny</value></data>
 </root>

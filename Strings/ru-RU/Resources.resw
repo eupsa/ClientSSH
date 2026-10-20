@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Показать доступные модели</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>Если вы не выбрали модель, модель по умолчанию могла быть снята с поддержки: нажмите «Показать доступные модели» и выберите одну.</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>Загружено моделей: {0}.</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>Удалённо</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>Удалённый доступ</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Покажите экран этого ПК или смотрите и управляйте другим ПК — напрямую между двумя компьютерами. Без сервера и учётной записи: вы обмениваетесь двумя кодами в любом мессенджере.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Ваша сеть может блокировать прямые подключения (например, из-за CGNAT). Если подключиться не удаётся, попробуйте другую сеть, VPN или точку доступа на телефоне.</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Показать этот ПК</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Создаёт код. Отправьте его другому человеку; он пришлёт код ответа, и тогда вы выберете, что ему разрешено.</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Создать код</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Ваш код (отправьте его другому человеку)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>Копировать</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Код ответа от другого человека</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Подключиться</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Подключиться к ПК</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Вставьте код, созданный другим человеком. Вы получите код ответа, который нужно отправить ему обратно.</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Код с другого ПК</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Подключиться</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Ваш код ответа (отправьте его обратно)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>Остановить</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Отключиться</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Ваш экран показывается на другом ПК.</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>Прекратить показ</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>Управление разрешено</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>Только просмотр</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>Код безопасности: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Подготовка...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Отправьте код другому человеку, затем вставьте ниже его код ответа.</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Подключение к другому ПК...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Отправьте код ответа другому человеку и подождите.</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>Не удалось запустить. Проверьте подключение к сети.</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>Другой ПК подключился к вам. Ожидается ваш ответ.</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Подключено. Ожидание, пока другой человек разрешит доступ...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>Идёт показ. Другой ПК видит ваш экран.</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>Вы смотрите другой ПК.</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>Доступ не был разрешён.</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>Другой ПК завершил сеанс.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Соединение потеряно или не было установлено. Проверьте, что оба кода скопированы полностью.</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>Сеанс завершён.</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>Этот код не работает. Скопируйте его с другого ПК заново и целиком.</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>Разрешить удалённый доступ?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>Другой ПК хочет видеть ваш экран.
+
+Код безопасности: {0}
+
+Произнесите его вслух другому человеку (по звонку или в голосовом сообщении). Если на двух экранах он не совпадает, выберите «Отклонить».</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>Разрешить управление</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>Только просмотр</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>Отклонить</value></data>
 </root>

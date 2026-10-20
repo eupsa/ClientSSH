@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>उपलब्ध मॉडल दिखाएँ</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>यदि आपने कोई मॉडल नहीं चुना है, तो डिफ़ॉल्ट मॉडल बंद हो गया होगा: "उपलब्ध मॉडल दिखाएँ" का उपयोग करें और एक चुनें।</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} मॉडल लोड हुए।</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>रिमोट</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>रिमोट एक्सेस</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>इस PC की स्क्रीन साझा करें, या किसी दूसरे PC को देखें और नियंत्रित करें, सीधे दोनों के बीच। कोई सर्वर नहीं, कोई खाता नहीं: आप किसी भी चैट ऐप में दो कोड आपस में भेजते हैं।</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>आपका नेटवर्क सीधे कनेक्शन रोक सकता है (उदाहरण के लिए CGNAT)। कनेक्ट न हो तो कोई दूसरा नेटवर्क, VPN या फ़ोन का हॉटस्पॉट आज़माएँ।</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>इस PC को साझा करें</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>एक कोड बनाता है। इसे दूसरे व्यक्ति को भेजें; वे जवाबी कोड भेजेंगे, फिर आप चुनते हैं कि वे क्या कर सकते हैं।</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>कोड बनाएँ</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>आपका कोड (दूसरे व्यक्ति को भेजें)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>कॉपी करें</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>दूसरे व्यक्ति का जवाबी कोड</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>कनेक्ट करें</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>किसी PC से कनेक्ट करें</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>दूसरे व्यक्ति का बनाया कोड पेस्ट करें। आपको एक जवाबी कोड मिलेगा, जिसे उन्हें वापस भेजना है।</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>दूसरे PC का कोड</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>कनेक्ट करें</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>आपका जवाबी कोड (वापस भेजें)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>रोकें</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>डिस्कनेक्ट करें</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>आपकी स्क्रीन दूसरे PC को दिखाई जा रही है।</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>साझा करना रोकें</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>नियंत्रण की अनुमति है</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>केवल देखें</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>सुरक्षा कोड: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>तैयारी हो रही है...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>कोड दूसरे व्यक्ति को भेजें, फिर नीचे उनका जवाबी कोड पेस्ट करें।</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>दूसरे PC से कनेक्ट हो रहा है...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>जवाबी कोड दूसरे व्यक्ति को वापस भेजें और प्रतीक्षा करें।</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>शुरू नहीं हो सका। अपना नेटवर्क कनेक्शन जाँचें।</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>दूसरा PC आप तक पहुँच गया है। आपके जवाब की प्रतीक्षा है।</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>कनेक्ट हो गया। दूसरे व्यक्ति के एक्सेस की अनुमति देने की प्रतीक्षा है...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>साझा हो रहा है। दूसरा PC आपकी स्क्रीन देख सकता है।</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>दूसरे PC को देख रहे हैं।</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>एक्सेस की अनुमति नहीं दी गई।</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>दूसरे PC ने सत्र समाप्त कर दिया।</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>कनेक्शन टूट गया या कभी खुला ही नहीं। जाँचें कि दोनों कोड पूरे कॉपी हुए हैं।</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>सत्र समाप्त हुआ।</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>यह कोड काम नहीं करता। इसे दूसरे PC से दोबारा, पूरा कॉपी करें।</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>रिमोट एक्सेस की अनुमति दें?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>कोई दूसरा PC आपकी स्क्रीन देखना चाहता है।
+
+सुरक्षा कोड: {0}
+
+इसे दूसरे व्यक्ति को ज़ोर से पढ़कर सुनाएँ (कॉल या वॉइस संदेश से)। यदि यह दोनों स्क्रीन पर एक जैसा नहीं है, तो अस्वीकार करें चुनें।</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>नियंत्रण की अनुमति दें</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>केवल देखें</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>अस्वीकार करें</value></data>
 </root>

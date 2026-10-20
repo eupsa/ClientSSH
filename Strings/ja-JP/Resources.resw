@@ -154,4 +154,50 @@
   <data name="Assistant_ListModels.Content" xml:space="preserve"><value>利用可能なモデルを一覧表示</value></data>
   <data name="Assistant_ModelHint" xml:space="preserve"><value>モデルを選択していない場合、既定のモデルが廃止された可能性があります。「利用可能なモデルを一覧表示」から選択してください。</value></data>
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} 個のモデルを読み込みました。</value></data>
+  <data name="Nav_Remote.Content" xml:space="preserve"><value>リモート</value></data>
+  <data name="Remote_Title.Text" xml:space="preserve"><value>リモート アクセス</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>この PC の画面を共有するか、別の PC を表示して操作します。2 台の間で直接つながり、サーバーもアカウントも不要です。チャット アプリで 2 つのコードを交換するだけです。</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>ネットワークによっては直接接続がブロックされる場合があります (CGNAT など)。接続できない場合は、別のネットワーク、VPN、またはスマートフォンのテザリングをお試しください。</value></data>
+  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>この PC を共有</value></data>
+  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>コードを作成します。相手に送ると、相手から返信コードが届きます。その後、相手に許可する操作を選びます。</value></data>
+  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>コードを作成</value></data>
+  <data name="Remote_YourCode.Header" xml:space="preserve"><value>あなたのコード (相手に送信)</value></data>
+  <data name="Remote_Copy.Content" xml:space="preserve"><value>コピー</value></data>
+  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>相手からの返信コード</value></data>
+  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>接続</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>PC に接続</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>相手が作成したコードを貼り付けます。相手に送り返す返信コードが表示されます。</value></data>
+  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>相手の PC のコード</value></data>
+  <data name="Remote_JoinButton.Content" xml:space="preserve"><value>接続</value></data>
+  <data name="Remote_YourReply.Header" xml:space="preserve"><value>あなたの返信コード (相手に送り返す)</value></data>
+  <data name="Remote_Stop.Content" xml:space="preserve"><value>停止</value></data>
+  <data name="Remote_Disconnect.Content" xml:space="preserve"><value>切断</value></data>
+  <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>あなたの画面が別の PC に表示されています。</value></data>
+  <data name="Remote_StopSharing.Content" xml:space="preserve"><value>共有を停止</value></data>
+  <data name="Remote_Access_Control" xml:space="preserve"><value>操作を許可</value></data>
+  <data name="Remote_Access_View" xml:space="preserve"><value>表示のみ</value></data>
+  <data name="Remote_Security" xml:space="preserve"><value>セキュリティ コード: {0}</value></data>
+  <data name="Remote_Status_Preparing" xml:space="preserve"><value>準備しています...</value></data>
+  <data name="Remote_Status_SendCode" xml:space="preserve"><value>コードを相手に送り、相手の返信コードを下に貼り付けてください。</value></data>
+  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>相手の PC に接続しています...</value></data>
+  <data name="Remote_Status_SendReply" xml:space="preserve"><value>返信コードを相手に送り返して、お待ちください。</value></data>
+  <data name="Remote_Status_Failed" xml:space="preserve"><value>開始できませんでした。ネットワーク接続を確認してください。</value></data>
+  <data name="Remote_Status_AskHost" xml:space="preserve"><value>相手の PC から接続されました。あなたの応答を待っています。</value></data>
+  <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>接続しました。相手がアクセスを許可するのを待っています...</value></data>
+  <data name="Remote_Status_Sharing" xml:space="preserve"><value>共有中です。相手の PC にあなたの画面が表示されています。</value></data>
+  <data name="Remote_Status_Viewing" xml:space="preserve"><value>相手の PC を表示しています。</value></data>
+  <data name="Remote_Status_Denied" xml:space="preserve"><value>アクセスは許可されませんでした。</value></data>
+  <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>相手の PC がセッションを終了しました。</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>接続が切れたか、確立されませんでした。2 つのコードが最後まで正しくコピーされたか確認してください。</value></data>
+  <data name="Remote_Status_Stopped" xml:space="preserve"><value>セッションを終了しました。</value></data>
+  <data name="Remote_BadCode" xml:space="preserve"><value>このコードは使用できません。相手の PC から、最後まで改めてコピーしてください。</value></data>
+  <data name="Remote_Request_Title" xml:space="preserve"><value>リモート アクセスを許可しますか?</value></data>
+  <data name="Remote_Request_Body" xml:space="preserve"><value>別の PC があなたの画面を表示しようとしています。
+
+セキュリティ コード: {0}
+
+通話や音声メッセージで、相手にこのコードを読み上げてください。両方の画面で同じでない場合は、[拒否] を選んでください。</value></data>
+  <data name="Remote_Request_Control" xml:space="preserve"><value>操作を許可</value></data>
+  <data name="Remote_Request_View" xml:space="preserve"><value>表示のみ</value></data>
+  <data name="Remote_Request_Deny" xml:space="preserve"><value>拒否</value></data>
 </root>

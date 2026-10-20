@@ -50,6 +50,11 @@
                                    Visibility="{x:Bind ViewModel.HasSessions, Mode=OneWay}" />
                     </NavigationViewItem.InfoBadge>
                 </NavigationViewItem>
+                <NavigationViewItem x:Name="RemoteNavItem" x:Uid="Nav_Remote" Tag="Remote">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE7F4;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Name="SettingsNavItem" x:Uid="Nav_Settings" Tag="Settings">
@@ -75,6 +80,15 @@
             <InfoBar.ActionButton>
                 <Button x:Uid="Update_Install" Command="{x:Bind ViewModel.InstallUpdateCommand}"
                         IsEnabled="{x:Bind ViewModel.CanInstallUpdate, Mode=OneWay}" />
+            </InfoBar.ActionButton>
+        </InfoBar>
+
+        <!-- Always visible while this PC's screen is shown to another one, on any page. -->
+        <InfoBar Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="16" MaxWidth="560"
+                 Severity="Warning" IsClosable="False" IsOpen="{x:Bind Remote.IsSharing, Mode=OneWay}"
+                 x:Uid="Remote_SharingBanner">
+            <InfoBar.ActionButton>
+                <Button x:Uid="Remote_StopSharing" Command="{x:Bind Remote.StopCommand}" />
             </InfoBar.ActionButton>
         </InfoBar>
 

@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace ClientSSH.Services.Shell;
 
-public enum PageKey { Welcome, Hosts, Sessions, Settings }
+public enum PageKey { Welcome, Hosts, Sessions, Remote, Settings }
 
 public interface INavigationService
 {
@@ -20,6 +20,7 @@ public sealed class NavigationService : INavigationService
         [PageKey.Welcome] = typeof(WelcomePage),
         [PageKey.Hosts] = typeof(HostsPage),
         [PageKey.Sessions] = typeof(SessionsPage),
+        [PageKey.Remote] = typeof(RemotePage),
         [PageKey.Settings] = typeof(SettingsPage),
     };
 
