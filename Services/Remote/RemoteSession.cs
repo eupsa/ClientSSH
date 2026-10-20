@@ -164,6 +164,7 @@ public sealed class RemoteSession : IDisposable
         if (publicEndpoints.Count > 0) return publicEndpoints[0];
 
         // No STUN answer: a local address still works between two PCs on the same network.
+        NetworkMayBlockDirect = true; // this code only reaches PCs on the same network: warn instead of failing silently
         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
         {
             if (nic.OperationalStatus != OperationalStatus.Up || nic.NetworkInterfaceType is NetworkInterfaceType.Loopback or NetworkInterfaceType.Tunnel) continue;
