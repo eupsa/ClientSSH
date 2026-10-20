@@ -16,6 +16,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Only one ClientSSH runs at a time: opening it again brings the running window to the front (also from the tray or minimized). A separate data folder still runs on its own.
 - AI assistant: "List available models" asks your provider which models your key can use, so a retired default is easy to replace.
 
+- The installer wizard follows the Windows language: English, Portuguese (Brazil), Spanish, French, German, Italian, Russian, Japanese, Korean, Arabic, Turkish and Dutch. Chinese and Hindi fall back to English (Inno Setup has no translation for them).
+
 ### Changed
 - The "+" button in the tab bar lists your saved hosts next to it and opens the new tab there, instead of going back to the hosts page.
 - Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.

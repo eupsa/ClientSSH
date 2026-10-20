@@ -30,7 +30,7 @@ Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites a
 
 ## Install
 
-Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. It installs for your user only (no administrator rights) and does not touch your data on uninstall.
+Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. The installer speaks your Windows language when it is one of 12 (English otherwise). It installs for your user only (no administrator rights) and does not touch your data on uninstall.
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
 
