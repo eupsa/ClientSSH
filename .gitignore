@@ -46,3 +46,4 @@ AppPackages/
 *.pdb
 *.ilk
 *.log
+artifacts/
