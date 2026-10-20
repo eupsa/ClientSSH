@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Nav_Hosts.Content" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Splash_Tagline.Text" xml:space="preserve"><value>Simple SSH connections. Your data stays on this PC.</value></data>
+  <data name="Welcome_Title.Text" xml:space="preserve"><value>Welcome to ClientSSH</value></data>
+  <data name="Welcome_Subtitle.Text" xml:space="preserve"><value>A simple, fast SSH client for Windows.</value></data>
+  <data name="Welcome_Card1_Title.Text" xml:space="preserve"><value>Everything stays on your PC</value></data>
+  <data name="Welcome_Card1_Body.Text" xml:space="preserve"><value>Hosts and settings are saved only on this computer. Nothing is sent to any server.</value></data>
+  <data name="Welcome_Card2_Title.Text" xml:space="preserve"><value>Fast connections</value></data>
+  <data name="Welcome_Card2_Body.Text" xml:space="preserve"><value>Pick a host and connect. No account, no sign-in, no cloud.</value></data>
+  <data name="Welcome_Card3_Title.Text" xml:space="preserve"><value>Every sign-in method</value></data>
+  <data name="Welcome_Card3_Body.Text" xml:space="preserve"><value>Password, private key, SSH agent and security key, using Windows OpenSSH.</value></data>
+  <data name="Welcome_Start.Text" xml:space="preserve"><value>Start tour</value></data>
+  <data name="Hosts_Title.Text" xml:space="preserve"><value>Hosts</value></data>
+  <data name="Hosts_Add.Text" xml:space="preserve"><value>New host</value></data>
+  <data name="Hosts_Connect.Text" xml:space="preserve"><value>Connect</value></data>
+  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Remove host</value></data>
+  <data name="Editor.Title" xml:space="preserve"><value>New host</value></data>
+  <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Save</value></data>
+  <data name="Editor.CloseButtonText" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Editor_Name.Header" xml:space="preserve"><value>Nickname</value></data>
+  <data name="Editor_Address.Header" xml:space="preserve"><value>Address</value></data>
+  <data name="Editor_User.Header" xml:space="preserve"><value>User</value></data>
+  <data name="Editor_Port.Header" xml:space="preserve"><value>Port</value></data>
+  <data name="Welcome_Skip.Content" xml:space="preserve"><value>Skip</value></data>
+  <data name="Tour_Step1.Title" xml:space="preserve"><value>Add your hosts</value></data>
+  <data name="Tour_Step1.Subtitle" xml:space="preserve"><value>Click here to add a host. Everything is saved only on this PC.</value></data>
+  <data name="Tour_Step1.ActionButtonContent" xml:space="preserve"><value>Next</value></data>
+  <data name="Tour_Step1.CloseButtonContent" xml:space="preserve"><value>Skip tour</value></data>
+  <data name="Tour_Step2.Title" xml:space="preserve"><value>Demo host</value></data>
+  <data name="Tour_Step2.Subtitle" xml:space="preserve"><value>This host is simulated inside the app, with no network, just for the tour. It disappears when the tour ends.</value></data>
+  <data name="Tour_Step2.ActionButtonContent" xml:space="preserve"><value>Connect to demo</value></data>
+  <data name="Tour_Step2.CloseButtonContent" xml:space="preserve"><value>Skip tour</value></data>
+  <data name="Tour_Step3.Title" xml:space="preserve"><value>The terminal</value></data>
+  <data name="Tour_Step3.Subtitle" xml:space="preserve"><value>Type commands here. Try help, ls or pwd and press Enter.</value></data>
+  <data name="Tour_Step3.ActionButtonContent" xml:space="preserve"><value>Next</value></data>
+  <data name="Tour_Step3.CloseButtonContent" xml:space="preserve"><value>Skip tour</value></data>
+  <data name="Tour_Step4.Title" xml:space="preserve"><value>Sidebar</value></data>
+  <data name="Tour_Step4.Subtitle" xml:space="preserve"><value>When you connect, the sidebar collapses to make room for the terminal. Use this icon to go back to the host list.</value></data>
+  <data name="Tour_Step4.ActionButtonContent" xml:space="preserve"><value>Finish</value></data>
+  <data name="Tour_Step4.CloseButtonContent" xml:space="preserve"><value>Skip tour</value></data>
+  <data name="Demo_HostName" xml:space="preserve"><value>Demo host</value></data>
+  <data name="Demo_Banner" xml:space="preserve"><value>Simulated session: nothing leaves your PC. Type help to see the commands.</value></data>
+  <data name="Demo_Help" xml:space="preserve"><value>Available commands: help, ls, pwd, whoami, hostname, echo, clear, exit</value></data>
+  <data name="Demo_NotFound" xml:space="preserve"><value>command not found (this is a simulated session)</value></data>
+  <data name="Hosts_Subtitle.Text" xml:space="preserve"><value>Your servers, saved only on this PC.</value></data>
+  <data name="Hosts_EmptyTitle.Text" xml:space="preserve"><value>No hosts yet</value></data>
+  <data name="Hosts_EmptyBody.Text" xml:space="preserve"><value>Add your first host to connect over SSH in a few clicks.</value></data>
+  <data name="Nav_Settings.Content" xml:space="preserve"><value>Settings</value></data>
+  <data name="Settings_Title.Text" xml:space="preserve"><value>Settings</value></data>
+  <data name="Settings_Subtitle.Text" xml:space="preserve"><value>Make the app your own.</value></data>
+  <data name="Settings_Appearance.Text" xml:space="preserve"><value>Appearance</value></data>
+  <data name="Settings_Theme_Title.Text" xml:space="preserve"><value>Theme</value></data>
+  <data name="Settings_Theme_Desc.Text" xml:space="preserve"><value>Choose light, dark, or follow Windows.</value></data>
+  <data name="Settings_Theme_System.Content" xml:space="preserve"><value>Follow Windows</value></data>
+  <data name="Settings_Theme_Light.Content" xml:space="preserve"><value>Light</value></data>
+  <data name="Settings_Theme_Dark.Content" xml:space="preserve"><value>Dark</value></data>
+  <data name="Settings_FontSize_Title.Text" xml:space="preserve"><value>Terminal font size</value></data>
+  <data name="Settings_FontSize_Desc.Text" xml:space="preserve"><value>Applies the next time you open a terminal.</value></data>
+  <data name="Settings_App.Text" xml:space="preserve"><value>App</value></data>
+  <data name="Settings_Tour_Title.Text" xml:space="preserve"><value>Welcome tour</value></data>
+  <data name="Settings_Tour_Desc.Text" xml:space="preserve"><value>See the app introduction again.</value></data>
+  <data name="Settings_Tour_Button.Content" xml:space="preserve"><value>Replay tour</value></data>
+  <data name="Settings_Data_Title.Text" xml:space="preserve"><value>Local data</value></data>
+  <data name="Settings_Data_Desc.Text" xml:space="preserve"><value>Hosts and settings stay only on this PC, in this folder:</value></data>
+  <data name="Settings_Data_Button.Content" xml:space="preserve"><value>Open folder</value></data>
+  <data name="Settings_About.Text" xml:space="preserve"><value>About</value></data>
+  <data name="Settings_About_Body.Text" xml:space="preserve"><value>Open source SSH client (MIT license). Nothing leaves your PC: no account, no cloud, no telemetry.</value></data>
+  <data name="Settings_Language_Title.Text" xml:space="preserve"><value>Language</value></data>
+  <data name="Settings_Language_Desc.Text" xml:space="preserve"><value>Language of the app interface.</value></data>
+  <data name="Settings_Language_Restart.Text" xml:space="preserve"><value>Restart the app to apply the language.</value></data>
+  <data name="Settings_Update_Title.Text" xml:space="preserve"><value>Updates</value></data>
+  <data name="Settings_Update_Desc.Text" xml:space="preserve"><value>Checks the releases published on the GitHub repository. Only runs when you click; nothing else is sent.</value></data>
+  <data name="Settings_Update_Check.Content" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="Settings_Update_Open.Content" xml:space="preserve"><value>Open release page</value></data>
+  <data name="Update_Checking" xml:space="preserve"><value>Checking...</value></data>
+  <data name="Update_UpToDate" xml:space="preserve"><value>You are on the latest version ({0}).</value></data>
+  <data name="Update_Available" xml:space="preserve"><value>New version available: {0}.</value></data>
+  <data name="Update_None" xml:space="preserve"><value>No releases published yet.</value></data>
+  <data name="Update_Failed" xml:space="preserve"><value>Could not check. Please check your connection.</value></data>
+  <data name="Settings_System.Text" xml:space="preserve"><value>System</value></data>
+  <data name="Settings_Startup_Title.Text" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="Settings_Startup_Desc.Text" xml:space="preserve"><value>Opens ClientSSH automatically when you sign in to Windows.</value></data>
+  <data name="Settings_Startup_Blocked.Message" xml:space="preserve"><value>Windows blocked automatic startup for this app. Enable ClientSSH in the startup apps list.</value></data>
+  <data name="Settings_Startup_OpenSettings.Content" xml:space="preserve"><value>Open Windows settings</value></data>
+  <data name="Settings_StartMin_Title.Text" xml:space="preserve"><value>Start minimized</value></data>
+  <data name="Settings_StartMin_Desc.Text" xml:space="preserve"><value>When Windows launches the app, it stays in the tray and does not open the window.</value></data>
+  <data name="Settings_Tray_Title.Text" xml:space="preserve"><value>Keep in tray when closed</value></data>
+  <data name="Settings_Tray_Desc.Text" xml:space="preserve"><value>Closing the window only hides it and the app keeps running in the tray. Use the tray menu to quit.</value></data>
+  <data name="Tray_Open" xml:space="preserve"><value>Open ClientSSH</value></data>
+  <data name="Tray_Exit" xml:space="preserve"><value>Quit</value></data>
+  <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Updates repository (owner/name)</value></data>
+  <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
+  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Start minimized</value></data>
+  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Keep in tray when closed</value></data>
+  <data name="Terminal_NoSsh" xml:space="preserve"><value>The OpenSSH Client is not installed. Turn it on in Windows Settings &gt; System &gt; Optional features.</value></data>
+  <data name="Terminal_InvalidHost" xml:space="preserve"><value>Invalid host, user or port.</value></data>
+  <data name="Terminal_StartFailed" xml:space="preserve"><value>Could not start the connection: {0}</value></data>
+  <data name="Terminal_Ended" xml:space="preserve"><value>Session ended (code {0}).</value></data>
+  <data name="Terminal_Reconnect.Content" xml:space="preserve"><value>Reconnect</value></data>
+  <data name="Nav_Sessions.Content" xml:space="preserve"><value>Sessions</value></data>
+  <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>No open sessions</value></data>
+  <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Connect to a host to open a session. You can keep several open at the same time.</value></data>
+  <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Choose a host</value></data>
+  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Connect</value></data>
+  <data name="Hosts_LastConnected" xml:space="preserve"><value>Last connection: {0}</value></data>
+  <data name="Time_JustNow" xml:space="preserve"><value>just now</value></data>
+  <data name="Time_Minutes" xml:space="preserve"><value>{0} min ago</value></data>
+  <data name="Time_Hours" xml:space="preserve"><value>{0} h ago</value></data>
+  <data name="Time_Days" xml:space="preserve"><value>{0} d ago</value></data>
+  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Favorite</value></data>
+  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Favorite</value></data>
+  <data name="Settings_Privacy.Text" xml:space="preserve"><value>Privacy</value></data>
+  <data name="Settings_History_Title.Text" xml:space="preserve"><value>Keep connection history</value></data>
+  <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Saves only the host and the date and time of each connection, on this PC. Never commands or terminal output. Turning it off does not delete what was already saved.</value></data>
+  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Keep connection history</value></data>
+  <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Clear history</value></data>
+  <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Removes the record of every connection.</value></data>
+  <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Clear</value></data>
+  <data name="Settings_History_Cleared.Message" xml:space="preserve"><value>History cleared.</value></data>
+</root>
