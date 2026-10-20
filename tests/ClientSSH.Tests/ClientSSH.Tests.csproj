@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The parser has no UI types, so the tests compile them directly instead of referencing the WinUI project. -->
+    <Compile Include="..\..\Terminal\VtScreen.cs" Link="VtScreen.cs" />
+    <Compile Include="..\..\Terminal\ITerminalProcess.cs" Link="ITerminalProcess.cs" />
+    <Compile Include="..\..\Terminal\SimulatedProcess.cs" Link="SimulatedProcess.cs" />
+    <Compile Include="..\..\Models\Host.cs" Link="Host.cs" />
+    <Compile Include="..\..\Services\Storage\Database.cs" Link="Database.cs" />
+    <Compile Include="..\..\Services\Storage\HostStore.cs" Link="HostStore.cs" />
+    <Compile Include="..\..\Services\Storage\HistoryStore.cs" Link="HistoryStore.cs" />
+    <Compile Include="..\..\Services\Storage\LegacyHostsImport.cs" Link="LegacyHostsImport.cs" />
+  </ItemGroup>
+</Project>
