@@ -131,7 +131,7 @@ public sealed partial class RemoteViewModel : ObservableObject
             for (var attempt = 0; attempt < 5 && _serverCode.Length == 0; attempt++)
             {
                 var code = RendezvousClient.NewCode();
-                if (await RendezvousClient.RequestAsync(server, $"PUT {code} {session.Code}") == "OK") _serverCode = code;
+                if (await RendezvousClient.RequestAsync(server, $"PUT {code} {RemoteCode.Decode(session.Code).Compact()}") == "OK") _serverCode = code;
             }
         }
         catch (Exception e) when (IsNetworkError(e)) { }
@@ -156,7 +156,7 @@ public sealed partial class RemoteViewModel : ObservableObject
             {
                 await Task.Delay(1500, token);
                 var answer = await RendezvousClient.RequestAsync(server, $"POLL {code}", token);
-                if (!answer.StartsWith(RemoteCode.Prefix, StringComparison.Ordinal)) continue;
+                if (!RemoteCode.IsCompact(answer)) continue;
 
                 _ui.TryEnqueue(() =>
                 {
@@ -208,7 +208,7 @@ public sealed partial class RemoteViewModel : ObservableObject
             if (viaServer)
             {
                 offer = await AskServerAsync($"GET {shortCode}");
-                if (!offer.StartsWith(RemoteCode.Prefix, StringComparison.Ordinal)) throw new RemoteCodeException("Unknown code.");
+                if (!RemoteCode.IsCompact(offer)) throw new RemoteCodeException("Unknown code.");
             }
 
             var session = await RemoteSession.JoinAsync(offer, Options);
@@ -220,7 +220,7 @@ public sealed partial class RemoteViewModel : ObservableObject
 
             if (viaServer)
             {
-                await AskServerAsync($"REPLY {shortCode} {session.Code}");
+                await AskServerAsync($"REPLY {shortCode} {RemoteCode.Decode(session.Code).Compact()}");
                 Status = Loc.Get("Remote_Status_WaitingPeer");
             }
         }
@@ -269,6 +269,7 @@ public sealed partial class RemoteViewModel : ObservableObject
     {
         if (session != _session || phase != RemotePhase.Connected) return;
         AwaitingReply = false;
+        SecurityCode = session.SecurityCode ?? "";
         Status = SessionIsHost ? Loc.Get("Remote_Status_AskHost") : Loc.Get("Remote_Status_AwaitAllow");
     }
 

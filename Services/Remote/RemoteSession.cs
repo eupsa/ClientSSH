@@ -45,7 +45,9 @@ public sealed class RemoteSession : IDisposable
     private readonly DateTime _started = DateTime.UtcNow;
 
     private RemoteCode? _offer, _reply;
+    private byte[]? _ownPublic;
     private RemoteChannel? _channel;
+    private bool _confirmed;
     private IPEndPoint? _peer;
     private DateTime _lastReceived = DateTime.UtcNow;
     private volatile RemoteAccess _access;
@@ -103,7 +105,7 @@ public sealed class RemoteSession : IDisposable
     public static async Task<RemoteSession> CreateHostAsync(RemoteOptions options, IScreenSource screen, IInputSink sink)
     {
         var session = new RemoteSession(isHost: true, options, screen, sink);
-        await session.PrepareAsync(RandomNumberGenerator.GetBytes(8), offer: null);
+        await session.PrepareAsync(offer: null);
         session.StartLoops();
         return session;
     }
@@ -112,30 +114,23 @@ public sealed class RemoteSession : IDisposable
     public static async Task<RemoteSession> JoinAsync(string offerText, RemoteOptions options)
     {
         var offer = RemoteCode.Decode(offerText);
-        if (offer.IsReply) throw new RemoteCodeException("This is a reply code. Paste the code the other PC created first.");
+        if (offer.IsReply) throw new RemoteCodeException("This is a reply code. Type the code the other PC created first.");
 
         var session = new RemoteSession(isHost: false, options, null, null);
-        await session.PrepareAsync(offer.SessionId, offer);
+        await session.PrepareAsync(offer);
         session.StartLoops();
         return session;
     }
 
-    // offer == null: this PC makes the offer. Otherwise it answers that offer, and the keys are ready at once.
-    private async Task PrepareAsync(byte[] sessionId, RemoteCode? offer)
+    // offer == null: this PC makes the offer. Otherwise it answers that offer and starts reaching for the host.
+    private async Task PrepareAsync(RemoteCode? offer)
     {
-        var endpoints = await GatherEndpointsAsync();
-        var mine = new RemoteCode(isReply: offer is not null, sessionId, RemoteKeys.ExportPublicKey(_key), endpoints);
+        _ownPublic = RemoteKeys.ExportPublicKey(_key);
+        var mine = new RemoteCode(isReply: offer is not null, await GatherEndpointAsync());
         Code = mine.Encode();
 
-        if (offer is null)
-        {
-            _offer = mine;
-            return;
-        }
-
-        _offer = offer;
-        _reply = mine;
-        Install(offer, mine);
+        if (offer is null) _offer = mine;
+        else (_offer, _reply) = (offer, mine);
     }
 
     /// <summary>Host: the other person's reply code arrived.</summary>
@@ -143,56 +138,42 @@ public sealed class RemoteSession : IDisposable
     {
         if (!_isHost || _offer is null) throw new InvalidOperationException();
         var reply = RemoteCode.Decode(replyText);
-        if (!reply.IsReply) throw new RemoteCodeException("This is an offer code. Paste the reply code the other PC created.");
-        if (!reply.SessionId.AsSpan().SequenceEqual(_offer.SessionId)) throw new RemoteCodeException("This reply belongs to another session.");
+        if (!reply.IsReply) throw new RemoteCodeException("This is an offer code. Type the reply code the other PC created.");
 
         lock (_gate)
         {
-            if (_channel is not null) return;
-            _reply = reply;
-            Install(_offer, reply);
+            if (_channel is null) _reply ??= reply;
         }
-    }
-
-    private void Install(RemoteCode offer, RemoteCode reply)
-    {
-        var (channel, security) = RemoteKeys.Derive(_key, offer, reply, _isHost);
-        SecurityCode = security;
-        _channel = channel;
     }
 
     // ---- gathering ----
 
-    private async Task<List<IPEndPoint>> GatherEndpointsAsync()
+    // One address goes into the code: the public one, which is what the other network can reach.
+    private async Task<IPEndPoint> GatherEndpointAsync()
     {
         var port = ((IPEndPoint)_socket.LocalEndPoint!).Port;
-        var found = new List<IPEndPoint>();
+        if (_options.IncludeLoopback) return new IPEndPoint(IPAddress.Loopback, port);
 
-        // Public address first: it is the one the other network can use.
-        var publicPorts = new List<int>();
+        var publicEndpoints = new List<IPEndPoint>();
         foreach (var server in _options.StunServers.Take(2))
         {
             var endpoint = await Stun.QueryAsync(_socket, server, _options.StunTimeout);
-            if (endpoint is null) continue;
-            publicPorts.Add(endpoint.Port);
-            if (!found.Contains(endpoint)) found.Add(endpoint);
+            if (endpoint is not null) publicEndpoints.Add(endpoint);
         }
-        NetworkMayBlockDirect = publicPorts.Distinct().Count() > 1;
+        NetworkMayBlockDirect = publicEndpoints.Select(e => e.Port).Distinct().Count() > 1;
+        if (publicEndpoints.Count > 0) return publicEndpoints[0];
 
+        // No STUN answer: a local address still works between two PCs on the same network.
         foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
         {
             if (nic.OperationalStatus != OperationalStatus.Up || nic.NetworkInterfaceType is NetworkInterfaceType.Loopback or NetworkInterfaceType.Tunnel) continue;
             foreach (var address in nic.GetIPProperties().UnicastAddresses.Select(a => a.Address))
             {
-                if (address.AddressFamily != AddressFamily.InterNetwork || address.ToString().StartsWith("169.254", StringComparison.Ordinal)) continue;
-                var endpoint = new IPEndPoint(address, port);
-                if (!found.Contains(endpoint)) found.Add(endpoint);
+                if (address.AddressFamily == AddressFamily.InterNetwork && !address.ToString().StartsWith("169.254", StringComparison.Ordinal))
+                    return new IPEndPoint(address, port);
             }
         }
-
-        if (_options.IncludeLoopback) found.Add(new IPEndPoint(IPAddress.Loopback, port));
-        if (found.Count == 0) throw new RemoteCodeException("No network address found.");
-        return found.Take(8).ToList();
+        throw new RemoteCodeException("No network address found.");
     }
 
     // ---- loops ----
@@ -236,6 +217,7 @@ public sealed class RemoteSession : IDisposable
             }
             else if (Phase == RemotePhase.Connected)
             {
+                if (!_confirmed && tick % 3 == 0) Punch();
                 if (tick % 20 == 0) SendKeepalive();
                 ResendInputs(now);
                 SkipInputGap(now);
@@ -244,40 +226,32 @@ public sealed class RemoteSession : IDisposable
         }
     }
 
-    // Both sides send to each other's addresses at the same time: the first packet out opens the way in.
+    // Both sides send to each other's address at the same time: the first packet out opens the way in.
     private void Punch()
     {
-        var channel = _channel;
         var other = _isHost ? _reply : _offer;
-        if (channel is null || other is null) return;
-
-        foreach (var endpoint in other.Endpoints) SendTo(endpoint, channel.Seal(PacketType.Hello, [_isHost ? (byte)0 : (byte)1]));
+        if (other is null || _ownPublic is null) return;
+        SendTo(other.Endpoint, [(byte)PacketType.Handshake, _isHost ? (byte)0 : (byte)1, .. _ownPublic]);
     }
 
     // ---- receiving ----
 
     private void OnDatagram(ReadOnlySpan<byte> datagram, IPEndPoint source)
     {
+        if (datagram.Length > 0 && datagram[0] == (byte)PacketType.Handshake)
+        {
+            OnHandshake(datagram, source);
+            return;
+        }
+
         var channel = _channel;
         if (channel is null || !channel.TryOpen(datagram, out var type, out var payload)) return;
 
-        var becameConnected = false;
         lock (_gate)
         {
             _lastReceived = DateTime.UtcNow;
+            _confirmed = true;
             _peer = source; // follows the other PC if its NAT picks a new port
-            if (Phase == RemotePhase.WaitingForPeer)
-            {
-                Phase = RemotePhase.Connected;
-                becameConnected = true;
-            }
-        }
-
-        if (becameConnected)
-        {
-            Send(PacketType.Hello, [_isHost ? (byte)0 : (byte)1]);
-            PhaseChanged?.Invoke(RemotePhase.Connected);
-            if (_isHost) PeerRequested?.Invoke(SecurityCode ?? "");
         }
 
         switch (type)
@@ -288,6 +262,43 @@ public sealed class RemoteSession : IDisposable
             case PacketType.Keepalive when !_isHost: OnKeepalive(payload); break;
             case PacketType.Bye: Close(RemoteCloseReason.RemoteStop); break;
         }
+    }
+
+    // The keys are agreed here, in the open: only the other PC's address (from its code) may start it.
+    private void OnHandshake(ReadOnlySpan<byte> datagram, IPEndPoint source)
+    {
+        var expected = _isHost ? _reply : _offer;
+        if (expected is null || datagram.Length != 2 + 64 || datagram[1] != (_isHost ? 1 : 0)) return;
+        if (!source.Address.Equals(expected.Endpoint.Address)) return;
+
+        lock (_gate)
+        {
+            if (_channel is not null)
+            {
+                // The other side may not have our key yet: answer again.
+                if (!_confirmed) Punch();
+                return;
+            }
+
+            try
+            {
+                var (channel, security) = RemoteKeys.Derive(_key, _ownPublic!, datagram[2..].ToArray(), _isHost);
+                _channel = channel;
+                SecurityCode = security;
+            }
+            catch (RemoteCodeException)
+            {
+                return;
+            }
+
+            _peer = source;
+            _lastReceived = DateTime.UtcNow;
+            Phase = RemotePhase.Connected;
+        }
+
+        Punch(); // make sure they get our key too
+        PhaseChanged?.Invoke(RemotePhase.Connected);
+        if (_isHost) PeerRequested?.Invoke(SecurityCode ?? "");
     }
 
     // ---- host: consent, frames, input ----

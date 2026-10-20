@@ -1,116 +1,96 @@
 using System.Net;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace ClientSSH.Services.Remote;
 
 public sealed class RemoteCodeException(string message) : Exception(message);
 
 /// <summary>
-/// What one PC hands to the other, as text the users paste into any chat: its one-time public key and the public
-/// addresses where it can be reached. The host's code is the "offer", the viewer's the "reply". It holds no secret.
+/// What one PC hands to the other: only its public address (IPv4 and port), written as syllables people can say and type,
+/// like "bako rimu sela fidu nomi ta". The host's code is the "offer", the viewer's the "reply". It holds no key and no secret:
+/// the keys are agreed on the connection itself, and the six digits both people compare out loud expose anyone in the middle.
 /// </summary>
 public sealed class RemoteCode
 {
-    public const string Prefix = "CSSH1-";
-    private const int SessionIdLength = 8, PublicKeyLength = 64, ChecksumLength = 4, MaxEndpoints = 8;
+    public const int CompactLength = 11 * 2;
+
+    private const string Consonants = "bdfghjklmnprstvz", Vowels = "aeio";
+    private const int SyllableCount = 11, RawLength = 8;
 
     public bool IsReply { get; }
-    public byte[] SessionId { get; }
-    public byte[] PublicKey { get; }
-    public IReadOnlyList<IPEndPoint> Endpoints { get; }
+    public IPEndPoint Endpoint { get; }
 
-    /// <summary>The exact bytes that were encoded; both sides hash these into the key, so a changed code gives different keys.</summary>
-    public byte[] Raw { get; }
-
-    public RemoteCode(bool isReply, byte[] sessionId, byte[] publicKey, IReadOnlyList<IPEndPoint> endpoints)
+    public RemoteCode(bool isReply, IPEndPoint endpoint)
     {
-        if (sessionId.Length != SessionIdLength || publicKey.Length != PublicKeyLength || endpoints.Count is 0 or > MaxEndpoints)
+        if (endpoint.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork || endpoint.Port == 0)
             throw new RemoteCodeException("Invalid code content.");
-
         IsReply = isReply;
-        SessionId = sessionId;
-        PublicKey = publicKey;
-        Endpoints = endpoints;
-        Raw = Serialize();
+        Endpoint = endpoint;
     }
 
-    public string Encode()
+    /// <summary>Syllables in groups of two: "bako rimu sela fidu nomi ta".</summary>
+    public string Encode() => string.Join(' ', Chunk(Compact(), 4));
+
+    /// <summary>Same code without spaces, for the rendezvous line protocol.</summary>
+    public string Compact()
     {
-        var withChecksum = new byte[Raw.Length + ChecksumLength];
-        Raw.CopyTo(withChecksum, 0);
-        SHA256.HashData(Raw).AsSpan(0, ChecksumLength).CopyTo(withChecksum.AsSpan(Raw.Length));
-        return Prefix + Convert.ToBase64String(withChecksum).TrimEnd('=').Replace('+', '-').Replace('/', '_');
+        var raw = Raw();
+        var bits = new System.Numerics.BigInteger(raw, isUnsigned: true, isBigEndian: true) << (SyllableCount * 6 - RawLength * 8);
+        var text = new StringBuilder();
+        for (var i = SyllableCount - 1; i >= 0; i--)
+        {
+            var value = (int)((bits >> (i * 6)) & 63);
+            text.Append(Consonants[value >> 2]).Append(Vowels[value & 3]);
+        }
+        return text.ToString();
     }
 
-    public static RemoteCode Decode(string text)
+    public static bool IsCompact(string? text) =>
+        text is { Length: CompactLength } && text.All(c => char.IsAsciiLetterLower(c) && (Consonants.Contains(c) || Vowels.Contains(c)));
+
+    /// <summary>Accepts any spacing, dashes and capitals.</summary>
+    public static RemoteCode Decode(string? text)
     {
-        var compact = new string((text ?? "").Where(c => !char.IsWhiteSpace(c)).ToArray());
-        if (!compact.StartsWith(Prefix, StringComparison.Ordinal)) throw new RemoteCodeException("Not a ClientSSH code.");
+        var letters = new string((text ?? "").Where(char.IsAsciiLetter).Select(char.ToLowerInvariant).ToArray());
+        if (letters.Length != CompactLength) throw new RemoteCodeException("Not a ClientSSH code.");
 
-        byte[] bytes;
-        try
+        System.Numerics.BigInteger bits = 0;
+        for (var i = 0; i < letters.Length; i += 2)
         {
-            var base64 = compact[Prefix.Length..].Replace('-', '+').Replace('_', '/');
-            bytes = Convert.FromBase64String(base64.PadRight((base64.Length + 3) / 4 * 4, '='));
-        }
-        catch (FormatException)
-        {
-            throw new RemoteCodeException("The code is damaged.");
+            var c = Consonants.IndexOf(letters[i]);
+            var v = Vowels.IndexOf(letters[i + 1]);
+            if (c < 0 || v < 0) throw new RemoteCodeException("The code is damaged.");
+            bits = (bits << 6) | (c << 2 | v);
         }
 
-        if (bytes.Length <= ChecksumLength) throw new RemoteCodeException("The code is damaged.");
-        var raw = bytes.AsSpan(0, bytes.Length - ChecksumLength);
-        if (!SHA256.HashData(raw).AsSpan(0, ChecksumLength).SequenceEqual(bytes.AsSpan(raw.Length)))
-            throw new RemoteCodeException("The code is damaged (copy it again, whole).");
+        var extra = SyllableCount * 6 - RawLength * 8;
+        if ((bits & ((1 << extra) - 1)) != 0) throw new RemoteCodeException("The code is damaged.");
+        var raw = (bits >> extra).ToByteArray(isUnsigned: true, isBigEndian: true);
+        if (raw.Length < RawLength) raw = [.. new byte[RawLength - raw.Length], .. raw];
+        if (raw.Length != RawLength || raw[0] > 1) throw new RemoteCodeException("This code comes from an incompatible version.");
+        if (Check(raw.AsSpan(0, 7)) != raw[7]) throw new RemoteCodeException("The code is damaged (type it again, whole).");
 
-        return Parse(raw);
+        var port = (raw[5] << 8) | raw[6];
+        return new RemoteCode(raw[0] == 1, new IPEndPoint(new IPAddress(raw.AsSpan(1, 4)), port));
     }
 
-    private byte[] Serialize()
+    // flag | ipv4 (4) | port (2) | check (1)
+    private byte[] Raw()
     {
-        var bytes = new List<byte> { 1, (byte)(IsReply ? 1 : 0) };
-        bytes.AddRange(SessionId);
-        bytes.AddRange(PublicKey);
-        bytes.Add((byte)Endpoints.Count);
-        foreach (var endpoint in Endpoints)
-        {
-            var address = endpoint.Address.GetAddressBytes();
-            bytes.Add((byte)address.Length);
-            bytes.AddRange(address);
-            bytes.Add((byte)(endpoint.Port >> 8));
-            bytes.Add((byte)endpoint.Port);
-        }
-        return [.. bytes];
+        var raw = new byte[RawLength];
+        raw[0] = (byte)(IsReply ? 1 : 0);
+        Endpoint.Address.GetAddressBytes().CopyTo(raw, 1);
+        raw[5] = (byte)(Endpoint.Port >> 8);
+        raw[6] = (byte)Endpoint.Port;
+        raw[7] = Check(raw.AsSpan(0, 7));
+        return raw;
     }
 
-    private static RemoteCode Parse(ReadOnlySpan<byte> raw)
+    private static byte Check(ReadOnlySpan<byte> data) => SHA256.HashData(data)[0];
+
+    private static IEnumerable<string> Chunk(string text, int size)
     {
-        const int fixedLength = 2 + SessionIdLength + PublicKeyLength + 1;
-        if (raw.Length < fixedLength || raw[0] != 1) throw new RemoteCodeException("This code comes from an incompatible version.");
-
-        var isReply = raw[1] == 1;
-        var sessionId = raw.Slice(2, SessionIdLength).ToArray();
-        var publicKey = raw.Slice(2 + SessionIdLength, PublicKeyLength).ToArray();
-        var count = raw[fixedLength - 1];
-        if (count is 0 or > MaxEndpoints) throw new RemoteCodeException("The code is damaged.");
-
-        var endpoints = new List<IPEndPoint>();
-        var position = fixedLength;
-        for (var i = 0; i < count; i++)
-        {
-            if (position >= raw.Length) throw new RemoteCodeException("The code is damaged.");
-            var length = raw[position++];
-            if (length is not (4 or 16) || position + length + 2 > raw.Length) throw new RemoteCodeException("The code is damaged.");
-
-            var address = new IPAddress(raw.Slice(position, length));
-            position += length;
-            var port = (raw[position] << 8) | raw[position + 1];
-            position += 2;
-            if (port == 0) throw new RemoteCodeException("The code is damaged.");
-            endpoints.Add(new IPEndPoint(address, port));
-        }
-        if (position != raw.Length) throw new RemoteCodeException("The code is damaged.");
-
-        return new RemoteCode(isReply, sessionId, publicKey, endpoints);
+        for (var i = 0; i < text.Length; i += size) yield return text.Substring(i, Math.Min(size, text.Length - i));
     }
 }

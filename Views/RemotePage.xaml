@@ -44,7 +44,7 @@
 
                         <StackPanel Spacing="8" Visibility="{x:Bind Remote.IsHost, Mode=OneWay}">
                             <TextBox x:Uid="Remote_YourCode" IsReadOnly="True" TextWrapping="Wrap" Text="{x:Bind Remote.HostCode, Mode=OneWay}"
-                                     FontFamily="Cascadia Mono, Consolas" FontSize="12" />
+                                     FontFamily="Cascadia Mono, Consolas" FontSize="20" />
                             <Button x:Uid="Remote_Copy" Click="OnCopyHostCode" />
                             <StackPanel Spacing="8" Visibility="{x:Bind Remote.AwaitingReply, Mode=OneWay}">
                                 <TextBox x:Uid="Remote_PasteReply" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="72"
@@ -73,7 +73,7 @@
 
                         <StackPanel Spacing="8" Visibility="{x:Bind Remote.IsViewer, Mode=OneWay}">
                             <TextBox x:Uid="Remote_YourReply" IsReadOnly="True" TextWrapping="Wrap" Text="{x:Bind Remote.ViewerReplyCode, Mode=OneWay}"
-                                     FontFamily="Cascadia Mono, Consolas" FontSize="12" />
+                                     FontFamily="Cascadia Mono, Consolas" FontSize="20" />
                             <Button x:Uid="Remote_Copy" Click="OnCopyReplyCode" />
                         </StackPanel>
                     </StackPanel>

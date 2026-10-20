@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace ClientSSH.Services.Remote;
 
-public enum PacketType : byte { Hello = 1, Frame = 2, Input = 3, Ack = 4, Keepalive = 5, Bye = 6 }
+public enum PacketType : byte { Hello = 1, Frame = 2, Input = 3, Ack = 4, Keepalive = 5, Bye = 6, Handshake = 16 }
 
 /// <summary>
 /// Encrypts and authenticates every datagram with AES-256-GCM. Each direction has its own key and a counter that is
@@ -113,31 +113,31 @@ public sealed class RemoteChannel
 
 public static class RemoteKeys
 {
-    private static readonly byte[] Info = "ClientSSH remote v1"u8.ToArray();
+    private static readonly byte[] Info = "ClientSSH remote v2"u8.ToArray();
 
     /// <summary>
-    /// ECDH (P-256) between this PC's one-time key and the other's public key from its code, then HKDF over both
-    /// codes: someone who changes a code on the way ends up with different keys and nothing decrypts.
+    /// ECDH (P-256) between this PC's one-time key and the other's public key from its handshake, then HKDF with both public
+    /// keys as salt. Someone in the middle ends up with different keys than the two people, so the six digits differ.
     /// </summary>
-    public static (RemoteChannel Channel, string SecurityCode) Derive(ECDiffieHellman own, RemoteCode offer, RemoteCode reply, bool isHost)
+    public static (RemoteChannel Channel, string SecurityCode) Derive(ECDiffieHellman own, byte[] ownPublic, byte[] peerPublic, bool isHost)
     {
-        var peerKey = isHost ? reply.PublicKey : offer.PublicKey;
         byte[] secret;
         try
         {
             using var peer = ECDiffieHellman.Create(new ECParameters
             {
                 Curve = ECCurve.NamedCurves.nistP256,
-                Q = new ECPoint { X = peerKey[..32], Y = peerKey[32..] },
+                Q = new ECPoint { X = peerPublic[..32], Y = peerPublic[32..] },
             });
             secret = own.DeriveRawSecretAgreement(peer.PublicKey);
         }
         catch (CryptographicException)
         {
-            throw new RemoteCodeException("The code has an invalid key.");
+            throw new RemoteCodeException("The other PC sent an invalid key.");
         }
 
-        var salt = SHA256.HashData([.. offer.Raw, .. reply.Raw]);
+        var (hostKey, viewerKey) = isHost ? (ownPublic, peerPublic) : (peerPublic, ownPublic);
+        var salt = SHA256.HashData([.. hostKey, .. viewerKey]);
         var material = HKDF.DeriveKey(HashAlgorithmName.SHA256, secret, 32 + 32 + 4, salt, Info);
         var hostToViewer = material[..32];
         var viewerToHost = material[32..64];

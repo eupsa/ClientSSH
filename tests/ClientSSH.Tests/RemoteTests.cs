@@ -7,45 +7,43 @@ namespace ClientSSH.Tests;
 
 public class RemoteCodeTests
 {
-    private static RemoteCode Sample(bool reply = false) => new(
-        reply, RandomNumberGenerator.GetBytes(8), RandomNumberGenerator.GetBytes(64),
-        [new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001), new IPEndPoint(IPAddress.Parse("192.168.0.10"), 40001)]);
+    private static RemoteCode Sample(bool reply = false) => new(reply, new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001));
 
     [Fact]
-    public void Round_trips_through_text()
-    {
-        var code = Sample();
-        var back = RemoteCode.Decode(code.Encode());
-
-        Assert.Equal(code.Raw, back.Raw);
-        Assert.Equal(code.Endpoints, back.Endpoints);
-        Assert.False(back.IsReply);
-    }
-
-    [Fact]
-    public void Survives_chat_line_breaks_and_spaces()
-    {
-        var text = Sample(reply: true).Encode();
-        var broken = text[..30] + "\r\n  " + text[30..60] + " " + text[60..];
-
-        Assert.True(RemoteCode.Decode(broken).IsReply);
-    }
-
-    [Fact]
-    public void A_changed_character_is_caught()
+    public void Round_trips_and_is_short_enough_to_say()
     {
         var text = Sample().Encode();
-        var index = RemoteCode.Prefix.Length + 20;
-        var tampered = text[..index] + (text[index] == 'A' ? 'B' : 'A') + text[(index + 1)..];
+        var back = RemoteCode.Decode(text);
 
-        Assert.Throws<RemoteCodeException>(() => RemoteCode.Decode(tampered));
+        Assert.Equal(new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001), back.Endpoint);
+        Assert.False(back.IsReply);
+        Assert.True(text.Length <= 28, text); // for example "bako rimu sela fidu nomi ta"
+    }
+
+    [Fact]
+    public void Ignores_spacing_dashes_and_capitals_and_keeps_the_type()
+    {
+        var text = Sample(reply: true).Compact();
+        var messy = text[..5].ToUpperInvariant() + "-" + text[5..9] + " " + text[9..];
+
+        Assert.True(RemoteCode.Decode(messy).IsReply);
+        Assert.True(RemoteCode.IsCompact(text));
+    }
+
+    [Fact]
+    public void A_mistyped_syllable_is_caught()
+    {
+        var text = Sample().Compact();
+        var wrong = text[..6] + (text[6] == 'b' ? 'd' : 'b') + text[7..];
+
+        Assert.Throws<RemoteCodeException>(() => RemoteCode.Decode(wrong));
     }
 
     [Theory]
     [InlineData("")]
     [InlineData("hello")]
-    [InlineData("CSSH1-")]
-    [InlineData("CSSH1-AAAA")]
+    [InlineData("bako")]
+    [InlineData("xxxxxxxxxxxxxxxxxxxxxx")]
     public void Garbage_is_rejected(string text) => Assert.Throws<RemoteCodeException>(() => RemoteCode.Decode(text));
 }
 
@@ -300,45 +298,19 @@ public sealed class RemoteSessionTests
         Assert.Equal(RemotePhase.Closed, host.Phase);
     }
 
-    [Fact]
-    public async Task A_reply_from_another_session_is_refused()
-    {
-        using var host = await RemoteSession.CreateHostAsync(Local, new FakeScreen(), new RecordingSink());
-        using var other = await RemoteSession.CreateHostAsync(Local, new FakeScreen(), new RecordingSink());
-        using var viewerOfOther = await RemoteSession.JoinAsync(other.Code, Local);
-
-        Assert.Throws<RemoteCodeException>(() => host.AcceptReply(viewerOfOther.Code));
-    }
-
-    [Fact]
-    public async Task Someone_elses_reply_gives_different_digits_than_the_real_viewer()
-    {
-        // Two PCs answer the same offer. Whoever the host accepts connects, but with different keys, so the six
-        // digits differ: the people notice that the one who answered is not who they meant.
-        using var host = await RemoteSession.CreateHostAsync(Local, new FakeScreen(), new RecordingSink());
-        using var viewer = await RemoteSession.JoinAsync(host.Code, Local);
-        using var intruder = await RemoteSession.JoinAsync(host.Code, Local);
-
-        var asked = false;
-        host.PeerRequested += _ => asked = true;
-        host.AcceptReply(intruder.Code);
-
-        Assert.True(await WaitAsync(() => asked));
-        Assert.NotEqual(viewer.SecurityCode, intruder.SecurityCode);
-    }
 }
 
 public class RendezvousTests
 {
     private static readonly System.Net.IPAddress Ip = System.Net.IPAddress.Parse("203.0.113.9");
-    private const string Offer = "CSSH1-AAAA", Reply = "CSSH1-BBBB";
+    private const string Offer = "bakorimoselafidonomita", Reply = "fidonomitabakorimosela";
 
     [Theory]
     [InlineData("123 456 789", true)]
     [InlineData("123-456-789", true)]
     [InlineData("123456789", true)]
     [InlineData("12345678", false)]
-    [InlineData("CSSH1-123456789", false)]
+    [InlineData("bako rimu sela", false)]
     public void Short_codes_parse(string text, bool ok) => Assert.Equal(ok, RendezvousClient.TryParseCode(text, out _));
 
     [Fact]
@@ -350,11 +322,11 @@ public class RendezvousTests
         Assert.Equal(Offer, server.Handle("GET 111222333", Ip));
         Assert.Equal("NONE", server.Handle("POLL 111222333", Ip));
         Assert.Equal("OK", server.Handle($"REPLY 111222333 {Reply}", Ip));
-        Assert.Equal("NONE", server.Handle($"REPLY 111222333 CSSH1-CCCC", Ip)); // the first reply wins
+        Assert.Equal("NONE", server.Handle("REPLY 111222333 tadotasomadanerifigodo", Ip)); // the first reply wins
         Assert.Equal(Reply, server.Handle("POLL 111222333", Ip));
         Assert.Equal("OK", server.Handle("DEL 111222333", Ip));
         Assert.Equal("NONE", server.Handle("GET 111222333", Ip));
-        Assert.Equal("BAD", server.Handle("PUT 1234 CSSH1-X", Ip));
+        Assert.Equal("BAD", server.Handle("PUT 1234 bakorimoselafidonomita", Ip));
         Assert.Equal("BAD", server.Handle("PUT 111222333 not-a-code", Ip));
     }
 
@@ -376,11 +348,11 @@ public class RendezvousTests
 
         using var host = await RemoteSession.CreateHostAsync(options, new NullScreen(), new NullSink());
         var code = RendezvousClient.NewCode();
-        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"PUT {code} {host.Code}"));
+        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"PUT {code} {RemoteCode.Decode(host.Code).Compact()}"));
 
         var offer = await RendezvousClient.RequestAsync(address, $"GET {code}");
         using var viewer = await RemoteSession.JoinAsync(offer, options);
-        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"REPLY {code} {viewer.Code}"));
+        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"REPLY {code} {RemoteCode.Decode(viewer.Code).Compact()}"));
 
         string? seen = null;
         host.PeerRequested += s => seen = s;

@@ -87,7 +87,7 @@ public sealed class RendezvousServer : IDisposable
         var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (parts.Length is < 2 or > 3 || !RendezvousClient.IsCode(parts[1])) return "BAD";
         var (command, code) = (parts[0], parts[1]);
-        var payload = parts.Length == 3 && parts[2].StartsWith(RemoteCode.Prefix, StringComparison.Ordinal) ? parts[2] : null;
+        var payload = parts.Length == 3 && RemoteCode.IsCompact(parts[2]) ? parts[2] : null;
 
         lock (_gate)
         {
