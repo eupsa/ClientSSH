@@ -41,7 +41,12 @@ namespace ClientSSH
         private void ColorCaptionButtons(FrameworkElement root)
         {
             var key = root.ActualTheme == ElementTheme.Dark ? "Dark" : "Light";
-            var theme = (ResourceDictionary)Application.Current.Resources.ThemeDictionaries[key];
+            // The palette is a merged dictionary, so its theme dictionaries are not on Resources itself.
+            // XamlControlsResources has its own "Dark"/"Light" too, so pick the one holding our token.
+            var theme = Application.Current.Resources.MergedDictionaries
+                .Where(d => d.ThemeDictionaries.ContainsKey(key))
+                .Select(d => (ResourceDictionary)d.ThemeDictionaries[key])
+                .First(d => d.ContainsKey("TextColor"));
             var text = (Windows.UI.Color)theme["TextColor"];
             var titleBar = AppWindow.TitleBar;
             titleBar.ButtonForegroundColor = text;
