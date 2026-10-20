@@ -1,0 +1,95 @@
+# ClientSSH — contexto do projeto
+
+Cliente SSH open source para Windows (repo público no GitHub, licença MIT).
+
+## Objetivo e privacidade
+- Conexão fácil e rápida.
+- Hosts, usuários, chaves e senhas ficam só no PC do usuário e nunca saem dele. Sem contas, nuvem ou telemetria.
+- Não gravar histórico de hosts por padrão. Qualquer armazenamento (ex.: favoritos) é opcional, local e opt-in.
+- Repo público: nunca commitar chaves, senhas, known_hosts nem hosts reais de teste.
+
+## Arquitetura
+**MVVM** (Model–View–ViewModel):
+- Views em XAML, sem lógica de negócio no code-behind.
+- ViewModels com estado e comandos.
+- Models/serviços para SSH, armazenamento local e configurações.
+
+## Stack de UI (definida pelo usuário)
+- WinUI 3
+- Windows App SDK
+- XAML e controles WinUI
+- Fluent Design
+- DirectWrite (texto)
+- Direct2D (desenho 2D)
+- Windows Imaging Component (WIC), para imagens
+- Animações e estados: Windows Animation Manager ou animações próprias, para movimento e transições
+
+## Referência: ProtonVPN para Windows
+Fonte: github.com/ProtonVPN/win-app (código aberto), `src/Client/ProtonVPN.Client/ProtonVPN.Client.csproj`.
+
+- **UI:** WinUI 3 (`UseWinUI=true`) com Windows App SDK self-contained. Alvo `net8.0-windows10.0.22621.0`.
+- **Arquitetura:** MVVM com `CommunityToolkit.Mvvm`. Projetos separados: `Client`, `Client.Core`, `Client.Contracts`, `Client.Logic`.
+- **Injeção de dependência:** Autofac.
+- **Controles e utilidades:** CommunityToolkit.WinUI (SettingsControls, Controls, Converters, Triggers, Collections), `WinUIEx`, `H.NotifyIcon.WinUI` (ícone na bandeja), `Microsoft.Xaml.Behaviors.WinUI.Managed`, `MarkdownTextBlock`.
+- **Serialização:** System.Text.Json e Newtonsoft.Json.
+- **Backend:** Windows service separado (privilégios), comunicação entre processos, drivers e filtros C++ nativos (firewall, rede). Não se aplica a um cliente SSH.
+- **Observação:** o README do repo ainda cita WPF, mas está desatualizado. O código atual do cliente é WinUI 3.
+
+## Decisões
+- **Linguagem:** C# / .NET 8 (`net8.0-windows10.0.19041.0`), Windows App SDK 2.5.1. Projeto recriado em C# a partir do template "Aplicativo WinUI em Branco (Empacotado)". O C++/WinRT inicial foi descartado.
+- **MVVM:** `CommunityToolkit.Mvvm` (a instalar). DI: `Microsoft.Extensions.DependencyInjection` (a instalar), mais simples que o Autofac do ProtonVPN.
+- **SSH:** motor ainda em decisão: SSH.NET ou o `ssh.exe` do Windows via ConPTY (ver "Decisões do usuário").
+- O ProtonVPN não usa DirectWrite, Direct2D, WIC nem Windows Animation Manager diretamente. O WinUI 3 já os usa por baixo. Chamá-los de forma explícita só vale em casos específicos (renderização de terminal, imagens). Para animações, prefira a Composition API do WinUI.
+
+## Decisões do usuário
+- **Terminal:** próprio, com parser VT/ANSI e desenho com Direct2D e DirectWrite.
+- **Dados:** não há API nem servidor. Tudo roda no PC. O app salva localmente os hosts que o usuário adicionar, em SQLite (`%LOCALAPPDATA%\ClientSSH\clientssh.db`; `CLIENTSSH_DATA_DIR` troca a pasta, e deve ser usada em testes automatizados para não mexer nos dados do usuário). O `hosts.json` antigo é importado uma vez e renomeado para `.migrated`. Importar os hosts do Windows (ex.: `~/.ssh/config`) fica para o futuro.
+- **Autenticação:** todas as formas que o SSH do Windows suporta (senha, chave, keyboard-interactive, ssh-agent, FIDO2/chave de segurança, GSSAPI).
+- **Motor SSH:** `ssh.exe` do Windows via ConPTY (cobre todas as formas de autenticação, `~/.ssh/config` e `known_hosts`). SSH.NET descartado.
+- **MVP:** lista de hosts salvos (JSON local em `%LOCALAPPDATA%`), "Novo host" (apelido, host, porta, usuário, chave opcional), conectar abre o terminal próprio rodando `ssh`, desconectar. Fora do MVP: abas, SFTP, túneis, importar `~/.ssh/config`.
+- **Renderização:** Win2D (`CanvasControl`), que usa Direct2D e DirectWrite por dentro.
+- **Terminal no MVP:** só o mínimo (texto, cores ANSI, cursor, rolagem, redimensionamento). Tela alternativa (vim/tmux), mouse e seleção ficam para depois.
+- **Sessões:** base preparada para várias sessões simultâneas (sem interface de abas no MVP). Hosts em JSON com campo `group` opcional.
+- **Idioma:** pt-BR (padrão) e en-US, em `Strings/<idioma>/Resources.resw`. Sem texto fixo no código: tudo via `x:Uid` ou `Loc.Get`. Novo texto = adicionar a chave nos dois `.resw`. Troca de idioma em Configurações grava `AppSettings.Language` e vale após reiniciar (`PrimaryLanguageOverride` no construtor do `App`). Nomes de idioma ficam na própria língua, com bandeira em `Assets/Flags/*.svg`.
+- **Dependências do MVP:** `CommunityToolkit.Mvvm`, `Microsoft.Extensions.DependencyInjection`, `Microsoft.Graphics.Win2D`.
+- **Paleta:** fonte única em `Themes/Palette.xaml` (Dark e Light, tokens `*Color` e `*Brush`, ANSI 16 e cores do terminal), mesclada no `App.xaml`. Nunca usar cor fixa em tela ou no terminal: usar `{ThemeResource XxxBrush}` ou ler as chaves `*Color`. `AccentBrush` é para preenchimentos (botões); texto e indicadores sobre fundo escuro usam `AccentForegroundBrush`.
+- **Cores (marca v2):** só azul-escuro `#1E3A8A` / azul-noite `#0F1F57` / azul do topo `#2747A6`, preto `#05070D` e branco. Claro: botões e destaque `#1E3A8A`. Escuro: fundo preto-azulado, botões `#2747A6`, texto/indicadores de destaque em `AccentForeground` (azul claro derivado). Sem outras cores de destaque; vermelho só para erro; cores ANSI do terminal são funcionais.
+- **Regra de design (ícones):** ícones nunca têm fundo exclusivo (sem badge/quadrado atrás). Usam o fundo do componente onde estão (card, botão, linha, barra).
+- **Terminal:** uma única superfície, sem campo de input separado: digita-se direto no prompt, com cursor piscando.
+- **Visual:** base no estilo do **WinUI 3 Gallery** (Fluent). Não usar nenhum terminal como base visual. Temas **escuro e claro** (os dois).
+- **Layout:** `NavigationView` com sidebar e tela inicial. Ao clicar em **Conectar**, a lista de hosts some, o terminal ocupa a área principal e a sidebar fica recolhida.
+- **Fluxo de abertura:** splash, depois tela de boas-vindas explicando o app, depois um tour guiado usando um host de teste.
+- **Roadmap (em decisão, não implementar ainda):** personalização e IA. Ver [ROADMAP.md](ROADMAP.md).
+
+## Assets
+- `Assets/`: conjunto MSIX (tiles, splash, Store, ícones em várias escalas).
+- `brand/`: kit de marca (logo SVG, png, ico, animações Lottie, scripts geradores). `ApplicationIcon` aponta para `brand\ico\ClientSSH.ico`.
+- Os arquivos "original" do ícone de terceiros foram removidos do repo por licença incerta. `anim/brand-hover-pinch*.json` e a logo podem ser derivados dele: conferir antes de publicar.
+
+## Estrutura do código
+Projeto único na raiz (sem pasta aninhada). Layout completo na tabela do [README.md](README.md#project-layout).
+- `Models/`, `ViewModels/`, `Views/`, `Themes/Palette.xaml`, `Strings/<idioma>/Resources.resw`.
+- `Services/` por módulo, com namespace igual à pasta: `Storage` (JSON local), `Shell` (navegação, diálogos, tema, bandeja, iniciar com o Windows), `Sessions` (`SessionManager`/`SessionTab`: abas e sessões simultâneas), `Updates`, `Localization` (`Loc`), `Demo` (host de demonstração do tour).
+- `Terminal/`: motor do terminal sem tipos de UI: `ITerminalProcess` (`ConPtyProcess` para o ssh real, `SimulatedProcess` para o tour), `TerminalSession`, `VtScreen`, `SshCommand`. A página de sessões usa um `TabView` só como barra de abas e uma única `SessionView` abaixo (o `TerminalView` cria o canvas Win2D ao carregar e libera ao descarregar). `tests/ClientSSH.Tests` compila o `VtScreen.cs` direto.
+- ViewModels usam `[ObservableProperty] public partial` (exige `LangVersion preview`, para ser compatível com WinRT/AOT).
+- Textos de tela via `x:Uid` + `.resw` ou `Loc.Get`, nunca fixos. Toda chave nova vai nos dois idiomas.
+- Documentação open source: `README.md`, `README.pt-BR.md`, `CONTRIBUTING.md`, `.editorconfig`.
+
+## Estado
+- Esqueleto pronto e compilando (`dotnet build -p:Platform=x64`): splash, boas-vindas (só na primeira abertura), lista de hosts com "Novo host", sidebar que recolhe ao conectar, página de terminal placeholder.
+- **Rodar pelo Visual Studio (F5).** Para rodar fora do VS: `dotnet build -p:Platform=x64 -p:WindowsPackageType=None -p:WindowsAppSDKSelfContained=true -p:OutDir=<pasta>/`.
+- Visual: tema próprio sobre WinUI 3 (fundo em gradiente da marca, cards arredondados, destaque Menta). Controles do WinUI copiam a cor de destaque para chaves próprias no load: ao estilizar um controle novo, sobrescrever as chaves dele em `Themes/Palette.xaml` (ex.: `AccentButtonBackground`).
+- Tour guiado implementado (`TourViewModel` + `TeachingTip`): 4 passos (novo host, host demo, terminal simulado, sidebar). Só na primeira abertura. Host demo (`TourViewModel.DemoHost`) vive só em memória e o shell simulado (`SimulatedShell`) roda sem rede.
+- Testado rodando (build sem pacote, capturas via PrintWindow/UIAutomation): splash, boas-vindas, tour, terminal demo, configurações, tema claro/escuro, inglês. Faltam: terminal real (Win2D + ConPTY), animação do splash, opção "Rever tour" nas configurações.
+- Nenhum commit ainda.
+- Dados persistentes: o manifesto desliga a virtualização de arquivos (`FileSystemWriteVirtualization=disabled` + capability `unvirtualizedResources`). Sem isso, o F5 do Visual Studio reinstala o pacote e apaga hosts/configurações guardados na pasta virtualizada do pacote.
+- **Animações prontas:** `Views/LottieView` toca as animações Lottie da marca (`brand/anim`, copiadas como `Assets/Animations`, variante `.dark.json` no tema escuro; respeita "efeitos de animação" do Windows). Pacote `CommunityToolkit.WinUI.Lottie` 8.1.240821 (a 8.2+ exige .NET 9). Carregar por `StorageFile` + `SetSourceAsync` (o `CreateFromString` espera uma URI, não JSON). Usos: splash e boas-vindas (`logo-reveal`), estados vazios (`terminal-cursor`, `running-command`), conexão da sessão (`connecting`/`reconnecting` até a primeira saída, depois `connected`), verificação de atualização (`loading-ring`).
+- **Regra de design (animações):** animar onde der: entrada de páginas e cartões (`EntranceThemeTransition` em `ChildrenTransitions`), linhas de lista (`ItemContainerTransitions`), navegação (`DrillIn` ao conectar, `Entrance` nas demais), splash com fade. Preferir transições nativas do WinUI a código.
+- **Forma:** arredondamento moderado e consistente. Tokens em `Themes/Palette.xaml`: `ControlCornerRadius`=8 (controles), `OverlayCornerRadius`=12 (diálogos), `CardCornerRadius`=12 (cartões e superfícies). Nunca usar raio literal nem botão em pílula.
+- **Componentes modernos:** preferir os mais novos do WinUI 3: `TitleBar`, `InfoBar`, `AnimatedIcon`, `TeachingTip`, `NavigationView`. A janela entra com fade + subida (`OpacityTransition`/`TranslationTransition` no `Root`).
+- **Atualizações:** botão manual em Configurações consulta `https://api.github.com/repos/<repo>/releases/latest`. Nunca roda sozinho, não envia dados do usuário e só abre links `https://github.com`. Exige uma Release publicada no GitHub com tag tipo `v1.2.0`.
+- **Iniciar com o Windows / bandeja:** `StartupService` (MSIX: `StartupTask` do manifesto; sem pacote: chave Run do usuário com `--startup`; o estado vem do SO). `TrayService` (H.NotifyIcon.WinUI 2.3.0, a 2.4+ exige .NET 10) cria o ícone só quando "iniciar minimizado" ou "manter na bandeja ao fechar" estão ligados; o ícone usa `Assets/ClientSSH.ico` (um PNG derruba o app). Iniciar minimizado só vale quando o Windows abre o app.
+- **Repositório de atualizações:** editável em Configurações (`AppSettings.UpdateRepo`, padrão `eupsa/client-ssh`), validado como `dono/nome` antes de entrar na URL. Projeto open source: forks podem apontar para o próprio repo.
+- **Bandeiras:** agora são os SVG oficiais do flag-icons (MIT); licença em `THIRD_PARTY_NOTICES.md`.
+- **Terminal real:** `Terminal/PseudoConsole.cs` (ConPTY via P/Invoke), `TerminalSession` (roda o comando e alimenta o `VtScreen`), `VtScreen` (parser VT/ANSI sem tipos de UI: cores 16/256/RGB, cursor, apagar, regiões de rolagem, tela alternativa, scrollback de 5000 linhas, respostas a `ESC[6n`) e `Views/TerminalView` (Win2D: desenho, teclado, roda do mouse, redimensionar). O comando é `ssh.exe -p <porta> -- <usuario>@<host>` (`SshCommand`); host e usuário são validados (sem '-' inicial, só caracteres seguros) antes de ir para a linha de comando. A página mata o ssh ao sair (`OnNavigatedFrom`). Testes do parser: `tests/ClientSSH.Tests` (`dotnet test`). Fora do escopo ainda: seleção, copiar/colar, mouse, Alt+tecla, caracteres de largura dupla.
+- **Favoritos e histórico (SQLite):** `Database` (esquema com `PRAGMA user_version`), `HostStore`, `HistoryStore`, `LegacyHostsImport`. Favoritos vão ao topo da lista. O histórico é **opt-in** (`AppSettings.SaveHistory`, padrão desligado), guarda só host e data/hora (nunca comandos nem saída), tem limite de 1000 linhas e botão de apagar em Configurações.
