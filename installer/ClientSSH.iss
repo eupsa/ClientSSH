@@ -5,7 +5,7 @@
 #define AppName "ClientSSH"
 #define PublishDir "..\artifacts\publish"
 #ifndef RendezvousDir
-  #define RendezvousDir "..rtifactsendezvous"
+  #define RendezvousDir "..\artifacts\rendezvous"
 #endif
 
 [Setup]
@@ -56,8 +56,7 @@ Name: "rendezvous"; Description: "{cm:RendezvousTask}"; Flags: unchecked
 [Files]
 Source: "{#PublishDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
-Source: "{#RendezvousDir}\*"; DestDir: "{app}
-endezvous"; Flags: ignoreversion; Tasks: rendezvous
+Source: "{#RendezvousDir}\*"; DestDir: "{app}\rendezvous"; Flags: ignoreversion; Tasks: rendezvous
 
 [CustomMessages]
 english.RendezvousTask=Also install the remote-access rendezvous server (lets this PC introduce others by short code; not needed to use the app)
@@ -65,8 +64,7 @@ brazilianportuguese.RendezvousTask=Instalar também o servidor de encontro do ac
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppName}.exe"
-Name: "{group}\ClientSSH rendezvous server"; Filename: "{app}
-endezvous\ClientSSH.Rendezvous.exe"; Tasks: rendezvous
+Name: "{group}\ClientSSH rendezvous server"; Filename: "{app}\rendezvous\ClientSSH.Rendezvous.exe"; Tasks: rendezvous
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
 
 [Run]

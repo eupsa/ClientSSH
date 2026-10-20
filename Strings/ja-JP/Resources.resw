@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>ホスト</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>新しいホスト</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>接続</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>ホストを削除</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ホストを削除</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>新しいホスト</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>保存</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>キャンセル</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>終了</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>更新リポジトリ (owner/name)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows と同時に起動</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>最小化して起動</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>閉じたときにトレイに常駐</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Windows と同時に起動</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>最小化して起動</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>閉じたときにトレイに常駐</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH クライアントがインストールされていません。Windows の設定 &gt; システム &gt; オプション機能 で有効にしてください。</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>ホスト、ユーザー、またはポートが無効です。</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>接続を開始できませんでした: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>開いているセッションはありません</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>ホストに接続してセッションを開きます。複数のセッションを同時に開いておけます。</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>ホストを選択</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>接続</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>接続</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>前回の接続: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>たった今</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} 分前</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} 時間前</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} 日前</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>お気に入り</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>お気に入り</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>お気に入り</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>お気に入り</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>プライバシー</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>接続履歴を保持</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>ホストと各接続の日時のみをこの PC に保存します。コマンドやターミナルの出力は保存されません。オフにしても、すでに保存された内容は削除されません。</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>接続履歴を保持</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>接続履歴を保持</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>履歴を消去</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>すべての接続の記録を削除します。</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>消去</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>更新をダウンロードして確認しています...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>有効な更新をダウンロードできませんでした。後でもう一度お試しいただくか、リリース ページをご利用ください。</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>アプリを開いたときに自動で確認</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI アシスタント</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI アシスタント</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>AI アシスタント</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>AI アシスタント</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>AI アシスタント</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>やりたいことを説明してください。コマンドは Enter を押さずにプロンプトへ入力されるので、先に確認できます。選択したプロバイダーには入力したテキストだけが送信され、ターミナル、ホスト、履歴は送信されません。</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>例: 500 MB より大きいファイルを検索</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>あなたの接続コード</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>ランデブーサーバーに接続できません。アドレスを確認してください。</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>このコードを相手に伝えてください。相手が接続すると、許可するかどうか尋ねられます。</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>ホストを削除</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コードをクリップボードにコピーします</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>貼り付けた応答コードで接続します</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>貼り付けたコードの PC に接続します</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>リモート アクセス セッションを終了します</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コマンドをターミナルに入力します (Enter は押しません)</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>あなたのキーでプロバイダーに問い合わせます</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>キーを暗号化してこの PC に保存します</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>このプロバイダーの保存済みキーを削除します</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>新しいバージョンをダウンロード、検証してインストールします</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ツアーをスキップしてホストに移動します</value></data>
 </root>

@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>호스트</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>새 호스트</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>연결</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>호스트 제거</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>호스트 제거</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>새 호스트</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>저장</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>취소</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>종료</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>업데이트 리포지토리(owner/name)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows와 함께 시작</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>최소화하여 시작</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>닫을 때 트레이에 유지</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Windows와 함께 시작</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>최소화하여 시작</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>닫을 때 트레이에 유지</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH 클라이언트가 설치되어 있지 않습니다. Windows 설정 &gt; 시스템 &gt; 선택적 기능에서 켜세요.</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>호스트, 사용자 또는 포트가 올바르지 않습니다.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>연결을 시작할 수 없습니다: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>열린 세션 없음</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>호스트에 연결하여 세션을 엽니다. 여러 세션을 동시에 열어 둘 수 있습니다.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>호스트 선택</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>연결</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>연결</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>마지막 연결: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>방금</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0}분 전</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0}시간 전</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0}일 전</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>즐겨찾기</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>즐겨찾기</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>즐겨찾기</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>즐겨찾기</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>개인 정보</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>연결 기록 유지</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>이 PC에 호스트와 각 연결의 날짜 및 시간만 저장합니다. 명령이나 터미널 출력은 저장하지 않습니다. 끄더라도 이미 저장된 내용은 삭제되지 않습니다.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>연결 기록 유지</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>연결 기록 유지</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>기록 지우기</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>모든 연결 기록을 삭제합니다.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>지우기</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>업데이트를 다운로드하고 확인하는 중...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>올바른 업데이트를 다운로드할 수 없습니다. 나중에 다시 시도하거나 릴리스 페이지를 이용하세요.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>앱을 열 때 자동으로 확인</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI 도우미</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI 도우미</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>AI 도우미</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>AI 도우미</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>AI 도우미</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>원하는 작업을 설명하세요. 명령은 Enter 없이 프롬프트에 입력되므로 먼저 확인할 수 있습니다. 선택한 공급자에게는 입력한 텍스트만 전송되며, 터미널, 호스트, 기록은 전송되지 않습니다.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>예: 500MB보다 큰 파일 찾기</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>내 연결 코드</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>랑데부 서버에 연결할 수 없습니다. 주소를 확인하세요.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>이 코드를 상대방에게 알려 주세요. 상대방이 연결하면 허용할지 묻습니다.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>호스트 제거</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>코드를 클립보드에 복사합니다</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>붙여넣은 응답 코드로 연결합니다</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>붙여넣은 코드의 PC에 연결합니다</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>원격 액세스 세션을 종료합니다</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>명령을 터미널에 입력합니다(Enter 없이)</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>내 키로 공급자에게 조회합니다</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>키를 암호화하여 이 PC에 저장합니다</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>이 공급자의 저장된 키를 삭제합니다</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>새 버전을 다운로드하고 확인한 뒤 설치합니다</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>둘러보기를 건너뛰고 호스트로 이동합니다</value></data>
 </root>

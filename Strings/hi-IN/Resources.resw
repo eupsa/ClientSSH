@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>होस्ट</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>नया होस्ट</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>कनेक्ट करें</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>होस्ट हटाएँ</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>होस्ट हटाएँ</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>नया होस्ट</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>सहेजें</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>रद्द करें</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>बाहर निकलें</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>अपडेट रिपॉज़िटरी (owner/name)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows के साथ शुरू करें</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>छोटा करके शुरू करें</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>बंद करने पर ट्रे में रखें</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Windows के साथ शुरू करें</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>छोटा करके शुरू करें</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>बंद करने पर ट्रे में रखें</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH क्लाइंट इंस्टॉल नहीं है। इसे Windows सेटिंग &gt; सिस्टम &gt; वैकल्पिक सुविधाएँ में चालू करें।</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>होस्ट, उपयोगकर्ता या पोर्ट अमान्य है।</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>कनेक्शन शुरू नहीं हो सका: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>कोई खुला सत्र नहीं</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>सत्र खोलने के लिए किसी होस्ट से कनेक्ट करें। आप एक साथ कई सत्र खुले रख सकते हैं।</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>होस्ट चुनें</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>कनेक्ट करें</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कनेक्ट करें</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>पिछला कनेक्शन: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>अभी-अभी</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} मिनट पहले</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} घंटे पहले</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} दिन पहले</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>पसंदीदा</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>पसंदीदा</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>पसंदीदा</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>पसंदीदा</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>गोपनीयता</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>कनेक्शन इतिहास रखें</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>इस पीसी पर केवल होस्ट और हर कनेक्शन की तारीख व समय सहेजता है। कमांड या टर्मिनल आउटपुट कभी नहीं। इसे बंद करने से पहले से सहेजा गया डेटा नहीं हटता।</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>कनेक्शन इतिहास रखें</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कनेक्शन इतिहास रखें</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>इतिहास साफ़ करें</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>सभी कनेक्शनों का रिकॉर्ड हटाता है।</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>साफ़ करें</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>अपडेट डाउनलोड और जाँचा जा रहा है...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>मान्य अपडेट डाउनलोड नहीं हो सका। बाद में फिर प्रयास करें या रिलीज़ पेज का उपयोग करें।</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>ऐप खुलने पर अपने आप जाँचें</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI सहायक</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI सहायक</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>AI सहायक</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>AI सहायक</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>AI सहायक</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>बताएँ कि आप क्या चाहते हैं। कमांड Enter के बिना प्रॉम्प्ट पर लिखा जाता है, ताकि आप पहले उसे जाँच सकें। आपके चुने प्रदाता को केवल आपका टेक्स्ट भेजा जाता है, टर्मिनल, होस्ट या इतिहास कभी नहीं।</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>उदा. 500 MB से बड़ी फ़ाइलें खोजें</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>आपका कनेक्शन कोड</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>मिलन सर्वर तक नहीं पहुँच सके। पता जाँचें।</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>यह कोड दूसरे व्यक्ति को बताएँ। जब वह जुड़ेगा तो आपसे अनुमति पूछी जाएगी।</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>होस्ट हटाएँ</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>कोड को क्लिपबोर्ड पर कॉपी करता है</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>चिपकाए गए जवाब कोड से कनेक्ट करता है</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>चिपकाए गए कोड वाले पीसी से कनेक्ट करता है</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>रिमोट एक्सेस सत्र समाप्त करता है</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>कमांड को टर्मिनल में बिना Enter के टाइप करता है</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>आपकी कुंजी से प्रदाता से पूछता है</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>कुंजी को एन्क्रिप्ट करके इस पीसी पर सहेजता है</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>इस प्रदाता की सहेजी गई कुंजी हटाता है</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>नया संस्करण डाउनलोड, सत्यापित और इंस्टॉल करता है</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>टूर छोड़कर होस्ट पर जाता है</value></data>
 </root>

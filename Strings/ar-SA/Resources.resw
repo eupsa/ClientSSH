@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>المضيفات</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>مضيف جديد</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>اتصال</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>إزالة المضيف</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>إزالة المضيف</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>مضيف جديد</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>حفظ</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>إلغاء</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>خروج</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>مستودع التحديثات (المالك/الاسم)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>البدء مع Windows</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>البدء مصغّرًا</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>الإبقاء في منطقة الإعلام عند الإغلاق</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>البدء مع Windows</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>البدء مصغّرًا</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>الإبقاء في منطقة الإعلام عند الإغلاق</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>عميل OpenSSH غير مثبّت. فعّله من إعدادات Windows &gt; النظام &gt; الميزات الاختيارية.</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>مضيف أو مستخدم أو منفذ غير صالح.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>تعذّر بدء الاتصال: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>لا توجد جلسات مفتوحة</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>اتصل بمضيف لفتح جلسة. يمكنك إبقاء عدة جلسات مفتوحة في الوقت نفسه.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>اختيار مضيف</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>اتصال</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>اتصال</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>آخر اتصال: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>الآن</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>منذ {0} دقيقة</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>منذ {0} ساعة</value></data>
   <data name="Time_Days" xml:space="preserve"><value>منذ {0} يوم</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>المفضلة</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>المفضلة</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>المفضلة</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>المفضلة</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>الخصوصية</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>الاحتفاظ بسجل الاتصالات</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>يحفظ المضيف وتاريخ ووقت كل اتصال فقط، على هذا الكمبيوتر. لا يحفظ الأوامر ولا مخرجات الطرفية أبدًا. إيقافه لا يحذف ما حُفظ سابقًا.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>الاحتفاظ بسجل الاتصالات</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>الاحتفاظ بسجل الاتصالات</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>مسح السجل</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>يزيل سجل كل الاتصالات.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>مسح</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>جارٍ تنزيل التحديث والتحقق منه...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>تعذّر تنزيل تحديث صالح. حاول مرة أخرى لاحقًا أو استخدم صفحة الإصدار.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>التحقق تلقائيًا عند فتح التطبيق</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>مساعد الذكاء الاصطناعي</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>صِف ما تريده. يُكتب الأمر عند المحث دون Enter لتتحقق منه أولًا. لا يُرسل إلى المزوّد الذي تختاره سوى نصك، وليس الطرفية ولا المضيفات ولا السجل أبدًا.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>مثال: العثور على الملفات الأكبر من 500 ميغابايت</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>رمز اتصالك</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>تعذّر الوصول إلى خادم اللقاء. تحقق من العنوان.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>أعطِ هذا الرمز للطرف الآخر. عندما يتصل سيُطلب منك السماح.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>إزالة المضيف</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينسخ الرمز إلى الحافظة</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتصل باستخدام رمز الرد الملصق</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتصل بالكمبيوتر صاحب الرمز الملصق</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينهي جلسة الوصول عن بُعد</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يكتب الأمر في الطرفية دون Enter</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يستعلم من المزوّد باستخدام مفتاحك</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يحفظ المفتاح مشفّرًا على هذا الكمبيوتر</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يحذف المفتاح المحفوظ لهذا المزوّد</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينزّل الإصدار الجديد ويتحقق منه ويثبّته</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتخطى الجولة وينتقل إلى الأجهزة المضيفة</value></data>
 </root>

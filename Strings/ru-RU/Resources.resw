@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>Хосты</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>Новый хост</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>Подключиться</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Удалить хост</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Удалить хост</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>Новый хост</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Сохранить</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>Отмена</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>Выйти</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Репозиторий обновлений (владелец/имя)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Запускать вместе с Windows</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Запускать свёрнутым</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Оставлять в области уведомлений при закрытии</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Запускать вместе с Windows</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Запускать свёрнутым</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Оставлять в области уведомлений при закрытии</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>Клиент OpenSSH не установлен. Включите его в разделе «Параметры Windows» &gt; «Система» &gt; «Дополнительные компоненты».</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>Недопустимый хост, пользователь или порт.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>Не удалось начать подключение: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Нет открытых сеансов</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Подключитесь к хосту, чтобы открыть сеанс. Одновременно можно держать открытыми несколько сеансов.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Выбрать хост</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Подключиться</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Подключиться</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>Последнее подключение: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>только что</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} мин назад</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} ч назад</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} дн. назад</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Избранное</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Избранное</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Избранное</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Избранное</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>Конфиденциальность</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>Сохранять журнал подключений</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Сохраняет только хост, дату и время каждого подключения на этом компьютере. Никогда не сохраняет команды и вывод терминала. Отключение не удаляет уже сохранённое.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Сохранять журнал подключений</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Сохранять журнал подключений</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Очистить журнал</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Удаляет запись обо всех подключениях.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Очистить</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Загрузка и проверка обновления...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Не удалось загрузить допустимое обновление. Повторите попытку позже или используйте страницу выпуска.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Проверять автоматически при открытии приложения</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>ИИ-помощник</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>ИИ-помощник</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ИИ-помощник</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>ИИ-помощник</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>ИИ-помощник</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Опишите, что вам нужно. Команда вводится в строку приглашения без Enter, чтобы вы могли её проверить. Выбранному поставщику отправляется только ваш текст, но не терминал, хосты или журнал.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>напр. найти файлы больше 500 МБ</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Ваш код подключения</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Не удалось связаться с сервером встречи. Проверьте адрес.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Сообщите этот код другому человеку. Когда он подключится, вас спросят о разрешении.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Удалить хост</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Копирует код в буфер обмена</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Подключается по вставленному коду ответа</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Подключается к ПК по вставленному коду</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Завершает сеанс удалённого доступа</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Вводит команду в терминал без Enter</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Запрашивает список у провайдера с вашим ключом</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Сохраняет ключ в зашифрованном виде на этом ПК</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Удаляет сохранённый ключ этого провайдера</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Скачивает, проверяет и устанавливает новую версию</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Пропускает тур и открывает хосты</value></data>
 </root>

@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>Hosts</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>Nieuwe host</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>Verbinden</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Host verwijderen</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Host verwijderen</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>Nieuwe host</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Opslaan</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>Annuleren</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>Afsluiten</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Updatesrepository (eigenaar/naam)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Starten met Windows</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Geminimaliseerd starten</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>In het systeemvak houden bij sluiten</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Starten met Windows</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Geminimaliseerd starten</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>In het systeemvak houden bij sluiten</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>De OpenSSH-client is niet geïnstalleerd. Schakel deze in via Windows-instellingen &gt; Systeem &gt; Optionele functies.</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>Ongeldige host, gebruiker of poort.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>Kan de verbinding niet starten: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Geen geopende sessies</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Maak verbinding met een host om een sessie te openen. Je kunt er meerdere tegelijk open houden.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Kies een host</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Verbinden</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Verbinden</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>Laatste verbinding: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>zojuist</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} min geleden</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} u geleden</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} d geleden</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Favoriet</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Favoriet</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Favoriet</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Favoriet</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>Privacy</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>Verbindingsgeschiedenis bewaren</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Slaat alleen de host en de datum en tijd van elke verbinding op, op deze pc. Nooit opdrachten of terminaluitvoer. Uitschakelen verwijdert niet wat al is opgeslagen.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Verbindingsgeschiedenis bewaren</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Verbindingsgeschiedenis bewaren</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Geschiedenis wissen</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Verwijdert de registratie van alle verbindingen.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Wissen</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Update downloaden en controleren...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Kan geen geldige update downloaden. Probeer het later opnieuw of gebruik de releasepagina.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Automatisch controleren wanneer de app wordt geopend</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI-assistent</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI-assistent</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>AI-assistent</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>AI-assistent</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>AI-assistent</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Beschrijf wat je wilt. De opdracht wordt zonder Enter bij de prompt getypt, zodat je hem eerst kunt controleren. Alleen je tekst wordt naar de gekozen provider verzonden, nooit de terminal, hosts of geschiedenis.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>bijv. bestanden groter dan 500 MB zoeken</value></data>
@@ -206,4 +206,15 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Jouw verbindingscode</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>De ontmoetingsserver is niet bereikbaar. Controleer het adres.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Geef deze code aan de ander. Zodra die verbindt, word je gevraagd of je dit toestaat.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Host verwijderen</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Kopieert de code naar het klembord</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Maakt verbinding met de geplakte antwoordcode</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Maakt verbinding met de pc van de geplakte code</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Beëindigt de sessie voor externe toegang</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Typt de opdracht in de terminal, zonder Enter</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Vraagt het op bij de provider met je sleutel</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Slaat de sleutel versleuteld op deze pc op</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Verwijdert de opgeslagen sleutel van deze provider</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Downloadt, controleert en installeert de nieuwe versie</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Slaat de rondleiding over en gaat naar de hosts</value></data>
 </root>

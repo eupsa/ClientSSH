@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>主机</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>新建主机</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>连接</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>删除主机</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>删除主机</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>新建主机</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>保存</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>取消</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>退出</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>更新存储库（所有者/名称）</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>随 Windows 启动</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>最小化启动</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>关闭时保留在托盘</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>随 Windows 启动</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>最小化启动</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>关闭时保留在托盘</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>未安装 OpenSSH 客户端。请在 Windows 设置 &gt; 系统 &gt; 可选功能中启用。</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>主机、用户或端口无效。</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>无法启动连接：{0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>没有打开的会话</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>连接到主机以打开会话。你可以同时保持多个会话打开。</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>选择主机</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>连接</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>连接</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>上次连接：{0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>刚刚</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} 分钟前</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} 小时前</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} 天前</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>收藏</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>收藏</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>收藏</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>收藏</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>隐私</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>保留连接历史记录</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>仅在这台电脑上保存主机以及每次连接的日期和时间。绝不保存命令或终端输出。关闭此选项不会删除已保存的内容。</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>保留连接历史记录</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>保留连接历史记录</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>清除历史记录</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>删除所有连接的记录。</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>清除</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>正在下载并检查更新...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>无法下载有效的更新。请稍后重试或使用发布页面。</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>打开应用时自动检查</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>AI 助手</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>AI 助手</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>AI 助手</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>描述你想做什么。命令会输入到提示符处但不按 Enter，方便你先检查。只会将你的文字发送给你选择的提供商，绝不会发送终端、主机或历史记录。</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>例如：查找大于 500 MB 的文件</value></data>
@@ -206,4 +206,15 @@
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>你的连接代码</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>无法连接到会合服务器。请检查地址。</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>把这个代码告诉对方。对方连接时，你会被询问是否允许。</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>删除主机</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>将代码复制到剪贴板</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>使用粘贴的回复代码进行连接</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>连接到所粘贴代码对应的电脑</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>结束远程访问会话</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>将命令输入终端，不按 Enter</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>使用你的密钥向提供商查询</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>将密钥加密保存在此电脑上</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>删除此提供商已保存的密钥</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>下载、校验并安装新版本</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>跳过导览并转到主机</value></data>
 </root>

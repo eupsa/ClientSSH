@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>Ana bilgisayarlar</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>Yeni ana bilgisayar</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>Bağlan</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Ana bilgisayarı kaldır</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Ana bilgisayarı kaldır</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>Yeni ana bilgisayar</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Kaydet</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>İptal</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>Çık</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Güncelleme deposu (sahip/ad)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Windows ile başlat</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Simge durumunda başlat</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Kapatıldığında bildirim alanında tut</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Windows ile başlat</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Simge durumunda başlat</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Kapatıldığında bildirim alanında tut</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>OpenSSH İstemcisi yüklü değil. Windows Ayarları &gt; Sistem &gt; İsteğe bağlı özellikler bölümünden açın.</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>Geçersiz ana bilgisayar, kullanıcı veya bağlantı noktası.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>Bağlantı başlatılamadı: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>Açık oturum yok</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Oturum açmak için bir ana bilgisayara bağlanın. Aynı anda birkaç oturum açık tutabilirsiniz.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Ana bilgisayar seç</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Bağlan</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Bağlan</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>Son bağlantı: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>şimdi</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>{0} dk önce</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>{0} sa önce</value></data>
   <data name="Time_Days" xml:space="preserve"><value>{0} g önce</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Sık kullanılan</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Sık kullanılan</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Sık kullanılan</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Sık kullanılan</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>Gizlilik</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>Bağlantı geçmişini tut</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Yalnızca ana bilgisayarı ve her bağlantının tarih ve saatini bu bilgisayara kaydeder. Komutları veya terminal çıktısını asla kaydetmez. Kapatmak, önceden kaydedilenleri silmez.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Bağlantı geçmişini tut</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Bağlantı geçmişini tut</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Geçmişi temizle</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Tüm bağlantıların kaydını kaldırır.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Temizle</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Güncelleme indiriliyor ve denetleniyor...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>Geçerli bir güncelleme indirilemedi. Daha sonra yeniden deneyin veya sürüm sayfasını kullanın.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Uygulama açıldığında otomatik denetle</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>Yapay zekâ asistanı</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Yapay zekâ asistanı</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yapay zekâ asistanı</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Yapay zekâ asistanı</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>Yapay zekâ asistanı</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Ne istediğinizi açıklayın. Komut, önce kontrol edebilmeniz için Enter olmadan istemde yazılır. Seçtiğiniz sağlayıcıya yalnızca metniniz gönderilir; terminal, ana bilgisayarlar veya geçmiş asla gönderilmez.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>örn. 500 MB'tan büyük dosyaları bul</value></data>
@@ -206,4 +206,15 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Bağlantı kodunuz</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Buluşma sunucusuna ulaşılamadı. Adresi kontrol edin.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Bu kodu karşıdaki kişiye söyleyin. Bağlandığında izin vermeniz istenecek.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Ana bilgisayarı kaldır</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Kodu panoya kopyalar</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yapıştırılan yanıt koduyla bağlanır</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yapıştırılan kodun bilgisayarına bağlanır</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Uzaktan erişim oturumunu sonlandırır</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komutu terminale Enter'a basmadan yazar</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Anahtarınızla sağlayıcıyı sorgular</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Anahtarı şifreli olarak bu bilgisayara kaydeder</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Bu sağlayıcı için kayıtlı anahtarı siler</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yeni sürümü indirir, doğrular ve yükler</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Turu atlar ve sunuculara gider</value></data>
 </root>

@@ -18,7 +18,7 @@
   <data name="Hosts_Title.Text" xml:space="preserve"><value>Hosts</value></data>
   <data name="Hosts_Add.Text" xml:space="preserve"><value>Nuevo host</value></data>
   <data name="Hosts_Connect.Text" xml:space="preserve"><value>Conectar</value></data>
-  <data name="Hosts_Remove.ToolTipService.ToolTip" xml:space="preserve"><value>Quitar host</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Quitar host</value></data>
   <data name="Editor.Title" xml:space="preserve"><value>Nuevo host</value></data>
   <data name="Editor.PrimaryButtonText" xml:space="preserve"><value>Guardar</value></data>
   <data name="Editor.CloseButtonText" xml:space="preserve"><value>Cancelar</value></data>
@@ -95,9 +95,9 @@
   <data name="Tray_Exit" xml:space="preserve"><value>Salir</value></data>
   <data name="Settings_Update_Repo.Header" xml:space="preserve"><value>Repositorio de actualizaciones (propietario/nombre)</value></data>
   <data name="Settings_Update_Repo.PlaceholderText" xml:space="preserve"><value>eupsa/client-ssh</value></data>
-  <data name="Settings_Startup_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Iniciar con Windows</value></data>
-  <data name="Settings_StartMin_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Iniciar minimizada</value></data>
-  <data name="Settings_Tray_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Mantener en la bandeja al cerrar</value></data>
+  <data name="Settings_Startup_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Iniciar con Windows</value></data>
+  <data name="Settings_StartMin_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Iniciar minimizada</value></data>
+  <data name="Settings_Tray_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Mantener en la bandeja al cerrar</value></data>
   <data name="Terminal_NoSsh" xml:space="preserve"><value>El cliente OpenSSH no está instalado. Actívalo en Configuración de Windows &gt; Sistema &gt; Características opcionales.</value></data>
   <data name="Terminal_InvalidHost" xml:space="preserve"><value>Host, usuario o puerto no válido.</value></data>
   <data name="Terminal_StartFailed" xml:space="preserve"><value>No se pudo iniciar la conexión: {0}</value></data>
@@ -107,18 +107,18 @@
   <data name="Sessions_EmptyTitle.Text" xml:space="preserve"><value>No hay sesiones abiertas</value></data>
   <data name="Sessions_EmptyBody.Text" xml:space="preserve"><value>Conéctate a un host para abrir una sesión. Puedes tener varias abiertas a la vez.</value></data>
   <data name="Sessions_EmptyButton.Text" xml:space="preserve"><value>Elegir un host</value></data>
-  <data name="Hosts_ConnectButton.AutomationProperties.Name" xml:space="preserve"><value>Conectar</value></data>
+  <data name="Hosts_ConnectButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Conectar</value></data>
   <data name="Hosts_LastConnected" xml:space="preserve"><value>Última conexión: {0}</value></data>
   <data name="Time_JustNow" xml:space="preserve"><value>ahora mismo</value></data>
   <data name="Time_Minutes" xml:space="preserve"><value>hace {0} min</value></data>
   <data name="Time_Hours" xml:space="preserve"><value>hace {0} h</value></data>
   <data name="Time_Days" xml:space="preserve"><value>hace {0} d</value></data>
-  <data name="Hosts_Favorite.ToolTipService.ToolTip" xml:space="preserve"><value>Favorito</value></data>
-  <data name="Hosts_Favorite.AutomationProperties.Name" xml:space="preserve"><value>Favorito</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Favorito</value></data>
+  <data name="Hosts_Favorite.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Favorito</value></data>
   <data name="Settings_Privacy.Text" xml:space="preserve"><value>Privacidad</value></data>
   <data name="Settings_History_Title.Text" xml:space="preserve"><value>Guardar historial de conexiones</value></data>
   <data name="Settings_History_Desc.Text" xml:space="preserve"><value>Guarda solo el host y la fecha y hora de cada conexión, en este equipo. Nunca comandos ni salida del terminal. Desactivarlo no borra lo ya guardado.</value></data>
-  <data name="Settings_History_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Guardar historial de conexiones</value></data>
+  <data name="Settings_History_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Guardar historial de conexiones</value></data>
   <data name="Settings_ClearHistory_Title.Text" xml:space="preserve"><value>Borrar historial</value></data>
   <data name="Settings_ClearHistory_Desc.Text" xml:space="preserve"><value>Elimina el registro de todas las conexiones.</value></data>
   <data name="Settings_ClearHistory_Button.Content" xml:space="preserve"><value>Borrar</value></data>
@@ -127,8 +127,8 @@
   <data name="Update_Downloading" xml:space="preserve"><value>Descargando y comprobando la actualización...</value></data>
   <data name="Update_DownloadFailed" xml:space="preserve"><value>No se pudo descargar una actualización válida. Inténtalo más tarde o usa la página de la versión.</value></data>
   <data name="Settings_Update_Auto.Header" xml:space="preserve"><value>Buscar automáticamente al abrir la aplicación</value></data>
-  <data name="Assistant_Toggle.ToolTipService.ToolTip" xml:space="preserve"><value>Asistente de IA</value></data>
-  <data name="Assistant_Toggle.AutomationProperties.Name" xml:space="preserve"><value>Asistente de IA</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Asistente de IA</value></data>
+  <data name="Assistant_Toggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Asistente de IA</value></data>
   <data name="Assistant_Title.Text" xml:space="preserve"><value>Asistente de IA</value></data>
   <data name="Assistant_Privacy.Text" xml:space="preserve"><value>Describe lo que quieres. El comando se escribe en el prompt sin Enter, para que lo revises antes. Solo tu texto se envía al proveedor que elijas, nunca el terminal, los hosts ni el historial.</value></data>
   <data name="Assistant_Prompt.PlaceholderText" xml:space="preserve"><value>p. ej. buscar archivos de más de 500 MB</value></data>
@@ -206,4 +206,15 @@ Díselo en voz alta a la otra persona (llamada o mensaje de voz). Si no es el mi
   <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Tu código de conexión</value></data>
   <data name="Remote_Status_ServerFail" xml:space="preserve"><value>No se pudo contactar con el servidor de encuentro. Revisa la dirección.</value></data>
   <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Dile este código a la otra persona. Cuando se conecte, se te preguntará si lo permites.</value></data>
+  <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Quitar host</value></data>
+  <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Copia el código al portapapeles</value></data>
+  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Conecta usando el código de respuesta pegado</value></data>
+  <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Conecta al PC del código pegado</value></data>
+  <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Termina la sesión de acceso remoto</value></data>
+  <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Escribe el comando en la terminal, sin Enter</value></data>
+  <data name="Assistant_ListModels.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Consulta al proveedor con tu clave</value></data>
+  <data name="Assistant_SaveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Guarda la clave cifrada en este PC</value></data>
+  <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Borra la clave guardada de este proveedor</value></data>
+  <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Descarga, verifica e instala la nueva versión</value></data>
+  <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Omite el tour y va a los hosts</value></data>
 </root>
