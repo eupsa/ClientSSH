@@ -1,0 +1,45 @@
+using ClientSSH.Models;
+using ClientSSH.Terminal;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ClientSSH.Services.Sessions;
+
+/// <summary>One open connection: the host, its live session and any status message to show on the tab.</summary>
+public sealed partial class SessionTab(Host host, string title) : ObservableObject
+{
+    public Host Host { get; } = host;
+
+    [ObservableProperty] public partial string Title { get; set; } = title;
+
+    /// <summary>Null when the session could not start; the terminal keeps its last screen after it ends.</summary>
+    [ObservableProperty] public partial TerminalSession? Session { get; set; }
+
+    [ObservableProperty] public partial string Notice { get; set; } = "";
+    [ObservableProperty] public partial bool HasNotice { get; set; }
+    [ObservableProperty] public partial bool NoticeIsError { get; set; }
+
+    /// <summary>True from the start until the first output arrives.</summary>
+    [ObservableProperty] public partial bool IsConnecting { get; set; }
+
+    /// <summary>True for a moment after the first output, for the "connected" animation.</summary>
+    [ObservableProperty] public partial bool JustConnected { get; set; }
+
+    /// <summary>"reconnecting" after a reconnect, "connecting" the first time.</summary>
+    [ObservableProperty] public partial string ConnectingAnimation { get; set; } = "connecting";
+
+    public void ShowNotice(string message, bool isError)
+    {
+        Notice = message;
+        NoticeIsError = isError;
+        HasNotice = true;
+    }
+
+    public void ClearNotice() => HasNotice = false;
+
+    public void EndSession()
+    {
+        var session = Session;
+        Session = null;
+        session?.Dispose();
+    }
+}
