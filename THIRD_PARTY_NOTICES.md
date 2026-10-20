@@ -1,5 +1,10 @@
 # Third-party notices
 
+## Inter (brand wordmark)
+
+The "ClientSSH" lettering in `brand/` uses Inter SemiBold and Bold, converted to outlines (no font file is shipped).
+Inter is Copyright (c) The Inter Project Authors, licensed under the SIL Open Font License 1.1: https://openfontlicense.org
+
 ## flag-icons (Assets/Flags/*.svg)
 
 Source: https://github.com/lipis/flag-icons (flags/4x3). License text below.

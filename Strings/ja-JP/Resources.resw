@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} がエラーを返しました (HTTP {1})。キーとモデルを確認してください。</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>プロバイダーに接続できませんでした。接続を確認してください。</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>ホストを管理...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>利用可能なモデルを一覧表示</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>モデルを選択していない場合、既定のモデルが廃止された可能性があります。「利用可能なモデルを一覧表示」から選択してください。</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} 個のモデルを読み込みました。</value></data>
 </root>

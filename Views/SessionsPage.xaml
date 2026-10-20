@@ -79,8 +79,11 @@
                             <ComboBox x:Uid="Assistant_Provider" HorizontalAlignment="Stretch"
                                       ItemsSource="{x:Bind Assistant.ProviderNames}"
                                       SelectedIndex="{x:Bind Assistant.ProviderIndex, Mode=TwoWay}" />
-                            <TextBox x:Uid="Assistant_Model" Text="{x:Bind Assistant.Model, Mode=TwoWay}"
-                                     PlaceholderText="{x:Bind Assistant.ModelPlaceholder, Mode=OneWay}" />
+                            <ComboBox x:Uid="Assistant_Model" IsEditable="True" HorizontalAlignment="Stretch"
+                                      ItemsSource="{x:Bind Assistant.Models}" Text="{x:Bind Assistant.Model, Mode=TwoWay}"
+                                      PlaceholderText="{x:Bind Assistant.ModelPlaceholder, Mode=OneWay}" />
+                            <Button x:Uid="Assistant_ListModels" Command="{x:Bind Assistant.ListModelsCommand}"
+                                    IsEnabled="{x:Bind Assistant.HasKey, Mode=OneWay}" />
                             <PasswordBox x:Uid="Assistant_Key" Password="{x:Bind Assistant.ApiKey, Mode=TwoWay}" />
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <Button x:Uid="Assistant_SaveKey" Command="{x:Bind Assistant.SaveKeyCommand}" />

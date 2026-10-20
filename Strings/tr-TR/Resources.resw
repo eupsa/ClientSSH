@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} bir hata döndürdü (HTTP {1}). Anahtarı ve modeli kontrol edin.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Sağlayıcıya ulaşılamadı. Bağlantınızı kontrol edin.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Ana bilgisayarları yönet...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Kullanılabilir modelleri listele</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Bir model seçmediyseniz varsayılan model kaldırılmış olabilir: "Kullanılabilir modelleri listele" seçeneğini kullanıp bir model seçin.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} model yüklendi.</value></data>
 </root>

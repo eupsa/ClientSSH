@@ -38,6 +38,7 @@ public sealed class TrayService(ISettingsStore settings)
 
     public void Show()
     {
+        if (_window?.AppWindow.Presenter is OverlappedPresenter { State: OverlappedPresenterState.Minimized } presenter) presenter.Restore();
         _window?.AppWindow.Show();
         _window?.Activate();
     }

@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} ha restituito un errore (HTTP {1}). Controlla la chiave e il modello.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Impossibile raggiungere il provider. Verifica la connessione.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Gestisci host...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Elenca i modelli disponibili</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Se non hai scelto un modello, quello predefinito potrebbe essere stato ritirato: usa "Elenca i modelli disponibili" e scegline uno.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modelli caricati.</value></data>
 </root>

@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} ने त्रुटि लौटाई (HTTP {1})। कुंजी और मॉडल जाँचें।</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>प्रदाता तक नहीं पहुँचा जा सका। अपना कनेक्शन जाँचें।</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>होस्ट प्रबंधित करें...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>उपलब्ध मॉडल दिखाएँ</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>यदि आपने कोई मॉडल नहीं चुना है, तो डिफ़ॉल्ट मॉडल बंद हो गया होगा: "उपलब्ध मॉडल दिखाएँ" का उपयोग करें और एक चुनें।</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} मॉडल लोड हुए।</value></data>
 </root>

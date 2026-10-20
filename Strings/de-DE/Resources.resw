@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} hat einen Fehler zurückgegeben (HTTP {1}). Prüfen Sie Schlüssel und Modell.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Der Anbieter ist nicht erreichbar. Prüfen Sie Ihre Verbindung.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Hosts verwalten...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Verfügbare Modelle auflisten</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Falls Sie kein Modell gewählt haben, wurde das Standardmodell eventuell eingestellt: Verwenden Sie „Verfügbare Modelle auflisten“ und wählen Sie eines.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} Modelle geladen.</value></data>
 </root>

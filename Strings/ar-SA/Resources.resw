@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>أرجع {0} خطأ (HTTP {1}). تحقق من المفتاح والنموذج.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>تعذّر الوصول إلى المزوّد. تحقق من اتصالك.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>إدارة المضيفات...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>عرض النماذج المتاحة</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>إذا لم تختر نموذجًا، فقد يكون النموذج الافتراضي قد أُوقف: استخدم «عرض النماذج المتاحة» واختر واحدًا.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>تم تحميل {0} نموذجًا.</value></data>
 </root>

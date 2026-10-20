@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} 返回了错误 (HTTP {1})。请检查密钥和模型。</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>无法连接到提供商。请检查你的网络连接。</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>管理主机...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>列出可用模型</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>如果你没有选择模型，默认模型可能已停用：请使用“列出可用模型”并选择一个。</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>已加载 {0} 个模型。</value></data>
 </root>

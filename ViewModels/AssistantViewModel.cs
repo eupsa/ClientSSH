@@ -36,6 +36,9 @@ public sealed partial class AssistantViewModel : ObservableObject
     [ObservableProperty] public partial string ApiKey { get; set; } = "";
     [ObservableProperty] public partial bool HasKey { get; set; }
 
+    /// <summary>Filled by "List models"; the Model box stays free text, so any id can be typed.</summary>
+    public System.Collections.ObjectModel.ObservableCollection<string> Models { get; } = [];
+
     /// <summary>Raised after a command was typed, so the page can give the keyboard back to the terminal.</summary>
     public event Action? CommandInserted;
 
@@ -58,6 +61,7 @@ public sealed partial class AssistantViewModel : ObservableObject
     {
         if (!_ready) return;
         Model = ""; // each provider has its own model ids
+        Models.Clear();
         _settings.Save(_settings.Current with { AiProvider = Provider, AiModel = "" });
         Refresh();
     }
@@ -84,6 +88,22 @@ public sealed partial class AssistantViewModel : ObservableObject
         ApiKey = "";
         Refresh();
         Status = Loc.Get("Assistant_KeySaved");
+    }
+
+    [RelayCommand]
+    private async Task ListModelsAsync()
+    {
+        Status = Loc.Get("Assistant_Thinking");
+        var result = await _assistant.ListModelsAsync();
+        if (result.Models is null)
+        {
+            Status = result.Error ?? "";
+            return;
+        }
+
+        Models.Clear();
+        foreach (var id in result.Models) Models.Add(id);
+        Status = string.Format(Loc.Get("Assistant_ModelsLoaded"), Models.Count);
     }
 
     [RelayCommand]

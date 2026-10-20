@@ -29,6 +29,8 @@ namespace ClientSSH
             // Must run before any UI loads so resources resolve in the chosen language.
             Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride =
                 GetService<ISettingsStore>().Current.Language;
+            // Before anything touches the data folder: a second launch only wakes the first one.
+            if (!SingleInstance.TryAcquire()) Environment.Exit(0);
             RunMarker.Begin();
             InitializeComponent();
             UnhandledException += (_, e) => LogCrash(e.Exception);
@@ -51,6 +53,7 @@ namespace ClientSSH
         {
             MainWindow = new MainWindow();
             MainWindow.Activate();
+            SingleInstance.OnSecondLaunch(() => MainWindow.DispatcherQueue.TryEnqueue(GetService<TrayService>().Show));
 
             if (LaunchedByStartup && GetService<ISettingsStore>().Current.StartMinimized)
                 GetService<TrayService>().HideToTray();

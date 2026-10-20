@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} a renvoyé une erreur (HTTP {1}). Vérifiez la clé et le modèle.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Impossible de joindre le fournisseur. Vérifiez votre connexion.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Gérer les hôtes...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Lister les modèles disponibles</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Si vous n'avez pas choisi de modèle, celui par défaut a peut-être été retiré : utilisez « Lister les modèles disponibles » et choisissez-en un.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modèles chargés.</value></data>
 </root>

@@ -13,6 +13,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - Paste in the terminal with Ctrl+V, Ctrl+Shift+V or right click. Pasted text is cleaned of control characters.
 - 12 new languages: Spanish, French, German, Italian, Russian, Chinese (Simplified), Japanese, Korean, Arabic, Hindi, Turkish and Dutch, with flags in the language picker. Arabic mirrors the interface. These translations were machine-made: corrections are welcome.
 
+- Only one ClientSSH runs at a time: opening it again brings the running window to the front (also from the tray or minimized). A separate data folder still runs on its own.
+- AI assistant: "List available models" asks your provider which models your key can use, so a retired default is easy to replace.
+
 ### Changed
 - The "+" button in the tab bar lists your saved hosts next to it and opens the new tab there, instead of going back to the hosts page.
 - Lighter idle terminal: the cursor blink no longer redraws when there is no cursor to blink, and rows are drawn without per-row allocations.

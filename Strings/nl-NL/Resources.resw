@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} gaf een fout terug (HTTP {1}). Controleer de sleutel en het model.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Kan de provider niet bereiken. Controleer je verbinding.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Hosts beheren...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Beschikbare modellen tonen</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Als je geen model hebt gekozen, is het standaardmodel mogelijk ingetrokken: gebruik "Beschikbare modellen tonen" en kies er een.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} modellen geladen.</value></data>
 </root>

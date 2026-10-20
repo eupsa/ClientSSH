@@ -10,9 +10,15 @@ namespace ClientSSH.Services.Assistant;
 /// <summary>Command text on success, or a message for the user.</summary>
 public sealed record AssistantResult(string? Command, string? Error = null);
 
+/// <summary>Model ids on success, or a message for the user.</summary>
+public sealed record ModelsResult(IReadOnlyList<string>? Models, string? Error = null);
+
 public interface IAssistantService
 {
     Task<AssistantResult> AskAsync(string prompt);
+
+    /// <summary>Asks the provider which models this key can use, so a retired default can be replaced.</summary>
+    Task<ModelsResult> ListModelsAsync();
 }
 
 /// <summary>
@@ -49,7 +55,11 @@ public sealed partial class AssistantService(ISettingsStore settings, AiKeyStore
             using var request = BuildRequest(provider, model, key, prompt);
             using var response = await Http.SendAsync(request);
             if (!response.IsSuccessStatusCode)
-                return new AssistantResult(null, string.Format(Loc.Get("Assistant_Failed"), AiProviders.DisplayName(provider), (int)response.StatusCode));
+            {
+                var message = string.Format(Loc.Get("Assistant_Failed"), AiProviders.DisplayName(provider), (int)response.StatusCode);
+                // 404 usually means the model id was retired: point to the list instead of leaving the user guessing.
+                return new AssistantResult(null, response.StatusCode == HttpStatusCode.NotFound ? $"{message} {Loc.Get("Assistant_ModelHint")}" : message);
+            }
 
             var command = CommandText.Clean(ExtractText(provider, JsonNode.Parse(await response.Content.ReadAsStringAsync())));
             return command.Length == 0 ? new AssistantResult(null, Loc.Get("Assistant_Empty")) : new AssistantResult(command);
@@ -58,6 +68,40 @@ public sealed partial class AssistantService(ISettingsStore settings, AiKeyStore
         {
             return new AssistantResult(null, Loc.Get("Assistant_Offline"));
         }
+    }
+
+    public async Task<ModelsResult> ListModelsAsync()
+    {
+        var provider = settings.Current.AiProvider;
+        var key = keys.Get(provider);
+        if (key is null) return new ModelsResult(null, Loc.Get("Assistant_NoKey"));
+
+        try
+        {
+            using var request = provider switch
+            {
+                AiProvider.Claude => Get("https://api.anthropic.com/v1/models?limit=100", ("x-api-key", key), ("anthropic-version", "2023-06-01")),
+                AiProvider.Gemini => Get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=100", ("x-goog-api-key", key)),
+                AiProvider.Groq => Get("https://api.groq.com/openai/v1/models", ("Authorization", $"Bearer {key}")),
+                _ => Get("https://api.openai.com/v1/models", ("Authorization", $"Bearer {key}")),
+            };
+            using var response = await Http.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+                return new ModelsResult(null, string.Format(Loc.Get("Assistant_Failed"), AiProviders.DisplayName(provider), (int)response.StatusCode));
+
+            return new ModelsResult(ModelList.Parse(provider, await response.Content.ReadAsStringAsync()));
+        }
+        catch (Exception e) when (e is HttpRequestException or TaskCanceledException or System.Text.Json.JsonException)
+        {
+            return new ModelsResult(null, Loc.Get("Assistant_Offline"));
+        }
+    }
+
+    private static HttpRequestMessage Get(string url, params (string Name, string Value)[] headers)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        foreach (var (name, value) in headers) request.Headers.Add(name, value);
+        return request;
     }
 
     private static HttpRequestMessage BuildRequest(AiProvider provider, string model, string key, string prompt)

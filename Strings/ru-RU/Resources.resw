@@ -151,4 +151,7 @@
   <data name="Assistant_Failed" xml:space="preserve"><value>{0} вернул ошибку (HTTP {1}). Проверьте ключ и модель.</value></data>
   <data name="Assistant_Offline" xml:space="preserve"><value>Не удалось связаться с поставщиком. Проверьте подключение.</value></data>
   <data name="Sessions_ManageHosts" xml:space="preserve"><value>Управление хостами...</value></data>
+  <data name="Assistant_ListModels.Content" xml:space="preserve"><value>Показать доступные модели</value></data>
+  <data name="Assistant_ModelHint" xml:space="preserve"><value>Если вы не выбрали модель, модель по умолчанию могла быть снята с поддержки: нажмите «Показать доступные модели» и выберите одну.</value></data>
+  <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>Загружено моделей: {0}.</value></data>
 </root>
