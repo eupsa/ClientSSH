@@ -1,0 +1,351 @@
+<title>ClientSSH Brand Kit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: kit de marca em uma coluna larga; navegação fixa por seção; cada asset sobre um "palco" que alterna claro / escuro / transparente */
+:root {
+  --bg: #F4F5F8; --surface: #FFFFFF; --fg: #05070D; --muted: #4A5170; --line: #DCDFE8;
+  --accent: #1E3A8A; --accent-soft: #E3E9F8; --navy: #0F1F57; --mint: #FFFFFF;
+  --stage-light: #FFFFFF; --stage-dark: #0F1F57; --check-a: #E8EAF0; --check-b: #FFFFFF;
+  --f-display: "Bricolage Grotesque", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #05070D; --surface: #0C1226; --fg: #F2F4FA; --muted: #9AA3C2; --line: #1D2647;
+  --accent: #FFFFFF; --accent-soft: #1E3A8A; --check-a: #111A36; --check-b: #0A1024; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #05070D; --surface: #0C1226; --fg: #F2F4FA; --muted: #9AA3C2; --line: #1D2647;
+  --accent: #FFFFFF; --accent-soft: #1E3A8A; --check-a: #111A36; --check-b: #0A1024; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--f-body); margin: 0 }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em }
+h2 { font-size: 1.9rem; font-weight: 700 }
+h3 { font-size: 1.05rem; font-weight: 600; font-family: var(--f-body) }
+code, .mono { font-family: var(--f-mono); font-size: .86em }
+p { margin: 0; max-width: 65ch }
+.muted { color: var(--muted) }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg) }
+nav.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line) }
+nav.top .wrap { display: flex; gap: 6px 18px; align-items: center; flex-wrap: wrap; padding-block: 10px }
+nav.top .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-right: auto }
+nav.top .brand svg { width: 26px; height: 26px }
+nav.top a { color: var(--muted); text-decoration: none; font-size: .9rem }
+nav.top a:hover, nav.top a:focus-visible { color: var(--fg) }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden }
+.seg button { font: 500 .78rem var(--f-body); border: 0; background: transparent; color: var(--muted); padding: 5px 10px; cursor: pointer }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg) }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+
+header.hero { padding-block: 48px 28px }
+header.hero .wrap { display: grid; grid-template-columns: 240px 1fr; gap: 32px; align-items: center }
+#hero-anim { width: 240px; height: 240px; max-width: 100% }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; line-height: 1 }
+.hero h1 span { color: var(--accent) }
+.hero p { margin-top: 14px; font-size: 1.05rem; color: var(--muted) }
+.prompt { margin-top: 18px; font-family: var(--f-mono); font-size: .9rem; color: var(--accent) }
+.prompt b { animation: blink 1s steps(1) infinite; font-weight: 400 }
+@keyframes blink { 50% { opacity: 0 } }
+
+section { padding-block: 40px; border-top: 1px solid var(--line) }
+section > .wrap > header { display: flex; flex-wrap: wrap; align-items: end; gap: 8px 24px; margin-bottom: 22px }
+section > .wrap > header p { flex: 1 1 320px }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) }
+.grid.anims { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) }
+.grid.wide { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0 }
+.stage { aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 18px; max-width: 100%; transition: background .2s }
+.grid.wide .stage { aspect-ratio: 16 / 7 }
+.stage img, .stage .lot { max-width: 100%; max-height: 100%; }
+.stage.light { background: var(--stage-light) }
+.stage.dark { background: var(--stage-dark) }
+.stage.check { background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 16px 16px }
+.meta { padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); flex: 1 }
+.meta .row { display: flex; justify-content: space-between; align-items: center; gap: 8px }
+.meta code { color: var(--muted); word-break: break-all }
+.meta .tag { font: 600 .68rem var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 2px 6px; border-radius: 4px; white-space: nowrap }
+.bar { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px }
+.btn { font: 500 .78rem var(--f-body); border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 6px; padding: 4px 9px; cursor: pointer }
+.btn:hover { border-color: var(--fg) }
+.lot { width: 180px; height: 180px }
+
+.palette { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) }
+.chip { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); text-align: left; padding: 0; cursor: pointer; color: var(--fg); font: inherit }
+.chip .sw { height: 84px }
+.chip .tx { padding: 10px 12px; display: flex; flex-direction: column; gap: 2px }
+.chip .tx b { font-weight: 600 }
+.chip .tx span { font-family: var(--f-mono); font-size: .8rem; color: var(--muted) }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface) }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 8px 14px; border-bottom: 1px solid var(--line); vertical-align: middle }
+th { font: 600 .72rem var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--bg) }
+td.pv { width: 140px }
+td.pv div { width: 120px; height: 72px; display: grid; place-items: center; border-radius: 6px; background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 12px 12px }
+td.pv img { max-width: 112px; max-height: 64px; image-rendering: auto }
+tr.grp td { background: var(--bg); font-weight: 600 }
+
+pre { background: var(--navy); color: #E6E8FF; padding: 16px; border-radius: 12px; overflow-x: auto; font: .82rem/1.6 var(--f-mono); margin: 0 }
+pre .c { color: #8E9BCB } pre .k { color: #FFFFFF; font-weight: 600 }
+.cols { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) }
+.cols > div { display: flex; flex-direction: column; gap: 10px; min-width: 0 }
+.toast { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-size: .85rem; opacity: 0; transition: opacity .2s; pointer-events: none }
+.toast.on { opacity: 1 }
+footer { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem }
+@media (max-width: 640px) {
+  header.hero .wrap { grid-template-columns: 1fr; justify-items: start }
+  #hero-anim { width: 180px; height: 180px }
+  .grid.anims { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) }
+.grid.wide { grid-template-columns: 1fr }
+  nav.top .links { display: none }
+}
+@media (prefers-reduced-motion: reduce) { .prompt b { animation: none } }
+</style>
+
+<nav class="top"><div class="wrap">
+  <div class="brand"><span id="nav-icon"></span>ClientSSH <span class="muted" style="font-weight:400">brand kit</span></div>
+  <span class="links" style="display:flex;gap:16px;flex-wrap:wrap">
+    <a href="#logo">Logo</a><a href="#cores">Cores</a><a href="#animacoes">Animações</a><a href="#msix">Ícones do app</a><a href="#uso">Uso</a>
+  </span>
+  <div class="seg" role="group" aria-label="Fundo dos previews">
+    <button type="button" data-stage="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-stage="light" aria-pressed="false">Claro</button>
+    <button type="button" data-stage="dark" aria-pressed="false">Escuro</button>
+    <button type="button" data-stage="check" aria-pressed="false">Transp.</button>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div id="hero-anim" aria-label="Animação de abertura da logo"></div>
+  <div>
+    <h1>Client<span>SSH</span></h1>
+    <p>Identidade visual do cliente SSH open source para Windows, só em azul-escuro, preto e branco. O símbolo é um "C" aberto com o prompt <code>&gt;_</code> dentro: o cliente e o shell numa forma só, com a saída do anel apontando para o servidor.</p>
+    <div class="prompt">$ ssh usuario@servidor <b>▍</b></div>
+  </div>
+</div></header>
+
+<section id="logo"><div class="wrap">
+  <header><h2>Logo</h2><p class="muted">Arquivos SVG em <code>logo/</code> e PNGs em <code>png/</code>. O símbolo puro usa grade 24×24 com traço de 2px. Em 16–32 px use a versão "small" do tile, com traço mais grosso.</p></header>
+  <div class="grid" id="g-logo"></div>
+  <h3 style="margin:28px 0 14px">Assinaturas com nome</h3>
+  <div class="grid wide" id="g-word"></div>
+</div></section>
+
+<section id="cores"><div class="wrap">
+  <header><h2>Cores e tipografia</h2><p class="muted">Clique numa cor para copiar o hex. Só azul-escuro, preto e branco. Nome em Inter SemiBold + Bold (OFL), já convertido em curvas nos SVGs.</p></header>
+  <div class="palette" id="palette"></div>
+</div></section>
+
+<section id="animacoes"><div class="wrap">
+  <header><h2>Animações</h2><p class="muted">20 animações em Lottie JSON (60 fps, 240×240) na pasta <code>anim/</code>, cobrindo os estados de uma sessão SSH. Cada uma tem versão para tema claro e <code>.dark.json</code> para tema escuro. Clique no palco para pausar.</p></header>
+  <div class="grid anims" id="g-anim"></div>
+</div></section>
+
+<section id="msix"><div class="wrap">
+  <header><h2>Ícones do app</h2><p class="muted">Pasta <code>msix/</code> pronta para substituir <code>Assets/</code> do projeto WinUI empacotado. Escalas 100–400% e targetsizes 16–256 (com altform-unplated e lightunplated).</p></header>
+  <div class="table-wrap"><table><thead><tr><th>Preview</th><th>Arquivo</th><th>Pixels</th><th>Onde aparece</th></tr></thead><tbody id="t-msix"></tbody></table></div>
+</div></section>
+
+<section id="uso"><div class="wrap">
+  <header><h2>Uso no projeto</h2><p class="muted">Trechos para o <code>Package.appxmanifest</code> e para tocar as animações no WinUI 3.</p></header>
+  <div class="cols">
+    <div><h3>Package.appxmanifest</h3><pre id="code-manifest"></pre></div>
+    <div><h3>Lottie no WinUI 3 (XAML)</h3><pre id="code-xaml"></pre>
+      <p class="muted">Para C++/WinRT, o caminho mais leve é gerar código com o <code>LottieGen</code> (pacote CommunityToolkit Lottie-Windows), que converte o JSON numa classe nativa, sem parser em runtime.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">ClientSSH · MIT · assets v2. Nada aqui chama servidores externos além das fontes e do player Lottie.</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+const DATA = __DATA__;
+const $ = (s, r = document) => r.querySelector(s);
+const el = (t, a = {}, h = "") => { const e = document.createElement(t); for (const k in a) e.setAttribute(k, a[k]); if (h) e.innerHTML = h; return e; };
+const toast = m => { const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("on"), 1400); };
+async function copy(txt) { try { await navigator.clipboard.writeText(txt); toast("Copiado: " + txt); } catch { toast(txt); } }
+const svgUrl = s => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(s);
+
+let stageMode = "auto";
+const stages = [];
+function applyStage(st) {
+  const mode = stageMode === "auto" ? st.dataset.pref : stageMode;
+  st.className = "stage " + mode;
+}
+
+function card(grid, { src, name, tag, pref = "check", desc, w }) {
+  const c = el("div", { class: "card" });
+  const st = el("div", { class: "stage" }); st.dataset.pref = pref;
+  const img = el("img", { src, alt: name, loading: "lazy" }); if (w) img.style.width = w;
+  st.append(img); stages.push(st); applyStage(st);
+  const m = el("div", { class: "meta" });
+  m.append(el("div", { class: "row" }, `<b>${desc}</b>${tag ? `<span class="tag">${tag}</span>` : ""}`), el("code", {}, name));
+  c.append(st, m); grid.append(c);
+}
+
+// navegação
+$("#nav-icon").innerHTML = DATA.svg["logo/clientssh-icon.svg"];
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  stageMode = b.dataset.stage;
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  stages.forEach(applyStage);
+  anims.forEach(a => a.reload());
+}));
+
+// logos
+const LOGOS = [
+  ["logo/clientssh-icon.svg", "Ícone do app (tile azul)", "principal", "check", "70%"],
+  ["logo/clientssh-icon-light.svg", "Ícone, variante branca", "", "dark", "70%"],
+  ["logo/clientssh-icon-black.svg", "Ícone, variante preta", "", "check", "70%"],
+  ["logo/clientssh-icon-small.svg", "Ícone para 16–32 px", "small", "check", "70%"],
+  ["logo/clientssh-mark-blue.svg", "Símbolo azul", "24×24", "light", "55%"],
+  ["logo/clientssh-mark-black.svg", "Símbolo preto", "24×24", "light", "55%"],
+  ["logo/clientssh-mark-white.svg", "Símbolo branco", "24×24", "dark", "55%"],
+  ["logo/clientssh-mark-mono.svg", "Símbolo mono (currentColor)", "mono", "light", "55%"],
+];
+LOGOS.forEach(([p, d, t, pref, w]) => card($("#g-logo"), { src: svgUrl(DATA.svg[p]), name: p, desc: d, tag: t, pref, w }));
+[
+  ["logo/clientssh-wordmark.svg", "Horizontal", "light"],
+  ["logo/clientssh-wordmark-on-dark.svg", "Horizontal sobre escuro", "dark"],
+  ["logo/clientssh-wordmark-tagline.svg", "Horizontal com tagline", "light"],
+  ["logo/clientssh-lockup-stacked.svg", "Empilhada", "light"],
+  ["logo/clientssh-lockup-stacked-on-dark.svg", "Empilhada sobre escuro", "dark"],
+  ["png/social-preview-1280x640.png", "Social preview do GitHub (1280×640)", "check"],
+].forEach(([p, d, pref]) => card($("#g-word"), { src: p.endsWith(".svg") ? svgUrl(DATA.svg[p]) : DATA.bin[p], name: p, desc: d, pref, w: p.includes("stacked") ? "48%" : "86%" }));
+
+// paleta
+[
+  ["Azul-escuro", "#1E3A8A", "Cor principal: tile, destaques, botões"],
+  ["Azul-noite", "#0F1F57", "Fim do gradiente, fundo do splash"],
+  ["Azul do topo", "#2747A6", "Início do gradiente do tile"],
+  ["Preto", "#05070D", "Texto e fundos escuros"],
+  ["Branco", "#FFFFFF", "Símbolo sobre azul e preto"],
+].forEach(([n, h, d]) => {
+  const b = el("button", { class: "chip", type: "button", title: d });
+  b.innerHTML = `<div class="sw" style="background:${h}"></div><div class="tx"><b>${n}</b><span>${h}</span><small class="muted">${d}</small></div>`;
+  b.addEventListener("click", () => copy(h)); $("#palette").append(b);
+});
+
+// animações
+const anims = [];
+const ANIMS = [
+  ["logo-reveal", "Abertura da logo", "splash"],
+  ["logo-hover", "Hover da logo", "hover"],
+  ["loading-logo", "Carregando (logo)", "loop"],
+  ["loading-ring", "Carregando (anel)", "loop"],
+  ["loading-dots", "Carregando (pontos)", "loop"],
+  ["connecting", "Conectando ao host", "loop"],
+  ["authenticating", "Autenticando", "loop"],
+  ["host-key-verified", "Host key verificada", "uma vez"],
+  ["host-key-warning", "Host key mudou (aviso)", "loop"],
+  ["connected", "Conectado", "uma vez"],
+  ["error", "Falha na conexão", "uma vez"],
+  ["reconnecting", "Reconectando", "loop"],
+  ["disconnected", "Desconectado", "loop"],
+  ["offline", "Sem rede", "loop"],
+  ["upload", "Enviando arquivo", "loop"],
+  ["download", "Baixando arquivo", "loop"],
+  ["saving", "Salvando", "loop"],
+  ["copied", "Copiado", "uma vez"],
+  ["terminal-cursor", "Terminal vazio / prompt", "loop"],
+  ["running-command", "Executando comando", "loop"],
+];
+const prefersDark = () => matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light" || document.documentElement.dataset.theme === "dark";
+ANIMS.forEach(([key, desc, tag]) => {
+  const themed = key !== "logo-reveal";
+  const c = el("div", { class: "card" });
+  const st = el("div", { class: "stage", role: "button", tabindex: "0", "aria-label": "Pausar ou tocar " + desc });
+  st.dataset.pref = key === "logo-reveal" ? "light" : "auto-theme";
+  const box = el("div", { class: "lot" }); st.append(box);
+  const m = el("div", { class: "meta" });
+  const nameEl = el("code");
+  m.append(el("div", { class: "row" }, `<b>${desc}</b><span class="tag">${tag}</span>`), nameEl);
+  const bar = el("div", { class: "bar" });
+  const bReplay = el("button", { class: "btn", type: "button" }, "Repetir");
+  const bSlow = el("button", { class: "btn", type: "button", "aria-pressed": "false" }, "0.5×");
+  const bCopy = el("button", { class: "btn", type: "button" }, "Copiar JSON");
+  bar.append(bReplay, bSlow, bCopy); m.append(bar);
+  c.append(st, m); $("#g-anim").append(c);
+
+  const a = { anim: null, file: "" };
+  a.reload = () => {
+    const mode = stageMode === "auto" ? (st.dataset.pref === "light" ? "dark" : (prefersDark() ? "dark" : "light")) : stageMode;
+    st.className = "stage " + (key === "logo-reveal" && stageMode === "auto" ? "light" : mode);
+    const dark = mode === "dark" && themed;
+    a.file = `anim/${key}${dark ? ".dark" : ""}.json`;
+    nameEl.textContent = a.file;
+    if (a.anim) a.anim.destroy();
+    if (!window.lottie) { box.innerHTML = '<p class="muted" style="font-size:.8rem;text-align:center">Player Lottie não carregou (sem internet?). O JSON está em ' + a.file + "</p>"; return; }
+    const loop = DATA.meta[key] !== false;
+    a.anim = lottie.loadAnimation({ container: box, renderer: "svg", loop, autoplay: !matchMedia("(prefers-reduced-motion: reduce)").matches, animationData: JSON.parse(JSON.stringify(DATA.anim[a.file])) });
+    if (!loop) a.anim.addEventListener("complete", () => setTimeout(() => a.anim && a.anim.goToAndPlay(0, true), 1200));
+    if (bSlow.getAttribute("aria-pressed") === "true") a.anim.setSpeed(.5);
+  };
+  const toggle = () => a.anim && (a.anim.isPaused ? a.anim.play() : a.anim.pause());
+  st.addEventListener("click", toggle);
+  st.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+  bReplay.addEventListener("click", () => a.anim && a.anim.goToAndPlay(0, true));
+  bSlow.addEventListener("click", () => { const on = bSlow.getAttribute("aria-pressed") !== "true"; bSlow.setAttribute("aria-pressed", on); bSlow.textContent = on ? "1×" : "0.5×"; a.anim && a.anim.setSpeed(on ? .5 : 1); });
+  bCopy.addEventListener("click", () => copy(JSON.stringify(DATA.anim[a.file])).then(() => toast("JSON copiado: " + a.file)));
+  anims.push(a);
+});
+function startAnims() { anims.forEach(a => a.reload()); if (window.lottie) lottie.loadAnimation({ container: $("#hero-anim"), renderer: "svg", loop: false, autoplay: !matchMedia("(prefers-reduced-motion: reduce)").matches, animationData: DATA.anim["anim/logo-reveal.json"] }); else $("#hero-anim").innerHTML = DATA.svg["logo/clientssh-icon.svg"]; }
+startAnims();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => anims.forEach(a => a.reload()));
+new MutationObserver(() => anims.forEach(a => a.reload())).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+// tabela MSIX
+const WHERE = {
+  Square44x44Logo: "Barra de tarefas, menu Iniciar, Alt+Tab, lista de apps",
+  Square71x71Logo: "Bloco pequeno",
+  Square150x150Logo: "Bloco médio",
+  Square310x310Logo: "Bloco grande",
+  Wide310x150Logo: "Bloco largo",
+  StoreLogo: "Instalador / Store",
+  SplashScreen: "Tela de abertura (fundo #0F1F57 no manifesto)",
+  LockScreenLogo: "Notificação na tela de bloqueio",
+};
+let last = "";
+DATA.msix.forEach(([f, w, h]) => {
+  const g = f.split(".")[0];
+  if (g !== last) { $("#t-msix").append(el("tr", { class: "grp" }, `<td colspan="4">${g} <span class="muted" style="font-weight:400">· ${WHERE[g] || ""}</span></td>`)); last = g; }
+  const kind = f.includes("lightunplated") ? "tema claro, sem placa" : f.includes("unplated") ? "sem placa" : f.includes("targetsize") ? "tamanho fixo" : "escala " + (f.match(/scale-(\d+)/) || [])[1] + "%";
+  $("#t-msix").append(el("tr", {}, `<td class="pv"><div><img loading="lazy" src="${DATA.bin["msix/" + f]}" alt="${f}"></div></td><td><code>${f}</code></td><td class="mono">${w}×${h}</td><td class="muted">${kind}</td>`));
+});
+$("#t-msix").append(el("tr", { class: "grp" }, `<td colspan="4">Ícones .ico</td>`));
+[["ico/ClientSSH.ico", "16–256 px, ícone do .exe (ApplicationIcon)"], ["ico/favicon.ico", "16/32/48 px, site do projeto"]].forEach(([f, d]) =>
+  $("#t-msix").append(el("tr", {}, `<td class="pv"><div><img src="${DATA.bin["png/icon-48.png"]}" alt=""></div></td><td><code>${f}</code></td><td class="mono">multi</td><td class="muted">${d}</td>`)));
+
+$("#code-manifest").innerHTML = `<span class="c">&lt;!-- Copie msix/* para Assets/ e ajuste o VisualElements --&gt;</span>
+&lt;uap:VisualElements
+  DisplayName=<span class="k">"ClientSSH"</span>
+  Description=<span class="k">"Cliente SSH open source"</span>
+  BackgroundColor=<span class="k">"transparent"</span>
+  Square150x150Logo=<span class="k">"Assets\\Square150x150Logo.png"</span>
+  Square44x44Logo=<span class="k">"Assets\\Square44x44Logo.png"</span>&gt;
+  &lt;uap:DefaultTile
+    Wide310x150Logo=<span class="k">"Assets\\Wide310x150Logo.png"</span>
+    Square71x71Logo=<span class="k">"Assets\\Square71x71Logo.png"</span>
+    Square310x310Logo=<span class="k">"Assets\\Square310x310Logo.png"</span> /&gt;
+  &lt;uap:SplashScreen Image=<span class="k">"Assets\\SplashScreen.png"</span>
+    BackgroundColor=<span class="k">"#0F1F57"</span> /&gt;
+  &lt;uap:LockScreen Notification=<span class="k">"badge"</span>
+    BadgeLogo=<span class="k">"Assets\\LockScreenLogo.png"</span> /&gt;
+&lt;/uap:VisualElements&gt;
+<span class="c">&lt;!-- No Properties: --&gt;</span>
+&lt;Logo&gt;Assets\\StoreLogo.png&lt;/Logo&gt;`;
+$("#code-xaml").innerHTML = `<span class="c">&lt;!-- NuGet: CommunityToolkit.WinUI.Lottie --&gt;</span>
+&lt;AnimatedVisualPlayer x:Name=<span class="k">"Loader"</span>
+    Width=<span class="k">"48"</span> Height=<span class="k">"48"</span> AutoPlay=<span class="k">"True"</span>&gt;
+  &lt;lottie:LottieVisualSource
+    UriSource=<span class="k">"ms-appx:///Assets/anim/loading-logo.json"</span> /&gt;
+&lt;/AnimatedVisualPlayer&gt;
+
+<span class="c">// Trocar por tema: use loading-logo.dark.json
+// quando ActualTheme == ElementTheme::Dark</span>`;
+</script>
