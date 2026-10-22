@@ -20,6 +20,7 @@ public sealed partial class PaneLayoutView : UserControl
         new PropertyMetadata(null, (d, e) => ((PaneLayoutView)d).OnTabChanged((SessionTab?)e.OldValue, (SessionTab?)e.NewValue)));
 
     private readonly Dictionary<SessionPane, SessionView> _views = [];
+    private bool _wasUnloaded;
 
     public SessionTab? Tab
     {
@@ -27,7 +28,21 @@ public sealed partial class PaneLayoutView : UserControl
         set => SetValue(TabProperty, value);
     }
 
-    public PaneLayoutView() => IsTabStop = false;
+    public PaneLayoutView()
+    {
+        IsTabStop = false;
+        // The tabs outlive the page: listen only while shown, so a closed page is not kept alive by their events.
+        Loaded += (_, _) =>
+        {
+            Listen(Tab, true);
+            if (_wasUnloaded) Rebuild(); // the layout may have changed meanwhile
+        };
+        Unloaded += (_, _) =>
+        {
+            Listen(Tab, false);
+            _wasUnloaded = true;
+        };
+    }
 
     /// <summary>Gives the keyboard to the focused pane's terminal.</summary>
     public void FocusTerminal()
@@ -37,19 +52,19 @@ public sealed partial class PaneLayoutView : UserControl
 
     private void OnTabChanged(SessionTab? oldTab, SessionTab? newTab)
     {
-        if (oldTab is not null)
-        {
-            oldTab.Layout.LayoutChanged -= Rebuild;
-            oldTab.Layout.FocusChanged -= FocusTerminal;
-        }
-
-        if (newTab is not null)
-        {
-            newTab.Layout.LayoutChanged += Rebuild;
-            newTab.Layout.FocusChanged += FocusTerminal;
-        }
-
+        Listen(oldTab, false);
+        if (IsLoaded) Listen(newTab, true);
         Rebuild();
+    }
+
+    private void Listen(SessionTab? tab, bool on)
+    {
+        if (tab is null) return;
+        tab.Layout.LayoutChanged -= Rebuild;
+        tab.Layout.FocusChanged -= FocusTerminal;
+        if (!on) return;
+        tab.Layout.LayoutChanged += Rebuild;
+        tab.Layout.FocusChanged += FocusTerminal;
     }
 
     // New views every time: moving a terminal between parents can fire Loaded before Unloaded and drop its canvas.
