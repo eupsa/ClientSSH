@@ -16,6 +16,7 @@ A simple, fast SSH client for Windows. Open source, built with WinUI 3.
 - Guided first-run tour (the tour uses a simulated host, no network)
 - Real terminal: `ssh.exe` in a Windows pseudo console (ConPTY), drawn with Win2D
 - Brand animations (Lottie) for the splash, empty states and connection status
+- Command palette (**Ctrl+Shift+P**, or the search button in the title bar): type to find any action, such as opening a saved host, closing or restoring a tab, switching the theme, going to a page or checking for updates
 - Tabs: several simultaneous sessions, kept running while you browse hosts and settings
 - Settings: language, theme, terminal font size, start with Windows, start minimized, keep in tray when closed
 - Update check against the GitHub releases of a repository you can change, with a one-click update (the download is checked against `SHA256SUMS.txt`)
@@ -99,6 +100,7 @@ dotnet test tests/ClientSSH.Tests
 | `Services/Shell` | Navigation, dialogs, theme, tray icon, start with Windows |
 | `Services/Updates` | Update check, verified download, crash marker |
 | `Services/Localization` | Reads strings for text produced in code |
+| `Services/Commands` | Command palette registry (`ICommandRegistry`), fuzzy matcher and the built-in commands |
 | `Services/Sessions` | `SessionManager`: the open tabs and their live sessions |
 | `Services/Demo` | The tour's in-memory demo host |
 | `Terminal/` | Terminal engine: ConPTY and simulated processes, VT/ANSI parser, ssh command builder |
