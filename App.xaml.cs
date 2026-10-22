@@ -1,4 +1,5 @@
 using ClientSSH.Services.Assistant;
+using ClientSSH.Services.Commands;
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Shell;
 using ClientSSH.Services.Storage;
@@ -86,6 +87,9 @@ namespace ClientSSH
             .AddSingleton<AssistantViewModel>()
             .AddSingleton<RemoteViewModel>()
             .AddSingleton<TourViewModel>()
+            .AddSingleton<ICommandRegistry, CommandRegistry>()
+            .AddSingleton<CommandPaletteViewModel>()
+            .AddSingleton<BuiltInCommands>()
             .AddTransient<SettingsViewModel>()
             .AddSingleton<HostsViewModel>()
             .AddTransient<WelcomeViewModel>()

@@ -210,4 +210,22 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>هذا هو رقم هذا الجهاز نفسه.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>جهاز آخر يطلب الدخول إلى هذا الجهاز. افتح ClientSSH للسماح أو الرفض.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>اكتب أمرًا أو اسم مضيف</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>لوحة الأوامر</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>الأوامر</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>لا توجد أوامر مطابقة</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>اتصال SSH جديد…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>إضافة مضيف…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>فتح SSH: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>إغلاق علامة التبويب: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>استعادة الجلسة المغلقة: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>استعادة كل الجلسات المغلقة ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>السمة: فاتح</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>السمة: داكن</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>السمة: اتباع Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>الانتقال إلى المضيفات</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>الانتقال إلى الجلسات</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>الانتقال إلى الإعدادات</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>فتح الوصول عن بُعد</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>التحقق من وجود تحديثات</value></data>
 </root>

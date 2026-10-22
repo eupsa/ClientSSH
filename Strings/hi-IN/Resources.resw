@@ -210,4 +210,22 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>यह इसी PC का अपना नंबर है।</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>कोई दूसरा PC इस PC तक पहुँच माँग रहा है। अनुमति देने या मना करने के लिए ClientSSH खोलें।</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>कोई कमांड या होस्ट नाम टाइप करें</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कमांड पैलेट</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कमांड</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>कोई मिलती-जुलती कमांड नहीं</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>नया SSH कनेक्शन…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>होस्ट जोड़ें…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH खोलें: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>टैब बंद करें: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>बंद सत्र बहाल करें: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>सभी बंद सत्र बहाल करें ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>थीम: हल्की</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>थीम: गहरी</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>थीम: Windows का अनुसरण करें</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>होस्ट पर जाएँ</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>सत्र पर जाएँ</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>सेटिंग पर जाएँ</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>रिमोट एक्सेस खोलें</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>अपडेट जाँचें</value></data>
 </root>

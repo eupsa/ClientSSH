@@ -53,10 +53,28 @@ public sealed partial class MainViewModel : ObservableObject
         if (_settings.Current.AutoUpdateCheck || RunMarker.PreviousRunEndedBadly) await CheckForUpdateAsync();
     }
 
-    private async Task CheckForUpdateAsync()
+    /// <param name="announceAll">Also show "checking", "up to date" and failures (asked by the user, e.g. from the palette).</param>
+    public async Task CheckForUpdateAsync(bool announceAll = false)
     {
+        if (announceAll)
+        {
+            CanInstallUpdate = false;
+            UpdateBarMessage = Loc.Get("Update_Checking");
+            IsUpdateBarOpen = true;
+        }
+
         var result = await _updates.CheckAsync();
-        if (result.Status != UpdateStatus.Available) return;
+        if (result.Status != UpdateStatus.Available)
+        {
+            if (announceAll)
+                UpdateBarMessage = result.Status switch
+                {
+                    UpdateStatus.UpToDate => string.Format(Loc.Get("Update_UpToDate"), result.Version),
+                    UpdateStatus.NoReleases => Loc.Get("Update_None"),
+                    _ => Loc.Get("Update_Failed"),
+                };
+            return;
+        }
 
         _available = result;
         CanInstallUpdate = result.InstallerUrl is not null && result.SumsUrl is not null;

@@ -8,6 +8,7 @@
     Title="ClientSSH">
 
     <Grid x:Name="Root" Background="{ThemeResource AppBackgroundBrush}" Loaded="OnLoaded"
+          PreviewKeyDown="OnRootPreviewKeyDown"
           Opacity="0" Translation="0,28,0">
         <Grid.OpacityTransition>
             <ScalarTransition Duration="0:0:0.6" />
@@ -95,6 +96,8 @@
         <TeachingTip x:Uid="Tour_Step4" Target="{x:Bind HostsNavItem}" IsOpen="{x:Bind Tour.IsStep4, Mode=OneWay}"
                      IsLightDismissEnabled="False"
                      ActionButtonCommand="{x:Bind Tour.NextCommand}" CloseButtonCommand="{x:Bind Tour.FinishCommand}" />
+
+        <local:CommandPalette Grid.RowSpan="2" />
 
         <!-- Splash: covers everything, fades out when the view model drops SplashOpacity to 0. -->
         <Grid Grid.RowSpan="2" Background="{ThemeResource SplashBackgroundBrush}"

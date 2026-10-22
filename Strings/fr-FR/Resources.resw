@@ -210,4 +210,22 @@ Lisez-le à voix haute à l’autre personne (appel ou message vocal). S’il n�
   <data name="Remote_OwnNumber" xml:space="preserve"><value>C'est le numéro de ce PC.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Un autre PC demande à accéder à celui-ci. Ouvrez ClientSSH pour autoriser ou refuser.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Tapez une commande ou un nom d’hôte</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Palette de commandes</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Commandes</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Aucune commande correspondante</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Nouvelle connexion SSH…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Ajouter un hôte…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>Ouvrir SSH : {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Fermer l’onglet : {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Restaurer la session fermée : {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Restaurer toutes les sessions fermées ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Thème : Clair</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Thème : Sombre</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Thème : Suivre Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Aller aux Hôtes</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Aller aux Sessions</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Aller aux Paramètres</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Ouvrir l’accès à distance</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Rechercher des mises à jour</value></data>
 </root>

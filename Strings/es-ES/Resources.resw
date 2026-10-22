@@ -210,4 +210,22 @@ Díselo en voz alta a la otra persona (llamada o mensaje de voz). Si no es el mi
   <data name="Remote_OwnNumber" xml:space="preserve"><value>Ese es el número de este mismo PC.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Otro PC pide acceder a este. Abre ClientSSH para permitirlo o denegarlo.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Escribe un comando o nombre de host</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Paleta de comandos</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Comandos</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>No hay comandos que coincidan</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Nueva conexión SSH…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Agregar host…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>Abrir SSH: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Cerrar pestaña: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Restaurar sesión cerrada: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Restaurar todas las sesiones cerradas ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Tema: Claro</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Tema: Oscuro</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Tema: Seguir Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Ir a Hosts</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Ir a Sesiones</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Ir a Configuración</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Abrir acceso remoto</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Buscar actualizaciones</value></data>
 </root>

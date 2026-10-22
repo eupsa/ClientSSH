@@ -210,4 +210,22 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>这是这台电脑自己的号码。</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>另一台电脑请求访问这台电脑。打开 ClientSSH 以允许或拒绝。</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>输入命令或主机名</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>命令面板</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>命令</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>没有匹配的命令</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>新建 SSH 连接…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>添加主机…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>打开 SSH：{0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>关闭标签页：{0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>恢复已关闭的会话：{0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>恢复所有已关闭的会话（{0}）</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>主题：浅色</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>主题：深色</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>主题：跟随 Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>转到主机</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>转到会话</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>转到设置</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>打开远程访问</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>检查更新</value></data>
 </root>
