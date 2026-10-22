@@ -72,7 +72,7 @@ public sealed partial class RemoteViewModel : ObservableObject
         }
     }
 
-    /// <summary>The other PC's newest picture (BGRA, width, height), on the UI thread.</summary>
+    /// <summary>The other PC's newest picture (BGRA, width, height), on the UI thread. The array is reused after the call: copy it.</summary>
     public event Action<byte[], int, int>? FrameReady;
 
     public RemoteViewModel(ISettingsStore settings, IDialogService dialogs, TrayService tray)
@@ -222,7 +222,9 @@ public sealed partial class RemoteViewModel : ObservableObject
             RemoteViewer? viewer = null;
             viewer = _viewer = new RemoteViewer(() => _ui.TryEnqueue(() =>
             {
-                if (viewer?.TakeLatest() is { } picture) FrameReady?.Invoke(picture.Bgra, picture.Width, picture.Height);
+                if (viewer?.TakeLatest() is not { } picture) return;
+                FrameReady?.Invoke(picture.Bgra, picture.Width, picture.Height); // handlers copy the bytes before returning
+                viewer.Return(picture);
             }));
             session.FrameReceived += viewer.Push;
         }

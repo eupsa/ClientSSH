@@ -61,8 +61,9 @@ public class PerfTests(ITestOutputHelper output)
         return bgra;
     }
 
+    // As ScreenSource and RemoteViewer use them: one NV12 buffer for the stream, a shown picture decoded into again.
     [Fact]
-    public void Video_encode_and_decode_full_hd()
+    public unsafe void Video_encode_and_decode_full_hd()
     {
         if (!Enabled) return;
 
@@ -71,21 +72,25 @@ public class PerfTests(ITestOutputHelper output)
         using var encoder = new H264Encoder(width, height, 60, 8_000_000);
         using var decoder = new H264Decoder();
         var units = new List<byte[]>();
+        var nv12 = new byte[width * height * 3 / 2];
 
         var encode = Measure(() =>
         {
             for (var f = 0; f < frames; f++)
             {
-                var unit = encoder.Encode(Yuv.BgraToNv12(raw[f % raw.Length], width, height, width * 4), keyFrame: f == 0);
+                fixed (byte* bgra = raw[f % raw.Length]) Yuv.BgraToNv12(bgra, width, height, width * 4, nv12);
+                var unit = encoder.Encode(nv12, keyFrame: f == 0);
                 if (unit is not null) units.Add(unit);
             }
         });
         var decoded = 0;
         var decode = Measure(() =>
         {
-            foreach (var unit in units) if (decoder.Decode(unit, width, height) is not null) decoded++;
+            byte[]? shown = null;
+            foreach (var unit in units) if ((shown = decoder.Decode(unit, width, height, shown) ?? shown) is not null) decoded++;
         });
 
+        output.WriteLine($"{units.Count} units, {units.Sum(u => u.Length) / 1024} KB");
         output.WriteLine($"convert+encode: {encode.Time.TotalMilliseconds / frames:0.0} ms/frame, allocated {encode.Allocated / frames / 1024} KB/frame, gen2 {encode.Gen2}");
         output.WriteLine($"decode+convert: {decode.Time.TotalMilliseconds / units.Count:0.0} ms/frame, allocated {decode.Allocated / units.Count / 1024} KB/frame, gen2 {decode.Gen2}");
         Assert.True(decoded > 0);

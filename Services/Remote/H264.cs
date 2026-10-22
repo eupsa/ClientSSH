@@ -13,6 +13,7 @@ public sealed class H264Encoder : IDisposable
     private readonly ICodecAPI? _codec;
     private readonly int _width, _height, _fps;
     private readonly MF.OutputStreamInfo _info;
+    private IMFSample? _output;
     private long _frame;
 
     public int Width => _width;
@@ -66,7 +67,8 @@ public sealed class H264Encoder : IDisposable
         Marshal.ReleaseComObject(sample);
 
         byte[]? output = null;
-        while (MF.TryProcessOutput(_mft, _info, out var bytes, out _)) output = output is null ? bytes : [.. output, .. bytes];
+        while (MF.TryProcessOutput(_mft, _info, ref _output, null, out var bytes, out var length, out _))
+            output = output is null ? bytes : [.. output, .. bytes.AsSpan(0, length)];
         if (result == MF.MF_E_NOTACCEPTING) MF.Check(_mft.ProcessInput(0, MF.SampleFrom(nv12, nv12.Length), 0));
         return output;
     }
@@ -84,6 +86,7 @@ public sealed class H264Encoder : IDisposable
     public void Dispose()
     {
         _mft.ProcessMessage(MF.MFT_MESSAGE_NOTIFY_END_STREAMING, 0);
+        MF.Release(ref _output);
         Marshal.ReleaseComObject(_mft);
     }
 }
@@ -93,6 +96,8 @@ public sealed class H264Decoder : IDisposable
 {
     private readonly IMFTransform _mft;
     private MF.OutputStreamInfo _info;
+    private IMFSample? _output;
+    private byte[]? _nv12;
     private int _width, _height;
 
     public H264Decoder()
@@ -123,30 +128,41 @@ public sealed class H264Decoder : IDisposable
         MF.Check(_mft.GetOutputStreamInfo(0, out _info));
     }
 
-    /// <summary>Decodes one access unit. Returns the newest picture it produced, cropped to width x height, or null.</summary>
-    public byte[]? Decode(byte[] accessUnit, int width, int height)
+    /// <summary>
+    /// Decodes one access unit. Returns the newest picture it produced, cropped to width x height, or null.
+    /// The picture goes into <paramref name="into"/> when it has the right size, so a caller can reuse its buffers.
+    /// </summary>
+    public byte[]? Decode(byte[] accessUnit, int width, int height, byte[]? into = null)
     {
         var sample = MF.SampleFrom(accessUnit, accessUnit.Length);
         var result = MF.Check(_mft.ProcessInput(0, sample, 0), MF.MF_E_NOTACCEPTING);
         Marshal.ReleaseComObject(sample);
 
-        byte[]? picture = null;
+        var produced = 0;
         while (true)
         {
-            if (MF.TryProcessOutput(_mft, _info, out var nv12, out var streamChange))
+            if (MF.TryProcessOutput(_mft, _info, ref _output, _nv12, out var nv12, out var length, out var streamChange))
             {
-                if (_width > 0 && _height > 0) picture = Yuv.Nv12ToBgra(nv12, _width, _height, width, height);
+                (_nv12, produced) = (nv12, length);
                 continue;
             }
             if (!streamChange) break;
+            MF.Release(ref _output); // its size was for the old stream
+            produced = 0;
             PickNv12Output(); // the first SPS tells the decoder the real size
         }
 
-        if (result == MF.MF_E_NOTACCEPTING) return Decode(accessUnit, width, height);
+        // Only the newest picture is converted: older ones from the same call would be overwritten anyway.
+        var picture = produced > 0 && _width > 0 && _height > 0 ? Yuv.Nv12ToBgra(_nv12!, produced, _width, _height, width, height, into) : null;
+        if (result == MF.MF_E_NOTACCEPTING) return Decode(accessUnit, width, height, picture ?? into) ?? picture;
         return picture;
     }
 
-    public void Dispose() => Marshal.ReleaseComObject(_mft);
+    public void Dispose()
+    {
+        MF.Release(ref _output);
+        Marshal.ReleaseComObject(_mft);
+    }
 }
 
 /// <summary>BT.601 limited range, the default of the Windows H.264 encoder and decoder.</summary>
@@ -157,9 +173,12 @@ public static class Yuv
         fixed (byte* src = source) return BgraToNv12(src, width, height, stride);
     }
 
-    public static unsafe byte[] BgraToNv12(byte* src, int width, int height, int stride)
+    public static unsafe byte[] BgraToNv12(byte* src, int width, int height, int stride) =>
+        BgraToNv12(src, width, height, stride, new byte[width * height * 3 / 2]);
+
+    /// <summary>Into <paramref name="nv12"/> (width * height * 3 / 2 bytes), so a stream can reuse one buffer.</summary>
+    public static unsafe byte[] BgraToNv12(byte* src, int width, int height, int stride, byte[] nv12)
     {
-        var nv12 = new byte[width * height * 3 / 2];
         {
             fixed (byte* dst = nv12)
             {
@@ -186,12 +205,16 @@ public static class Yuv
     private static unsafe byte Luma(byte* p) => (byte)(((66 * p[2] + 129 * p[1] + 25 * p[0] + 128) >> 8) + 16);
 
     /// <summary>The decoder may pad (1080 becomes 1088): the buffer has its own size, the picture is cropped to width x height.</summary>
-    public static byte[] Nv12ToBgra(byte[] nv12, int bufferWidth, int bufferHeight, int width, int height)
+    public static byte[] Nv12ToBgra(byte[] nv12, int bufferWidth, int bufferHeight, int width, int height) =>
+        Nv12ToBgra(nv12, nv12.Length, bufferWidth, bufferHeight, width, height);
+
+    /// <summary>The first <paramref name="length"/> bytes of <paramref name="nv12"/>; into <paramref name="into"/> when it has the right size.</summary>
+    public static byte[] Nv12ToBgra(byte[] nv12, int length, int bufferWidth, int bufferHeight, int width, int height, byte[]? into = null)
     {
         width = Math.Min(width, bufferWidth);
         height = Math.Min(height, bufferHeight);
-        var stride = nv12.Length * 2 / 3 / bufferHeight; // the decoder may also pad each row
-        var bgra = new byte[width * height * 4];
+        var stride = length * 2 / 3 / bufferHeight; // the decoder may also pad each row
+        var bgra = into?.Length == width * height * 4 ? into : new byte[width * height * 4];
         unsafe
         {
             fixed (byte* src = nv12, dst = bgra)
@@ -309,13 +332,26 @@ internal static class MF
         return sample;
     }
 
-    /// <summary>One output sample's bytes. False when the transform needs more input (or, with <paramref name="streamChange"/>, a new output type).</summary>
-    public static bool TryProcessOutput(IMFTransform mft, OutputStreamInfo info, out byte[] bytes, out bool streamChange)
+    public static void Release(ref IMFSample? sample)
+    {
+        if (sample is not null) Marshal.ReleaseComObject(sample);
+        sample = null;
+    }
+
+    /// <summary>
+    /// One output sample's first <paramref name="length"/> bytes, in <paramref name="into"/> when it is large enough, else in a new
+    /// array of exactly that length. False when the transform needs more input (or, with <paramref name="streamChange"/>, a new
+    /// output type). When the transform does not provide samples, ours is created once in <paramref name="reuse"/> and kept:
+    /// a fresh multi-megabyte buffer per call was most of the cost.
+    /// </summary>
+    public static bool TryProcessOutput(IMFTransform mft, OutputStreamInfo info, ref IMFSample? reuse, byte[]? into,
+        out byte[] bytes, out int length, out bool streamChange)
     {
         bytes = [];
+        length = 0;
         streamChange = false;
         var providesSamples = (info.Flags & (MFT_OUTPUT_STREAM_PROVIDES_SAMPLES | MFT_OUTPUT_STREAM_CAN_PROVIDE_SAMPLES)) != 0;
-        var ours = providesSamples ? null : SampleFrom([], (int)Math.Max(info.Size, 1 << 20));
+        var ours = providesSamples ? null : reuse ??= SampleFrom([], (int)Math.Max(info.Size, 1 << 20));
 
         var block = Marshal.AllocHGlobal(Marshal.SizeOf<OutputDataBuffer>());
         var data = new OutputDataBuffer { Sample = ours is null ? IntPtr.Zero : Marshal.GetIUnknownForObject(ours) };
@@ -328,14 +364,17 @@ internal static class MF
             if (hr == MF_E_TRANSFORM_STREAM_CHANGE) { streamChange = true; return false; }
             Check(hr);
 
-            var sample = (IMFSample)Marshal.GetObjectForIUnknown(data.Sample);
+            // Our own sample comes back as the same RCW: releasing it here would break it for the next call.
+            var sample = ours ?? (IMFSample)Marshal.GetObjectForIUnknown(data.Sample);
             Check(sample.ConvertToContiguousBuffer(out var buffer));
-            buffer.Lock(out var pointer, out _, out var length);
-            bytes = new byte[length];
-            Marshal.Copy(pointer, bytes, 0, (int)length);
+            buffer.Lock(out var pointer, out _, out var current);
+            length = (int)current;
+            bytes = into is not null && into.Length >= length ? into : new byte[length];
+            Marshal.Copy(pointer, bytes, 0, length);
             buffer.Unlock();
+            if (ours is not null) buffer.SetCurrentLength(0); // empty again for the next output
             Marshal.ReleaseComObject(buffer);
-            Marshal.ReleaseComObject(sample);
+            if (ours is null) Marshal.ReleaseComObject(sample);
             return true;
         }
         finally
@@ -343,7 +382,6 @@ internal static class MF
             if (data.Sample != IntPtr.Zero) Marshal.Release(data.Sample);
             if (data.Events != IntPtr.Zero) Marshal.Release(data.Events);
             Marshal.FreeHGlobal(block);
-            if (ours is not null) Marshal.ReleaseComObject(ours);
         }
     }
 }

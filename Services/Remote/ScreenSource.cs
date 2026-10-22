@@ -17,7 +17,7 @@ public sealed unsafe class ScreenSource(int fps = 60, int bitrate = 8_000_000) :
     private H264Encoder? _encoder;
     private DesktopDuplication? _duplication;
     private bool _duplicationFailed;
-    private byte[] _desktop = [];
+    private byte[] _desktop = [], _nv12 = [];
     private IntPtr _memoryDc, _bitmap, _bits;
     private int _width, _height;
     private (int X, int Y, IntPtr Shape) _lastPointer;
@@ -42,25 +42,26 @@ public sealed unsafe class ScreenSource(int fps = 60, int bitrate = 8_000_000) :
         }
 
         var clock = Stopwatch.StartNew();
-        bool changed;
-        if (scale == 1.0 && TryDuplication(width, height, out var duplicated))
-        {
-            changed = duplicated;
-            fixed (byte* desktop = _desktop) Buffer.MemoryCopy(desktop, (void*)_bits, _desktop.Length, _desktop.Length);
-        }
-        else
+        var changed = false;
+        var duplication = scale == 1.0 && TryDuplication(width, height, out changed);
+        if (!duplication)
         {
             CopyWithGdi(width, height, screenWidth, screenHeight);
             changed = true;
         }
 
-        var pointer = DrawPointer(scale);
+        var cursor = ReadPointer();
+        var pointer = (cursor.ptScreenPos.X, cursor.ptScreenPos.Y, cursor.hCursor);
         changed |= pointer != _lastPointer;
         _lastPointer = pointer;
+        // Checked before copying: an idle desktop then costs no 8 MB copy per frame.
         if (!changed && !keyFrame) return null;
 
+        if (duplication) fixed (byte* desktop = _desktop) Buffer.MemoryCopy(desktop, (void*)_bits, _desktop.Length, _desktop.Length);
+        DrawPointer(cursor, scale);
+
         var capture = clock.Elapsed.TotalMilliseconds;
-        var nv12 = Yuv.BgraToNv12((byte*)_bits, width, height, width * 4);
+        var nv12 = Yuv.BgraToNv12((byte*)_bits, width, height, width * 4, _nv12);
         var convert = clock.Elapsed.TotalMilliseconds;
         var data = _encoder!.Encode(nv12, keyFrame);
         Timings = (capture, convert - capture, clock.Elapsed.TotalMilliseconds - convert);
@@ -114,16 +115,20 @@ public sealed unsafe class ScreenSource(int fps = 60, int bitrate = 8_000_000) :
         }
     }
 
-    private (int X, int Y, IntPtr Shape) DrawPointer(double scale)
+    // Hidden or unknown: all zero.
+    private static CURSORINFO ReadPointer()
     {
         var info = new CURSORINFO { cbSize = Marshal.SizeOf<CURSORINFO>() };
-        if (!GetCursorInfo(ref info) || (info.flags & CURSOR_SHOWING) == 0) return default;
-        if (!GetIconInfo(info.hCursor, out var icon)) return default;
+        return GetCursorInfo(ref info) && (info.flags & CURSOR_SHOWING) != 0 ? info : default;
+    }
+
+    private void DrawPointer(CURSORINFO info, double scale)
+    {
+        if (info.hCursor == IntPtr.Zero || !GetIconInfo(info.hCursor, out var icon)) return;
         if (icon.hbmMask != IntPtr.Zero) DeleteObject(icon.hbmMask);
         if (icon.hbmColor != IntPtr.Zero) DeleteObject(icon.hbmColor);
         DrawIconEx(_memoryDc, (int)((info.ptScreenPos.X - icon.xHotspot) * scale), (int)((info.ptScreenPos.Y - icon.yHotspot) * scale),
             info.hCursor, 0, 0, 0, IntPtr.Zero, DI_NORMAL);
-        return (info.ptScreenPos.X, info.ptScreenPos.Y, info.hCursor);
     }
 
     private void Reset(int width, int height)
@@ -134,6 +139,7 @@ public sealed unsafe class ScreenSource(int fps = 60, int bitrate = 8_000_000) :
         _duplication = null;
         (_width, _height) = (width, height);
         _desktop = new byte[width * height * 4];
+        _nv12 = new byte[width * height * 3 / 2];
 
         var screenDc = GetDC(IntPtr.Zero);
         _memoryDc = CreateCompatibleDC(screenDc);
