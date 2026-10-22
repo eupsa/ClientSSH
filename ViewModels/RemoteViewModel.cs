@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using ClientSSH.Services.Localization;
 using ClientSSH.Services.Remote;
 using ClientSSH.Services.Shell;
@@ -9,55 +10,32 @@ using Microsoft.UI.Dispatching;
 namespace ClientSSH.ViewModels;
 
 /// <summary>
-/// Remote access between two PCs with no server: one shares its screen, the other watches and controls it. The two
-/// people trade two pasted codes (<see cref="RemoteCode"/>) over any chat, and the host person must allow the viewer.
-/// One session at a time. Create it on the UI thread: session events come from background threads.
+/// Remote access like AnyDesk, with no server: this PC has a fixed number (<see cref="RemoteIdentity"/>), others call it by that
+/// number through the public DHT (<see cref="RemoteNode"/>), and the person here allows or denies each call, even when ClientSSH
+/// is minimized or in the tray. One session at a time. Create it on the UI thread: node and session events come from other threads.
 /// </summary>
 public sealed partial class RemoteViewModel : ObservableObject
 {
+    private const string IdentityFile = "remote-identity.bin";
+
     private readonly ISettingsStore _settings;
     private readonly IDialogService _dialogs;
+    private readonly TrayService _tray;
     private readonly DispatcherQueue _ui = DispatcherQueue.GetForCurrentThread();
+    private RemoteNode? _node;
     private RemoteSession? _session;
-    private CancellationTokenSource? _mailbox;
-    private string _serverCode = "";
+    private RemoteViewer? _viewer;
 
-    [ObservableProperty, NotifyPropertyChangedFor(nameof(IsIdle), nameof(IsHost), nameof(IsViewer))]
-    public partial bool HasSession { get; set; }
-
-    [ObservableProperty, NotifyPropertyChangedFor(nameof(IsHost), nameof(IsViewer))]
-    public partial bool SessionIsHost { get; set; }
-
+    [ObservableProperty] public partial string MyNumber { get; set; } = "";
+    [ObservableProperty] public partial string NumberInput { get; set; } = "";
     [ObservableProperty] public partial string Status { get; set; } = "";
-    [ObservableProperty] public partial string HostCode { get; set; } = "";
-    [ObservableProperty] public partial string HostReplyInput { get; set; } = "";
-    [ObservableProperty] public partial string OfferInput { get; set; } = "";
-    [ObservableProperty] public partial string ViewerReplyCode { get; set; } = "";
-    [ObservableProperty, NotifyPropertyChangedFor(nameof(HasSecurityCode), nameof(SecurityText))]
-    public partial string SecurityCode { get; set; } = "";
     [ObservableProperty] public partial bool NetworkWarning { get; set; }
 
-    /// <summary>The short code that stands for the host's long code, when a rendezvous server is set.</summary>
-    [ObservableProperty, NotifyPropertyChangedFor(nameof(HasShortCode))]
-    public partial string ShortCode { get; set; } = "";
+    [ObservableProperty, NotifyPropertyChangedFor(nameof(IsIdle))]
+    public partial bool HasSession { get; set; }
 
-    public bool HasShortCode => ShortCode.Length > 0;
-
-    /// <summary>Address of the user's own rendezvous server ("host" or "host:port"); empty means codes are swapped by hand.</summary>
-    public string ServerAddress
-    {
-        get => _settings.Current.RendezvousAddress;
-        set
-        {
-            value = value.Trim();
-            if (value == _settings.Current.RendezvousAddress) return;
-            _settings.Save(_settings.Current with { RendezvousAddress = value });
-            OnPropertyChanged();
-        }
-    }
-
-    /// <summary>The host's reply box is shown until the connection is made.</summary>
-    [ObservableProperty] public partial bool AwaitingReply { get; set; }
+    [ObservableProperty, NotifyPropertyChangedFor(nameof(HasSecurityCode), nameof(SecurityText))]
+    public partial string SecurityCode { get; set; } = "";
 
     [ObservableProperty, NotifyPropertyChangedFor(nameof(AccessText))]
     public partial RemoteAccess Access { get; set; }
@@ -70,12 +48,9 @@ public sealed partial class RemoteViewModel : ObservableObject
     public partial bool IsViewing { get; set; }
 
     public bool IsNotViewing => !IsViewing;
+    public bool IsIdle => !HasSession;
     public bool HasSecurityCode => SecurityCode.Length > 0;
     public string SecurityText => HasSecurityCode ? string.Format(Loc.Get("Remote_Security"), SecurityCode) : "";
-
-    public bool IsIdle => !HasSession;
-    public bool IsHost => HasSession && SessionIsHost;
-    public bool IsViewer => HasSession && !SessionIsHost;
 
     public string AccessText => Access switch
     {
@@ -84,157 +59,104 @@ public sealed partial class RemoteViewModel : ObservableObject
         _ => "",
     };
 
-    /// <summary>A new picture of the other PC's screen, on the UI thread.</summary>
-    public event Action<byte[]>? FrameReady;
+    /// <summary>Whether others can call this PC. Saved, and applied at once.</summary>
+    public bool Listening
+    {
+        get => _settings.Current.RemoteListen;
+        set
+        {
+            if (value == _settings.Current.RemoteListen) return;
+            _settings.Save(_settings.Current with { RemoteListen = value });
+            _node?.SetListening(value);
+            OnPropertyChanged();
+        }
+    }
 
-    public RemoteViewModel(ISettingsStore settings, IDialogService dialogs)
+    /// <summary>The other PC's newest picture (BGRA, width, height), on the UI thread.</summary>
+    public event Action<byte[], int, int>? FrameReady;
+
+    public RemoteViewModel(ISettingsStore settings, IDialogService dialogs, TrayService tray)
     {
         _settings = settings;
         _dialogs = dialogs;
+        _tray = tray;
     }
 
-    private RemoteOptions Options => new()
+    /// <summary>Opens the socket and, if allowed, starts listening for calls. Called once at app start.</summary>
+    public void Start()
     {
-        StunServers = _settings.Current.RemoteStunServers
-            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Take(2).ToList(),
-    };
-
-    [RelayCommand]
-    private async Task ShareAsync()
-    {
-        if (HasSession) return;
-        Begin(isHost: true, Loc.Get("Remote_Status_Preparing"));
+        if (_node is not null) return;
         try
         {
-            var session = await RemoteSession.CreateHostAsync(Options, new GdiScreenSource(), new SendInputSink());
-            Attach(session);
-            HostCode = session.Code;
-            AwaitingReply = true;
-            NetworkWarning = session.NetworkMayBlockDirect;
-            Status = Loc.Get("Remote_Status_SendCode");
-            await PublishShortCodeAsync(session);
+            _node = new RemoteNode(LoadIdentity(), () => new ScreenSource(), () => new SendInputSink(), new RemoteOptions());
+            _node.IncomingCall += session => _ui.TryEnqueue(() => OnIncomingCall(session));
+            _node.SetListening(Listening);
+            MyNumber = RemoteIdentity.Format(_node.Number);
         }
-        catch (Exception e) when (e is RemoteCodeException or System.Net.Sockets.SocketException)
+        catch (Exception e) when (e is System.Net.Sockets.SocketException or CryptographicException or IOException)
         {
-            Reset(Loc.Get("Remote_Status_Failed"));
+            Status = Loc.Get("Remote_Status_Failed");
         }
     }
 
-    // With a server set, the host also gets a short code; the reply then arrives by itself and the paste box stays as a fallback.
-    private async Task PublishShortCodeAsync(RemoteSession session)
+    // The key behind the number stays on this PC, encrypted for this Windows user (DPAPI). Same number across updates.
+    private static RemoteIdentity LoadIdentity()
     {
-        var server = ServerAddress;
-        if (RendezvousClient.ParseServer(server) is null) return;
-
-        try
+        var path = Path.Combine(LocalData.Dir, IdentityFile);
+        if (File.Exists(path))
         {
-            for (var attempt = 0; attempt < 5 && _serverCode.Length == 0; attempt++)
+            try
             {
-                var code = RendezvousClient.NewCode();
-                if (await RendezvousClient.RequestAsync(server, $"PUT {code} {RemoteCode.Decode(session.Code).Compact()}") == "OK") _serverCode = code;
+                return RemoteIdentity.FromPrivateKey(ProtectedData.Unprotect(File.ReadAllBytes(path), null, DataProtectionScope.CurrentUser));
+            }
+            catch (CryptographicException)
+            {
+                File.Move(path, path + ".bad", overwrite: true); // another user's or a damaged key: start over with a new number
             }
         }
-        catch (Exception e) when (IsNetworkError(e)) { }
 
-        if (_serverCode.Length == 0)
+        var identity = RemoteIdentity.Create();
+        Directory.CreateDirectory(LocalData.Dir);
+        File.WriteAllBytes(path, ProtectedData.Protect(identity.ExportPrivateKey(), null, DataProtectionScope.CurrentUser));
+        return identity;
+    }
+
+    [RelayCommand]
+    private void Connect()
+    {
+        if (_node is null || HasSession) return;
+        if (!RemoteIdentity.TryParseNumber(NumberInput, out var number))
         {
-            Status = Loc.Get("Remote_Status_ServerFail") + " " + Loc.Get("Remote_Status_SendCode");
+            Status = Loc.Get("Remote_BadNumber");
             return;
         }
 
-        ShortCode = RendezvousClient.Format(_serverCode);
-        Status = Loc.Get("Remote_Status_ShareShort");
-        _mailbox = new CancellationTokenSource();
-        _ = PollReplyAsync(session, server, _serverCode, _mailbox.Token);
-    }
-
-    private async Task PollReplyAsync(RemoteSession session, string server, string code, CancellationToken token)
-    {
+        RemoteSession session;
         try
         {
-            while (!token.IsCancellationRequested)
-            {
-                await Task.Delay(1500, token);
-                var answer = await RendezvousClient.RequestAsync(server, $"POLL {code}", token);
-                if (!RemoteCode.IsCompact(answer)) continue;
+            session = _node.Call(number);
+        }
+        catch (RemoteException) when (number == _node.Number)
+        {
+            Status = Loc.Get("Remote_OwnNumber");
+            return;
+        }
 
-                _ui.TryEnqueue(() =>
-                {
-                    if (session != _session) return;
-                    HostReplyInput = answer;
-                    AcceptReply();
-                });
+        Attach(session);
+        Status = Loc.Get("Remote_Status_Searching");
+        _ = ReportFoundAsync(session);
+    }
+
+    private async Task ReportFoundAsync(RemoteSession session)
+    {
+        while (session == _session && session.Phase == RemotePhase.WaitingForPeer)
+        {
+            if (session.HasCandidates)
+            {
+                Status = Loc.Get("Remote_Status_Found");
                 return;
             }
-        }
-        catch (Exception e) when (e is OperationCanceledException || IsNetworkError(e)) { }
-    }
-
-    private sealed class ServerUnreachableException : Exception;
-
-    private async Task<string> AskServerAsync(string line)
-    {
-        try { return await RendezvousClient.RequestAsync(ServerAddress, line); }
-        catch (Exception e) when (IsNetworkError(e)) { throw new ServerUnreachableException(); }
-    }
-
-    private static bool IsNetworkError(Exception e) => e is System.Net.Sockets.SocketException or IOException or OperationCanceledException or FormatException;
-
-    [RelayCommand]
-    private void AcceptReply()
-    {
-        if (_session is null || !SessionIsHost) return;
-        try
-        {
-            _session.AcceptReply(HostReplyInput);
-            AwaitingReply = false;
-            Status = Loc.Get("Remote_Status_WaitingPeer");
-        }
-        catch (RemoteCodeException)
-        {
-            Status = Loc.Get("Remote_BadCode");
-        }
-    }
-
-    [RelayCommand]
-    private async Task JoinAsync()
-    {
-        if (HasSession) return;
-        Begin(isHost: false, Loc.Get("Remote_Status_Preparing"));
-        try
-        {
-            var viaServer = RendezvousClient.TryParseCode(OfferInput, out var shortCode);
-            var offer = OfferInput;
-            if (viaServer)
-            {
-                offer = await AskServerAsync($"GET {shortCode}");
-                if (!RemoteCode.IsCompact(offer)) throw new RemoteCodeException("Unknown code.");
-            }
-
-            var session = await RemoteSession.JoinAsync(offer, Options);
-            Attach(session);
-            ViewerReplyCode = session.Code;
-            SecurityCode = session.SecurityCode ?? "";
-            NetworkWarning = session.NetworkMayBlockDirect;
-            Status = Loc.Get("Remote_Status_SendReply");
-
-            if (viaServer)
-            {
-                await AskServerAsync($"REPLY {shortCode} {RemoteCode.Decode(session.Code).Compact()}");
-                Status = Loc.Get("Remote_Status_WaitingPeer");
-            }
-        }
-        catch (ServerUnreachableException)
-        {
-            Reset(Loc.Get("Remote_Status_ServerFail"));
-        }
-        catch (RemoteCodeException)
-        {
-            Reset(Loc.Get("Remote_BadCode"));
-        }
-        catch (System.Net.Sockets.SocketException)
-        {
-            Reset(Loc.Get("Remote_Status_Failed"));
+            await Task.Delay(500);
         }
     }
 
@@ -244,41 +166,32 @@ public sealed partial class RemoteViewModel : ObservableObject
     /// <summary>Viewer: forward one mouse or keyboard action to the shared PC.</summary>
     public void SendInput(InputEvent input) => _session?.SendInput(input);
 
-    // ---- session plumbing ----
+    // ---- someone calls this PC ----
 
-    private void Begin(bool isHost, string status)
+    private void OnIncomingCall(RemoteSession session)
     {
-        SessionIsHost = isHost;
-        HasSession = true;
-        Status = status;
-        HostCode = HostReplyInput = ViewerReplyCode = SecurityCode = ShortCode = "";
-        NetworkWarning = false;
-    }
-
-    private void Attach(RemoteSession session)
-    {
-        _session = session;
-        session.PhaseChanged += phase => _ui.TryEnqueue(() => OnPhase(session, phase));
+        if (_session is not null)
+        {
+            session.Dispose();
+            return;
+        }
+        Attach(session);
         session.PeerRequested += security => _ui.TryEnqueue(() => _ = AskHostAsync(session, security));
-        session.FrameReceived += frame => _ui.TryEnqueue(() => FrameReady?.Invoke(frame));
-        session.AccessChanged += access => _ui.TryEnqueue(() => OnAccess(session, access));
-        session.Closed += reason => _ui.TryEnqueue(() => OnClosed(session, reason));
-    }
-
-    private void OnPhase(RemoteSession session, RemotePhase phase)
-    {
-        if (session != _session || phase != RemotePhase.Connected) return;
-        AwaitingReply = false;
-        SecurityCode = session.SecurityCode ?? "";
-        Status = SessionIsHost ? Loc.Get("Remote_Status_AskHost") : Loc.Get("Remote_Status_AwaitAllow");
+        session.Ring();
     }
 
     private async Task AskHostAsync(RemoteSession session, string security)
     {
         SecurityCode = security;
-        var answer = await _dialogs.ShowRemoteRequestAsync(security);
-        if (session != _session) return; // it ended while the question was open
+        Status = Loc.Get("Remote_Status_AskHost");
 
+        // Minimized, in the tray or behind other windows: come to the front until the person answers.
+        _tray.DemandAttention(Loc.Get("Remote_Request_Title"), Loc.Get("Remote_Notify_Body"));
+        RemoteAccess answer;
+        try { answer = await _dialogs.ShowRemoteRequestAsync(security); }
+        finally { _tray.EndAttention(); }
+
+        if (session != _session) return; // the caller gave up while the question was open
         if (answer is RemoteAccess.View or RemoteAccess.Control)
         {
             session.Grant(answer);
@@ -292,9 +205,39 @@ public sealed partial class RemoteViewModel : ObservableObject
         }
     }
 
+    // ---- session plumbing ----
+
+    private void Attach(RemoteSession session)
+    {
+        _session = session;
+        HasSession = true;
+        SecurityCode = "";
+        NetworkWarning = false;
+        session.PhaseChanged += phase => _ui.TryEnqueue(() => OnPhase(session, phase));
+        session.AccessChanged += access => _ui.TryEnqueue(() => OnAccess(session, access));
+        session.Closed += reason => _ui.TryEnqueue(() => OnClosed(session, reason));
+
+        if (!session.IsHost)
+        {
+            RemoteViewer? viewer = null;
+            viewer = _viewer = new RemoteViewer(() => _ui.TryEnqueue(() =>
+            {
+                if (viewer?.TakeLatest() is { } picture) FrameReady?.Invoke(picture.Bgra, picture.Width, picture.Height);
+            }));
+            session.FrameReceived += viewer.Push;
+        }
+    }
+
+    private void OnPhase(RemoteSession session, RemotePhase phase)
+    {
+        if (session != _session || phase != RemotePhase.Connected || session.IsHost) return;
+        SecurityCode = session.SecurityCode ?? "";
+        Status = Loc.Get("Remote_Status_AwaitAllow");
+    }
+
     private void OnAccess(RemoteSession session, RemoteAccess access)
     {
-        if (session != _session || SessionIsHost) return;
+        if (session != _session || session.IsHost) return;
         Access = access;
         IsViewing = access is RemoteAccess.View or RemoteAccess.Control;
         Status = IsViewing ? Loc.Get("Remote_Status_Viewing") : Loc.Get("Remote_Status_AwaitAllow");
@@ -303,10 +246,13 @@ public sealed partial class RemoteViewModel : ObservableObject
     private void OnClosed(RemoteSession session, RemoteCloseReason reason)
     {
         if (session != _session) return;
+        var neverConnected = !session.IsHost && SecurityCode.Length == 0;
+        NetworkWarning = neverConnected && _node?.Dht.PortsDiffer == true;
         Reset(reason switch
         {
             RemoteCloseReason.Denied => Loc.Get("Remote_Status_Denied"),
             RemoteCloseReason.RemoteStop => Loc.Get("Remote_Status_RemoteStop"),
+            RemoteCloseReason.Timeout when neverConnected => Loc.Get(session.HasCandidates ? "Remote_Status_NoPath" : "Remote_Status_NotFound"),
             RemoteCloseReason.Timeout => Loc.Get("Remote_Status_Timeout"),
             _ => Loc.Get("Remote_Status_Stopped"),
         });
@@ -317,25 +263,14 @@ public sealed partial class RemoteViewModel : ObservableObject
         var session = _session;
         _session = null;
         session?.Dispose();
-
-        _mailbox?.Cancel();
-        _mailbox = null;
-        if (_serverCode.Length > 0) _ = ForgetShortCodeAsync(ServerAddress, _serverCode);
-        _serverCode = "";
+        _viewer?.Dispose();
+        _viewer = null;
 
         HasSession = false;
-        AwaitingReply = false;
         IsSharing = false;
         IsViewing = false;
         Access = RemoteAccess.None;
-        HostCode = HostReplyInput = OfferInput = ViewerReplyCode = SecurityCode = ShortCode = "";
-        NetworkWarning = false;
+        SecurityCode = "";
         Status = status;
-    }
-
-    private static async Task ForgetShortCodeAsync(string server, string code)
-    {
-        try { await RendezvousClient.RequestAsync(server, $"DEL {code}"); }
-        catch (Exception e) when (IsNetworkError(e)) { }
     }
 }

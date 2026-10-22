@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Grid>
-        <!-- Two cards: share this PC, or connect to another one. Hidden while watching. -->
+        <!-- This PC's number, and calling another PC. Hidden while watching. -->
         <ScrollViewer Visibility="{x:Bind Remote.IsNotViewing, Mode=OneWay}">
             <StackPanel MaxWidth="820" Padding="40,16,40,40" Spacing="20" HorizontalAlignment="Stretch">
                 <StackPanel.ChildrenTransitions><TransitionCollection><EntranceThemeTransition FromVerticalOffset="28" /></TransitionCollection></StackPanel.ChildrenTransitions>
@@ -17,46 +17,25 @@
 
                 <InfoBar x:Uid="Remote_NatWarning" Severity="Warning" IsClosable="False" IsOpen="{x:Bind Remote.NetworkWarning, Mode=OneWay}" />
 
-                <!-- Optional: the user's own rendezvous server, so short codes work -->
-                <StackPanel Spacing="4">
-                    <TextBox x:Uid="Remote_Server" MaxWidth="360" HorizontalAlignment="Left"
-                             Text="{x:Bind Remote.ServerAddress, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                             IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
-                    <TextBlock x:Uid="Remote_Server_Hint" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
-                </StackPanel>
-
-                <!-- Share this PC -->
+                <!-- This PC -->
                 <Border Style="{StaticResource FeatureCard}">
                     <StackPanel Spacing="12">
                         <StackPanel Orientation="Horizontal" Spacing="12">
                             <FontIcon Glyph="&#xE7F4;" FontSize="20" Foreground="{ThemeResource TextSecondaryBrush}" />
-                            <TextBlock x:Uid="Remote_Share_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" VerticalAlignment="Center" />
+                            <TextBlock x:Uid="Remote_MyPc_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" VerticalAlignment="Center" />
                         </StackPanel>
-                        <TextBlock x:Uid="Remote_Share_Desc" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
-                        <Button x:Uid="Remote_ShareButton" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left"
-                                Command="{x:Bind Remote.ShareCommand}" IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
-
-                        <StackPanel Spacing="2" Visibility="{x:Bind Remote.HasShortCode, Mode=OneWay}">
-                            <TextBlock x:Uid="Remote_ShortCode" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
-                            <TextBlock Text="{x:Bind Remote.ShortCode, Mode=OneWay}" IsTextSelectionEnabled="True" FontSize="32" FontWeight="SemiBold"
-                                       FontFamily="Cascadia Mono, Consolas" Foreground="{ThemeResource AccentForegroundBrush}" />
+                        <TextBlock x:Uid="Remote_MyPc_Desc" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <TextBlock Text="{x:Bind Remote.MyNumber, Mode=OneWay}" IsTextSelectionEnabled="True" FontSize="36" FontWeight="SemiBold"
+                                       FontFamily="Cascadia Mono, Consolas" Foreground="{ThemeResource AccentForegroundBrush}" VerticalAlignment="Center" />
+                            <Button x:Uid="Remote_Copy" Click="OnCopyNumber" VerticalAlignment="Center" />
                         </StackPanel>
-
-                        <StackPanel Spacing="8" Visibility="{x:Bind Remote.IsHost, Mode=OneWay}">
-                            <TextBox x:Uid="Remote_YourCode" IsReadOnly="True" TextWrapping="Wrap" Text="{x:Bind Remote.HostCode, Mode=OneWay}"
-                                     FontFamily="Cascadia Mono, Consolas" FontSize="20" />
-                            <Button x:Uid="Remote_Copy" Click="OnCopyHostCode" />
-                            <StackPanel Spacing="8" Visibility="{x:Bind Remote.AwaitingReply, Mode=OneWay}">
-                                <TextBox x:Uid="Remote_PasteReply" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="72"
-                                         Text="{x:Bind Remote.HostReplyInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         FontFamily="Cascadia Mono, Consolas" FontSize="12" />
-                                <Button x:Uid="Remote_AcceptReply" Command="{x:Bind Remote.AcceptReplyCommand}" />
-                            </StackPanel>
-                        </StackPanel>
+                        <ToggleSwitch x:Uid="Remote_Listen" IsOn="{x:Bind Remote.Listening, Mode=TwoWay}" />
+                        <TextBlock x:Uid="Remote_Listen_Hint" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
                     </StackPanel>
                 </Border>
 
-                <!-- Connect to another PC -->
+                <!-- Access another PC -->
                 <Border Style="{StaticResource FeatureCard}">
                     <StackPanel Spacing="12">
                         <StackPanel Orientation="Horizontal" Spacing="12">
@@ -64,17 +43,12 @@
                             <TextBlock x:Uid="Remote_Join_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" VerticalAlignment="Center" />
                         </StackPanel>
                         <TextBlock x:Uid="Remote_Join_Desc" TextWrapping="Wrap" FontSize="12" Foreground="{ThemeResource TextSecondaryBrush}" />
-                        <TextBox x:Uid="Remote_PasteOffer" TextWrapping="Wrap" AcceptsReturn="True" MinHeight="72"
-                                 Text="{x:Bind Remote.OfferInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}"
-                                 FontFamily="Cascadia Mono, Consolas" FontSize="12" />
-                        <Button x:Uid="Remote_JoinButton" Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Left"
-                                Command="{x:Bind Remote.JoinCommand}" IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
-
-                        <StackPanel Spacing="8" Visibility="{x:Bind Remote.IsViewer, Mode=OneWay}">
-                            <TextBox x:Uid="Remote_YourReply" IsReadOnly="True" TextWrapping="Wrap" Text="{x:Bind Remote.ViewerReplyCode, Mode=OneWay}"
-                                     FontFamily="Cascadia Mono, Consolas" FontSize="20" />
-                            <Button x:Uid="Remote_Copy" Click="OnCopyReplyCode" />
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <TextBox x:Uid="Remote_Number" Width="240" FontFamily="Cascadia Mono, Consolas" FontSize="20" KeyDown="OnNumberKeyDown"
+                                     Text="{x:Bind Remote.NumberInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
+                            <Button x:Uid="Remote_JoinButton" Style="{StaticResource AccentButtonStyle}" VerticalAlignment="Bottom"
+                                    Command="{x:Bind Remote.ConnectCommand}" IsEnabled="{x:Bind Remote.IsIdle, Mode=OneWay}" />
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -101,9 +75,7 @@
                     Background="{ThemeResource TerminalBackgroundBrush}" BorderBrush="{ThemeResource BorderBrush}" BorderThickness="1"
                     KeyDown="OnSurfaceKeyDown" KeyUp="OnSurfaceKeyUp"
                     PointerMoved="OnSurfacePointerMoved" PointerPressed="OnSurfacePointerPressed"
-                    PointerReleased="OnSurfacePointerReleased" PointerWheelChanged="OnSurfaceWheel">
-                <Image x:Name="RemoteImage" Stretch="Uniform" />
-            </Border>
+                    PointerReleased="OnSurfacePointerReleased" PointerWheelChanged="OnSurfaceWheel" />
         </Grid>
     </Grid>
 </Page>

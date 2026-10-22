@@ -156,20 +156,12 @@
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>تم تحميل {0} نموذجًا.</value></data>
   <data name="Nav_Remote.Content" xml:space="preserve"><value>عن بُعد</value></data>
   <data name="Remote_Title.Text" xml:space="preserve"><value>الوصول عن بُعد</value></data>
-  <data name="Remote_Intro.Text" xml:space="preserve"><value>شارك شاشة هذا الكمبيوتر، أو شاهد كمبيوترًا آخر وتحكم به، مباشرةً بين الجهازين. بلا خادم ولا حساب: تتبادلان رمزين في أي تطبيق دردشة.</value></data>
-  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>قد تحظر شبكتك الاتصالات المباشرة (مثل CGNAT). إذا تعذّر الاتصال، جرّب شبكة أخرى أو VPN أو نقطة اتصال الهاتف.</value></data>
-  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>مشاركة هذا الكمبيوتر</value></data>
-  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>ينشئ رمزًا. أرسله إلى الشخص الآخر؛ سيرسل لك رمز رد، ثم تختار ما يُسمح له بفعله.</value></data>
-  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>إنشاء رمز</value></data>
-  <data name="Remote_YourCode.Header" xml:space="preserve"><value>رمزك (أرسله إلى الشخص الآخر)</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>ادخل إلى جهاز آخر برقمه، أو اسمح لأحد بالدخول إلى هذا الجهاز. اتصال مباشر بين الجهازين، مشفّر من طرف إلى طرف، بلا حساب وبلا خادم تابع لنا.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>قد تحظر شبكتك الاتصالات المباشرة (مثل CGNAT أو NAT المتماثل). إن لم يتم الاتصال، جرّب شبكة أخرى أو نقطة اتصال الهاتف.</value></data>
   <data name="Remote_Copy.Content" xml:space="preserve"><value>نسخ</value></data>
-  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>رمز الرد من الشخص الآخر</value></data>
-  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>اتصال</value></data>
-  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>الاتصال بكمبيوتر</value></data>
-  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>الصق الرمز الذي أنشأه الشخص الآخر. ستحصل على رمز رد لإرساله إليه.</value></data>
-  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>رمز الكمبيوتر الآخر</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>الدخول إلى جهاز آخر</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>اكتب رقم الجهاز الآخر. يجب أن يوافق الشخص الموجود عنده.</value></data>
   <data name="Remote_JoinButton.Content" xml:space="preserve"><value>اتصال</value></data>
-  <data name="Remote_YourReply.Header" xml:space="preserve"><value>رمز الرد الخاص بك (أرسله إليه)</value></data>
   <data name="Remote_Stop.Content" xml:space="preserve"><value>إيقاف</value></data>
   <data name="Remote_Disconnect.Content" xml:space="preserve"><value>قطع الاتصال</value></data>
   <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>تُعرض شاشتك على كمبيوتر آخر.</value></data>
@@ -177,10 +169,6 @@
   <data name="Remote_Access_Control" xml:space="preserve"><value>التحكم مسموح</value></data>
   <data name="Remote_Access_View" xml:space="preserve"><value>عرض فقط</value></data>
   <data name="Remote_Security" xml:space="preserve"><value>رمز الأمان: {0}</value></data>
-  <data name="Remote_Status_Preparing" xml:space="preserve"><value>جارٍ التحضير...</value></data>
-  <data name="Remote_Status_SendCode" xml:space="preserve"><value>أرسل الرمز إلى الشخص الآخر، ثم الصق رمز الرد الخاص به أدناه.</value></data>
-  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>جارٍ الاتصال بالكمبيوتر الآخر...</value></data>
-  <data name="Remote_Status_SendReply" xml:space="preserve"><value>أرسل رمز الرد إلى الشخص الآخر وانتظر.</value></data>
   <data name="Remote_Status_Failed" xml:space="preserve"><value>تعذّر البدء. تحقق من اتصال الشبكة.</value></data>
   <data name="Remote_Status_AskHost" xml:space="preserve"><value>وصل إليك الكمبيوتر الآخر. بانتظار ردك.</value></data>
   <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>تم الاتصال. بانتظار أن يسمح الشخص الآخر بالوصول...</value></data>
@@ -188,9 +176,8 @@
   <data name="Remote_Status_Viewing" xml:space="preserve"><value>تشاهد الكمبيوتر الآخر.</value></data>
   <data name="Remote_Status_Denied" xml:space="preserve"><value>لم يُسمح بالوصول.</value></data>
   <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>أنهى الكمبيوتر الآخر الجلسة.</value></data>
-  <data name="Remote_Status_Timeout" xml:space="preserve"><value>فُقد الاتصال أو لم يُفتح قط. تأكد من نسخ الرمزين كاملين.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>انقطع الاتصال.</value></data>
   <data name="Remote_Status_Stopped" xml:space="preserve"><value>انتهت الجلسة.</value></data>
-  <data name="Remote_BadCode" xml:space="preserve"><value>هذا الرمز لا يعمل. انسخه مرة أخرى كاملًا من الكمبيوتر الآخر.</value></data>
   <data name="Remote_Request_Title" xml:space="preserve"><value>هل تسمح بالوصول عن بُعد؟</value></data>
   <data name="Remote_Request_Body" xml:space="preserve"><value>يريد كمبيوتر آخر رؤية شاشتك.
 
@@ -200,15 +187,8 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>السماح بالتحكم</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>عرض فقط</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>رفض</value></data>
-  <data name="Remote_Server.Header" xml:space="preserve"><value>خادم اللقاء (اختياري)</value></data>
-  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
-  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>جهاز يخصّك يشغّل خادم اللقاء الخاص بـ ClientSSH (خيار في برنامج التثبيت). به يحلّ رمز قصير محل الرموز الطويلة. اتركه فارغًا لتبادل الرموز الطويلة يدويًا.</value></data>
-  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>رمز اتصالك</value></data>
-  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>تعذّر الوصول إلى خادم اللقاء. تحقق من العنوان.</value></data>
-  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>أعطِ هذا الرمز للطرف الآخر. عندما يتصل سيُطلب منك السماح.</value></data>
   <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>إزالة المضيف</value></data>
   <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينسخ الرمز إلى الحافظة</value></data>
-  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتصل باستخدام رمز الرد الملصق</value></data>
   <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتصل بالكمبيوتر صاحب الرمز الملصق</value></data>
   <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينهي جلسة الوصول عن بُعد</value></data>
   <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يكتب الأمر في الطرفية دون Enter</value></data>
@@ -217,4 +197,17 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يحذف المفتاح المحفوظ لهذا المزوّد</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينزّل الإصدار الجديد ويتحقق منه ويثبّته</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتخطى الجولة وينتقل إلى الأجهزة المضيفة</value></data>
+  <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>هذا الجهاز</value></data>
+  <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>أعطِ هذا الرقم لمن سيدخل إلى هذا الجهاز. أنت من يقرر السماح بكل طلب.</value></data>
+  <data name="Remote_Listen.Header" xml:space="preserve"><value>قبول طلبات الوصول</value></data>
+  <data name="Remote_Listen_Hint.Text" xml:space="preserve"><value>أثناء التشغيل، ينشر ClientSSH العنوان العام لهذا الجهاز مع رقمه في شبكة BitTorrent العامة (DHT) ليتمكن الآخرون من العثور عليه. تصل الطلبات ما دام ClientSSH مفتوحًا أو في شريط المهام.</value></data>
+  <data name="Remote_Number.Header" xml:space="preserve"><value>رقم الجهاز الآخر</value></data>
+  <data name="Remote_Status_Searching" xml:space="preserve"><value>جارٍ البحث عن الجهاز في الشبكة...</value></data>
+  <data name="Remote_Status_Found" xml:space="preserve"><value>تم العثور على الجهاز. جارٍ فتح اتصال مباشر...</value></data>
+  <data name="Remote_Status_NotFound" xml:space="preserve"><value>لم يتم العثور على الجهاز. تحقق من الرقم ومن أن ClientSSH مفتوح على ذلك الجهاز مع تشغيل طلبات الوصول.</value></data>
+  <data name="Remote_Status_NoPath" xml:space="preserve"><value>تم العثور على الجهاز لكن تعذّر فتح اتصال مباشر. قد تحظره إحدى الشبكتين (CGNAT أو NAT المتماثل).</value></data>
+  <data name="Remote_BadNumber" xml:space="preserve"><value>اكتب الرقم المكوّن من 9 أرقام للجهاز الآخر.</value></data>
+  <data name="Remote_OwnNumber" xml:space="preserve"><value>هذا هو رقم هذا الجهاز نفسه.</value></data>
+  <data name="Remote_Notify_Body" xml:space="preserve"><value>جهاز آخر يطلب الدخول إلى هذا الجهاز. افتح ClientSSH للسماح أو الرفض.</value></data>
+  <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
 </root>

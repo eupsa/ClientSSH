@@ -48,10 +48,13 @@ public readonly record struct InputEvent(InputKind Kind, int A, int B = 0)
     }
 }
 
-/// <summary>The screen of the PC being shared. Null when there is nothing new to send.</summary>
+/// <summary>One encoded picture of the shared screen: an H.264 access unit (Annex B).</summary>
+public sealed record VideoFrame(byte[] Data, bool IsKey, int Width, int Height);
+
+/// <summary>The screen of the PC being shared. Null when there is nothing to send this time.</summary>
 public interface IScreenSource
 {
-    byte[]? CaptureJpeg();
+    VideoFrame? Next(bool keyFrame);
 }
 
 /// <summary>Where input from the viewing PC goes on the shared PC.</summary>

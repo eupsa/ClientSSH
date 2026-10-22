@@ -156,20 +156,12 @@
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>Загружено моделей: {0}.</value></data>
   <data name="Nav_Remote.Content" xml:space="preserve"><value>Удалённо</value></data>
   <data name="Remote_Title.Text" xml:space="preserve"><value>Удалённый доступ</value></data>
-  <data name="Remote_Intro.Text" xml:space="preserve"><value>Покажите экран этого ПК или смотрите и управляйте другим ПК — напрямую между двумя компьютерами. Без сервера и учётной записи: вы обмениваетесь двумя кодами в любом мессенджере.</value></data>
-  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Ваша сеть может блокировать прямые подключения (например, из-за CGNAT). Если подключиться не удаётся, попробуйте другую сеть, VPN или точку доступа на телефоне.</value></data>
-  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Показать этот ПК</value></data>
-  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Создаёт код. Отправьте его другому человеку; он пришлёт код ответа, и тогда вы выберете, что ему разрешено.</value></data>
-  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Создать код</value></data>
-  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Ваш код (отправьте его другому человеку)</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Подключайтесь к другому ПК по его номеру или позвольте кому-то подключиться к этому. Напрямую между двумя ПК, со сквозным шифрованием, без учётной записи и без наших серверов.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Ваша сеть может блокировать прямые соединения (например, CGNAT или симметричный NAT). Если не подключается, попробуйте другую сеть или точку доступа телефона.</value></data>
   <data name="Remote_Copy.Content" xml:space="preserve"><value>Копировать</value></data>
-  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Код ответа от другого человека</value></data>
-  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Подключиться</value></data>
-  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Подключиться к ПК</value></data>
-  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Вставьте код, созданный другим человеком. Вы получите код ответа, который нужно отправить ему обратно.</value></data>
-  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Код с другого ПК</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Доступ к другому ПК</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Введите номер другого ПК. Человек за тем ПК должен разрешить доступ.</value></data>
   <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Подключиться</value></data>
-  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Ваш код ответа (отправьте его обратно)</value></data>
   <data name="Remote_Stop.Content" xml:space="preserve"><value>Остановить</value></data>
   <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Отключиться</value></data>
   <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Ваш экран показывается на другом ПК.</value></data>
@@ -177,10 +169,6 @@
   <data name="Remote_Access_Control" xml:space="preserve"><value>Управление разрешено</value></data>
   <data name="Remote_Access_View" xml:space="preserve"><value>Только просмотр</value></data>
   <data name="Remote_Security" xml:space="preserve"><value>Код безопасности: {0}</value></data>
-  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Подготовка...</value></data>
-  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Отправьте код другому человеку, затем вставьте ниже его код ответа.</value></data>
-  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Подключение к другому ПК...</value></data>
-  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Отправьте код ответа другому человеку и подождите.</value></data>
   <data name="Remote_Status_Failed" xml:space="preserve"><value>Не удалось запустить. Проверьте подключение к сети.</value></data>
   <data name="Remote_Status_AskHost" xml:space="preserve"><value>Другой ПК подключился к вам. Ожидается ваш ответ.</value></data>
   <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Подключено. Ожидание, пока другой человек разрешит доступ...</value></data>
@@ -188,9 +176,8 @@
   <data name="Remote_Status_Viewing" xml:space="preserve"><value>Вы смотрите другой ПК.</value></data>
   <data name="Remote_Status_Denied" xml:space="preserve"><value>Доступ не был разрешён.</value></data>
   <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>Другой ПК завершил сеанс.</value></data>
-  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Соединение потеряно или не было установлено. Проверьте, что оба кода скопированы полностью.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Соединение потеряно.</value></data>
   <data name="Remote_Status_Stopped" xml:space="preserve"><value>Сеанс завершён.</value></data>
-  <data name="Remote_BadCode" xml:space="preserve"><value>Этот код не работает. Скопируйте его с другого ПК заново и целиком.</value></data>
   <data name="Remote_Request_Title" xml:space="preserve"><value>Разрешить удалённый доступ?</value></data>
   <data name="Remote_Request_Body" xml:space="preserve"><value>Другой ПК хочет видеть ваш экран.
 
@@ -200,15 +187,8 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>Разрешить управление</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Только просмотр</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Отклонить</value></data>
-  <data name="Remote_Server.Header" xml:space="preserve"><value>Сервер встречи (необязательно)</value></data>
-  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
-  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>Ваш ПК с сервером встречи ClientSSH (опция установщика). С ним короткий код заменяет длинные. Оставьте пустым, чтобы обмениваться длинными кодами вручную.</value></data>
-  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Ваш код подключения</value></data>
-  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Не удалось связаться с сервером встречи. Проверьте адрес.</value></data>
-  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Сообщите этот код другому человеку. Когда он подключится, вас спросят о разрешении.</value></data>
   <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Удалить хост</value></data>
   <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Копирует код в буфер обмена</value></data>
-  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Подключается по вставленному коду ответа</value></data>
   <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Подключается к ПК по вставленному коду</value></data>
   <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Завершает сеанс удалённого доступа</value></data>
   <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Вводит команду в терминал без Enter</value></data>
@@ -217,4 +197,17 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Удаляет сохранённый ключ этого провайдера</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Скачивает, проверяет и устанавливает новую версию</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Пропускает тур и открывает хосты</value></data>
+  <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Этот ПК</value></data>
+  <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Сообщите этот номер тому, кто будет подключаться к этому ПК. Каждый запрос вы разрешаете сами.</value></data>
+  <data name="Remote_Listen.Header" xml:space="preserve"><value>Принимать запросы на доступ</value></data>
+  <data name="Remote_Listen_Hint.Text" xml:space="preserve"><value>Пока включено, ClientSSH публикует публичный адрес этого ПК вместе с его номером в публичной сети BitTorrent (DHT), чтобы другие могли его найти. Запросы приходят, пока ClientSSH открыт или в области уведомлений.</value></data>
+  <data name="Remote_Number.Header" xml:space="preserve"><value>Номер другого ПК</value></data>
+  <data name="Remote_Status_Searching" xml:space="preserve"><value>Поиск ПК в сети...</value></data>
+  <data name="Remote_Status_Found" xml:space="preserve"><value>ПК найден. Открываем прямое соединение...</value></data>
+  <data name="Remote_Status_NotFound" xml:space="preserve"><value>ПК не найден. Проверьте номер и что на том ПК открыт ClientSSH с включёнными запросами на доступ.</value></data>
+  <data name="Remote_Status_NoPath" xml:space="preserve"><value>ПК найден, но открыть прямое соединение не удалось. Одна из сетей может его блокировать (CGNAT или симметричный NAT).</value></data>
+  <data name="Remote_BadNumber" xml:space="preserve"><value>Введите 9-значный номер другого ПК.</value></data>
+  <data name="Remote_OwnNumber" xml:space="preserve"><value>Это номер этого же ПК.</value></data>
+  <data name="Remote_Notify_Body" xml:space="preserve"><value>Другой ПК просит доступ к этому. Откройте ClientSSH, чтобы разрешить или отклонить.</value></data>
+  <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
 </root>

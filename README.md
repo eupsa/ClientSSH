@@ -24,7 +24,7 @@ See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Window
 
 ## Privacy
 
-ClientSSH makes no network connection on its own, with four exceptions: the SSH sessions you start, the update check, the AI assistant (only when you send it a prompt) and remote access (only when you start it). The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
+ClientSSH makes no network connection on its own, with four exceptions: the SSH sessions you start, the update check, the AI assistant (only when you send it a prompt) and remote access (while **Accept access requests** is on, the default, the app keeps this PC findable by its number in the public BitTorrent DHT; see below). The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
@@ -34,24 +34,25 @@ Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
 
-## Remote access (PC to PC, no server)
+## Remote access (like AnyDesk, with no server)
 
-Optional. Share this PC's screen, or watch and control another PC, **directly between the two**: no ClientSSH server, no account, no relay.
+See and control another Windows PC, or let someone help you on this one, **directly between the two PCs**: no ClientSSH server, no account, no relay.
 
-1. On the PC to be shared, open **Remote** > **Create a code** and send the code to the other person (any chat app).
-2. On the other PC, **Remote** > paste it under **Connect to a PC**. A reply code appears: send it back.
-3. Paste the reply code on the first PC. The person at that PC sees a **security code** and chooses **Allow control**, **View only** or **Deny**. Read the six digits out loud to each other (call or voice message): if they differ, someone is in the middle, choose Deny.
+1. Every installation gets a fixed **PC number** (9 digits, like `847 291 503`), shown under **Remote** > **This PC**. It comes from a key created once on this PC (kept encrypted with Windows DPAPI), not from hardware ids, and it stays the same across updates.
+2. Your friend gives you their number. Type it under **Access another PC** and press **Connect**.
+3. On their PC a request pops up, even when ClientSSH is minimized or in the tray: the window comes to the front, stays on top and the taskbar button flashes. They choose **Allow control**, **View only** or **Deny**. Both screens show the same six-digit **security code**: read it out loud to each other, and if it differs, deny.
+4. While a screen is shared, a **Stop sharing** banner stays visible on every page of the shared PC.
 
-**Short code (optional, still no server of ours).** Tick "Also install the rendezvous server" in the installer on a PC you own (or run `server/ClientSSH.Rendezvous`), open TCP port 47800 to it, and type its address under **Rendezvous server** on both PCs. **Share this PC** then shows a 9-digit code; the other person types it under **Connect to a PC** and you are asked to allow. The server only holds the two public codes for 10 minutes, in memory, and never sees keys, screen or input; if it were dishonest it could only swap the codes, which the six-digit security code reveals.
+The picture is H.264 at up to 1920 x 1080 and 60 frames per second, encoded and decoded by the codecs built into Windows (Media Foundation) and captured with Desktop Duplication; only changes are sent, so a still screen costs almost nothing. A busy screen uses about 3 to 8 Mbit/s.
 
-How it works: both PCs ask a public STUN server (Google's and Cloudflare's by default, editable as `RemoteStunServers` in `settings.json`) for their public address, then send packets to each other at the same moment to open the way through their routers (UDP hole punching). A STUN server only sees the public address and port, never the content. Everything after that is end to end: a one-time key pair per session (ECDH P-256), keys derived with HKDF-SHA256 from that exchange (the code itself is only your public address written as syllables like `bako rimu sela fidu nomi ta`, with no key in it; the six-digit security code exposes anyone in the middle), every packet encrypted and authenticated (AES-256-GCM).
+How a PC is found with no server: while **Accept access requests** is on (the default), ClientSSH stores this PC's public address under a key derived from its number in the public BitTorrent DHT, the network of millions of PCs that BitTorrent clients use to find each other, with no owner and no central server. A caller looks the number up there, leaves its own address under a second key the called PC watches, and both send packets to each other at once to open the way through their routers (UDP hole punching). On the same network, the two PCs also find each other by a local multicast question. Only the PC that owns the number can answer: it signs the handshake with the key behind the number. Everything after that is end to end: one-time keys per session (ECDH P-256 + HKDF-SHA256), every packet encrypted and authenticated (AES-256-GCM).
 
 Limits, honestly:
-- **Without any server it cannot work on every network.** If one of the networks uses CGNAT or a symmetric NAT (common on mobile data and some ISPs), the direct path may never open. ClientSSH warns when it detects this. Try another network, a VPN or a phone hotspot.
-- IPv4 only, main monitor only, JPEG frames (around 8 per second), no sound, no clipboard or file transfer yet.
-- Input is sent as key codes, so different keyboard layouts on the two PCs can type different characters. Windows does not allow injecting input into administrator windows or the secure desktop.
+- **Without any server it cannot work on every network.** If one side uses CGNAT or a symmetric NAT (common on mobile data and some ISPs), the direct path may never open; AnyDesk solves that with relay servers, which ClientSSH does not have. The app says so when it happens. Try another network or a phone hotspot.
+- **Your public IP address is published with your number** in the DHT while requests are accepted, so anyone who knows (or guesses) your number can learn your IP address. They still cannot see anything without your OK. Turn **Accept access requests** off to stop publishing.
+- Requests only arrive while ClientSSH runs (open or in the tray). Windows may ask once to allow ClientSSH on the network.
+- Main monitor only, no sound, no clipboard or file transfer yet. The keyboard is sent as key codes, so different layouts on the two PCs can type different characters. Windows does not allow input into administrator windows or the secure desktop (UAC prompts).
 - The protocol is new and has had no outside security review. Review is welcome, see [SECURITY.md](SECURITY.md).
-- While your screen is shared, a banner with **Stop sharing** stays visible on every page.
 
 ## Window
 

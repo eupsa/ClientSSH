@@ -17,12 +17,8 @@ public sealed record AppSettings(
     AiProvider AiProvider = AiProvider.Claude,
     string AiModel = "",
     WindowState? Window = null,
-    string RemoteStunServers = AppSettings.DefaultStunServers,
-    string RendezvousAddress = "")
+    bool RemoteListen = true)
 {
     /// <summary>Open source: users can point the update check at their own fork.</summary>
     public const string DefaultUpdateRepo = "eupsa/client-ssh";
-
-    /// <summary>Public STUN servers (comma separated, at most two are used). They only reveal this PC's public address; editable in settings.json.</summary>
-    public const string DefaultStunServers = "stun.l.google.com:19302,stun.cloudflare.com:3478";
 }

@@ -11,10 +11,6 @@ dotnet publish "$root\ClientSSH.csproj" -c Release -r win-x64 -p:Platform=x64 `
     -p:PublishTrimmed=false -p:Version=$Version -p:PublishProfile= -o "$out\publish"
 if ($LASTEXITCODE) { throw "publish failed" }
 
-# Optional component: the rendezvous server for short remote-access codes (tiny console app).
-dotnet publish "$root\server\ClientSSH.Rendezvous" -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:Version=$Version -o "$out\rendezvous"
-if ($LASTEXITCODE) { throw "rendezvous publish failed" }
-
 # Wizard art from the brand kit: dark panel with the logo (side) and the icon (top-right corner).
 Add-Type -AssemblyName System.Drawing
 New-Item "$out\wizard" -ItemType Directory | Out-Null
@@ -34,4 +30,4 @@ New-Bmp 55 55 "icon-64.png" 44 "small.bmp" "#05070D"
 $iscc = @("$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe", "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe", "$env:ProgramFiles\Inno Setup 6\ISCC.exe") |
     Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $iscc) { throw "Inno Setup 6 not found. Install it: winget install JRSoftware.InnoSetup" }
-& $iscc "/DAppVersion=$Version" "/DRendezvousDir=$out\rendezvous" "$PSScriptRoot\ClientSSH.iss"
+& $iscc "/DAppVersion=$Version" "$PSScriptRoot\ClientSSH.iss"
