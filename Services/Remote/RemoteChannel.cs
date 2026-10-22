@@ -33,7 +33,7 @@ public sealed class RemoteChannel
         packet[0] = (byte)type;
         lock (_lock) BinaryPrimitives.WriteUInt64BigEndian(packet.AsSpan(1), ++_sendCounter);
 
-        _send.Encrypt(Nonce(packet.AsSpan(1, 8)), payload, packet.AsSpan(HeaderLength, payload.Length),
+        _send.Encrypt(Nonce(packet.AsSpan(1, 8), stackalloc byte[NonceLength]), payload, packet.AsSpan(HeaderLength, payload.Length),
             packet.AsSpan(HeaderLength + payload.Length, TagLength), packet.AsSpan(0, HeaderLength));
         return packet;
     }
@@ -51,7 +51,7 @@ public sealed class RemoteChannel
         var plain = new byte[length];
         try
         {
-            _receive.Decrypt(Nonce(datagram.Slice(1, 8)), datagram.Slice(HeaderLength, length),
+            _receive.Decrypt(Nonce(datagram.Slice(1, 8), stackalloc byte[NonceLength]), datagram.Slice(HeaderLength, length),
                 datagram.Slice(HeaderLength + length, TagLength), plain, datagram[..HeaderLength]);
         }
         catch (CryptographicException)
@@ -69,10 +69,10 @@ public sealed class RemoteChannel
         return true;
     }
 
-    private static byte[] Nonce(ReadOnlySpan<byte> counter)
+    private static ReadOnlySpan<byte> Nonce(ReadOnlySpan<byte> counter, Span<byte> nonce)
     {
-        var nonce = new byte[NonceLength];
-        counter.CopyTo(nonce.AsSpan(4));
+        nonce[..4].Clear();
+        counter.CopyTo(nonce[4..]);
         return nonce;
     }
 

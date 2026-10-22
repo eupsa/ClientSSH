@@ -335,17 +335,18 @@ public sealed class RemoteSession : IDisposable
         var id = ++_frameId;
         var data = frame.Data;
         var count = (data.Length + ChunkSize - 1) / ChunkSize;
+        Span<byte> chunk = stackalloc byte[FrameHeader + ChunkSize];
         for (var i = 0; i < count; i++)
         {
             var size = Math.Min(ChunkSize, data.Length - i * ChunkSize);
-            var payload = new byte[FrameHeader + size];
+            var payload = chunk[..(FrameHeader + size)];
             BinaryPrimitives.WriteUInt32BigEndian(payload, id);
-            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(4), (ushort)i);
-            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(6), (ushort)count);
+            BinaryPrimitives.WriteUInt16BigEndian(payload[4..], (ushort)i);
+            BinaryPrimitives.WriteUInt16BigEndian(payload[6..], (ushort)count);
             payload[8] = (byte)(frame.IsKey ? 1 : 0);
-            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(9), (ushort)frame.Width);
-            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(11), (ushort)frame.Height);
-            data.AsSpan(i * ChunkSize, size).CopyTo(payload.AsSpan(FrameHeader));
+            BinaryPrimitives.WriteUInt16BigEndian(payload[9..], (ushort)frame.Width);
+            BinaryPrimitives.WriteUInt16BigEndian(payload[11..], (ushort)frame.Height);
+            data.AsSpan(i * ChunkSize, size).CopyTo(payload[FrameHeader..]);
             Send(PacketType.Frame, payload);
             // shortcut: no congestion control, only a breath every 32 packets so a key frame is not one burst; add pacing by measured loss later.
             if (i % 32 == 31) Thread.Sleep(0);
@@ -424,16 +425,30 @@ public sealed class RemoteSession : IDisposable
             }
             if (_chunks[index] is not null) return;
 
-            _chunks[index] = payload[FrameHeader..];
+            _chunks[index] = payload; // kept whole (header included): no copy per chunk
             if (--_chunksLeft == 0)
             {
                 _deliveredFrame = id;
                 var isKey = (_assemblingFlags & 1) != 0;
                 if (isKey) _needKey = false;
-                if (!_needKey) complete = new VideoFrame([.. _chunks.SelectMany(c => c!)], isKey, _assemblingWidth, _assemblingHeight);
+                if (!_needKey) complete = new VideoFrame(Join(_chunks), isKey, _assemblingWidth, _assemblingHeight);
             }
         }
         if (complete is not null) FrameReceived?.Invoke(complete);
+    }
+
+    private static byte[] Join(byte[]?[] chunks)
+    {
+        var length = 0;
+        foreach (var chunk in chunks) length += chunk!.Length - FrameHeader;
+        var data = new byte[length];
+        var offset = 0;
+        foreach (var chunk in chunks)
+        {
+            chunk.AsSpan(FrameHeader).CopyTo(data.AsSpan(offset));
+            offset += chunk!.Length - FrameHeader;
+        }
+        return data;
     }
 
     private void AskForKeyFrameIfNeeded(DateTime now)
