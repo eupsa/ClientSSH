@@ -228,4 +228,6 @@ Leggilo ad alta voce allâ€™altra persona (chiamata o messaggio vocale). Se non Ã
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Vai a Impostazioni</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Apri accesso remoto</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Cerca aggiornamenti</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Riquadro comandi (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Riquadro comandi</value></data>
 </root>

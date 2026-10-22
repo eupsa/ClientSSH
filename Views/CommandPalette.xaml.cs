@@ -27,12 +27,13 @@ public sealed partial class CommandPalette : UserControl
     {
         if (e.PropertyName != nameof(ViewModel.IsOpen) || XamlRoot is null) return;
         if (ViewModel.IsOpen)
+        {
             _returnFocus = FocusManager.GetFocusedElement(XamlRoot) as UIElement;
+            DispatcherQueue.TryEnqueue(() => SearchBox.Focus(FocusState.Programmatic)); // after the card becomes visible
+        }
         else if (_returnFocus is { } element && element.XamlRoot is not null)
             element.Focus(FocusState.Programmatic);
     }
-
-    private void OnCardLoaded(object sender, RoutedEventArgs e) => SearchBox.Focus(FocusState.Programmatic);
 
     private void OnSearchKeyDown(object sender, KeyRoutedEventArgs e)
     {
@@ -62,10 +63,10 @@ public sealed partial class CommandPalette : UserControl
 
     private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (ResultsList?.SelectedItem is not PaletteCommand command) return;
+        if (ResultsList.SelectedItem is not PaletteCommand command) return;
         ResultsList.ScrollIntoView(command);
         // Focus stays in the search box while arrows move the highlight: tell screen readers what is highlighted.
-        if (SearchBox?.FocusState is FocusState.Unfocused or null) return;
+        if (SearchBox.FocusState == FocusState.Unfocused) return;
         FrameworkElementAutomationPeer.CreatePeerForElement(SearchBox).RaiseNotificationEvent(
             AutomationNotificationKind.ActionCompleted, AutomationNotificationProcessing.ImportantMostRecent,
             command.Title, "PaletteSelection");

@@ -228,4 +228,6 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Naar Instellingen</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Externe toegang openen</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Controleren op updates</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Opdrachtpalet (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Opdrachtpalet</value></data>
 </root>

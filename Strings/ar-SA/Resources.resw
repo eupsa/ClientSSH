@@ -228,4 +228,6 @@
   <data name="Cmd_GoSettings" xml:space="preserve"><value>الانتقال إلى الإعدادات</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>فتح الوصول عن بُعد</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>التحقق من وجود تحديثات</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>لوحة الأوامر (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>لوحة الأوامر</value></data>
 </root>

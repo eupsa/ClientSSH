@@ -228,4 +228,6 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Go to Settings</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Open remote access</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Command palette (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Command palette</value></data>
 </root>

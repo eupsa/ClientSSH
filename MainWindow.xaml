@@ -25,6 +25,11 @@
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="ms-appx:///Assets/Square44x44Logo.targetsize-24.png" />
             </TitleBar.IconSource>
+            <TitleBar.RightHeader>
+                <Button x:Uid="Palette_Open" Click="OnPaletteButtonClick" Background="Transparent" BorderThickness="0">
+                    <FontIcon Glyph="&#xE721;" FontSize="14" />
+                </Button>
+            </TitleBar.RightHeader>
         </TitleBar>
 
         <NavigationView

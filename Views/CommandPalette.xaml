@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:c="using:ClientSSH.Services.Commands">
 
-    <!-- No background: while closed nothing is loaded and clicks pass through to the app. -->
+    <!-- No background: while closed the children are collapsed and clicks pass through to the app.
+         Visibility, not x:Load: an unloaded ListView with a TwoWay SelectedIndex binding crashes on the next open. -->
     <Grid>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -13,14 +14,14 @@
             </TransitionCollection>
         </Grid.ChildrenTransitions>
 
-        <Rectangle x:Name="Backdrop" x:Load="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
+        <Rectangle x:Name="Backdrop" Visibility="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
                    Fill="{ThemeResource BackgroundBrush}" Opacity="0.45" Tapped="OnBackdropTapped" />
 
-        <Border x:Name="Card" x:Load="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
+        <Border x:Name="Card" Visibility="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
                 VerticalAlignment="Top" Margin="16,56,16,16" MaxWidth="600"
                 Background="{ThemeResource SurfaceRaisedBrush}" BorderBrush="{ThemeResource BorderBrush}" BorderThickness="1"
                 CornerRadius="{StaticResource OverlayCornerRadius}" Padding="8"
-                TabFocusNavigation="Cycle" Loaded="OnCardLoaded" KeyDown="OnCardKeyDown">
+                TabFocusNavigation="Cycle" KeyDown="OnCardKeyDown">
             <StackPanel Spacing="8">
                 <TextBox x:Name="SearchBox" x:Uid="Palette_Search"
                          Text="{x:Bind ViewModel.Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

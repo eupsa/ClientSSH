@@ -228,4 +228,6 @@
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Перейти к параметрам</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Открыть удалённый доступ</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Проверить обновления</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Палитра команд (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Палитра команд</value></data>
 </root>

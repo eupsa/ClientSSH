@@ -228,4 +228,6 @@ Leia em voz alta para a outra pessoa (ligação ou áudio). Se não for igual na
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Ir para Configurações</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Abrir acesso remoto</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Verificar atualizações</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Paleta de comandos (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Paleta de comandos</value></data>
 </root>

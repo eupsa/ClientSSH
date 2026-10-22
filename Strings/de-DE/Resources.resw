@@ -228,4 +228,6 @@ Lies ihn der anderen Person laut vor (Anruf oder Sprachnachricht). Wenn er auf b
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Zu Einstellungen</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Fernzugriff öffnen</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Nach Updates suchen</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Befehlspalette (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Befehlspalette</value></data>
 </root>

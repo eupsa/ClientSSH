@@ -83,6 +83,9 @@ namespace ClientSSH
             else Palette.Open();
         }
 
+        // Same palette for mouse users, who may not know the shortcut.
+        private void OnPaletteButtonClick(object sender, RoutedEventArgs e) => Palette.Open();
+
         private static bool IsDown(Windows.System.VirtualKey key) =>
             Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(key).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
 

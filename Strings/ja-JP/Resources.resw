@@ -228,4 +228,6 @@
   <data name="Cmd_GoSettings" xml:space="preserve"><value>設定へ移動</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>リモート アクセスを開く</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>更新プログラムを確認</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コマンド パレット (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド パレット</value></data>
 </root>

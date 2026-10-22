@@ -228,4 +228,6 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Cmd_GoSettings" xml:space="preserve"><value>Ayarlara git</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>Uzaktan erişimi aç</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Güncellemeleri denetle</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komut paleti (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komut paleti</value></data>
 </root>

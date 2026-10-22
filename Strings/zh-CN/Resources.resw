@@ -228,4 +228,6 @@
   <data name="Cmd_GoSettings" xml:space="preserve"><value>转到设置</value></data>
   <data name="Cmd_GoRemote" xml:space="preserve"><value>打开远程访问</value></data>
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>检查更新</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>命令面板 (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>命令面板</value></data>
 </root>
