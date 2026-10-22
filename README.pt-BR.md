@@ -16,6 +16,8 @@ Um cliente SSH simples e rápido para Windows. Código aberto, feito com WinUI 3
 - Tour guiado na primeira abertura (o tour usa um host simulado, sem rede)
 - Terminal real: `ssh.exe` num pseudo-console do Windows (ConPTY), desenhado com Win2D
 - Abas: várias sessões simultâneas, que continuam ativas enquanto você navega por hosts e configurações
+- Painéis divididos: divida uma aba na vertical ou na horizontal (cada painel roda a própria sessão), arraste o divisor para redimensionar, renomeie abas (clique duplo ou menu da aba)
+- Atalhos de teclado para abas e painéis, configuráveis em Configurações: nova aba `Ctrl+Shift+T`, fechar aba `Ctrl+Shift+W`, próxima/anterior `Ctrl+Tab`/`Ctrl+Shift+Tab`, dividir na vertical `Ctrl+Shift+E`, na horizontal `Ctrl+Shift+O`, fechar painel `Ctrl+Shift+X`, próximo painel `Ctrl+Shift+N`, renomear aba `Ctrl+Shift+R`
 - Configurações: idioma, tema, tamanho da fonte do terminal, iniciar com o Windows, iniciar minimizado, manter na bandeja ao fechar
 - Verificação de atualizações nas Releases do GitHub de um repositório que você pode trocar, com atualização em um clique (o download é conferido com o `SHA256SUMS.txt`)
 

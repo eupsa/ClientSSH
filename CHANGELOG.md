@@ -4,6 +4,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- **Split panes.** Split a tab vertically or horizontally (tab bar buttons, the tab's right-click menu or shortcuts); each pane runs its own session to the same host. Drag the divider to resize; the focused pane has an accent outline. Only the visible tab's panes keep a terminal canvas.
+- **Rename tabs** with a double click on the title or from the tab's menu. The name lasts while the tab is open.
+- **Configurable shortcuts** for new/close/next/previous tab, split, close pane, next pane and rename (Settings > Keyboard shortcuts). Only changes from the defaults are saved (`Shortcuts` in `settings.json`); older settings files keep loading.
+
 ## [0.5.0] - 2026-10-22
 
 ### Changed
