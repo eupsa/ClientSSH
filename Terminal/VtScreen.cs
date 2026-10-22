@@ -36,7 +36,9 @@ public sealed class VtScreen
 
     private Cell[][] _screen;
     private Cell[][]? _mainScreen;
-    private readonly List<Cell[]> _scrollback = [];
+    // A ring: once full, the oldest line is overwritten (and its array reused) instead of shifting 5000 entries per new line.
+    private readonly Cell[][] _scrollback = new Cell[MaxScrollback][];
+    private int _scrollStart, _scrollCount;
     private int _top, _bottom;
     private bool _wrapPending;
     private TermColor _fg = TermColor.Default, _bg = TermColor.Default;
@@ -61,7 +63,7 @@ public sealed class VtScreen
     /// <summary>Lines scrolled back from the live screen; 0 shows the live screen.</summary>
     public int ViewOffset { get; set; }
 
-    public int ScrollbackCount => _scrollback.Count;
+    public int ScrollbackCount => _scrollCount;
 
     /// <summary>Bytes the terminal must answer with (cursor position reports, device attributes).</summary>
     public event Action<string>? Reply;
@@ -76,8 +78,8 @@ public sealed class VtScreen
 
     public Cell GetCell(int viewRow, int col)
     {
-        var line = _scrollback.Count - Math.Clamp(ViewOffset, 0, _scrollback.Count) + viewRow;
-        var cells = line < _scrollback.Count ? _scrollback[line] : _screen[line - _scrollback.Count];
+        var line = _scrollCount - Math.Clamp(ViewOffset, 0, _scrollCount) + viewRow;
+        var cells = line < _scrollCount ? _scrollback[(_scrollStart + line) % MaxScrollback] : _screen[line - _scrollCount];
         return col < cells.Length ? cells[col] : Blank();
     }
 
@@ -386,14 +388,9 @@ public sealed class VtScreen
     {
         for (var n = 0; n < Math.Min(count, _bottom - _top + 1); n++)
         {
-            if (keep && _top == 0 && _mainScreen is null)
-            {
-                _scrollback.Add(_screen[0]);
-                if (_scrollback.Count > MaxScrollback) _scrollback.RemoveAt(0);
-            }
-
+            var spare = keep && _top == 0 && _mainScreen is null ? PushScrollback(_screen[0]) : _screen[_top];
             for (var r = _top; r < _bottom; r++) _screen[r] = _screen[r + 1];
-            _screen[_bottom] = NewLine();
+            _screen[_bottom] = NewLine(spare);
         }
     }
 
@@ -401,8 +398,9 @@ public sealed class VtScreen
     {
         for (var n = 0; n < Math.Min(count, _bottom - _top + 1); n++)
         {
+            var spare = _screen[_bottom];
             for (var r = _bottom; r > _top; r--) _screen[r] = _screen[r - 1];
-            _screen[_top] = NewLine();
+            _screen[_top] = NewLine(spare);
         }
     }
 
@@ -452,7 +450,8 @@ public sealed class VtScreen
                 for (var r = 0; r < Rows; r++) EraseCells(r, 0, Cols);
                 break;
             case 3:
-                _scrollback.Clear();
+                Array.Clear(_scrollback);
+                _scrollStart = _scrollCount = 0;
                 ViewOffset = 0;
                 break;
         }
@@ -514,9 +513,25 @@ public sealed class VtScreen
 
     private Cell Blank() => new() { Ch = ' ', Bg = _bg };
 
-    private Cell[] NewLine()
+    // Returns the oldest line when the scrollback was full (free to reuse), else null.
+    private Cell[]? PushScrollback(Cell[] line)
     {
-        var line = new Cell[Cols];
+        if (_scrollCount < MaxScrollback)
+        {
+            _scrollback[(_scrollStart + _scrollCount++) % MaxScrollback] = line;
+            return null;
+        }
+
+        var oldest = _scrollback[_scrollStart];
+        _scrollback[_scrollStart] = line;
+        _scrollStart = (_scrollStart + 1) % MaxScrollback;
+        return oldest;
+    }
+
+    // A blank line, in the array of a line that just fell off the screen when it still has the right width.
+    private Cell[] NewLine(Cell[]? spare)
+    {
+        var line = spare?.Length == Cols ? spare : new Cell[Cols];
         Array.Fill(line, Blank());
         return line;
     }

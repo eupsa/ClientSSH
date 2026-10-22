@@ -58,6 +58,21 @@ public class VtScreenTests
     }
 
     [Fact]
+    public void FullScrollbackDropsTheOldestLinesAndReusesThemBlank()
+    {
+        var s = new VtScreen(20, 3);
+        for (var i = 0; i < 5100; i++) s.Feed($"\x1b[41m{i}\r\n");
+        s.Feed("\x1b[0m");
+
+        Assert.Equal(5000, s.ScrollbackCount);
+        s.ViewOffset = 5000;
+        Assert.Equal("98", s.GetLineText(0)); // 5100 lines + the empty last row: the first 98 fell off
+        s.ViewOffset = 0;
+        Assert.Equal("", s.GetLineText(2));
+        Assert.Equal(TermColor.Indexed(1), s.GetCell(2, 5).Bg); // the reused line is blanked with the current background
+    }
+
+    [Fact]
     public void AnswersCursorPositionReport()
     {
         var replies = new List<string>();
