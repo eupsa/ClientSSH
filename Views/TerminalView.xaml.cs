@@ -176,57 +176,65 @@ public sealed partial class TerminalView : UserControl
         ds.Clear(palette.Background);
         if (_session is null) return;
 
+        // Copy under the lock, draw without it: the reader thread is not held up while Direct2D lays out text.
         var screen = _session.Screen;
+        int rows, cols, cursorRow, cursorCol;
+        bool showCursor;
         lock (screen.Sync)
         {
-            for (var row = 0; row < screen.Rows; row++) DrawRow(ds, screen, row, palette);
+            (rows, cols, cursorRow, cursorCol) = (screen.Rows, screen.Cols, screen.CursorRow, screen.CursorCol);
+            if (_cells.Length < rows * cols) _cells = new Cell[rows * cols];
+            screen.CopyView(_cells);
+            showCursor = screen.CursorVisible && screen.ViewOffset == 0 && screen.CursorRow < screen.Rows;
+        }
 
-            var showCursor = screen.CursorVisible && screen.ViewOffset == 0 && screen.CursorRow < screen.Rows;
-            if (showCursor)
+        for (var row = 0; row < rows; row++) DrawRow(ds, _cells.AsSpan(row * cols, cols), row, palette);
+
+        if (showCursor)
+        {
+            var x = cursorCol * _cellWidth;
+            var y = cursorRow * _cellHeight;
+            if (FocusState != FocusState.Unfocused)
             {
-                var x = screen.CursorCol * _cellWidth;
-                var y = screen.CursorRow * _cellHeight;
-                if (FocusState != FocusState.Unfocused)
-                {
-                    if (_blink.On) ds.FillRectangle(x, y, _cellWidth, _cellHeight, palette.Cursor);
-                }
-                else
-                {
-                    ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
-                }
+                if (_blink.On) ds.FillRectangle(x, y, _cellWidth, _cellHeight, palette.Cursor);
+            }
+            else
+            {
+                ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
             }
         }
     }
 
     private readonly StringBuilder _runText = new();
+    private Cell[] _cells = [];
 
-    private void DrawRow(CanvasDrawingSession ds, VtScreen screen, int row, Palette palette)
+    private void DrawRow(CanvasDrawingSession ds, ReadOnlySpan<Cell> cells, int row, Palette palette)
     {
         var y = row * _cellHeight;
-        var text = _runText;
         var col = 0;
-        while (col < screen.Cols)
+        while (col < cells.Length)
         {
             var start = col;
-            var first = screen.GetCell(row, col);
+            var first = cells[col];
             var (fg, bg) = CellColors(first, palette);
-            text.Clear();
-            while (col < screen.Cols)
+            var lastInk = -1;
+            for (; col < cells.Length; col++)
             {
-                var cell = screen.GetCell(row, col);
+                var cell = cells[col];
                 if (cell.Fg != first.Fg || cell.Bg != first.Bg || cell.Attr != first.Attr) break;
-                text.Append(cell.Ch == '\0' ? ' ' : cell.Ch);
-                col++;
+                if (cell.Ch is not (' ' or '\0')) lastInk = col;
             }
 
             var x = start * _cellWidth;
             var width = (col - start) * _cellWidth;
             if (bg != palette.Background) ds.FillRectangle(x, y, width, _cellHeight, bg);
-
-            var run = text.ToString();
-            if (run.AsSpan().Trim().Length == 0 && (first.Attr & CellAttr.Underline) == 0) continue;
-            ds.DrawText(run, x, y, fg, (first.Attr & CellAttr.Bold) != 0 ? _bold : _regular);
             if ((first.Attr & CellAttr.Underline) != 0) ds.DrawLine(x, y + _cellHeight - 1, x + width, y + _cellHeight - 1, fg);
+            if (lastInk < 0) continue;
+
+            // Trailing blanks are left out: they draw nothing but would still be laid out.
+            _runText.Clear();
+            for (var c = start; c <= lastInk; c++) _runText.Append(cells[c].Ch == '\0' ? ' ' : cells[c].Ch);
+            ds.DrawText(_runText.ToString(), x, y, fg, (first.Attr & CellAttr.Bold) != 0 ? _bold : _regular);
         }
     }
 

@@ -58,6 +58,22 @@ public class VtScreenTests
     }
 
     [Fact]
+    public void CopyViewMatchesGetCellIncludingOldNarrowLines()
+    {
+        var s = Feed("narrow line\r\n2\r\n3\r\n4", cols: 12, rows: 3);
+        s.Resize(20, 3);
+        s.ViewOffset = 1;
+        var cells = new Cell[20 * 3];
+        s.CopyView(cells);
+
+        for (var row = 0; row < 3; row++)
+        for (var col = 0; col < 20; col++)
+            Assert.Equal(s.GetCell(row, col), cells[row * 20 + col]);
+        Assert.Equal('n', cells[0].Ch);
+        Assert.Equal(' ', cells[15].Ch); // past the old 12 columns: blank
+    }
+
+    [Fact]
     public void FullScrollbackDropsTheOldestLinesAndReusesThemBlank()
     {
         var s = new VtScreen(20, 3);

@@ -43,6 +43,11 @@ public class PerfTests(ITestOutputHelper output)
         output.WriteLine($"terminal: {all.Length / 1_000_000.0:0.0} M chars in {time.TotalMilliseconds:0} ms " +
                          $"({all.Length / time.TotalSeconds / 1_000_000:0.0} M chars/s), allocated {allocated / 1_000_000.0:0.0} MB, gen2 {gen2}");
         Assert.Equal(5000, screen.ScrollbackCount);
+
+        // What the view holds the lock for on each frame now (it used to hold it for the whole Direct2D draw).
+        var cells = new Cell[120 * 40];
+        var copy = Measure(() => { for (var i = 0; i < 10_000; i++) screen.CopyView(cells); });
+        output.WriteLine($"terminal: CopyView of 120x40 {copy.Time.TotalMilliseconds * 1000 / 10_000:0.0} us, allocated {copy.Allocated} B for 10k");
     }
 
     private static byte[] Picture(int width, int height, int frame)

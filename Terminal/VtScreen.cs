@@ -78,9 +78,27 @@ public sealed class VtScreen
 
     public Cell GetCell(int viewRow, int col)
     {
-        var line = _scrollCount - Math.Clamp(ViewOffset, 0, _scrollCount) + viewRow;
-        var cells = line < _scrollCount ? _scrollback[(_scrollStart + line) % MaxScrollback] : _screen[line - _scrollCount];
+        var cells = ViewLine(viewRow);
         return col < cells.Length ? cells[col] : Blank();
+    }
+
+    /// <summary>The visible rows (scrolled back by <see cref="ViewOffset"/>), Cols cells per row, into <paramref name="cells"/>.</summary>
+    public void CopyView(Span<Cell> cells)
+    {
+        for (var row = 0; row < Rows; row++)
+        {
+            var line = ViewLine(row);
+            var target = cells.Slice(row * Cols, Cols);
+            var count = Math.Min(line.Length, Cols);
+            line.AsSpan(0, count).CopyTo(target);
+            if (count < Cols) target[count..].Fill(Blank()); // a scrollback line from before a resize
+        }
+    }
+
+    private Cell[] ViewLine(int viewRow)
+    {
+        var line = _scrollCount - Math.Clamp(ViewOffset, 0, _scrollCount) + viewRow;
+        return line < _scrollCount ? _scrollback[(_scrollStart + line) % MaxScrollback] : _screen[line - _scrollCount];
     }
 
     public string GetLineText(int viewRow)
