@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace ClientSSH.Services.Remote;
 
-public enum PacketType : byte { Hello = 1, Frame = 2, Input = 3, Ack = 4, Keepalive = 5, Bye = 6, Handshake = 16 }
+public enum PacketType : byte { Hello = 1, Frame = 2, Input = 3, Ack = 4, Keepalive = 5, Bye = 6, KeyRequest = 7, Handshake = 16, Knock = 17 }
 
 /// <summary>
 /// Encrypts and authenticates every datagram with AES-256-GCM. Each direction has its own key and a counter that is
@@ -133,7 +133,7 @@ public static class RemoteKeys
         }
         catch (CryptographicException)
         {
-            throw new RemoteCodeException("The other PC sent an invalid key.");
+            throw new RemoteException("The other PC sent an invalid key.");
         }
 
         var (hostKey, viewerKey) = isHost ? (ownPublic, peerPublic) : (peerPublic, ownPublic);

@@ -23,7 +23,7 @@ O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com 
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria, com quatro exceções: as sessões SSH que você inicia, a verificação de atualizações, o assistente de IA (só quando você envia um pedido) e o acesso remoto (só quando você inicia). A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
+O ClientSSH não faz conexões por conta própria, com quatro exceções: as sessões SSH que você inicia, a verificação de atualizações, o assistente de IA (só quando você envia um pedido) e o acesso remoto (enquanto **Aceitar pedidos de acesso** está ligado, o padrão, o app mantém este PC encontrável pelo número na DHT pública do BitTorrent; veja abaixo). A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
@@ -33,24 +33,25 @@ Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
 
-## Acesso remoto (PC para PC, sem servidor)
+## Acesso remoto (tipo AnyDesk, sem servidor)
 
-Opcional. Compartilhe a tela deste PC, ou veja e controle outro PC, **direto entre os dois**: sem servidor do ClientSSH, sem conta, sem relay.
+Veja e controle outro PC com Windows, ou deixe alguém ajudar você neste, **direto entre os dois PCs**: sem servidor do ClientSSH, sem conta, sem relay.
 
-1. No PC que será compartilhado, abra **Remoto** > **Criar um código** e envie o código para a outra pessoa (qualquer aplicativo de conversa).
-2. No outro PC, **Remoto** > cole em **Conectar a um PC**. Aparece um código de resposta: envie de volta.
-3. Cole o código de resposta no primeiro PC. A pessoa desse PC vê um **código de segurança** e escolhe **Permitir controle**, **Só visualizar** ou **Negar**. Leiam os seis dígitos em voz alta um para o outro (ligação ou áudio): se forem diferentes, há alguém no meio, escolha Negar.
+1. Cada instalação tem um **número do PC** fixo (9 dígitos, como `847 291 503`), em **Remoto** > **Este PC**. Ele vem de uma chave criada uma vez neste PC (guardada criptografada com o DPAPI do Windows), não de dados do hardware, e continua o mesmo nas atualizações.
+2. Seu amigo passa o número dele. Digite em **Acessar outro PC** e clique em **Conectar**.
+3. No PC dele aparece um pedido, mesmo com o ClientSSH minimizado ou na bandeja: a janela vem para a frente, fica por cima das outras e o botão na barra de tarefas pisca. Ele escolhe **Permitir controle**, **Só visualizar** ou **Negar**. As duas telas mostram o mesmo **código de segurança** de seis dígitos: leiam em voz alta, e se for diferente, neguem.
+4. Enquanto uma tela está compartilhada, um aviso **Parar de compartilhar** fica visível em todas as páginas do PC compartilhado.
 
-**Código curto (opcional, ainda sem servidor nosso).** Marque "Instalar também o servidor de encontro" no instalador de um PC seu (ou rode `server/ClientSSH.Rendezvous`), libere a porta TCP 47800 nele e digite o endereço em **Servidor de encontro** nos dois PCs. **Compartilhar este PC** passa a mostrar um código de 9 dígitos; a outra pessoa digita em **Conectar a um PC** e você é perguntado se permite. O servidor só guarda os dois códigos públicos por 10 minutos, em memória, e nunca vê chaves, tela ou entrada; se fosse desonesto só poderia trocar os códigos, o que o código de segurança de seis dígitos denuncia.
+A imagem é H.264 em até 1920 x 1080 e 60 quadros por segundo, codificada e decodificada pelos codecs que já vêm no Windows (Media Foundation) e capturada com Desktop Duplication; só as mudanças são enviadas, então uma tela parada quase não gasta nada. Uma tela movimentada usa uns 3 a 8 Mbit/s.
 
-Como funciona: os dois PCs perguntam a um servidor STUN público (o do Google e o da Cloudflare, por padrão; editável como `RemoteStunServers` no `settings.json`) qual é o seu endereço público e depois mandam pacotes um para o outro ao mesmo tempo, para abrir caminho pelos roteadores (UDP hole punching). O STUN só vê o endereço e a porta públicos, nunca o conteúdo. Daí em diante é ponta a ponta: um par de chaves descartável por sessão (ECDH P-256), chaves derivadas dessa troca com HKDF-SHA256 (o código em si é só o seu endereço público escrito em sílabas, como `bako rimu sela fidu nomi ta`, sem chave dentro; o código de segurança de seis dígitos denuncia quem estiver no meio), cada pacote cifrado e autenticado (AES-256-GCM).
+Como um PC é achado sem servidor: enquanto **Aceitar pedidos de acesso** está ligado (o padrão), o ClientSSH guarda o endereço público deste PC, numa chave derivada do número, na DHT pública do BitTorrent, a rede de milhões de PCs que os clientes de BitTorrent usam para se achar, sem dono e sem servidor central. Quem chama procura o número lá, deixa o próprio endereço numa segunda chave que o PC chamado vigia, e os dois mandam pacotes um para o outro ao mesmo tempo para abrir caminho pelos roteadores (UDP hole punching). Na mesma rede, os dois PCs também se acham por uma pergunta multicast local. Só o PC dono do número consegue responder: ele assina o handshake com a chave por trás do número. Daí em diante é ponta a ponta: chaves descartáveis por sessão (ECDH P-256 + HKDF-SHA256), cada pacote cifrado e autenticado (AES-256-GCM).
 
 Limites, com honestidade:
-- **Sem nenhum servidor não dá para funcionar em toda rede.** Se uma das redes usa CGNAT ou NAT simétrico (comum em dados móveis e em alguns provedores), o caminho direto pode nunca abrir. O ClientSSH avisa quando detecta isso. Tente outra rede, uma VPN ou o ponto de acesso do celular.
-- Só IPv4, só o monitor principal, quadros JPEG (cerca de 8 por segundo), sem som, sem área de transferência nem transferência de arquivos por enquanto.
-- O teclado é enviado como códigos de tecla, então layouts diferentes nos dois PCs podem digitar caracteres diferentes. O Windows não permite injetar entrada em janelas de administrador nem na área de trabalho segura.
+- **Sem nenhum servidor não dá para funcionar em toda rede.** Se um dos lados usa CGNAT ou NAT simétrico (comum em dados móveis e em alguns provedores), o caminho direto pode nunca abrir; o AnyDesk resolve isso com servidores de relay, que o ClientSSH não tem. O app avisa quando isso acontece. Tente outra rede ou o ponto de acesso do celular.
+- **Seu IP público fica publicado junto com o seu número** na DHT enquanto os pedidos estão ligados, então quem souber (ou chutar) o seu número descobre o seu IP. Mesmo assim, ninguém vê nada sem o seu OK. Desligue **Aceitar pedidos de acesso** para parar de publicar.
+- Os pedidos só chegam com o ClientSSH rodando (aberto ou na bandeja). O Windows pode perguntar uma vez se libera o ClientSSH na rede.
+- Só o monitor principal, sem som, sem área de transferência nem transferência de arquivos por enquanto. O teclado vai como códigos de tecla, então layouts diferentes nos dois PCs podem digitar caracteres diferentes. O Windows não permite entrada em janelas de administrador nem na área de trabalho segura (avisos do UAC).
 - O protocolo é novo e não teve revisão de segurança externa. Revisões são bem-vindas, veja o [SECURITY.md](SECURITY.md).
-- Enquanto sua tela está compartilhada, um aviso com **Parar de compartilhar** fica visível em todas as páginas.
 
 ## Janela
 

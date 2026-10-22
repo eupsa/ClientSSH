@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -22,12 +23,15 @@
     <Compile Include="..\..\Services\Shortcuts\KeyChord.cs" Link="KeyChord.cs" />
     <Compile Include="..\..\Services\Shortcuts\ShortcutMap.cs" Link="ShortcutMap.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
-    <Compile Include="..\..\Services\Remote\Stun.cs" Link="Stun.cs" />
-    <Compile Include="..\..\Services\Remote\Rendezvous.cs" Link="Rendezvous.cs" />
-    <Compile Include="..\..\Services\Remote\RemoteCode.cs" Link="RemoteCode.cs" />
     <Compile Include="..\..\Services\Remote\RemoteChannel.cs" Link="RemoteChannel.cs" />
     <Compile Include="..\..\Services\Remote\InputEvent.cs" Link="InputEvent.cs" />
     <Compile Include="..\..\Services\Remote\RemoteSession.cs" Link="RemoteSession.cs" />
+    <Compile Include="..\..\Services\Remote\RemoteNode.cs" Link="RemoteNode.cs" />
+    <Compile Include="..\..\Services\Remote\RemoteIdentity.cs" Link="RemoteIdentity.cs" />
+    <Compile Include="..\..\Services\Remote\Dht.cs" Link="Dht.cs" />
+    <Compile Include="..\..\Services\Remote\H264.cs" Link="H264.cs" />
+    <Compile Include="..\..\Services\Remote\ScreenSource.cs" Link="ScreenSource.cs" />
+    <Compile Include="..\..\Services\Remote\DesktopDuplication.cs" Link="DesktopDuplication.cs" />
     <Compile Include="..\..\Services\Assistant\CommandText.cs" Link="CommandText.cs" />
     <Compile Include="..\..\Services\Assistant\AiProvider.cs" Link="AiProvider.cs" />
     <Compile Include="..\..\Services\Assistant\ModelList.cs" Link="ModelList.cs" />

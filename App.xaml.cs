@@ -54,6 +54,7 @@ namespace ClientSSH
             MainWindow = new MainWindow();
             MainWindow.Activate();
             SingleInstance.OnSecondLaunch(() => MainWindow.DispatcherQueue.TryEnqueue(GetService<TrayService>().Show));
+            GetService<RemoteViewModel>().Start(); // this PC can be called while the app runs, also from the tray
 
             if (LaunchedByStartup && GetService<ISettingsStore>().Current.StartMinimized)
                 GetService<TrayService>().HideToTray();

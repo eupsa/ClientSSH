@@ -156,20 +156,12 @@
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>已加载 {0} 个模型。</value></data>
   <data name="Nav_Remote.Content" xml:space="preserve"><value>远程</value></data>
   <data name="Remote_Title.Text" xml:space="preserve"><value>远程访问</value></data>
-  <data name="Remote_Intro.Text" xml:space="preserve"><value>共享这台电脑的屏幕，或查看并控制另一台电脑，两台电脑之间直接连接。无需服务器和账户：只需在任意聊天应用中交换两个代码。</value></data>
-  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>你的网络可能会阻止直接连接（例如 CGNAT）。如果无法连接，请尝试其他网络、VPN 或手机热点。</value></data>
-  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>共享这台电脑</value></data>
-  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>生成一个代码。将它发给对方；对方会回传一个回复代码，然后你来选择对方可以做什么。</value></data>
-  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>生成代码</value></data>
-  <data name="Remote_YourCode.Header" xml:space="preserve"><value>你的代码（发给对方）</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>通过号码访问另一台电脑，或让别人访问这台电脑。两台电脑之间直接连接，端到端加密，无需帐户，也没有我们的服务器。</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>你的网络可能会阻止直接连接（例如 CGNAT 或对称 NAT）。如果连接不上，请换一个网络或使用手机热点。</value></data>
   <data name="Remote_Copy.Content" xml:space="preserve"><value>复制</value></data>
-  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>对方的回复代码</value></data>
-  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>连接</value></data>
-  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>连接到电脑</value></data>
-  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>粘贴对方生成的代码。你会得到一个回复代码，需要发回给对方。</value></data>
-  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>对方电脑的代码</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>访问另一台电脑</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>输入另一台电脑的号码。对方需要同意。</value></data>
   <data name="Remote_JoinButton.Content" xml:space="preserve"><value>连接</value></data>
-  <data name="Remote_YourReply.Header" xml:space="preserve"><value>你的回复代码（发回给对方）</value></data>
   <data name="Remote_Stop.Content" xml:space="preserve"><value>停止</value></data>
   <data name="Remote_Disconnect.Content" xml:space="preserve"><value>断开连接</value></data>
   <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>你的屏幕正在显示给另一台电脑。</value></data>
@@ -177,10 +169,6 @@
   <data name="Remote_Access_Control" xml:space="preserve"><value>允许控制</value></data>
   <data name="Remote_Access_View" xml:space="preserve"><value>仅查看</value></data>
   <data name="Remote_Security" xml:space="preserve"><value>安全码：{0}</value></data>
-  <data name="Remote_Status_Preparing" xml:space="preserve"><value>正在准备...</value></data>
-  <data name="Remote_Status_SendCode" xml:space="preserve"><value>将代码发给对方，然后在下方粘贴对方的回复代码。</value></data>
-  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>正在连接到对方电脑...</value></data>
-  <data name="Remote_Status_SendReply" xml:space="preserve"><value>将回复代码发回给对方并等待。</value></data>
   <data name="Remote_Status_Failed" xml:space="preserve"><value>无法启动。请检查网络连接。</value></data>
   <data name="Remote_Status_AskHost" xml:space="preserve"><value>对方电脑已连接到你。正在等待你的答复。</value></data>
   <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>已连接。正在等待对方允许访问...</value></data>
@@ -188,9 +176,8 @@
   <data name="Remote_Status_Viewing" xml:space="preserve"><value>正在查看对方电脑。</value></data>
   <data name="Remote_Status_Denied" xml:space="preserve"><value>访问未被允许。</value></data>
   <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>对方电脑已结束会话。</value></data>
-  <data name="Remote_Status_Timeout" xml:space="preserve"><value>连接已断开或从未建立。请检查两个代码是否都已完整复制。</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>连接已断开。</value></data>
   <data name="Remote_Status_Stopped" xml:space="preserve"><value>会话已结束。</value></data>
-  <data name="Remote_BadCode" xml:space="preserve"><value>该代码无效。请从对方电脑重新完整复制。</value></data>
   <data name="Remote_Request_Title" xml:space="preserve"><value>允许远程访问？</value></data>
   <data name="Remote_Request_Body" xml:space="preserve"><value>另一台电脑想要查看你的屏幕。
 
@@ -200,15 +187,8 @@
   <data name="Remote_Request_Control" xml:space="preserve"><value>允许控制</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>仅查看</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>拒绝</value></data>
-  <data name="Remote_Server.Header" xml:space="preserve"><value>会合服务器（可选）</value></data>
-  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
-  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>你自己运行 ClientSSH 会合服务器的电脑（安装程序选项）。有了它，短代码可以代替长代码。留空则手动交换长代码。</value></data>
-  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>你的连接代码</value></data>
-  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>无法连接到会合服务器。请检查地址。</value></data>
-  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>把这个代码告诉对方。对方连接时，你会被询问是否允许。</value></data>
   <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>删除主机</value></data>
   <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>将代码复制到剪贴板</value></data>
-  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>使用粘贴的回复代码进行连接</value></data>
   <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>连接到所粘贴代码对应的电脑</value></data>
   <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>结束远程访问会话</value></data>
   <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>将命令输入终端，不按 Enter</value></data>
@@ -246,4 +226,17 @@
   <data name="Shortcut_ClosePane" xml:space="preserve"><value>关闭窗格</value></data>
   <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>下一个窗格</value></data>
   <data name="Shortcut_RenameTab" xml:space="preserve"><value>重命名标签页</value></data>
+  <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>这台电脑</value></data>
+  <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>把这个号码告诉要访问这台电脑的人。每个请求都由你决定是否允许。</value></data>
+  <data name="Remote_Listen.Header" xml:space="preserve"><value>接受访问请求</value></data>
+  <data name="Remote_Listen_Hint.Text" xml:space="preserve"><value>开启时，ClientSSH 会把这台电脑的公网地址和号码一起发布到公共 BitTorrent 网络（DHT），以便别人找到它。ClientSSH 打开或在系统托盘中时才会收到请求。</value></data>
+  <data name="Remote_Number.Header" xml:space="preserve"><value>另一台电脑的号码</value></data>
+  <data name="Remote_Status_Searching" xml:space="preserve"><value>正在网络上查找该电脑...</value></data>
+  <data name="Remote_Status_Found" xml:space="preserve"><value>已找到电脑。正在建立直接连接...</value></data>
+  <data name="Remote_Status_NotFound" xml:space="preserve"><value>未找到电脑。请检查号码，并确认那台电脑上已打开 ClientSSH 且开启了访问请求。</value></data>
+  <data name="Remote_Status_NoPath" xml:space="preserve"><value>已找到电脑，但无法建立直接连接。其中一个网络可能阻止了连接（CGNAT 或对称 NAT）。</value></data>
+  <data name="Remote_BadNumber" xml:space="preserve"><value>请输入另一台电脑的 9 位号码。</value></data>
+  <data name="Remote_OwnNumber" xml:space="preserve"><value>这是这台电脑自己的号码。</value></data>
+  <data name="Remote_Notify_Body" xml:space="preserve"><value>另一台电脑请求访问这台电脑。打开 ClientSSH 以允许或拒绝。</value></data>
+  <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
 </root>

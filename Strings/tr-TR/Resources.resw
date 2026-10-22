@@ -156,20 +156,12 @@
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} model yüklendi.</value></data>
   <data name="Nav_Remote.Content" xml:space="preserve"><value>Uzak</value></data>
   <data name="Remote_Title.Text" xml:space="preserve"><value>Uzaktan erişim</value></data>
-  <data name="Remote_Intro.Text" xml:space="preserve"><value>Bu bilgisayarın ekranını paylaşın ya da başka bir bilgisayarı izleyip denetleyin; doğrudan iki bilgisayar arasında. Sunucu yok, hesap yok: istediğiniz bir sohbet uygulamasında iki kod değiş tokuş edersiniz.</value></data>
-  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Ağınız doğrudan bağlantıları engelliyor olabilir (örneğin CGNAT). Bağlanamazsa başka bir ağ, VPN ya da telefon hotspot’u deneyin.</value></data>
-  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Bu bilgisayarı paylaş</value></data>
-  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Bir kod oluşturur. Karşı tarafa gönderin; size bir yanıt kodu gönderir, sonra ne yapabileceğini siz seçersiniz.</value></data>
-  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Kod oluştur</value></data>
-  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Kodunuz (karşı tarafa gönderin)</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Başka bir bilgisayara numarasıyla erişin veya birinin bu bilgisayara erişmesine izin verin. İki bilgisayar arasında doğrudan, uçtan uca şifreli, hesap ve bize ait sunucu olmadan.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Ağınız doğrudan bağlantıları engelleyebilir (örneğin CGNAT veya simetrik NAT). Bağlanmazsa başka bir ağ ya da telefonun erişim noktasını deneyin.</value></data>
   <data name="Remote_Copy.Content" xml:space="preserve"><value>Kopyala</value></data>
-  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Karşı tarafın yanıt kodu</value></data>
-  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Bağlan</value></data>
-  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Bir bilgisayara bağlan</value></data>
-  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Karşı tarafın oluşturduğu kodu yapıştırın. Ona geri göndermeniz için bir yanıt kodu alırsınız.</value></data>
-  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Diğer bilgisayarın kodu</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Başka bir bilgisayara eriş</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Diğer bilgisayarın numarasını yazın. Oradaki kişinin izin vermesi gerekir.</value></data>
   <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Bağlan</value></data>
-  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Yanıt kodunuz (geri gönderin)</value></data>
   <data name="Remote_Stop.Content" xml:space="preserve"><value>Durdur</value></data>
   <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Bağlantıyı kes</value></data>
   <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Ekranınız başka bir bilgisayara gösteriliyor.</value></data>
@@ -177,10 +169,6 @@
   <data name="Remote_Access_Control" xml:space="preserve"><value>Denetime izin verildi</value></data>
   <data name="Remote_Access_View" xml:space="preserve"><value>Yalnızca görüntüle</value></data>
   <data name="Remote_Security" xml:space="preserve"><value>Güvenlik kodu: {0}</value></data>
-  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Hazırlanıyor...</value></data>
-  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Kodu karşı tarafa gönderin, sonra onun yanıt kodunu aşağıya yapıştırın.</value></data>
-  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Diğer bilgisayara bağlanılıyor...</value></data>
-  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Yanıt kodunu karşı tarafa geri gönderin ve bekleyin.</value></data>
   <data name="Remote_Status_Failed" xml:space="preserve"><value>Başlatılamadı. Ağ bağlantınızı denetleyin.</value></data>
   <data name="Remote_Status_AskHost" xml:space="preserve"><value>Diğer bilgisayar size ulaştı. Yanıtınız bekleniyor.</value></data>
   <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Bağlandı. Karşı tarafın erişime izin vermesi bekleniyor...</value></data>
@@ -188,9 +176,8 @@
   <data name="Remote_Status_Viewing" xml:space="preserve"><value>Diğer bilgisayar izleniyor.</value></data>
   <data name="Remote_Status_Denied" xml:space="preserve"><value>Erişime izin verilmedi.</value></data>
   <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>Diğer bilgisayar oturumu sonlandırdı.</value></data>
-  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Bağlantı koptu ya da hiç açılmadı. İki kodun da eksiksiz kopyalandığından emin olun.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>Bağlantı koptu.</value></data>
   <data name="Remote_Status_Stopped" xml:space="preserve"><value>Oturum sona erdi.</value></data>
-  <data name="Remote_BadCode" xml:space="preserve"><value>Bu kod çalışmıyor. Diğer bilgisayardan yeniden, eksiksiz kopyalayın.</value></data>
   <data name="Remote_Request_Title" xml:space="preserve"><value>Uzaktan erişime izin verilsin mi?</value></data>
   <data name="Remote_Request_Body" xml:space="preserve"><value>Başka bir bilgisayar ekranınızı görmek istiyor.
 
@@ -200,15 +187,8 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Remote_Request_Control" xml:space="preserve"><value>Denetime izin ver</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>Yalnızca görüntüle</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Reddet</value></data>
-  <data name="Remote_Server.Header" xml:space="preserve"><value>Buluşma sunucusu (isteğe bağlı)</value></data>
-  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
-  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>ClientSSH buluşma sunucusunu çalıştıran kendi bilgisayarınız (yükleyici seçeneği). Bununla kısa bir kod uzun kodların yerini alır. Uzun kodları elle değiş tokuş etmek için boş bırakın.</value></data>
-  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Bağlantı kodunuz</value></data>
-  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Buluşma sunucusuna ulaşılamadı. Adresi kontrol edin.</value></data>
-  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Bu kodu karşıdaki kişiye söyleyin. Bağlandığında izin vermeniz istenecek.</value></data>
   <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Ana bilgisayarı kaldır</value></data>
   <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Kodu panoya kopyalar</value></data>
-  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yapıştırılan yanıt koduyla bağlanır</value></data>
   <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yapıştırılan kodun bilgisayarına bağlanır</value></data>
   <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Uzaktan erişim oturumunu sonlandırır</value></data>
   <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komutu terminale Enter'a basmadan yazar</value></data>
@@ -246,4 +226,17 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Shortcut_ClosePane" xml:space="preserve"><value>Bölmeyi kapat</value></data>
   <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Sonraki bölme</value></data>
   <data name="Shortcut_RenameTab" xml:space="preserve"><value>Sekmeyi yeniden adlandır</value></data>
+  <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Bu bilgisayar</value></data>
+  <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Bu numarayı bu bilgisayara erişecek kişiye verin. Her isteğe izin verip vermeyeceğinize siz karar verirsiniz.</value></data>
+  <data name="Remote_Listen.Header" xml:space="preserve"><value>Erişim isteklerini kabul et</value></data>
+  <data name="Remote_Listen_Hint.Text" xml:space="preserve"><value>Açıkken ClientSSH, başkalarının bulabilmesi için bu bilgisayarın genel adresini numarasıyla birlikte herkese açık BitTorrent ağında (DHT) yayımlar. İstekler ClientSSH açıkken veya sistem tepsisindeyken gelir.</value></data>
+  <data name="Remote_Number.Header" xml:space="preserve"><value>Diğer bilgisayarın numarası</value></data>
+  <data name="Remote_Status_Searching" xml:space="preserve"><value>Bilgisayar ağda aranıyor...</value></data>
+  <data name="Remote_Status_Found" xml:space="preserve"><value>Bilgisayar bulundu. Doğrudan bağlantı açılıyor...</value></data>
+  <data name="Remote_Status_NotFound" xml:space="preserve"><value>Bilgisayar bulunamadı. Numarayı ve o bilgisayarda ClientSSH'nin açık olup erişim isteklerinin açık olduğunu kontrol edin.</value></data>
+  <data name="Remote_Status_NoPath" xml:space="preserve"><value>Bilgisayar bulundu ancak doğrudan bağlantı açılamadı. Ağlardan biri engelliyor olabilir (CGNAT veya simetrik NAT).</value></data>
+  <data name="Remote_BadNumber" xml:space="preserve"><value>Diğer bilgisayarın 9 haneli numarasını yazın.</value></data>
+  <data name="Remote_OwnNumber" xml:space="preserve"><value>Bu, bu bilgisayarın kendi numarası.</value></data>
+  <data name="Remote_Notify_Body" xml:space="preserve"><value>Başka bir bilgisayar buna erişmek istiyor. İzin vermek veya reddetmek için ClientSSH'yi açın.</value></data>
+  <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
 </root>

@@ -5,95 +5,110 @@ using Xunit;
 
 namespace ClientSSH.Tests;
 
-public class RemoteCodeTests
+public class RemoteIdentityTests
 {
-    private static RemoteCode Sample(bool reply = false) => new(reply, new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001));
-
     [Fact]
-    public void Round_trips_and_is_short_enough_to_say()
+    public void The_number_is_nine_digits_and_survives_a_reload()
     {
-        var text = Sample().Encode();
-        var back = RemoteCode.Decode(text);
+        using var identity = RemoteIdentity.Create();
+        using var again = RemoteIdentity.FromPrivateKey(identity.ExportPrivateKey());
 
-        Assert.Equal(new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001), back.Endpoint);
-        Assert.False(back.IsReply);
-        Assert.True(text.Length <= 28, text); // for example "bako rimu sela fidu nomi ta"
+        Assert.Matches("^[0-9]{9}$", identity.Number);
+        Assert.Equal(identity.Number, again.Number);
+        Assert.Equal(identity.Number, RemoteIdentity.NumberOf(identity.PublicKey));
     }
 
     [Fact]
-    public void Ignores_spacing_dashes_and_capitals_and_keeps_the_type()
+    public void Two_installations_get_different_numbers()
     {
-        var text = Sample(reply: true).Compact();
-        var messy = text[..5].ToUpperInvariant() + "-" + text[5..9] + " " + text[9..];
-
-        Assert.True(RemoteCode.Decode(messy).IsReply);
-        Assert.True(RemoteCode.IsCompact(text));
+        using var a = RemoteIdentity.Create();
+        using var b = RemoteIdentity.Create();
+        Assert.NotEqual(a.Number, b.Number);
     }
 
     [Fact]
-    public void A_mistyped_syllable_is_caught()
+    public void Only_the_owner_can_sign_the_handshake()
     {
-        var text = Sample().Compact();
-        var wrong = text[..6] + (text[6] == 'b' ? 'd' : 'b') + text[7..];
+        using var owner = RemoteIdentity.Create();
+        using var other = RemoteIdentity.Create();
+        var (host, viewer) = (RandomNumberGenerator.GetBytes(64), RandomNumberGenerator.GetBytes(64));
 
-        Assert.Throws<RemoteCodeException>(() => RemoteCode.Decode(wrong));
+        Assert.True(RemoteIdentity.VerifyHandshake(owner.PublicKey, owner.SignHandshake(host, viewer), host, viewer));
+        Assert.False(RemoteIdentity.VerifyHandshake(owner.PublicKey, other.SignHandshake(host, viewer), host, viewer));
+        Assert.False(RemoteIdentity.VerifyHandshake(owner.PublicKey, owner.SignHandshake(host, viewer), viewer, host));
     }
 
     [Theory]
-    [InlineData("")]
-    [InlineData("hello")]
-    [InlineData("bako")]
-    [InlineData("xxxxxxxxxxxxxxxxxxxxxx")]
-    public void Garbage_is_rejected(string text) => Assert.Throws<RemoteCodeException>(() => RemoteCode.Decode(text));
+    [InlineData("847 291 503", true)]
+    [InlineData("847-291-503", true)]
+    [InlineData("847291503", true)]
+    [InlineData("84729150", false)]
+    [InlineData("847 291 50a", false)]
+    public void Numbers_parse(string text, bool ok) => Assert.Equal(ok, RemoteIdentity.TryParseNumber(text, out _));
 }
 
-public class StunTests
+public class DhtTests
 {
     [Fact]
-    public void Reads_the_xor_mapped_address()
+    public void Bencode_round_trips_a_query()
     {
-        var transaction = Enumerable.Range(1, 12).Select(i => (byte)i).ToArray();
-        // 203.0.113.7:40001 XOR-ed with the magic cookie
-        ushort xport = (ushort)(40001 ^ 0x2112);
-        byte[] cookie = [0x21, 0x12, 0xA4, 0x42];
-        byte[] address = [203, 0, 113, 7];
-        var xaddress = address.Select((b, i) => (byte)(b ^ cookie[i])).ToArray();
+        var bytes = Bencode.Encode(new Dictionary<string, object>
+        {
+            ["t"] = new byte[] { 1, 2 }, ["y"] = "q", ["q"] = "get_peers",
+            ["a"] = new Dictionary<string, object> { ["id"] = new byte[20], ["implied_port"] = 1 },
+        });
+        var back = (Dictionary<string, object>)Bencode.Decode(bytes);
 
-        byte[] response = [0x01, 0x01, 0x00, 12, 0x21, 0x12, 0xA4, 0x42, .. transaction,
-            0x00, 0x20, 0x00, 0x08, 0x00, 0x01, (byte)(xport >> 8), (byte)xport, .. xaddress];
-
-        Assert.True(Stun.TryParseResponse(response, transaction, out var endpoint));
-        Assert.Equal(new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001), endpoint);
+        Assert.Equal("q"u8.ToArray(), back["y"]);
+        Assert.Equal(1L, ((Dictionary<string, object>)back["a"])["implied_port"]);
+        Assert.StartsWith("d1:ad2:id20:", System.Text.Encoding.Latin1.GetString(bytes)); // keys sorted, as the spec requires
     }
 
-    [Fact]
-    public void Ignores_an_answer_to_another_transaction()
-    {
-        var mine = new byte[12];
-        byte[] response = [0x01, 0x01, 0x00, 0x00, 0x21, 0x12, 0xA4, 0x42, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
+    [Theory]
+    [InlineData("d1:a")]
+    [InlineData("i12")]
+    [InlineData("5:abc")]
+    [InlineData("le1")]
+    public void Bencode_rejects_garbage(string text) =>
+        Assert.Throws<FormatException>(() => Bencode.Decode(System.Text.Encoding.ASCII.GetBytes(text)));
 
-        Assert.False(Stun.TryParseResponse(response, mine, out _));
+    [Fact]
+    public void Compact_peers_parse() =>
+        Assert.Equal(new IPEndPoint(IPAddress.Parse("203.0.113.7"), 40001), DhtClient.ParseEndpoint([203, 0, 113, 7, 0x9C, 0x41]));
+
+    [Fact]
+    public void Host_and_call_keys_differ_per_number()
+    {
+        Assert.NotEqual(DhtClient.KeyFor("host", "123456789"), DhtClient.KeyFor("call", "123456789"));
+        Assert.NotEqual(DhtClient.KeyFor("host", "123456789"), DhtClient.KeyFor("host", "123456780"));
     }
 }
 
-public class StunNetworkTests
+/// <summary>Uses the real public DHT. Opt in with CLIENTSSH_NET_TESTS=1.</summary>
+public class DhtNetworkTests
 {
-    // Talks to the real public STUN servers, so it only runs when asked: set CLIENTSSH_NET_TESTS=1.
     [Fact]
-    public async Task Public_stun_servers_report_a_public_address()
+    public async Task A_listening_pc_can_be_found_by_its_number()
     {
         if (Environment.GetEnvironmentVariable("CLIENTSSH_NET_TESTS") != "1") return;
 
-        foreach (var server in new[] { "stun.l.google.com:19302", "stun.cloudflare.com:3478" })
+        using var identity = RemoteIdentity.Create();
+        using var host = new RemoteNode(identity, () => null!, () => null!, new RemoteOptions());
+        host.SetListening(true);
+        using var finder = new RemoteNode(RemoteIdentity.Create(), () => null!, () => null!, new RemoteOptions());
+
+        var key = DhtClient.KeyFor("host", identity.Number);
+        var until = DateTime.UtcNow.AddSeconds(90);
+        List<IPEndPoint> peers = [];
+        while (DateTime.UtcNow < until)
         {
-            using var socket = new System.Net.Sockets.Socket(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp);
-            socket.Bind(new IPEndPoint(IPAddress.Any, 0));
-
-            var endpoint = await Stun.QueryAsync(socket, server, TimeSpan.FromSeconds(4));
-
-            Assert.NotNull(endpoint);
-            Assert.NotEqual(0, endpoint!.Port);
+            await Task.Delay(3000);
+            peers = (await finder.Dht.LookupAsync(key)).Peers;
+            if (host.Dht.PublicEndpoint is { } mine && peers.Contains(mine)) break;
         }
+
+        Assert.NotNull(host.Dht.PublicEndpoint);
+        Assert.Contains(host.Dht.PublicEndpoint, peers);
     }
 }
 
@@ -206,7 +221,7 @@ public sealed class RemoteSessionTests
     private sealed class FakeScreen : IScreenSource
     {
         public readonly byte[] Frame = RandomNumberGenerator.GetBytes(150_000); // spans many datagrams
-        public byte[]? CaptureJpeg() => Frame;
+        public VideoFrame? Next(bool keyFrame) => new(Frame, keyFrame, 1920, 1080);
     }
 
     private sealed class RecordingSink : IInputSink
@@ -215,7 +230,7 @@ public sealed class RemoteSessionTests
         public void Apply(InputEvent input) { lock (Events) Events.Add(input); }
     }
 
-    private static readonly RemoteOptions Local = new() { IncludeLoopback = true, FramesPerSecond = 20 };
+    private static readonly RemoteOptions Local = new() { FramesPerSecond = 30 };
 
     private static async Task<bool> WaitAsync(Func<bool> condition, int milliseconds = 10_000)
     {
@@ -228,21 +243,38 @@ public sealed class RemoteSessionTests
         return condition();
     }
 
-    [Fact]
-    public async Task Two_peers_connect_after_consent_stream_and_forward_input()
+    // Two nodes on this PC, without the DHT: the caller is told the host's address directly.
+    private static (RemoteNode Host, RemoteNode Viewer, FakeScreen Screen, RecordingSink Sink) Pair()
     {
         var screen = new FakeScreen();
         var sink = new RecordingSink();
-        using var host = await RemoteSession.CreateHostAsync(Local, screen, sink);
-        using var viewer = await RemoteSession.JoinAsync(host.Code, Local);
+        var host = new RemoteNode(RemoteIdentity.Create(), () => screen, () => sink, Local, useDht: false);
+        var viewer = new RemoteNode(RemoteIdentity.Create(), () => null!, () => null!, Local, useDht: false);
+        host.SetListening(true);
+        return (host, viewer, screen, sink);
+    }
 
+    private static IPEndPoint Loopback(RemoteNode node) => new(IPAddress.Loopback, node.LocalPort);
+
+    [Fact]
+    public async Task A_call_by_number_rings_streams_after_consent_and_forwards_input()
+    {
+        var (hostNode, viewerNode, screen, sink) = Pair();
+        using var a = hostNode;
+        using var b = viewerNode;
+
+        RemoteSession? host = null;
         string? hostSees = null;
-        host.PeerRequested += security => hostSees = security;
-        byte[]? frame = null;
-        viewer.FrameReceived += f => frame = f;
+        hostNode.IncomingCall += s => { s.PeerRequested += code => hostSees = code; host = s; s.Ring(); };
 
-        host.AcceptReply(viewer.Code);
-        Assert.True(await WaitAsync(() => hostSees is not null), "host never saw the viewer");
+        using var viewer = viewerNode.Call(hostNode.Number);
+        byte[]? frame = null;
+        var keyFirst = false;
+        viewer.FrameReceived += f => { if (frame is null) keyFirst = f.IsKey; frame = f.Data; };
+        viewer.AddCandidates([Loopback(hostNode)]);
+
+        Assert.True(await WaitAsync(() => hostSees is not null), "the host was never asked");
+        Assert.True(await WaitAsync(() => viewer.SecurityCode is not null));
         Assert.Equal(viewer.SecurityCode, hostSees); // both people read the same six digits
 
         // Not allowed yet: nothing is sent and nothing is applied.
@@ -252,9 +284,10 @@ public sealed class RemoteSessionTests
         await Task.Delay(300);
         Assert.Empty(sink.Events);
 
-        // View only: pictures arrive, input is still ignored.
-        host.Grant(RemoteAccess.View);
+        // View only: pictures arrive, the first one a key frame; input is still ignored.
+        host!.Grant(RemoteAccess.View);
         Assert.True(await WaitAsync(() => frame is not null), "no frame after View was granted");
+        Assert.True(keyFirst);
         Assert.Equal(screen.Frame, frame);
         Assert.True(await WaitAsync(() => viewer.Access == RemoteAccess.View));
         viewer.SendInput(new InputEvent(InputKind.KeyDown, 66));
@@ -279,90 +312,67 @@ public sealed class RemoteSessionTests
     }
 
     [Fact]
-    public async Task Denying_ends_the_session_for_both()
+    public async Task Denying_ends_the_call_for_both_and_it_does_not_ring_again()
     {
-        using var host = await RemoteSession.CreateHostAsync(Local, new FakeScreen(), new RecordingSink());
-        using var viewer = await RemoteSession.JoinAsync(host.Code, Local);
+        var (hostNode, viewerNode, _, _) = Pair();
+        using var a = hostNode;
+        using var b = viewerNode;
 
-        var hostAsked = false;
-        host.PeerRequested += _ => hostAsked = true;
+        var rings = 0;
+        RemoteSession? host = null;
+        hostNode.IncomingCall += s => { Interlocked.Increment(ref rings); host = s; };
+
+        using var viewer = viewerNode.Call(hostNode.Number);
         RemoteCloseReason? viewerSaw = null;
         viewer.Closed += reason => viewerSaw = reason;
+        viewer.AddCandidates([Loopback(hostNode)]);
 
-        host.AcceptReply(viewer.Code);
-        Assert.True(await WaitAsync(() => hostAsked));
-        host.Deny();
+        Assert.True(await WaitAsync(() => host is not null && viewer.Phase == RemotePhase.Connected));
+        host!.Deny();
 
         Assert.True(await WaitAsync(() => viewerSaw is not null));
         Assert.Equal(RemoteCloseReason.Denied, viewerSaw);
-        Assert.Equal(RemotePhase.Closed, host.Phase);
-    }
-
-}
-
-public class RendezvousTests
-{
-    private static readonly System.Net.IPAddress Ip = System.Net.IPAddress.Parse("203.0.113.9");
-    private const string Offer = "bakorimoselafidonomita", Reply = "fidonomitabakorimosela";
-
-    [Theory]
-    [InlineData("123 456 789", true)]
-    [InlineData("123-456-789", true)]
-    [InlineData("123456789", true)]
-    [InlineData("12345678", false)]
-    [InlineData("bako rimu sela", false)]
-    public void Short_codes_parse(string text, bool ok) => Assert.Equal(ok, RendezvousClient.TryParseCode(text, out _));
-
-    [Fact]
-    public void Mailbox_rules()
-    {
-        using var server = new RendezvousServer(0);
-        Assert.Equal("OK", server.Handle($"PUT 111222333 {Offer}", Ip));
-        Assert.Equal("TAKEN", server.Handle($"PUT 111222333 {Offer}", Ip));
-        Assert.Equal(Offer, server.Handle("GET 111222333", Ip));
-        Assert.Equal("NONE", server.Handle("POLL 111222333", Ip));
-        Assert.Equal("OK", server.Handle($"REPLY 111222333 {Reply}", Ip));
-        Assert.Equal("NONE", server.Handle("REPLY 111222333 tadotasomadanerifigodo", Ip)); // the first reply wins
-        Assert.Equal(Reply, server.Handle("POLL 111222333", Ip));
-        Assert.Equal("OK", server.Handle("DEL 111222333", Ip));
-        Assert.Equal("NONE", server.Handle("GET 111222333", Ip));
-        Assert.Equal("BAD", server.Handle("PUT 1234 bakorimoselafidonomita", Ip));
-        Assert.Equal("BAD", server.Handle("PUT 111222333 not-a-code", Ip));
+        await Task.Delay(500);
+        Assert.Equal(1, rings);
     }
 
     [Fact]
-    public void Too_many_requests_are_slowed_down()
+    public async Task A_pc_that_does_not_own_the_number_is_ignored()
     {
-        using var server = new RendezvousServer(0);
-        var answers = Enumerable.Range(0, 70).Select(_ => server.Handle("GET 999999999", Ip)).ToList();
-        Assert.Equal("SLOW", answers[^1]);
-        Assert.Equal("NONE", answers[0]);
+        var (hostNode, viewerNode, _, _) = Pair();
+        using var a = hostNode;
+        using var b = viewerNode;
+
+        // The host answers, but its signature cannot match a number that is not its own.
+        using var viewer = viewerNode.Call("000000001");
+        viewer.AddCandidates([Loopback(hostNode)]);
+
+        await Task.Delay(1500);
+        Assert.Equal(RemotePhase.WaitingForPeer, viewer.Phase);
+        Assert.Null(viewer.SecurityCode);
     }
 
     [Fact]
-    public async Task Two_peers_connect_with_only_a_short_code()
+    public async Task A_pc_that_is_not_listening_does_not_ring()
     {
-        using var server = new RendezvousServer(0);
-        var address = $"127.0.0.1:{server.Port}";
-        var options = new RemoteOptions { IncludeLoopback = true };
+        var (hostNode, viewerNode, _, _) = Pair();
+        using var a = hostNode;
+        using var b = viewerNode;
+        hostNode.SetListening(false);
 
-        using var host = await RemoteSession.CreateHostAsync(options, new NullScreen(), new NullSink());
-        var code = RendezvousClient.NewCode();
-        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"PUT {code} {RemoteCode.Decode(host.Code).Compact()}"));
+        var rang = false;
+        hostNode.IncomingCall += _ => rang = true;
+        using var viewer = viewerNode.Call(hostNode.Number);
+        viewer.AddCandidates([Loopback(hostNode)]);
 
-        var offer = await RendezvousClient.RequestAsync(address, $"GET {code}");
-        using var viewer = await RemoteSession.JoinAsync(offer, options);
-        Assert.Equal("OK", await RendezvousClient.RequestAsync(address, $"REPLY {code} {RemoteCode.Decode(viewer.Code).Compact()}"));
-
-        string? seen = null;
-        host.PeerRequested += s => seen = s;
-        host.AcceptReply(await RendezvousClient.RequestAsync(address, $"POLL {code}"));
-
-        var until = DateTime.UtcNow.AddSeconds(10);
-        while (seen is null && DateTime.UtcNow < until) await Task.Delay(20);
-        Assert.Equal(viewer.SecurityCode, seen);
+        await Task.Delay(1000);
+        Assert.False(rang);
     }
 
-    private sealed class NullScreen : IScreenSource { public byte[]? CaptureJpeg() => null; }
-    private sealed class NullSink : IInputSink { public void Apply(InputEvent input) { } }
+    [Fact]
+    public void Calling_your_own_number_is_refused()
+    {
+        using var node = new RemoteNode(RemoteIdentity.Create(), () => null!, () => null!, Local, useDht: false);
+        Assert.Throws<RemoteException>(() => node.Call(node.Number));
+    }
 }

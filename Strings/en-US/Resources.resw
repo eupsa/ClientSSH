@@ -156,20 +156,12 @@
   <data name="Assistant_ModelsLoaded" xml:space="preserve"><value>{0} models loaded.</value></data>
   <data name="Nav_Remote.Content" xml:space="preserve"><value>Remote</value></data>
   <data name="Remote_Title.Text" xml:space="preserve"><value>Remote access</value></data>
-  <data name="Remote_Intro.Text" xml:space="preserve"><value>Share this PC's screen, or watch and control another PC, directly between the two. No server, no account: you swap two codes in any chat app.</value></data>
-  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Your network may block direct connections (for example CGNAT). If it does not connect, try another network, a VPN or a phone hotspot.</value></data>
-  <data name="Remote_Share_Title.Text" xml:space="preserve"><value>Share this PC</value></data>
-  <data name="Remote_Share_Desc.Text" xml:space="preserve"><value>Creates a code. Send it to the other person; they send back a reply code, and then you choose what they may do.</value></data>
-  <data name="Remote_ShareButton.Content" xml:space="preserve"><value>Create a code</value></data>
-  <data name="Remote_YourCode.Header" xml:space="preserve"><value>Your code (send it to the other person)</value></data>
+  <data name="Remote_Intro.Text" xml:space="preserve"><value>Access another PC by its number, or let someone access this one. Direct between the two PCs, end-to-end encrypted, with no account and no server of ours.</value></data>
+  <data name="Remote_NatWarning.Message" xml:space="preserve"><value>Your network may block direct connections (for example CGNAT or a symmetric NAT). If it does not connect, try another network or a phone hotspot.</value></data>
   <data name="Remote_Copy.Content" xml:space="preserve"><value>Copy</value></data>
-  <data name="Remote_PasteReply.Header" xml:space="preserve"><value>Reply code from the other person</value></data>
-  <data name="Remote_AcceptReply.Content" xml:space="preserve"><value>Connect</value></data>
-  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Connect to a PC</value></data>
-  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Paste the code the other person created. You get a reply code to send back to them.</value></data>
-  <data name="Remote_PasteOffer.Header" xml:space="preserve"><value>Code from the other PC</value></data>
+  <data name="Remote_Join_Title.Text" xml:space="preserve"><value>Access another PC</value></data>
+  <data name="Remote_Join_Desc.Text" xml:space="preserve"><value>Type the number of the other PC. The person there must allow it.</value></data>
   <data name="Remote_JoinButton.Content" xml:space="preserve"><value>Connect</value></data>
-  <data name="Remote_YourReply.Header" xml:space="preserve"><value>Your reply code (send it back)</value></data>
   <data name="Remote_Stop.Content" xml:space="preserve"><value>Stop</value></data>
   <data name="Remote_Disconnect.Content" xml:space="preserve"><value>Disconnect</value></data>
   <data name="Remote_SharingBanner.Message" xml:space="preserve"><value>Your screen is being shown to another PC.</value></data>
@@ -177,10 +169,6 @@
   <data name="Remote_Access_Control" xml:space="preserve"><value>Control allowed</value></data>
   <data name="Remote_Access_View" xml:space="preserve"><value>View only</value></data>
   <data name="Remote_Security" xml:space="preserve"><value>Security code: {0}</value></data>
-  <data name="Remote_Status_Preparing" xml:space="preserve"><value>Preparing...</value></data>
-  <data name="Remote_Status_SendCode" xml:space="preserve"><value>Send the code to the other person, then paste their reply code below.</value></data>
-  <data name="Remote_Status_WaitingPeer" xml:space="preserve"><value>Connecting to the other PC...</value></data>
-  <data name="Remote_Status_SendReply" xml:space="preserve"><value>Send the reply code back to the other person and wait.</value></data>
   <data name="Remote_Status_Failed" xml:space="preserve"><value>Could not start. Check your network connection.</value></data>
   <data name="Remote_Status_AskHost" xml:space="preserve"><value>The other PC reached you. Waiting for your answer.</value></data>
   <data name="Remote_Status_AwaitAllow" xml:space="preserve"><value>Connected. Waiting for the other person to allow access...</value></data>
@@ -188,9 +176,8 @@
   <data name="Remote_Status_Viewing" xml:space="preserve"><value>Watching the other PC.</value></data>
   <data name="Remote_Status_Denied" xml:space="preserve"><value>Access was not allowed.</value></data>
   <data name="Remote_Status_RemoteStop" xml:space="preserve"><value>The other PC ended the session.</value></data>
-  <data name="Remote_Status_Timeout" xml:space="preserve"><value>The connection was lost or never opened. Check that both codes were copied whole.</value></data>
+  <data name="Remote_Status_Timeout" xml:space="preserve"><value>The connection was lost.</value></data>
   <data name="Remote_Status_Stopped" xml:space="preserve"><value>Session ended.</value></data>
-  <data name="Remote_BadCode" xml:space="preserve"><value>That code does not work. Copy it again, whole, from the other PC.</value></data>
   <data name="Remote_Request_Title" xml:space="preserve"><value>Allow remote access?</value></data>
   <data name="Remote_Request_Body" xml:space="preserve"><value>Another PC wants to see your screen.
 
@@ -200,15 +187,8 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Remote_Request_Control" xml:space="preserve"><value>Allow control</value></data>
   <data name="Remote_Request_View" xml:space="preserve"><value>View only</value></data>
   <data name="Remote_Request_Deny" xml:space="preserve"><value>Deny</value></data>
-  <data name="Remote_Server.Header" xml:space="preserve"><value>Rendezvous server (optional)</value></data>
-  <data name="Remote_Server.PlaceholderText" xml:space="preserve"><value>host:47800</value></data>
-  <data name="Remote_Server_Hint.Text" xml:space="preserve"><value>A PC of yours running the ClientSSH rendezvous server (installer option). With it, a short code replaces the long ones. Leave empty to swap long codes by hand.</value></data>
-  <data name="Remote_ShortCode.Text" xml:space="preserve"><value>Your connection code</value></data>
-  <data name="Remote_Status_ServerFail" xml:space="preserve"><value>Could not reach the rendezvous server. Check the address.</value></data>
-  <data name="Remote_Status_ShareShort" xml:space="preserve"><value>Tell this code to the other person. When they connect, you will be asked to allow.</value></data>
   <data name="Hosts_Remove.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Remove host</value></data>
   <data name="Remote_Copy.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Copies the code to the clipboard</value></data>
-  <data name="Remote_AcceptReply.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Connects using the pasted reply code</value></data>
   <data name="Remote_JoinButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Connects to the PC from the pasted code</value></data>
   <data name="Remote_Stop.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Ends the remote access session</value></data>
   <data name="Assistant_Send.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Types the command in the terminal, without Enter</value></data>
@@ -246,4 +226,17 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Shortcut_ClosePane" xml:space="preserve"><value>Close pane</value></data>
   <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Next pane</value></data>
   <data name="Shortcut_RenameTab" xml:space="preserve"><value>Rename tab</value></data>
+  <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>This PC</value></data>
+  <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Give this number to whoever should access this PC. You choose whether to allow each request.</value></data>
+  <data name="Remote_Listen.Header" xml:space="preserve"><value>Accept access requests</value></data>
+  <data name="Remote_Listen_Hint.Text" xml:space="preserve"><value>While on, ClientSSH publishes this PC's public address under its number on the public BitTorrent network (DHT), so others can find it. Requests arrive while ClientSSH is open or in the tray.</value></data>
+  <data name="Remote_Number.Header" xml:space="preserve"><value>Number of the other PC</value></data>
+  <data name="Remote_Status_Searching" xml:space="preserve"><value>Looking for the PC on the network...</value></data>
+  <data name="Remote_Status_Found" xml:space="preserve"><value>PC found. Opening a direct connection...</value></data>
+  <data name="Remote_Status_NotFound" xml:space="preserve"><value>PC not found. Check the number, and that ClientSSH is open on that PC with access requests on.</value></data>
+  <data name="Remote_Status_NoPath" xml:space="preserve"><value>The PC was found, but a direct connection could not be opened. One of the networks may block it (CGNAT or symmetric NAT).</value></data>
+  <data name="Remote_BadNumber" xml:space="preserve"><value>Type the 9-digit number of the other PC.</value></data>
+  <data name="Remote_OwnNumber" xml:space="preserve"><value>That is this PC's own number.</value></data>
+  <data name="Remote_Notify_Body" xml:space="preserve"><value>Another PC is asking to access this one. Open ClientSSH to allow or deny.</value></data>
+  <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
 </root>

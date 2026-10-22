@@ -1,7 +1,6 @@
 using System.Buffers.Binary;
+using System.Diagnostics;
 using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
@@ -9,15 +8,10 @@ namespace ClientSSH.Services.Remote;
 
 public sealed class RemoteOptions
 {
-    /// <summary>Public STUN servers that only tell this PC its public address. Empty = local addresses only.</summary>
-    public IReadOnlyList<string> StunServers { get; init; } = [];
+    public int FramesPerSecond { get; init; } = 60;
 
-    public TimeSpan StunTimeout { get; init; } = TimeSpan.FromSeconds(2);
-
-    /// <summary>For tests on one machine.</summary>
-    public bool IncludeLoopback { get; init; }
-
-    public int FramesPerSecond { get; init; } = 8;
+    /// <summary>How long the caller keeps trying to reach the other PC.</summary>
+    public TimeSpan ConnectTimeout { get; init; } = TimeSpan.FromSeconds(45);
 }
 
 public enum RemotePhase { WaitingForPeer, Connected, Closed }
@@ -25,181 +19,137 @@ public enum RemotePhase { WaitingForPeer, Connected, Closed }
 public enum RemoteCloseReason { LocalStop, RemoteStop, Timeout, Denied }
 
 /// <summary>
-/// One direct connection between two PCs, with no server in between: UDP hole punching to the addresses in the two
-/// pasted codes, AES-GCM on every packet (see <see cref="RemoteChannel"/>). The host shares its screen and applies input;
-/// the viewer shows frames and sends input. Nothing is shown or applied until the host person allows it.
+/// One direct connection between two PCs. The viewer calls a PC by its number; the host (the PC being called) proves it owns
+/// that number by signing the handshake with its <see cref="RemoteIdentity"/>. The one-time keys are agreed in the handshake
+/// (ECDH P-256 + HKDF) and every later packet is AES-GCM (see <see cref="RemoteChannel"/>). The host shares its screen as H.264
+/// and applies input; the viewer shows frames and sends input. Nothing is shown or applied until the host person allows it.
+/// Packets go through the <c>send</c> callback and come in through <see cref="OnDatagram"/>: the socket belongs to <see cref="RemoteNode"/>.
 /// </summary>
 public sealed class RemoteSession : IDisposable
 {
-    private const int ChunkSize = 1100, MaxFrameBytes = 2_000_000, MaxBufferedInputs = 256;
-    private static readonly TimeSpan ConnectTimeout = TimeSpan.FromMinutes(10), IdleTimeout = TimeSpan.FromSeconds(12);
+    public const int ViewerHandshakeLength = 2 + 64, HostHandshakeLength = 2 + 64 + 64 + 64;
+    private const int ChunkSize = 1150, FrameHeader = 13, MaxFrameBytes = 4_000_000, MaxBufferedInputs = 256;
+    private static readonly TimeSpan IdleTimeout = TimeSpan.FromSeconds(12), AnswerTimeout = TimeSpan.FromSeconds(30);
 
     private readonly bool _isHost;
-    private readonly Socket _socket;
-    private readonly ECDiffieHellman _key;
+    private readonly Action<IPEndPoint, byte[]> _send;
+    private readonly ECDiffieHellman _key = ECDiffieHellman.Create(ECCurve.NamedCurves.nistP256);
+    private readonly byte[] _ownEphemeral;
+    private readonly RemoteIdentity? _identity;
+    private readonly string? _targetNumber;
     private readonly IScreenSource? _screen;
     private readonly IInputSink? _inputSink;
     private readonly RemoteOptions _options;
     private readonly CancellationTokenSource _cts = new();
     private readonly object _gate = new();
     private readonly DateTime _started = DateTime.UtcNow;
+    private readonly HashSet<IPEndPoint> _candidates = [];
 
-    private RemoteCode? _offer, _reply;
-    private byte[]? _ownPublic;
+    private byte[]? _hostReply;
     private RemoteChannel? _channel;
-    private bool _confirmed;
     private IPEndPoint? _peer;
     private DateTime _lastReceived = DateTime.UtcNow;
     private volatile RemoteAccess _access;
-    private int _streaming, _closed;
+    private volatile bool _confirmed;
+    private int _streaming, _closed, _forceKey = 1;
 
-    // viewer: frame assembly and input
+    // viewer: frame assembly, recovery after loss, input
     private uint _assemblingFrame, _deliveredFrame;
     private byte[]?[] _chunks = [];
+    private byte _assemblingFlags;
+    private int _assemblingWidth, _assemblingHeight;
     private int _chunksLeft;
+    private bool _needKey = true;
+    private DateTime _lastKeyRequest;
     private uint _inputSeq;
     private readonly Dictionary<uint, (byte[] Payload, DateTime FirstSent, DateTime LastSent)> _pending = [];
 
     // host: input arrives in order even if a packet had to be sent again
     private uint _nextInput = 1;
     private readonly SortedDictionary<uint, byte[]> _buffered = [];
-    private DateTime _gapSince;
+    private DateTime _gapSince, _lastKeyForced;
     private uint _frameId;
 
-    /// <summary>The text to send to the other person: the offer (host) or the reply (viewer).</summary>
-    public string Code { get; private set; } = "";
-
-    /// <summary>Six digits both people compare out loud. Known once both codes are in.</summary>
+    /// <summary>Six digits both people compare out loud. Known once the handshake is done.</summary>
     public string? SecurityCode { get; private set; }
 
-    /// <summary>True when two STUN servers saw different ports for this PC: a symmetric NAT, which usually blocks direct connections.</summary>
-    public bool NetworkMayBlockDirect { get; private set; }
+    /// <summary>Host: the one-time key of the PC that called. The node uses it to spot repeats of the same call.</summary>
+    public byte[]? ViewerEphemeral { get; private set; }
 
+    /// <summary>Viewer: true once at least one address was found for the number.</summary>
+    public bool HasCandidates { get { lock (_gate) return _candidates.Count > 0; } }
+
+    public bool IsHost => _isHost;
     public RemotePhase Phase { get; private set; } = RemotePhase.WaitingForPeer;
     public RemoteAccess Access => _access;
 
     public event Action<RemotePhase>? PhaseChanged;
-    /// <summary>Host: the other PC is here, ask the person. Argument: the security code.</summary>
+    /// <summary>Host: someone called, ask the person. Argument: the security code.</summary>
     public event Action<string>? PeerRequested;
-    /// <summary>Viewer: a new screen image (JPEG).</summary>
-    public event Action<byte[]>? FrameReceived;
+    /// <summary>Viewer: one H.264 access unit (Annex B) with the picture size, in order, starting at a key frame.</summary>
+    public event Action<VideoFrame>? FrameReceived;
     /// <summary>Viewer: what the host allowed.</summary>
     public event Action<RemoteAccess>? AccessChanged;
     public event Action<RemoteCloseReason>? Closed;
 
-    private RemoteSession(bool isHost, RemoteOptions options, IScreenSource? screen, IInputSink? sink)
+    private RemoteSession(bool isHost, Action<IPEndPoint, byte[]> send, RemoteOptions options,
+        RemoteIdentity? identity = null, string? targetNumber = null, IScreenSource? screen = null, IInputSink? sink = null)
     {
         _isHost = isHost;
+        _send = send;
         _options = options;
+        _identity = identity;
+        _targetNumber = targetNumber;
         _screen = screen;
         _inputSink = sink;
-        _key = ECDiffieHellman.Create(ECCurve.NamedCurves.nistP256);
-
-        _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        _socket.Bind(new IPEndPoint(IPAddress.Any, 0));
-        // Windows reports an ICMP "port unreachable" as a receive error; the other side simply is not there yet.
-        if (OperatingSystem.IsWindows()) _socket.IOControl(-1744830452, [0, 0, 0, 0], null);
+        _ownEphemeral = RemoteKeys.ExportPublicKey(_key);
     }
 
-    /// <summary>The PC that shares its screen. Gathers its public address, then makes the offer code.</summary>
-    public static async Task<RemoteSession> CreateHostAsync(RemoteOptions options, IScreenSource screen, IInputSink sink)
+    /// <summary>Viewer: calls the PC with this number. Add its addresses with <see cref="AddCandidates"/> as the DHT finds them.</summary>
+    public static RemoteSession Call(string number, Action<IPEndPoint, byte[]> send, RemoteOptions options)
     {
-        var session = new RemoteSession(isHost: true, options, screen, sink);
-        await session.PrepareAsync(offer: null);
-        session.StartLoops();
+        var session = new RemoteSession(isHost: false, send, options, targetNumber: number);
+        session.StartLoop();
         return session;
     }
 
-    /// <summary>The PC that watches. Takes the offer, answers with its own code and starts reaching for the host.</summary>
-    public static async Task<RemoteSession> JoinAsync(string offerText, RemoteOptions options)
+    /// <summary>Host: answers a viewer handshake that arrived from <paramref name="from"/>.</summary>
+    public static RemoteSession Answer(RemoteIdentity identity, ReadOnlySpan<byte> viewerHandshake, IPEndPoint from,
+        Action<IPEndPoint, byte[]> send, RemoteOptions options, IScreenSource screen, IInputSink sink)
     {
-        var offer = RemoteCode.Decode(offerText);
-        if (offer.IsReply) throw new RemoteCodeException("This is a reply code. Type the code the other PC created first.");
+        if (!IsViewerHandshake(viewerHandshake)) throw new RemoteException("Not a call.");
 
-        var session = new RemoteSession(isHost: false, options, null, null);
-        await session.PrepareAsync(offer);
-        session.StartLoops();
+        var session = new RemoteSession(isHost: true, send, options, identity, screen: screen, sink: sink);
+        var viewerEphemeral = viewerHandshake[2..].ToArray();
+        var (channel, security) = RemoteKeys.Derive(session._key, session._ownEphemeral, viewerEphemeral, isHost: true);
+        session.ViewerEphemeral = viewerEphemeral;
+        session._channel = channel;
+        session.SecurityCode = security;
+        session._peer = from;
+        session._hostReply = [(byte)PacketType.Handshake, 0, .. session._ownEphemeral, .. identity.PublicKey,
+            .. identity.SignHandshake(session._ownEphemeral, viewerEphemeral)];
+        session.Phase = RemotePhase.Connected;
+        session.SendTo(from, session._hostReply);
+        session.StartLoop();
         return session;
     }
 
-    // offer == null: this PC makes the offer. Otherwise it answers that offer and starts reaching for the host.
-    private async Task PrepareAsync(RemoteCode? offer)
-    {
-        _ownPublic = RemoteKeys.ExportPublicKey(_key);
-        var mine = new RemoteCode(isReply: offer is not null, await GatherEndpointAsync());
-        Code = mine.Encode();
+    public static bool IsViewerHandshake(ReadOnlySpan<byte> datagram) =>
+        datagram.Length == ViewerHandshakeLength && datagram[0] == (byte)PacketType.Handshake && datagram[1] == 1;
 
-        if (offer is null) _offer = mine;
-        else (_offer, _reply) = (offer, mine);
+    /// <summary>Host: asks the person now (call after subscribing to <see cref="PeerRequested"/>).</summary>
+    public void Ring() => PeerRequested?.Invoke(SecurityCode ?? "");
+
+    /// <summary>Viewer: addresses where the called PC may be. The handshake is sent to all of them until one answers.</summary>
+    public void AddCandidates(IEnumerable<IPEndPoint> endpoints)
+    {
+        lock (_gate) foreach (var endpoint in endpoints) if (_candidates.Count < 64) _candidates.Add(endpoint);
+        Knock();
     }
 
-    /// <summary>Host: the other person's reply code arrived.</summary>
-    public void AcceptReply(string replyText)
-    {
-        if (!_isHost || _offer is null) throw new InvalidOperationException();
-        var reply = RemoteCode.Decode(replyText);
-        if (!reply.IsReply) throw new RemoteCodeException("This is an offer code. Type the reply code the other PC created.");
+    // ---- loop ----
 
-        lock (_gate)
-        {
-            if (_channel is null) _reply ??= reply;
-        }
-    }
-
-    // ---- gathering ----
-
-    // One address goes into the code: the public one, which is what the other network can reach.
-    private async Task<IPEndPoint> GatherEndpointAsync()
-    {
-        var port = ((IPEndPoint)_socket.LocalEndPoint!).Port;
-        if (_options.IncludeLoopback) return new IPEndPoint(IPAddress.Loopback, port);
-
-        var publicEndpoints = new List<IPEndPoint>();
-        foreach (var server in _options.StunServers.Take(2))
-        {
-            var endpoint = await Stun.QueryAsync(_socket, server, _options.StunTimeout);
-            if (endpoint is not null) publicEndpoints.Add(endpoint);
-        }
-        NetworkMayBlockDirect = publicEndpoints.Select(e => e.Port).Distinct().Count() > 1;
-        if (publicEndpoints.Count > 0) return publicEndpoints[0];
-
-        // No STUN answer: a local address still works between two PCs on the same network.
-        NetworkMayBlockDirect = true; // this code only reaches PCs on the same network: warn instead of failing silently
-        foreach (var nic in NetworkInterface.GetAllNetworkInterfaces())
-        {
-            if (nic.OperationalStatus != OperationalStatus.Up || nic.NetworkInterfaceType is NetworkInterfaceType.Loopback or NetworkInterfaceType.Tunnel) continue;
-            foreach (var address in nic.GetIPProperties().UnicastAddresses.Select(a => a.Address))
-            {
-                if (address.AddressFamily == AddressFamily.InterNetwork && !address.ToString().StartsWith("169.254", StringComparison.Ordinal))
-                    return new IPEndPoint(address, port);
-            }
-        }
-        throw new RemoteCodeException("No network address found.");
-    }
-
-    // ---- loops ----
-
-    private void StartLoops()
-    {
-        _ = Task.Run(ReceiveLoopAsync);
-        _ = Task.Run(ControlLoopAsync);
-    }
-
-    private async Task ReceiveLoopAsync()
-    {
-        var buffer = new byte[2048];
-        while (!_cts.IsCancellationRequested)
-        {
-            try
-            {
-                var result = await _socket.ReceiveFromAsync(buffer, SocketFlags.None, new IPEndPoint(IPAddress.Any, 0), _cts.Token);
-                OnDatagram(buffer.AsSpan(0, result.ReceivedBytes), (IPEndPoint)result.RemoteEndPoint);
-            }
-            catch (OperationCanceledException) { return; }
-            catch (ObjectDisposedException) { return; }
-            catch (SocketException) { /* keep listening */ }
-        }
-    }
+    private void StartLoop() => _ = Task.Run(ControlLoopAsync);
 
     private async Task ControlLoopAsync()
     {
@@ -213,31 +163,49 @@ public sealed class RemoteSession : IDisposable
             var now = DateTime.UtcNow;
             if (Phase == RemotePhase.WaitingForPeer)
             {
-                if (now - _started > ConnectTimeout) { Close(RemoteCloseReason.Timeout); return; }
-                if (tick % 3 == 0) Punch();
+                if (now - _started > _options.ConnectTimeout) { Close(RemoteCloseReason.Timeout); return; }
+                if (tick % 3 == 0) Knock();
             }
             else if (Phase == RemotePhase.Connected)
             {
-                if (!_confirmed && tick % 3 == 0) Punch();
+                if (!_confirmed)
+                {
+                    if (_isHost && now - _started > AnswerTimeout) { Close(RemoteCloseReason.Timeout); return; }
+                    if (tick % 3 == 0) Knock();
+                }
                 if (tick % 20 == 0) SendKeepalive();
-                ResendInputs(now);
-                SkipInputGap(now);
-                if (now - _lastReceived > IdleTimeout) { Close(RemoteCloseReason.Timeout); return; }
+                if (!_isHost) { ResendInputs(now); AskForKeyFrameIfNeeded(now); }
+                else SkipInputGap(now);
+                if (_confirmed && now - _lastReceived > IdleTimeout) { Close(RemoteCloseReason.Timeout); return; }
             }
         }
     }
 
-    // Both sides send to each other's address at the same time: the first packet out opens the way in.
-    private void Punch()
+    // Viewer: the handshake to every candidate (the first packet out also opens the way in). Host: its signed reply, again.
+    private void Knock()
     {
-        var other = _isHost ? _reply : _offer;
-        if (other is null || _ownPublic is null) return;
-        SendTo(other.Endpoint, [(byte)PacketType.Handshake, _isHost ? (byte)0 : (byte)1, .. _ownPublic]);
+        if (_isHost)
+        {
+            if (_hostReply is not null && _peer is not null) SendTo(_peer, _hostReply);
+            if (_channel is not null) Send(PacketType.Hello, [0]);
+            return;
+        }
+
+        if (_channel is not null)
+        {
+            Send(PacketType.Hello, [1]);
+            return;
+        }
+        IPEndPoint[] targets;
+        lock (_gate) targets = [.. _candidates];
+        byte[] handshake = [(byte)PacketType.Handshake, 1, .. _ownEphemeral];
+        foreach (var endpoint in targets) SendTo(endpoint, handshake);
     }
 
     // ---- receiving ----
 
-    private void OnDatagram(ReadOnlySpan<byte> datagram, IPEndPoint source)
+    /// <summary>Every datagram for this session. Handshakes are raw; everything else must decrypt.</summary>
+    public void OnDatagram(ReadOnlySpan<byte> datagram, IPEndPoint source)
     {
         if (datagram.Length > 0 && datagram[0] == (byte)PacketType.Handshake)
         {
@@ -258,6 +226,7 @@ public sealed class RemoteSession : IDisposable
         switch (type)
         {
             case PacketType.Frame when !_isHost: OnFrameChunk(payload); break;
+            case PacketType.KeyRequest when _isHost: OnKeyRequest(); break;
             case PacketType.Input when _isHost: OnInput(payload); break;
             case PacketType.Ack when !_isHost: OnAck(payload); break;
             case PacketType.Keepalive when !_isHost: OnKeepalive(payload); break;
@@ -265,41 +234,38 @@ public sealed class RemoteSession : IDisposable
         }
     }
 
-    // The keys are agreed here, in the open: only the other PC's address (from its code) may start it.
     private void OnHandshake(ReadOnlySpan<byte> datagram, IPEndPoint source)
     {
-        var expected = _isHost ? _reply : _offer;
-        if (expected is null || datagram.Length != 2 + 64 || datagram[1] != (_isHost ? 1 : 0)) return;
-        if (!source.Address.Equals(expected.Endpoint.Address)) return;
+        if (_isHost)
+        {
+            // The viewer did not get our answer yet: send it again.
+            if (IsViewerHandshake(datagram) && ViewerEphemeral is not null && datagram[2..].SequenceEqual(ViewerEphemeral) && _hostReply is not null)
+                SendTo(source, _hostReply);
+            return;
+        }
+
+        if (datagram.Length != HostHandshakeLength || datagram[1] != 0) return;
+        var hostEphemeral = datagram.Slice(2, 64).ToArray();
+        var identity = datagram.Slice(66, 64).ToArray();
+        var signature = datagram.Slice(130, 64).ToArray();
+
+        // Only the PC that owns the number can sign: anything else announced under it is ignored.
+        if (RemoteIdentity.NumberOf(identity) != _targetNumber) return;
+        if (!RemoteIdentity.VerifyHandshake(identity, signature, hostEphemeral, _ownEphemeral)) return;
 
         lock (_gate)
         {
-            if (_channel is not null)
-            {
-                // The other side may not have our key yet: answer again.
-                if (!_confirmed) Punch();
-                return;
-            }
-
-            try
-            {
-                var (channel, security) = RemoteKeys.Derive(_key, _ownPublic!, datagram[2..].ToArray(), _isHost);
-                _channel = channel;
-                SecurityCode = security;
-            }
-            catch (RemoteCodeException)
-            {
-                return;
-            }
-
+            if (_channel is not null) return;
+            var (channel, security) = RemoteKeys.Derive(_key, _ownEphemeral, hostEphemeral, isHost: false);
+            _channel = channel;
+            SecurityCode = security;
             _peer = source;
             _lastReceived = DateTime.UtcNow;
             Phase = RemotePhase.Connected;
         }
 
-        Punch(); // make sure they get our key too
+        Send(PacketType.Hello, [1]);
         PhaseChanged?.Invoke(RemotePhase.Connected);
-        if (_isHost) PeerRequested?.Invoke(SecurityCode ?? "");
     }
 
     // ---- host: consent, frames, input ----
@@ -311,7 +277,8 @@ public sealed class RemoteSession : IDisposable
 
         _access = access;
         SendKeepalive();
-        if (Interlocked.Exchange(ref _streaming, 1) == 0) _ = Task.Run(StreamLoopAsync);
+        if (Interlocked.Exchange(ref _streaming, 1) == 0)
+            new Thread(StreamLoop) { IsBackground = true, Name = "ClientSSH screen", Priority = ThreadPriority.AboveNormal }.Start();
     }
 
     /// <summary>Host: the person said no. The viewer is told, then the session ends.</summary>
@@ -325,43 +292,72 @@ public sealed class RemoteSession : IDisposable
         Close(RemoteCloseReason.Denied);
     }
 
-    private async Task StreamLoopAsync()
-    {
-        var interval = TimeSpan.FromMilliseconds(1000.0 / Math.Max(1, _options.FramesPerSecond));
-        while (!_cts.IsCancellationRequested && Phase == RemotePhase.Connected && _access is RemoteAccess.View or RemoteAccess.Control)
-        {
-            var started = DateTime.UtcNow;
-            try
-            {
-                var jpeg = _screen?.CaptureJpeg();
-                if (jpeg is { Length: > 0 and <= MaxFrameBytes }) await SendFrameAsync(jpeg);
-            }
-            catch (Exception e) when (e is ExternalException or InvalidOperationException or IOException)
-            {
-                // a frame that cannot be captured (secure desktop, display change) is just skipped
-            }
+    [DllImport("winmm.dll")] private static extern uint timeBeginPeriod(uint period);
+    [DllImport("winmm.dll")] private static extern uint timeEndPeriod(uint period);
 
-            var wait = interval - (DateTime.UtcNow - started);
-            if (wait > TimeSpan.Zero) await Task.Delay(wait, _cts.Token).ContinueWith(_ => { });
+    // A thread of its own: Task.Delay is too coarse on Windows (15 ms) for 60 frames per second.
+    private void StreamLoop()
+    {
+        if (OperatingSystem.IsWindows()) timeBeginPeriod(1);
+        try
+        {
+            var interval = 1000.0 / Math.Max(1, _options.FramesPerSecond);
+            var clock = Stopwatch.StartNew();
+            var next = 0.0;
+            while (!_cts.IsCancellationRequested && Phase == RemotePhase.Connected && _access is RemoteAccess.View or RemoteAccess.Control)
+            {
+                try
+                {
+                    var frame = _screen?.Next(Interlocked.Exchange(ref _forceKey, 0) == 1);
+                    if (frame is { Data.Length: > 0 and <= MaxFrameBytes }) SendFrame(frame);
+                }
+                catch (Exception e) when (e is ExternalException or InvalidOperationException or IOException)
+                {
+                    // a frame that cannot be captured (secure desktop, display change) is just skipped
+                }
+
+                next += interval;
+                var wait = next - clock.Elapsed.TotalMilliseconds;
+                if (wait > 0) Thread.Sleep((int)wait);
+                else if (wait < -interval * 3) next = clock.Elapsed.TotalMilliseconds; // fell behind: do not try to catch up
+            }
         }
-        Interlocked.Exchange(ref _streaming, 0);
+        finally
+        {
+            if (OperatingSystem.IsWindows()) timeEndPeriod(1);
+            Interlocked.Exchange(ref _streaming, 0);
+            if (_closed == 1) (_screen as IDisposable)?.Dispose(); // the capture buffers and the encoder live on this thread
+        }
     }
 
-    private async Task SendFrameAsync(byte[] jpeg)
+    private void SendFrame(VideoFrame frame)
     {
         var id = ++_frameId;
-        var count = (jpeg.Length + ChunkSize - 1) / ChunkSize;
+        var data = frame.Data;
+        var count = (data.Length + ChunkSize - 1) / ChunkSize;
         for (var i = 0; i < count; i++)
         {
-            var size = Math.Min(ChunkSize, jpeg.Length - i * ChunkSize);
-            var payload = new byte[8 + size];
+            var size = Math.Min(ChunkSize, data.Length - i * ChunkSize);
+            var payload = new byte[FrameHeader + size];
             BinaryPrimitives.WriteUInt32BigEndian(payload, id);
             BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(4), (ushort)i);
             BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(6), (ushort)count);
-            jpeg.AsSpan(i * ChunkSize, size).CopyTo(payload.AsSpan(8));
+            payload[8] = (byte)(frame.IsKey ? 1 : 0);
+            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(9), (ushort)frame.Width);
+            BinaryPrimitives.WriteUInt16BigEndian(payload.AsSpan(11), (ushort)frame.Height);
+            data.AsSpan(i * ChunkSize, size).CopyTo(payload.AsSpan(FrameHeader));
             Send(PacketType.Frame, payload);
-            if (i % 16 == 15) await Task.Delay(1); // do not hand the router one big burst
+            // shortcut: no congestion control, only a breath every 32 packets so a key frame is not one burst; add pacing by measured loss later.
+            if (i % 32 == 31) Thread.Sleep(0);
         }
+    }
+
+    private void OnKeyRequest()
+    {
+        var now = DateTime.UtcNow;
+        if (now - _lastKeyForced < TimeSpan.FromMilliseconds(250)) return;
+        _lastKeyForced = now;
+        Interlocked.Exchange(ref _forceKey, 1);
     }
 
     private void OnInput(byte[] payload)
@@ -406,31 +402,45 @@ public sealed class RemoteSession : IDisposable
 
     private void OnFrameChunk(byte[] payload)
     {
-        if (payload.Length <= 8) return;
+        if (payload.Length <= FrameHeader) return;
         var id = BinaryPrimitives.ReadUInt32BigEndian(payload);
         var index = BinaryPrimitives.ReadUInt16BigEndian(payload.AsSpan(4));
         var count = BinaryPrimitives.ReadUInt16BigEndian(payload.AsSpan(6));
-        if (count == 0 || count > 2000 || index >= count || id <= _deliveredFrame || id < _assemblingFrame) return;
+        if (count == 0 || count > 4000 || index >= count || id <= _deliveredFrame || id < _assemblingFrame) return;
 
-        byte[]? complete = null;
+        VideoFrame? complete = null;
         lock (_gate)
         {
             if (id > _assemblingFrame || _chunks.Length != count)
             {
-                _assemblingFrame = id; // a newer frame wins: an unfinished older one is dropped
+                // A newer frame while one was unfinished: that one is lost, and the frames after it need a key frame.
+                if (_chunksLeft > 0 || id > _deliveredFrame + 1) _needKey = true;
+                _assemblingFrame = id;
                 _chunks = new byte[count][];
                 _chunksLeft = count;
+                _assemblingFlags = payload[8];
+                _assemblingWidth = BinaryPrimitives.ReadUInt16BigEndian(payload.AsSpan(9));
+                _assemblingHeight = BinaryPrimitives.ReadUInt16BigEndian(payload.AsSpan(11));
             }
             if (_chunks[index] is not null) return;
 
-            _chunks[index] = payload[8..];
+            _chunks[index] = payload[FrameHeader..];
             if (--_chunksLeft == 0)
             {
-                complete = [.. _chunks.SelectMany(c => c!)];
                 _deliveredFrame = id;
+                var isKey = (_assemblingFlags & 1) != 0;
+                if (isKey) _needKey = false;
+                if (!_needKey) complete = new VideoFrame([.. _chunks.SelectMany(c => c!)], isKey, _assemblingWidth, _assemblingHeight);
             }
         }
         if (complete is not null) FrameReceived?.Invoke(complete);
+    }
+
+    private void AskForKeyFrameIfNeeded(DateTime now)
+    {
+        if (!_needKey || _access is not (RemoteAccess.View or RemoteAccess.Control) || now - _lastKeyRequest < TimeSpan.FromMilliseconds(300)) return;
+        _lastKeyRequest = now;
+        Send(PacketType.KeyRequest, []);
     }
 
     private void OnKeepalive(byte[] payload)
@@ -499,16 +509,14 @@ public sealed class RemoteSession : IDisposable
 
     private void SendTo(IPEndPoint endpoint, byte[] packet)
     {
-        try { _socket.SendTo(packet, endpoint); }
-        catch (SocketException) { /* the network may be down for a moment */ }
-        catch (ObjectDisposedException) { }
+        if (_closed == 0) _send(endpoint, packet);
     }
 
     private void Close(RemoteCloseReason reason)
     {
+        if (reason == RemoteCloseReason.LocalStop && _closed == 0) { Send(PacketType.Bye, []); Send(PacketType.Bye, []); }
         if (Interlocked.Exchange(ref _closed, 1) == 1) return;
 
-        if (reason == RemoteCloseReason.LocalStop) { Send(PacketType.Bye, []); Send(PacketType.Bye, []); }
         Phase = RemotePhase.Closed;
         PhaseChanged?.Invoke(RemotePhase.Closed);
         Closed?.Invoke(reason);
@@ -519,7 +527,6 @@ public sealed class RemoteSession : IDisposable
     {
         Close(RemoteCloseReason.LocalStop);
         _cts.Dispose();
-        _socket.Dispose();
         _key.Dispose();
     }
 }
