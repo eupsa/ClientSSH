@@ -4,10 +4,18 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-22
+
+### Changed
+- **Remote access like AnyDesk, with no server of ours.** Each PC has a fixed 9-digit number; type a friend's number and connect. Their PC asks them, even when ClientSSH is minimized or in the tray (window to the front, on top, flashing), and they choose **Allow control**, **View only** or **Deny**, after comparing a six-digit security code. PCs find each other through the public BitTorrent DHT (and on the same network by local multicast), then connect directly (UDP hole punching), end-to-end encrypted. Video is H.264 up to Full HD at 60 fps, with the codecs built into Windows and Desktop Duplication capture. It may not connect through CGNAT or symmetric NAT, your public IP is published with your number while requests are accepted (can be turned off), and the protocol has had no outside security review.
+
+### Removed
+- The two codes to swap by hand and the optional rendezvous server: the PC number replaces both.
+
 ## [0.4.0] - 2026-10-22
 
 ### Added
-- **Remote access like AnyDesk, with no server of ours.** Each PC has a fixed 9-digit number; type a friend's number and connect. Their PC asks them, even when ClientSSH is minimized or in the tray (window to the front, on top, flashing), and they choose **Allow control**, **View only** or **Deny**, after comparing a six-digit security code. PCs find each other through the public BitTorrent DHT (and on the same network by local multicast), then connect directly (UDP hole punching), end-to-end encrypted. Video is H.264 up to Full HD at 60 fps, with the codecs built into Windows and Desktop Duplication capture. It may not connect through CGNAT or symmetric NAT, your public IP is published with your number while requests are accepted (can be turned off), and the protocol has had no outside security review.
+- Remote access between two PCs with no server of ours: swap two short spoken codes (like `bako rimu sela fidu nomi ta`), end-to-end encrypted, with a six-digit code to compare out loud and a per-session choice of view only, control or deny.
 - AI assistant side panel (Claude, ChatGPT, Gemini, Groq): describe what you want and the command is typed at the terminal prompt without Enter, so you check it before running. Uses your own API key, encrypted with Windows DPAPI. Only your text and a fixed instruction are sent, never terminal output, hosts or history. "List available models" asks your provider which models your key can use.
 - 12 new languages: Spanish, French, German, Italian, Russian, Chinese (Simplified), Japanese, Korean, Arabic, Hindi, Turkish and Dutch, with flags in the language picker. Arabic mirrors the interface. These translations were machine-made: corrections are welcome.
 - Paste in the terminal with Ctrl+V, Ctrl+Shift+V or right click. Pasted text is cleaned of control characters.
