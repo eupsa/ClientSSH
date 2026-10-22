@@ -92,15 +92,16 @@ dotnet test tests/ClientSSH.Tests
 | Folder | What it holds |
 |---|---|
 | `Models/` | Plain data: `Host`, `AppSettings` |
-| `ViewModels/` | MVVM view models (state and commands, no UI types) |
-| `Views/` | XAML pages, dialogs and the Win2D `TerminalView` |
+| `ViewModels/` | MVVM view models (state and commands); they depend on service interfaces registered in `App.xaml.cs` |
+| `Views/` | XAML pages and dialogs; code-behind holds only view concerns. The Win2D `TerminalView` is split into lifecycle, `.Drawing.cs` and `.Input.cs`, with `TerminalPalette`, `CursorBlink` and `TerminalKeys` beside it |
 | `Services/Storage` | SQLite (hosts, favorites, opt-in history) and JSON settings in `%LOCALAPPDATA%` |
 | `Services/Shell` | Navigation, dialogs, theme, tray icon, start with Windows |
 | `Services/Updates` | Update check, verified download, crash marker |
 | `Services/Localization` | Reads strings for text produced in code |
 | `Services/Sessions` | `SessionManager`: the open tabs and their live sessions |
 | `Services/Demo` | The tour's in-memory demo host |
-| `Terminal/` | Terminal engine: ConPTY and simulated processes, VT/ANSI parser, ssh command builder |
+| `Services/Assistant` | AI command assistant: `AssistantService`, per-provider formats in `AiRequests`, DPAPI key store |
+| `Terminal/` | Terminal engine: ConPTY (`PseudoConsole`, P/Invoke in `.Native.cs`) and simulated processes, `VtScreen` (buffer, `.Parser.cs`, `Cell.cs`), ssh command builder |
 | `Themes/Palette.xaml` | The single source of colors and shape |
 | `Strings/` | `Resources.resw` per language (`pt-BR`, `en-US`) |
 | `brand/` | Logo and animation kit |
