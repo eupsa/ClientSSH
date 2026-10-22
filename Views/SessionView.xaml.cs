@@ -1,5 +1,5 @@
+using ClientSSH.Services.Customization;
 using ClientSSH.Services.Sessions;
-using ClientSSH.Services.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -18,11 +18,30 @@ public sealed partial class SessionView : UserControl
         set => SetValue(TabProperty, value);
     }
 
-    public SessionView()
+    private readonly AppearanceService _appearance = App.GetService<AppearanceService>();
+
+    public SessionView() => InitializeComponent();
+
+    // Settings edits reach open terminals at once.
+    private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        InitializeComponent();
-        Terminal.TerminalFontSize = App.GetService<ISettingsStore>().Current.TerminalFontSize;
+        _appearance.Changed += ApplyAppearance;
+        ApplyAppearance();
     }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e) => _appearance.Changed -= ApplyAppearance;
+
+    private void OnActualThemeChanged(FrameworkElement sender, object args) => PaintFrame();
+
+    private void ApplyAppearance()
+    {
+        var appearance = _appearance.Resolve(_appearance.AppearanceIdFor(Tab?.Host, Tab?.Profile));
+        Terminal.ApplyAppearance(appearance, _appearance.FindScheme(appearance.Scheme));
+        PaintFrame();
+    }
+
+    // The padding around the canvas shows the same background as the terminal itself.
+    private void PaintFrame() => TerminalFrame.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Terminal.Palette.Background);
 
     public void FocusTerminal() => Terminal.Focus(FocusState.Programmatic);
 
@@ -34,6 +53,7 @@ public sealed partial class SessionView : UserControl
         if (oldTab is not null) oldTab.PropertyChanged -= OnTabPropertyChanged;
         if (newTab is null) return;
         newTab.PropertyChanged += OnTabPropertyChanged;
+        ApplyAppearance();
         Terminal.Session = newTab.Session;
         FocusTerminal();
     }

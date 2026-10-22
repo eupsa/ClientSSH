@@ -24,9 +24,13 @@ public sealed partial class SessionManager : ObservableObject
     [ObservableProperty] public partial SessionTab? Selected { get; set; }
 
     /// <summary>Opens a new tab for the host and selects it. Several tabs can share a host.</summary>
-    public SessionTab Open(Host host)
+    public SessionTab Open(Host host) => Add(new SessionTab(host, UniqueTitle(host.Name)));
+
+    /// <summary>Opens a new tab running a local shell (PowerShell, CMD, WSL, Git Bash) and selects it.</summary>
+    public SessionTab Open(ShellProfile profile) => Add(new SessionTab(null, UniqueTitle(profile.Name), profile));
+
+    private SessionTab Add(SessionTab tab)
     {
-        var tab = new SessionTab(host, UniqueTitle(host.Name));
         Connect(tab);
         Tabs.Add(tab);
         Selected = tab;
@@ -60,7 +64,7 @@ public sealed partial class SessionManager : ObservableObject
 
         try
         {
-            var session = new TerminalSession(CreateProcess(tab.Host), DefaultColumns, DefaultRows);
+            var session = new TerminalSession(CreateProcess(tab), DefaultColumns, DefaultRows);
             session.Exited += code => _ui.TryEnqueue(() =>
             {
                 tab.IsConnecting = false;
@@ -94,8 +98,17 @@ public sealed partial class SessionManager : ObservableObject
         tab.JustConnected = false;
     }
 
-    private static ITerminalProcess CreateProcess(Host host)
+    private static ITerminalProcess CreateProcess(SessionTab tab)
     {
+        if (tab.Profile is { } profile)
+        {
+            // Detected at startup; check again in case the shell was uninstalled since.
+            if (!ShellProfiles.IsSafeExecutable(profile.Executable) || !File.Exists(profile.Executable))
+                throw new InvalidOperationException(Loc.Get("Terminal_ProfileMissing"));
+            return new ConPtyProcess(profile.CommandLine, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+        }
+
+        var host = tab.Host!;
         if (DemoHost.Is(host))
             return new SimulatedProcess(Loc.Get("Demo_Banner"), Loc.Get("Demo_Help"), Loc.Get("Demo_NotFound"));
 

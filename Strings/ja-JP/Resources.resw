@@ -210,4 +210,37 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>これはこの PC 自身の番号です。</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>別の PC がこの PC へのアクセスを求めています。ClientSSH を開いて許可または拒否してください。</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>ターミナル</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>ウィンドウの背景</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>ブランドのグラデーション、またはデスクトップが透けて見える Windows の Mica / アクリル素材。</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>ブランドのグラデーション</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>アクリル</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>プロファイル</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>すべてのターミナルの既定値を変更するか、プロファイルごとにカスタマイズします。</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>このプロファイルをカスタマイズ</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>オフのときは既定の外観を使います。</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>配色</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>データフォルダーの schemes.json (Windows Terminal 形式) に独自の配色を追加できます。再起動で読み込まれます。</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>フォント</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>この PC にインストールされている等幅フォントとサイズ。</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>カーソル</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>形と、バーまたは下線の太さ。</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>ブロック</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>バー</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>下線</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>背景の不透明度</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>100% 未満にすると、ウィンドウの背景がターミナル越しに見えます。</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>ショートカット</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>このプロファイルを新しいタブで開きます (例: Ctrl+Shift+1)。空欄でなし。</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Ctrl または Alt と、英字・数字・F1–F24 を組み合わせてください。</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (ブランド)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>既定 ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>既定 (すべてのターミナル)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH ホスト</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>このシェルはこの PC にインストールされていません。</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>ローカル ターミナル</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>ターミナルの外観</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>他の SSH ホストと同じ</value></data>
 </root>

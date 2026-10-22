@@ -210,4 +210,37 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Remote_OwnNumber" xml:space="preserve"><value>Dat is het nummer van deze pc zelf.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Een andere pc vraagt om toegang tot deze pc. Open ClientSSH om toe te staan of te weigeren.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>Terminal</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>Vensterachtergrond</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>Het merkverloop, of het Windows-materiaal Mica of Acryl, waardoor het bureaublad doorschijnt.</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>Merkverloop</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>Acryl</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>Profiel</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>Wijzig de standaard voor alle terminals, of pas één profiel aan.</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>Dit profiel aanpassen</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>Als dit uit staat, gebruikt dit profiel de standaardweergave.</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>Kleurenschema</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>Voeg je eigen schema's toe in schemes.json (Windows Terminal-indeling) in de gegevensmap; herstart om ze te laden.</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>Lettertype</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>Lettertypen met vaste breedte op deze pc, en de grootte.</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>Cursor</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>Vorm, en dikte van de balk of onderstreping.</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>Blok</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>Balk</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>Onderstreping</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>Achtergronddekking</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>Onder 100% schijnt de vensterachtergrond door de terminal heen.</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>Sneltoets</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>Opent dit profiel in een nieuw tabblad, bijv. Ctrl+Shift+1. Laat leeg voor geen.</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Gebruik Ctrl of Alt met een letter, cijfer of F1–F24.</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (merk)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>Standaard ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>Standaard (alle terminals)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH-hosts</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>Deze shell is niet meer geïnstalleerd op deze pc.</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Lokale terminals</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminalweergave</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Zelfde als andere SSH-hosts</value></data>
 </root>

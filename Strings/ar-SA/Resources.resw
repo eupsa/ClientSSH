@@ -210,4 +210,37 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>هذا هو رقم هذا الجهاز نفسه.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>جهاز آخر يطلب الدخول إلى هذا الجهاز. افتح ClientSSH للسماح أو الرفض.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>الطرفية</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>خلفية النافذة</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>تدرّج العلامة التجارية، أو مادة Mica أو أكريليك من Windows التي تُظهر سطح المكتب من خلالها.</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>تدرّج العلامة التجارية</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>أكريليك</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>ملف التعريف</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>غيّر الإعداد الافتراضي لكل الطرفيات، أو خصّص ملف تعريف واحدًا.</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>تخصيص ملف التعريف هذا</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>عند إيقافه، يستخدم ملف التعريف هذا المظهر الافتراضي.</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>نظام الألوان</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>أضف أنظمتك في schemes.json (بتنسيق Windows Terminal) في مجلد البيانات، ثم أعد التشغيل لتحميلها.</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>الخط</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>الخطوط أحادية المسافة المثبتة على هذا الكمبيوتر، والحجم.</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>المؤشر</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>الشكل، وسُمك الشريط أو الخط السفلي.</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>كتلة</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>شريط</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>خط سفلي</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>عتامة الخلفية</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>تحت 100%، تظهر خلفية النافذة من خلال الطرفية.</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>اختصار</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>يفتح ملف التعريف هذا في علامة تبويب جديدة، مثل Ctrl+Shift+1. اتركه فارغًا لعدم التعيين.</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>استخدم Ctrl أو Alt مع حرف أو رقم أو F1–F24.</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (العلامة التجارية)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>افتراضي ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>افتراضي (كل الطرفيات)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>مضيفو SSH</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>لم تعد هذه الواجهة مثبتة على هذا الكمبيوتر.</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>الطرفيات المحلية</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>مظهر الطرفية</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>مثل مضيفي SSH الآخرين</value></data>
 </root>

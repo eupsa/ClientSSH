@@ -3,10 +3,12 @@
     x:Class="ClientSSH.Views.SessionView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ClientSSH.Views">
+    xmlns:local="using:ClientSSH.Views"
+    Loaded="OnLoaded" Unloaded="OnUnloaded" ActualThemeChanged="OnActualThemeChanged">
 
     <Grid>
-        <Border Margin="0,8,0,0" Padding="16" BorderThickness="1"
+        <!-- Background comes from the tab's colour scheme and opacity (set in code). -->
+        <Border x:Name="TerminalFrame" Margin="0,8,0,0" Padding="16" BorderThickness="1"
                 Background="{ThemeResource TerminalBackgroundBrush}" BorderBrush="{ThemeResource BorderBrush}"
                 CornerRadius="{StaticResource CardCornerRadius}">
             <local:TerminalView x:Name="Terminal" />

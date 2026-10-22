@@ -14,6 +14,21 @@ public sealed partial class HostsPage : Page
 
     public TourViewModel Tour { get; } = App.GetService<TourViewModel>();
 
+    public ProfilesViewModel Profiles { get; } = App.GetService<ProfilesViewModel>();
+
+    private void OnProfileClick(object sender, ItemClickEventArgs e) =>
+        Profiles.OpenProfileCommand.Execute(e.ClickedItem as Terminal.ShellProfile);
+
+    public static string ProfileGlyph(Terminal.ShellKind kind) => kind switch
+    {
+        Terminal.ShellKind.Wsl => "\uE7F8", // device (Linux)
+        Terminal.ShellKind.GitBash => "\uE943", // code
+        _ => "\uE756", // command prompt
+    };
+
+    // Shows the shortcut, so it can be learned from the card.
+    public static string ProfileTip(string id) => App.GetService<Services.Shortcuts.ShortcutService>().ChordFor(id);
+
     public HostsPage() => InitializeComponent();
 
     // Cards grow a little under the pointer; the Border's ScaleTransition animates it.

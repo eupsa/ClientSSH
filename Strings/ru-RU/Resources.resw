@@ -210,4 +210,37 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>Это номер этого же ПК.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Другой ПК просит доступ к этому. Откройте ClientSSH, чтобы разрешить или отклонить.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>Терминал</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>Фон окна</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>Фирменный градиент или материал Windows Mica или «Акрил», сквозь который виден рабочий стол.</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>Фирменный градиент</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>Акрил</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>Профиль</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>Измените настройки по умолчанию для всех терминалов или настройте отдельный профиль.</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>Настроить этот профиль</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>Если выключено, профиль использует оформление по умолчанию.</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>Цветовая схема</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>Добавьте свои в schemes.json (формат Windows Terminal) в папке данных; перезапустите, чтобы загрузить.</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>Шрифт</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>Моноширинные шрифты, установленные на этом ПК, и размер.</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>Курсор</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>Форма и толщина вертикальной черты или подчёркивания.</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>Блок</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>Черта</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>Подчёркивание</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>Непрозрачность фона</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>Ниже 100 % сквозь терминал виден фон окна.</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>Сочетание клавиш</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>Открывает профиль в новой вкладке, например Ctrl+Shift+1. Оставьте пустым, чтобы отключить.</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Используйте Ctrl или Alt с буквой, цифрой или F1–F24.</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (фирменная)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>По умолчанию ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>По умолчанию (все терминалы)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH-хосты</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>Эта оболочка больше не установлена на этом ПК.</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Локальные терминалы</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>Оформление терминала</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Как у других SSH-хостов</value></data>
 </root>

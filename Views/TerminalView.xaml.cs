@@ -1,4 +1,5 @@
 using System.Text;
+using ClientSSH.Models;
 using ClientSSH.Terminal;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.Text;
@@ -17,8 +18,9 @@ namespace ClientSSH.Views;
 /// <summary>Draws a <see cref="TerminalSession"/> with Win2D (Direct2D + DirectWrite) and sends the keyboard to it.</summary>
 public sealed partial class TerminalView : UserControl
 {
-    private static readonly string MonoFont =
-        CanvasTextFormat.GetSystemFontFamilies().Contains("Cascadia Mono") ? "Cascadia Mono" : "Consolas";
+    private static readonly HashSet<string> SystemFonts = new(CanvasTextFormat.GetSystemFontFamilies(), StringComparer.OrdinalIgnoreCase);
+
+    public static readonly string MonoFont = SystemFonts.Contains("Cascadia Mono") ? "Cascadia Mono" : "Consolas";
 
     private readonly DispatcherTimerBlink _blink = new();
     private TerminalSession? _session;
@@ -27,26 +29,31 @@ public sealed partial class TerminalView : UserControl
     private CanvasTextFormat _regular = new();
     private CanvasTextFormat _bold = new();
     private float _cellWidth = 8, _cellHeight = 16;
-    private Palette? _palette;
+    private TerminalPalette? _palette;
     private ElementTheme _paletteTheme;
+    private TerminalAppearance _appearance = TerminalAppearance.BuiltIn;
+    private ColorScheme? _scheme;
     private bool _redrawQueued;
     private char _highSurrogate;
-
-    public static readonly DependencyProperty TerminalFontSizeProperty = DependencyProperty.Register(
-        nameof(TerminalFontSize), typeof(double), typeof(TerminalView),
-        new PropertyMetadata(14.0, (d, _) => ((TerminalView)d).UpdateMetrics()));
-
-    public double TerminalFontSize
-    {
-        get => (double)GetValue(TerminalFontSizeProperty);
-        set => SetValue(TerminalFontSizeProperty, value);
-    }
 
     public TerminalView()
     {
         InitializeComponent();
         UpdateMetrics();
+        ActualThemeChanged += (_, _) => _canvas?.Invalidate();
     }
+
+    /// <summary>Font, cursor, colours and opacity (all fields set, see <see cref="TerminalAppearance.Resolve"/>).</summary>
+    public void ApplyAppearance(TerminalAppearance appearance, ColorScheme? scheme)
+    {
+        _appearance = appearance;
+        _scheme = scheme;
+        _palette = null;
+        UpdateMetrics();
+    }
+
+    /// <summary>The colours this view draws with; the host paints its padding with the same background.</summary>
+    public TerminalPalette Palette => GetPalette();
 
     public TerminalSession? Session
     {
@@ -148,8 +155,11 @@ public sealed partial class TerminalView : UserControl
     private void UpdateMetrics()
     {
         if (_regular is null) return;
-        _regular = new CanvasTextFormat { FontFamily = MonoFont, FontSize = (float)TerminalFontSize, WordWrapping = CanvasWordWrapping.NoWrap };
-        _bold = new CanvasTextFormat { FontFamily = MonoFont, FontSize = (float)TerminalFontSize, FontWeight = Microsoft.UI.Text.FontWeights.Bold, WordWrapping = CanvasWordWrapping.NoWrap };
+        // A font that is not installed (settings copied from another PC) falls back to the default one.
+        var family = _appearance.FontFamily is { Length: > 0 } chosen && SystemFonts.Contains(chosen) ? chosen : MonoFont;
+        var size = (float)(_appearance.FontSize ?? 14);
+        _regular = new CanvasTextFormat { FontFamily = family, FontSize = size, WordWrapping = CanvasWordWrapping.NoWrap };
+        _bold = new CanvasTextFormat { FontFamily = family, FontSize = size, FontWeight = Microsoft.UI.Text.FontWeights.Bold, WordWrapping = CanvasWordWrapping.NoWrap };
         using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), "M", _regular, 1000, 1000);
         _cellWidth = (float)layout.LayoutBounds.Width;
         _cellHeight = (float)Math.Ceiling(layout.LayoutBounds.Height);
@@ -173,7 +183,8 @@ public sealed partial class TerminalView : UserControl
     {
         var palette = GetPalette();
         var ds = args.DrawingSession;
-        ds.Clear(palette.Background);
+        // A see-through background is painted by the host behind the canvas; drawing it here too would double it.
+        ds.Clear(palette.Background.A == 255 ? palette.Background : Colors.Transparent);
         if (_session is null) return;
 
         var screen = _session.Screen;
@@ -186,13 +197,25 @@ public sealed partial class TerminalView : UserControl
             {
                 var x = screen.CursorCol * _cellWidth;
                 var y = screen.CursorRow * _cellHeight;
+                var thickness = (_appearance.CursorSize ?? 25) / 100f;
+                var (w, h) = _appearance.Cursor switch
+                {
+                    CursorShape.Bar => (Math.Max(1, MathF.Round(_cellWidth * thickness)), _cellHeight),
+                    CursorShape.Underline => (_cellWidth, Math.Max(1, MathF.Round(_cellHeight * thickness))),
+                    _ => (_cellWidth, _cellHeight),
+                };
+                y += _cellHeight - h;
                 if (FocusState != FocusState.Unfocused)
                 {
-                    if (_blink.On) ds.FillRectangle(x, y, _cellWidth, _cellHeight, palette.Cursor);
+                    if (_blink.On) ds.FillRectangle(x, y, w, h, palette.Cursor);
+                }
+                else if (_appearance.Cursor is CursorShape.Block or null)
+                {
+                    ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
                 }
                 else
                 {
-                    ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
+                    ds.FillRectangle(x, y, w, h, palette.Cursor);
                 }
             }
         }
@@ -200,7 +223,7 @@ public sealed partial class TerminalView : UserControl
 
     private readonly StringBuilder _runText = new();
 
-    private void DrawRow(CanvasDrawingSession ds, VtScreen screen, int row, Palette palette)
+    private void DrawRow(CanvasDrawingSession ds, VtScreen screen, int row, TerminalPalette palette)
     {
         var y = row * _cellHeight;
         var text = _runText;
@@ -230,21 +253,22 @@ public sealed partial class TerminalView : UserControl
         }
     }
 
-    private static (Color Fg, Color Bg) CellColors(Cell cell, Palette palette)
+    private static (Color Fg, Color Bg) CellColors(Cell cell, TerminalPalette palette)
     {
         var fg = palette.Resolve(cell.Fg, palette.Foreground);
         var bg = palette.Resolve(cell.Bg, palette.Background);
-        if ((cell.Attr & CellAttr.Inverse) != 0) (fg, bg) = (bg, fg);
-        if ((cell.Attr & CellAttr.Dim) != 0) fg = Palette.Blend(fg, bg, 0.6f);
+        // Inverse text is drawn solid even on a see-through background.
+        if ((cell.Attr & CellAttr.Inverse) != 0) (fg, bg) = (TerminalPalette.Opaque(bg), fg);
+        if ((cell.Attr & CellAttr.Dim) != 0) fg = TerminalPalette.Blend(fg, bg, 0.6f);
         return (fg, bg);
     }
 
-    private Palette GetPalette()
+    private TerminalPalette GetPalette()
     {
         if (_palette is null || _paletteTheme != ActualTheme)
         {
             _paletteTheme = ActualTheme;
-            _palette = Palette.Load(ActualTheme);
+            _palette = TerminalPalette.Load(ActualTheme, _scheme, _appearance.Opacity ?? 100);
         }
 
         return _palette;
@@ -363,63 +387,5 @@ public sealed partial class TerminalView : UserControl
         public void Start() => _timer.Start();
 
         public void Stop() => _timer.Stop();
-    }
-
-    /// <summary>Terminal colours read from Themes/Palette.xaml, so the palette file stays the single source.</summary>
-    private sealed class Palette
-    {
-        private readonly Color[] _ansi = new Color[16];
-
-        public Color Background { get; private init; }
-        public Color Foreground { get; private init; }
-        public Color Cursor { get; private init; }
-
-        public static Palette Load(ElementTheme theme)
-        {
-            var key = theme == ElementTheme.Light ? "Light" : "Dark";
-            Color Get(string name)
-            {
-                foreach (var dictionary in Application.Current.Resources.MergedDictionaries)
-                    if (dictionary.ThemeDictionaries.TryGetValue(key, out var themed) &&
-                        themed is ResourceDictionary resources && resources.TryGetValue(name, out var value))
-                        return (Color)value;
-                throw new KeyNotFoundException(name);
-            }
-
-            var palette = new Palette
-            {
-                Background = Get("TerminalBackgroundColor"),
-                Foreground = Get("TerminalForegroundColor"),
-                Cursor = Get("TerminalCursorColor"),
-            };
-            for (var i = 0; i < 16; i++) palette._ansi[i] = Get($"Ansi{i}Color");
-            return palette;
-        }
-
-        public Color Resolve(TermColor color, Color fallback) => color.Kind switch
-        {
-            ColorKind.Indexed => Indexed(color.Value),
-            ColorKind.Rgb => Color.FromArgb(255, (byte)(color.Value >> 16), (byte)(color.Value >> 8), (byte)color.Value),
-            _ => fallback,
-        };
-
-        private Color Indexed(int index)
-        {
-            if (index < 16) return _ansi[index];
-            if (index >= 232)
-            {
-                var gray = (byte)(8 + (index - 232) * 10);
-                return Color.FromArgb(255, gray, gray, gray);
-            }
-
-            index -= 16;
-            static byte Level(int n) => (byte)(n == 0 ? 0 : 55 + n * 40);
-            return Color.FromArgb(255, Level(index / 36), Level(index / 6 % 6), Level(index % 6));
-        }
-
-        public static Color Blend(Color from, Color to, float amount) => Color.FromArgb(255,
-            (byte)(from.R * amount + to.R * (1 - amount)),
-            (byte)(from.G * amount + to.G * (1 - amount)),
-            (byte)(from.B * amount + to.B * (1 - amount)));
     }
 }

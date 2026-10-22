@@ -66,6 +66,16 @@ public sealed partial class SessionsPage : Page
             menu.Items.Add(item);
         }
 
+        // Local shells too, so a PowerShell or WSL tab opens next to the SSH ones.
+        var profiles = App.GetService<ProfilesViewModel>();
+        if (profiles.HasProfiles && menu.Items.Count > 0) menu.Items.Add(new MenuFlyoutSeparator());
+        foreach (var profile in profiles.Profiles)
+        {
+            var item = new MenuFlyoutItem { Text = profile.Name, Icon = new FontIcon { Glyph = HostsPage.ProfileGlyph(profile.Kind) } };
+            item.Click += (_, _) => profiles.OpenTabCommand.Execute(profile);
+            menu.Items.Add(item);
+        }
+
         if (menu.Items.Count > 0) menu.Items.Add(new MenuFlyoutSeparator());
         var manage = new MenuFlyoutItem { Text = Loc.Get("Sessions_ManageHosts") };
         manage.Click += (_, _) => ViewModel.NewSessionCommand.Execute(null);

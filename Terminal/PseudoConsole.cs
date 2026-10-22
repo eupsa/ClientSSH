@@ -27,7 +27,7 @@ internal sealed class PseudoConsole : IDisposable
         Output = new FileStream(outputRead, FileAccess.Read, 0, false);
     }
 
-    public static PseudoConsole Start(string commandLine, int columns, int rows)
+    public static PseudoConsole Start(string commandLine, int columns, int rows, string? directory = null)
     {
         if (!CreatePipe(out var inputRead, out var inputWrite, IntPtr.Zero, 0) ||
             !CreatePipe(out var outputRead, out var outputWrite, IntPtr.Zero, 0))
@@ -54,7 +54,7 @@ internal sealed class PseudoConsole : IDisposable
             startup.Info.cb = Marshal.SizeOf<StartupInfoEx>();
 
             if (!CreateProcessW(null, new StringBuilder(commandLine), IntPtr.Zero, IntPtr.Zero, false,
-                    ExtendedStartupInfoPresent, IntPtr.Zero, null, ref startup, out var process))
+                    ExtendedStartupInfoPresent, IntPtr.Zero, directory, ref startup, out var process))
                 throw new Win32Exception(Marshal.GetLastWin32Error());
 
             CloseHandle(process.hThread);

@@ -4,10 +4,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ClientSSH.Services.Sessions;
 
-/// <summary>One open connection: the host, its live session and any status message to show on the tab.</summary>
-public sealed partial class SessionTab(Host host, string title) : ObservableObject
+/// <summary>One open terminal: an SSH host or a local shell profile, its live session and any status message.</summary>
+public sealed partial class SessionTab(Host? host, string title, ShellProfile? profile = null) : ObservableObject
 {
-    public Host Host { get; } = host;
+    /// <summary>Null for a local shell tab.</summary>
+    public Host? Host { get; } = host;
+
+    /// <summary>The local shell this tab runs; null for SSH.</summary>
+    public ShellProfile? Profile { get; } = profile;
 
     [ObservableProperty] public partial string Title { get; set; } = title;
 

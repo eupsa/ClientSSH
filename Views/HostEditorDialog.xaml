@@ -12,5 +12,7 @@
         <TextBox x:Uid="Editor_Address" Text="{x:Bind ViewModel.Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox x:Uid="Editor_User" Text="{x:Bind ViewModel.User, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <NumberBox x:Uid="Editor_Port" Value="{x:Bind ViewModel.Port, Mode=TwoWay}" Minimum="1" Maximum="65535" />
+        <ComboBox x:Uid="Editor_Appearance" HorizontalAlignment="Stretch" ItemsSource="{x:Bind ViewModel.AppearanceOptions}"
+                  SelectedIndex="{x:Bind ViewModel.AppearanceIndex, Mode=TwoWay}" />
     </StackPanel>
 </ContentDialog>

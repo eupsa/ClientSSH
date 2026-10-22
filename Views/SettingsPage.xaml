@@ -70,26 +70,12 @@
                                 <ComboBoxItem x:Uid="Settings_Theme_Dark" />
                             </ComboBox>
                         </Grid>
-                        <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
-                        <Grid Padding="20,16" ColumnSpacing="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <FontIcon Glyph="&#xE8E9;" FontSize="20" VerticalAlignment="Center"
-                                      Foreground="{ThemeResource TextSecondaryBrush}" />
-                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
-                                <TextBlock x:Uid="Settings_FontSize_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
-                                <TextBlock x:Uid="Settings_FontSize_Desc" TextWrapping="Wrap" FontSize="12"
-                                           Foreground="{ThemeResource TextSecondaryBrush}" />
-                            </StackPanel>
-                            <NumberBox Grid.Column="2" Width="130" Minimum="10" Maximum="24" SmallChange="1"
-                                       SpinButtonPlacementMode="Inline" Value="{x:Bind ViewModel.FontSize, Mode=TwoWay}" />
-                        </Grid>
                     </StackPanel>
                 </Border>
             </StackPanel>
+
+            <!-- Terminal: backdrop, appearance per profile, shortcuts -->
+            <local:TerminalSettingsSection />
 
             <!-- Privacy -->
             <StackPanel Spacing="10">

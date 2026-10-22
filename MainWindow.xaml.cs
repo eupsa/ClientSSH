@@ -28,6 +28,7 @@ namespace ClientSSH
                 _ => HostsNavItem,
             };
             App.GetService<ThemeService>().Attach((FrameworkElement)Content);
+            App.GetService<ThemeService>().AttachBackdrop(this, BrandBackground);
             App.GetService<TrayService>().Attach(this);
 
             ExtendsContentIntoTitleBar = true;
@@ -68,6 +69,16 @@ namespace ClientSSH
             Root.Opacity = 1;
             Root.Translation = System.Numerics.Vector3.Zero;
             _ = ViewModel.StartAsync();
+        }
+
+        // Tunnels before the terminal's own KeyDown, so a shortcut wins over sending the keys to the shell.
+        private void OnPreviewKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            static bool Down(Windows.System.VirtualKey key) => Microsoft.UI.Input.InputKeyboardSource
+                .GetKeyStateForCurrentThread(key).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
+            if (!e.Handled && App.GetService<Services.Shortcuts.ShortcutService>().TryHandle(e.Key,
+                    Down(Windows.System.VirtualKey.Control), Down(Windows.System.VirtualKey.Shift), Down(Windows.System.VirtualKey.Menu)))
+                e.Handled = true;
         }
 
         private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) =>

@@ -2,8 +2,8 @@ using System.Text;
 
 namespace ClientSSH.Terminal;
 
-/// <summary>Runs a command line inside a Windows pseudo console (ConPTY).</summary>
-public sealed class ConPtyProcess(string commandLine) : ITerminalProcess
+/// <summary>Runs a command line inside a Windows pseudo console (ConPTY), optionally in a given folder.</summary>
+public sealed class ConPtyProcess(string commandLine, string? directory = null) : ITerminalProcess
 {
     private PseudoConsole? _console;
     private Thread? _reader;
@@ -14,7 +14,7 @@ public sealed class ConPtyProcess(string commandLine) : ITerminalProcess
 
     public void Start(int columns, int rows)
     {
-        _console = PseudoConsole.Start(commandLine, columns, rows);
+        _console = PseudoConsole.Start(commandLine, columns, rows, directory);
         _reader = new Thread(ReadLoop) { IsBackground = true, Name = "terminal-reader" };
         _reader.Start();
         new Thread(WaitLoop) { IsBackground = true, Name = "terminal-wait" }.Start();
