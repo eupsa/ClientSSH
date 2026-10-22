@@ -217,4 +217,33 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يحذف المفتاح المحفوظ لهذا المزوّد</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>ينزّل الإصدار الجديد ويتحقق منه ويثبّته</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>يتخطى الجولة وينتقل إلى الأجهزة المضيفة</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>موافق</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>إعادة تسمية علامة التبويب</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>فاصل الأجزاء</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>إعادة تسمية</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>تقسيم عمودي</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>تقسيم أفقي</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>إغلاق الجزء</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>إغلاق علامة التبويب</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>تقسيم عمودي: جزء جديد على اليمين</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>تقسيم عمودي</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>تقسيم أفقي: جزء جديد في الأسفل</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>تقسيم أفقي</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>اختصارات لوحة المفاتيح</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>علامات التبويب والأجزاء</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>انقر على اختصار ثم اضغط المفاتيح الجديدة. استخدم Ctrl أو Alt (أو مفتاح وظيفة) حتى تستمر الكتابة في الطرفية بالعمل.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>استعادة الإعدادات الافتراضية</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>يحتاج الاختصار إلى Ctrl أو Alt، أو إلى مفتاح وظيفة (من F1 إلى F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} مستخدم بالفعل لـ "{1}".</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>اضغط المفاتيح...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>علامة تبويب جديدة</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>إغلاق علامة التبويب</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>علامة التبويب التالية</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>علامة التبويب السابقة</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>تقسيم عمودي (جزء على اليمين)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>تقسيم أفقي (جزء في الأسفل)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>إغلاق الجزء</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>الجزء التالي</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>إعادة تسمية علامة التبويب</value></data>
 </root>

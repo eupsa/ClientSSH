@@ -70,8 +70,9 @@ public sealed class PaneTree<T>
         Replace(parent, target, split);
         target.Parent = split;
         leaf.Parent = split;
+        Focused = leaf; // before LayoutChanged, so a redraw already knows which pane has focus
         LayoutChanged?.Invoke();
-        Focus(leaf);
+        FocusChanged?.Invoke();
         return leaf;
     }
 
@@ -84,8 +85,10 @@ public sealed class PaneTree<T>
         Replace(parent.Parent, parent, sibling);
         sibling.Parent = parent.Parent;
         leaf.Parent = null;
+        var focusMoves = Focused == leaf;
+        if (focusMoves) Focused = next;
         LayoutChanged?.Invoke();
-        if (Focused == leaf) Focus(next);
+        if (focusMoves) FocusChanged?.Invoke();
         return true;
     }
 

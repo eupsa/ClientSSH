@@ -217,4 +217,33 @@ Leia em voz alta para a outra pessoa (ligação ou áudio). Se não for igual na
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Apaga a chave salva deste provedor</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Baixa, confere e instala a nova versão</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Pula o tour e vai para os hosts</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Cancelar</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Renomear aba</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Divisor de painéis</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Renomear</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Dividir na vertical</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Dividir na horizontal</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Fechar painel</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Fechar aba</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Dividir na vertical: novo painel à direita</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Dividir na vertical</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Dividir na horizontal: novo painel abaixo</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Dividir na horizontal</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Atalhos de teclado</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Abas e painéis</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Clique em um atalho e pressione as novas teclas. Use Ctrl ou Alt (ou uma tecla de função) para não atrapalhar a digitação no terminal.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Restaurar padrões</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Um atalho precisa de Ctrl ou Alt, ou de uma tecla de função (F1 a F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} já é usado por "{1}".</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Pressione as teclas...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Nova aba</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Fechar aba</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Próxima aba</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Aba anterior</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Dividir na vertical (painel à direita)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Dividir na horizontal (painel abaixo)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Fechar painel</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Próximo painel</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Renomear aba</value></data>
 </root>

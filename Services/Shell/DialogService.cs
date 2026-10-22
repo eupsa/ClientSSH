@@ -12,6 +12,9 @@ public interface IDialogService
 
     /// <summary>Asks the person whether another PC may see (or also control) this one. Denied when they say no.</summary>
     Task<RemoteAccess> ShowRemoteRequestAsync(string securityCode);
+
+    /// <summary>Asks for one line of text (e.g. a tab name). Null when cancelled.</summary>
+    Task<string?> AskTextAsync(string title, string text);
 }
 
 public sealed class DialogService : IDialogService
@@ -38,6 +41,22 @@ public sealed class DialogService : IDialogService
             ContentDialogResult.Secondary => RemoteAccess.View,
             _ => RemoteAccess.Denied,
         };
+    }
+
+    public async Task<string?> AskTextAsync(string title, string text)
+    {
+        var box = new TextBox { Text = text, SelectionStart = 0, SelectionLength = text.Length };
+        var dialog = new ContentDialog
+        {
+            XamlRoot = App.MainWindow.Content.XamlRoot,
+            Title = title,
+            Content = box,
+            PrimaryButtonText = Localization.Loc.Get("Dialog_Ok"),
+            CloseButtonText = Localization.Loc.Get("Dialog_Cancel"),
+            DefaultButton = ContentDialogButton.Primary,
+        };
+        box.Loaded += (_, _) => box.Focus(Microsoft.UI.Xaml.FocusState.Programmatic);
+        return await dialog.ShowAsync() == ContentDialogResult.Primary ? box.Text : null;
     }
 
     public async Task<Host?> ShowHostEditorAsync()

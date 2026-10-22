@@ -48,6 +48,9 @@ public sealed partial class TerminalView : UserControl
         UpdateMetrics();
     }
 
+    /// <summary>Take the keyboard when loaded (true unless another pane of the same tab has it).</summary>
+    public bool FocusOnLoad { get; set; } = true;
+
     public TerminalSession? Session
     {
         get => _session;
@@ -75,7 +78,7 @@ public sealed partial class TerminalView : UserControl
         };
         _blink.Start();
         Attach();
-        Focus(FocusState.Programmatic);
+        if (FocusOnLoad) Focus(FocusState.Programmatic);
     }
 
     private void OnUnloaded(object sender, RoutedEventArgs e)

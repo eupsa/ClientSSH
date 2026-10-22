@@ -1,5 +1,8 @@
 using ClientSSH.Models;
 using ClientSSH.Services.Localization;
+using ClientSSH.Services.Sessions;
+using ClientSSH.Services.Shortcuts;
+using Microsoft.UI.Input;
 using ClientSSH.ViewModels;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -90,4 +93,40 @@ public sealed partial class SessionsPage : Page
 
     private void OnTabCloseRequested(TabView sender, TabViewTabCloseRequestedEventArgs args) =>
         ViewModel.CloseTabCommand.Execute(args.Item);
+
+    // ---- tab menu and shortcuts: thin forwards to the view model's commands ----
+
+    private static SessionTab? TabOf(object sender) => (sender as FrameworkElement)?.Tag as SessionTab;
+
+    private void OnTabDoubleTapped(object sender, DoubleTappedRoutedEventArgs e) =>
+        ViewModel.RenameTabCommand.Execute((sender as FrameworkElement)?.DataContext as SessionTab);
+
+    private void OnRenameClick(object sender, RoutedEventArgs e) => ViewModel.RenameTabCommand.Execute(TabOf(sender));
+
+    private void OnSplitVerticalClick(object sender, RoutedEventArgs e) => ViewModel.SplitVerticalCommand.Execute(TabOf(sender));
+
+    private void OnSplitHorizontalClick(object sender, RoutedEventArgs e) => ViewModel.SplitHorizontalCommand.Execute(TabOf(sender));
+
+    private void OnClosePaneClick(object sender, RoutedEventArgs e)
+    {
+        if (TabOf(sender) is { } tab) ViewModel.Sessions.Selected = tab; // the command closes the selected tab's focused pane
+        ViewModel.ClosePaneCommand.Execute(null);
+    }
+
+    private void OnCloseTabClick(object sender, RoutedEventArgs e) => ViewModel.CloseTabCommand.Execute(TabOf(sender));
+
+    private void OnPagePreviewKeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        // Typing in the assistant box is not a terminal shortcut target.
+        if (e.OriginalSource is TextBox or PasswordBox) return;
+        var modifiers = KeyModifiers.None;
+        if (IsDown(Windows.System.VirtualKey.Control)) modifiers |= KeyModifiers.Ctrl;
+        if (IsDown(Windows.System.VirtualKey.Shift)) modifiers |= KeyModifiers.Shift;
+        if (IsDown(Windows.System.VirtualKey.Menu)) modifiers |= KeyModifiers.Alt;
+        // Focus follows by itself: tab changes, new panes and closed panes already move it to the right terminal.
+        e.Handled = ViewModel.TryRunShortcut(new KeyChord(modifiers, (int)e.Key));
+    }
+
+    private static bool IsDown(Windows.System.VirtualKey key) =>
+        InputKeyboardSource.GetKeyStateForCurrentThread(key).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
 }

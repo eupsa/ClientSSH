@@ -120,7 +120,7 @@ public sealed partial class AssistantViewModel : ObservableObject
         var prompt = Prompt.Trim();
         if (prompt.Length == 0 || IsBusy) return;
 
-        var session = _sessions.Selected?.Session;
+        var session = _sessions.Selected?.Focused.Session;
         if (session is null)
         {
             Status = Loc.Get("Assistant_NoSession");
@@ -139,7 +139,7 @@ public sealed partial class AssistantViewModel : ObservableObject
         }
 
         // The session may have ended while the model was answering.
-        if (_sessions.Selected?.Session is not { } live)
+        if (_sessions.Selected?.Focused.Session is not { } live)
         {
             Status = Loc.Get("Assistant_NoSession");
             return;
