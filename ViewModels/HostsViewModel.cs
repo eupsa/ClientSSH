@@ -16,7 +16,7 @@ public sealed partial class HostsViewModel : ObservableObject
     private readonly ISettingsStore _settings;
     private readonly IDialogService _dialogs;
     private readonly INavigationService _navigation;
-    private readonly SessionManager _sessions;
+    private readonly ISessionManager _sessions;
 
     [ObservableProperty] public partial bool IsEmpty { get; set; }
 
@@ -24,7 +24,7 @@ public sealed partial class HostsViewModel : ObservableObject
 
     public HostsViewModel(
         IHostStore store, IHistoryStore history, ISettingsStore settings, IDialogService dialogs,
-        INavigationService navigation, TourViewModel tour, SessionManager sessions)
+        INavigationService navigation, TourViewModel tour, ISessionManager sessions)
     {
         _store = store;
         _history = history;

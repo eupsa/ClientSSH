@@ -11,7 +11,7 @@ namespace ClientSSH.Services.Assistant;
 /// Nothing from the terminal, the hosts or the history is added. Runs only when the user sends a prompt.
 /// The per-provider request formats live in <see cref="AiRequests"/>.
 /// </summary>
-public sealed partial class AssistantService(ISettingsStore settings, AiKeyStore keys) : IAssistantService
+public sealed partial class AssistantService(ISettingsStore settings, IAiKeyStore keys) : IAssistantService
 {
     private static readonly HttpClient Http = new()
     {

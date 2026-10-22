@@ -10,12 +10,12 @@ public sealed partial class SessionsViewModel : ObservableObject, IDisposable
 {
     private readonly INavigationService _navigation;
 
-    public SessionManager Sessions { get; }
+    public ISessionManager Sessions { get; }
 
     [ObservableProperty] public partial bool HasTabs { get; set; }
     [ObservableProperty] public partial bool IsEmpty { get; set; }
 
-    public SessionsViewModel(SessionManager sessions, INavigationService navigation)
+    public SessionsViewModel(ISessionManager sessions, INavigationService navigation)
     {
         Sessions = sessions;
         _navigation = navigation;
@@ -31,6 +31,12 @@ public sealed partial class SessionsViewModel : ObservableObject, IDisposable
     {
         Sessions.Close(tab);
         if (Sessions.Tabs.Count == 0) _navigation.NavigateTo(PageKey.Hosts);
+    }
+
+    [RelayCommand]
+    private void Reconnect(SessionTab? tab)
+    {
+        if (tab is not null) Sessions.Reconnect(tab);
     }
 
     public void Dispose() => Sessions.Tabs.CollectionChanged -= OnTabsChanged;
