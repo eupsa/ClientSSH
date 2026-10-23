@@ -29,6 +29,9 @@
     <Compile Include="..\..\Models\TerminalAppearance.cs" Link="TerminalAppearance.cs" />
     <Compile Include="..\..\Models\AppSettings.cs" Link="AppSettings.cs" />
     <Compile Include="..\..\Models\WindowState.cs" Link="WindowState.cs" />
+    <Compile Include="..\..\Services\Commands\PaletteCommand.cs" Link="PaletteCommand.cs" />
+    <Compile Include="..\..\Services\Commands\CommandRegistry.cs" Link="CommandRegistry.cs" />
+    <Compile Include="..\..\Services\Commands\FuzzyMatcher.cs" Link="FuzzyMatcher.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
     <Compile Include="..\..\Services\Remote\RemoteChannel.cs" Link="RemoteChannel.cs" />
     <Compile Include="..\..\Services\Remote\InputEvent.cs" Link="InputEvent.cs" />

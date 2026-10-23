@@ -7,7 +7,7 @@
     xmlns:local="using:ClientSSH.Views"
     Title="ClientSSH">
 
-    <Grid x:Name="Root" Background="Transparent" Loaded="OnLoaded" PreviewKeyDown="OnPreviewKeyDown"
+    <Grid x:Name="Root" Background="Transparent" Loaded="OnLoaded" PreviewKeyDown="OnRootPreviewKeyDown"
           Opacity="0" Translation="0,28,0">
         <Grid.OpacityTransition>
             <ScalarTransition Duration="0:0:0.6" />
@@ -27,6 +27,11 @@
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="ms-appx:///Assets/Square44x44Logo.targetsize-24.png" />
             </TitleBar.IconSource>
+            <TitleBar.RightHeader>
+                <Button x:Uid="Palette_Open" Click="OnPaletteButtonClick" Background="Transparent" BorderThickness="0">
+                    <FontIcon Glyph="&#xE721;" FontSize="14" />
+                </Button>
+            </TitleBar.RightHeader>
         </TitleBar>
 
         <NavigationView
@@ -98,6 +103,8 @@
         <TeachingTip x:Uid="Tour_Step4" Target="{x:Bind HostsNavItem}" IsOpen="{x:Bind Tour.IsStep4, Mode=OneWay}"
                      IsLightDismissEnabled="False"
                      ActionButtonCommand="{x:Bind Tour.NextCommand}" CloseButtonCommand="{x:Bind Tour.FinishCommand}" />
+
+        <local:CommandPalette Grid.RowSpan="2" />
 
         <!-- Splash: covers everything, fades out when the view model drops SplashOpacity to 0. -->
         <Grid Grid.RowSpan="2" Background="{ThemeResource SplashBackgroundBrush}"

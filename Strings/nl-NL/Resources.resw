@@ -272,4 +272,24 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Lokale terminals</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminalweergave</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Zelfde als andere SSH-hosts</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Typ een opdracht of hostnaam</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Opdrachtpalet</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Opdrachten</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Geen overeenkomende opdrachten</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Nieuwe SSH-verbinding…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Host toevoegen…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH openen: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Tabblad sluiten: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Gesloten sessie herstellen: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Alle gesloten sessies herstellen ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Thema: Licht</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Thema: Donker</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Thema: Windows volgen</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Naar Hosts</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Naar Sessies</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Naar Instellingen</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Externe toegang openen</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Controleren op updates</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Opdrachtpalet (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Opdrachtpalet</value></data>
 </root>

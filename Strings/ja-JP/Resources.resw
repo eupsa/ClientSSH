@@ -272,4 +272,24 @@
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>ローカル ターミナル</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>ターミナルの外観</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>他の SSH ホストと同じ</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>コマンドまたはホスト名を入力</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド パレット</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>一致するコマンドはありません</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>新しい SSH 接続…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>ホストを追加…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH を開く: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>タブを閉じる: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>閉じたセッションを復元: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>閉じたセッションをすべて復元 ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>テーマ: ライト</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>テーマ: ダーク</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>テーマ: Windows の設定を使用</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>ホストへ移動</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>セッションへ移動</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>設定へ移動</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>リモート アクセスを開く</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>更新プログラムを確認</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コマンド パレット (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド パレット</value></data>
 </root>

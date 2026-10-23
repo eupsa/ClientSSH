@@ -272,4 +272,24 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Yerel terminaller</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminal görünümü</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Diğer SSH ana bilgisayarlarıyla aynı</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Bir komut veya ana bilgisayar adı yazın</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komut paleti</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komutlar</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Eşleşen komut yok</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Yeni SSH bağlantısı…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Ana bilgisayar ekle…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH aç: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Sekmeyi kapat: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Kapatılan oturumu geri yükle: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Kapatılan tüm oturumları geri yükle ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Tema: Açık</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Tema: Koyu</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Tema: Windows'u izle</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Ana bilgisayarlara git</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Oturumlara git</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Ayarlara git</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Uzaktan erişimi aç</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Güncellemeleri denetle</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komut paleti (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komut paleti</value></data>
 </root>

@@ -272,4 +272,24 @@ Leggilo ad alta voce all’altra persona (chiamata o messaggio vocale). Se non �
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Terminali locali</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Aspetto del terminale</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Come gli altri host SSH</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Digita un comando o il nome di un host</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Riquadro comandi</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Comandi</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Nessun comando corrispondente</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Nuova connessione SSH…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Aggiungi host…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>Apri SSH: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Chiudi scheda: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Ripristina sessione chiusa: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Ripristina tutte le sessioni chiuse ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Tema: Chiaro</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Tema: Scuro</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Tema: Segui Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Vai a Host</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Vai a Sessioni</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Vai a Impostazioni</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Apri accesso remoto</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Cerca aggiornamenti</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Riquadro comandi (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Riquadro comandi</value></data>
 </root>

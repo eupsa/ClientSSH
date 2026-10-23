@@ -272,4 +272,24 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Local terminals</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminal appearance</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Same as other SSH hosts</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Type a command or host name</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Command palette</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Commands</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>No matching commands</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>New SSH connection…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Add host…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>Open SSH: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Close tab: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Restore closed session: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Restore all closed sessions ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Theme: Light</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Theme: Dark</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Theme: Follow Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Go to Hosts</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Go to Sessions</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Go to Settings</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Open remote access</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Check for updates</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Command palette (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Command palette</value></data>
 </root>

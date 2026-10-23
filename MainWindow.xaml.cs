@@ -14,6 +14,8 @@ namespace ClientSSH
 
         public RemoteViewModel Remote { get; } = App.GetService<RemoteViewModel>();
 
+        public CommandPaletteViewModel Palette { get; } = App.GetService<CommandPaletteViewModel>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace ClientSSH
             App.GetService<ThemeService>().Attach((FrameworkElement)Content);
             App.GetService<ThemeService>().AttachBackdrop(this, BrandBackground);
             App.GetService<TrayService>().Attach(this);
+            App.GetService<Services.Commands.BuiltInCommands>().Register();
 
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(TitleBar);
@@ -80,6 +83,26 @@ namespace ClientSSH
                     Down(Windows.System.VirtualKey.Control), Down(Windows.System.VirtualKey.Shift), Down(Windows.System.VirtualKey.Menu)))
                 e.Handled = true;
         }
+
+        // Tunnels from the root, so Ctrl+Shift+P reaches the palette before the terminal sees the key.
+        private void OnRootPreviewKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key != Windows.System.VirtualKey.P || ViewModel.IsSplashVisible || !IsDown(Windows.System.VirtualKey.Control) ||
+                !IsDown(Windows.System.VirtualKey.Shift) || IsDown(Windows.System.VirtualKey.Menu))
+            {
+                OnPreviewKeyDown(sender, e); // profile shortcuts
+                return;
+            }
+            e.Handled = true;
+            if (Palette.IsOpen) Palette.Close();
+            else Palette.Open();
+        }
+
+        // Same palette for mouse users, who may not know the shortcut.
+        private void OnPaletteButtonClick(object sender, RoutedEventArgs e) => Palette.Open();
+
+        private static bool IsDown(Windows.System.VirtualKey key) =>
+            Microsoft.UI.Input.InputKeyboardSource.GetKeyStateForCurrentThread(key).HasFlag(Windows.UI.Core.CoreVirtualKeyStates.Down);
 
         private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) =>
             ViewModel.NavigateCommand.Execute(Enum.Parse<PageKey>((string)args.InvokedItemContainer.Tag));

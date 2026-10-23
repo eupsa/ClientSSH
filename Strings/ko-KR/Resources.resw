@@ -272,4 +272,24 @@
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>로컬 터미널</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>터미널 모양</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>다른 SSH 호스트와 같음</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>명령 또는 호스트 이름 입력</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>명령 팔레트</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>명령</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>일치하는 명령 없음</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>새 SSH 연결…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>호스트 추가…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH 열기: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>탭 닫기: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>닫은 세션 복원: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>닫은 세션 모두 복원 ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>테마: 밝게</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>테마: 어둡게</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>테마: Windows 설정 따르기</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>호스트로 이동</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>세션으로 이동</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>설정으로 이동</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>원격 액세스 열기</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>업데이트 확인</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>명령 팔레트 (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>명령 팔레트</value></data>
 </root>

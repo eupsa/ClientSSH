@@ -15,6 +15,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ### Changed
 - The terminal font size moved from Settings > Appearance into the new Terminal section (old settings files keep their size).
+- Command palette: press **Ctrl+Shift+P** (or the search button in the title bar) and type to run any action: open SSH to a saved host (most recent first when history is on), new connection, add host, close the current tab, restore tabs closed in this run, switch theme (light, dark, follow Windows), go to hosts, sessions, remote access or settings, and check for updates. Fuzzy search ignores case and accents; arrow keys, Enter and Esc work as usual, and screen readers hear the highlighted command. Closed tabs are remembered in memory only, never saved.
 
 ## [0.5.0] - 2026-10-22
 

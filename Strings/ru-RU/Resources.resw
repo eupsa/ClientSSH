@@ -272,4 +272,24 @@
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Локальные терминалы</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Оформление терминала</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Как у других SSH-хостов</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Введите команду или имя хоста</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Палитра команд</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Команды</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Нет подходящих команд</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Новое SSH-подключение…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Добавить хост…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>Открыть SSH: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Закрыть вкладку: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Восстановить закрытый сеанс: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Восстановить все закрытые сеансы ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Тема: Светлая</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Тема: Тёмная</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Тема: Как в Windows</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Перейти к хостам</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Перейти к сеансам</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Перейти к параметрам</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Открыть удалённый доступ</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Проверить обновления</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Палитра команд (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Палитра команд</value></data>
 </root>

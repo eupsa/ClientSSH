@@ -272,4 +272,24 @@ Lies ihn der anderen Person laut vor (Anruf oder Sprachnachricht). Wenn er auf b
   <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Lokale Terminals</value></data>
   <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminaldarstellung</value></data>
   <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Wie andere SSH-Hosts</value></data>
+  <data name="Palette_Search.PlaceholderText" xml:space="preserve"><value>Befehl oder Hostnamen eingeben</value></data>
+  <data name="Palette_Search.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Befehlspalette</value></data>
+  <data name="Palette_Results.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Befehle</value></data>
+  <data name="Palette_NoResults.Text" xml:space="preserve"><value>Keine passenden Befehle</value></data>
+  <data name="Cmd_NewConnection" xml:space="preserve"><value>Neue SSH-Verbindung…</value></data>
+  <data name="Cmd_AddHost" xml:space="preserve"><value>Host hinzufügen…</value></data>
+  <data name="Cmd_OpenHost" xml:space="preserve"><value>SSH öffnen: {0}</value></data>
+  <data name="Cmd_CloseTab" xml:space="preserve"><value>Tab schließen: {0}</value></data>
+  <data name="Cmd_RestoreTab" xml:space="preserve"><value>Geschlossene Sitzung wiederherstellen: {0}</value></data>
+  <data name="Cmd_RestoreAll" xml:space="preserve"><value>Alle geschlossenen Sitzungen wiederherstellen ({0})</value></data>
+  <data name="Cmd_ThemeLight" xml:space="preserve"><value>Design: Hell</value></data>
+  <data name="Cmd_ThemeDark" xml:space="preserve"><value>Design: Dunkel</value></data>
+  <data name="Cmd_ThemeSystem" xml:space="preserve"><value>Design: Windows folgen</value></data>
+  <data name="Cmd_GoHosts" xml:space="preserve"><value>Zu Hosts</value></data>
+  <data name="Cmd_GoSessions" xml:space="preserve"><value>Zu Sitzungen</value></data>
+  <data name="Cmd_GoSettings" xml:space="preserve"><value>Zu Einstellungen</value></data>
+  <data name="Cmd_GoRemote" xml:space="preserve"><value>Fernzugriff öffnen</value></data>
+  <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Nach Updates suchen</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Befehlspalette (Ctrl+Shift+P)</value></data>
+  <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Befehlspalette</value></data>
 </root>

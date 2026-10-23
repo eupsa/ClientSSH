@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="ClientSSH.Views.CommandPalette"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="using:ClientSSH.Services.Commands">
+
+    <!-- No background: while closed the children are collapsed and clicks pass through to the app.
+         Visibility, not x:Load: an unloaded ListView with a TwoWay SelectedIndex binding crashes on the next open. -->
+    <Grid>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition FromVerticalOffset="-16" IsStaggeringEnabled="False" />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Rectangle x:Name="Backdrop" Visibility="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
+                   Fill="{ThemeResource BackgroundBrush}" Opacity="0.45" Tapped="OnBackdropTapped" />
+
+        <Border x:Name="Card" Visibility="{x:Bind ViewModel.IsOpen, Mode=OneWay}"
+                VerticalAlignment="Top" Margin="16,56,16,16" MaxWidth="600"
+                Background="{ThemeResource SurfaceRaisedBrush}" BorderBrush="{ThemeResource BorderBrush}" BorderThickness="1"
+                CornerRadius="{StaticResource OverlayCornerRadius}" Padding="8"
+                TabFocusNavigation="Cycle" KeyDown="OnCardKeyDown">
+            <StackPanel Spacing="8">
+                <TextBox x:Name="SearchBox" x:Uid="Palette_Search"
+                         Text="{x:Bind ViewModel.Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PreviewKeyDown="OnSearchKeyDown" />
+
+                <ListView x:Name="ResultsList" x:Uid="Palette_Results" MaxHeight="400"
+                          ItemsSource="{x:Bind ViewModel.Results}"
+                          SelectedIndex="{x:Bind ViewModel.SelectedIndex, Mode=TwoWay}"
+                          SelectionMode="Single" IsItemClickEnabled="True" ItemClick="OnItemClick"
+                          SelectionChanged="OnSelectionChanged">
+                    <!-- No row animations here: results are rebuilt on every keystroke and must feel instant. -->
+                    <ListView.ItemContainerTransitions>
+                        <TransitionCollection />
+                    </ListView.ItemContainerTransitions>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="c:PaletteCommand">
+                            <Grid ColumnSpacing="12" Padding="0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Glyph="{x:Bind Glyph}" FontSize="16" Foreground="{ThemeResource TextSecondaryBrush}" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind Title}" Foreground="{ThemeResource TextBrush}"
+                                           TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="2" Text="{x:Bind Shortcut}" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBlock x:Uid="Palette_NoResults" Margin="12,4,12,8" Foreground="{ThemeResource TextSecondaryBrush}"
+                           AutomationProperties.LiveSetting="Polite"
+                           Visibility="{x:Bind ViewModel.HasNoResults, Mode=OneWay}" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
