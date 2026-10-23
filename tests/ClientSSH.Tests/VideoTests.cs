@@ -75,6 +75,31 @@ public class VideoTests(ITestOutputHelper output)
     }
 
     [Fact]
+    public void Decoding_into_a_reused_buffer_gives_the_same_pictures()
+    {
+        const int width = 640, height = 360;
+        using var encoder = new H264Encoder(width, height, 60, 2_000_000);
+        using var fresh = new H264Decoder();
+        using var reusing = new H264Decoder();
+        byte[]? shown = null;
+        var compared = 0;
+        for (var f = 0; f < 20; f++)
+        {
+            var unit = encoder.Encode(Yuv.BgraToNv12(Picture(width, height, f), width, height, width * 4), keyFrame: f == 0);
+            if (unit is null) continue;
+            var expected = fresh.Decode(unit, width, height);
+            var previous = shown;
+            var actual = reusing.Decode(unit, width, height, shown);
+            if (expected is null) continue;
+            Assert.Equal(expected, actual);
+            if (previous is not null) Assert.Same(previous, actual);
+            shown = actual;
+            compared++;
+        }
+        Assert.True(compared > 10);
+    }
+
+    [Fact]
     public void Forcing_a_key_frame_mid_stream_works()
     {
         const int width = 640, height = 360;

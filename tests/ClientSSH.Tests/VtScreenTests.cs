@@ -58,6 +58,37 @@ public class VtScreenTests
     }
 
     [Fact]
+    public void CopyViewMatchesGetCellIncludingOldNarrowLines()
+    {
+        var s = Feed("narrow line\r\n2\r\n3\r\n4", cols: 12, rows: 3);
+        s.Resize(20, 3);
+        s.ViewOffset = 1;
+        var cells = new Cell[20 * 3];
+        s.CopyView(cells);
+
+        for (var row = 0; row < 3; row++)
+        for (var col = 0; col < 20; col++)
+            Assert.Equal(s.GetCell(row, col), cells[row * 20 + col]);
+        Assert.Equal('n', cells[0].Ch);
+        Assert.Equal(' ', cells[15].Ch); // past the old 12 columns: blank
+    }
+
+    [Fact]
+    public void FullScrollbackDropsTheOldestLinesAndReusesThemBlank()
+    {
+        var s = new VtScreen(20, 3);
+        for (var i = 0; i < 5100; i++) s.Feed($"\x1b[41m{i}\r\n");
+        s.Feed("\x1b[0m");
+
+        Assert.Equal(5000, s.ScrollbackCount);
+        s.ViewOffset = 5000;
+        Assert.Equal("98", s.GetLineText(0)); // 5100 lines + the empty last row: the first 98 fell off
+        s.ViewOffset = 0;
+        Assert.Equal("", s.GetLineText(2));
+        Assert.Equal(TermColor.Indexed(1), s.GetCell(2, 5).Bg); // the reused line is blanked with the current background
+    }
+
+    [Fact]
     public void AnswersCursorPositionReport()
     {
         var replies = new List<string>();
