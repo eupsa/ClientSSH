@@ -4,7 +4,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-22
+
 ### Added
+- **Remote access like AnyDesk, with no server of ours.** Each PC has a fixed 9-digit number; type a friend's number and connect. Their PC asks them, even when ClientSSH is minimized or in the tray (window to the front, on top, flashing), and they choose **Allow control**, **View only** or **Deny**, after comparing a six-digit security code. PCs find each other through the public BitTorrent DHT (and on the same network by local multicast), then connect directly (UDP hole punching), end-to-end encrypted. Video is H.264 up to Full HD at 60 fps, with the codecs built into Windows and Desktop Duplication capture. It may not connect through CGNAT or symmetric NAT, your public IP is published with your number while requests are accepted (can be turned off), and the protocol has had no outside security review.
+- **Command palette:** press **Ctrl+Shift+P** (or the search button in the title bar) and type to run any action: open SSH to a saved host (most recent first when history is on), new connection, add host, close the current tab, restore tabs closed in this run, switch theme (light, dark, follow Windows), go to hosts, sessions, remote access or settings, and check for updates. Fuzzy search ignores case and accents; arrow keys, Enter and Esc work as usual, and screen readers hear the highlighted command. Closed tabs are remembered in memory only, never saved. It also lists tab and pane actions (new tab, split, close pane, next pane, next/previous tab, rename) with their shortcuts, and "Open terminal" for each local shell.
 - **Split panes.** Split a tab vertically or horizontally (tab bar buttons, the tab's right-click menu or shortcuts); each pane runs its own session to the same host. Drag the divider to resize; the focused pane has an accent outline. Only the visible tab's panes keep a terminal canvas.
 - **Rename tabs** with a double click on the title or from the tab's menu. The name lasts while the tab is open.
 - **Configurable shortcuts** for new/close/next/previous tab, split, close pane, next pane and rename (Settings > Keyboard shortcuts). Only changes from the defaults are saved (`Shortcuts` in `settings.json`); older settings files keep loading.
@@ -15,15 +19,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ### Changed
 - The terminal font size moved from Settings > Appearance into the new Terminal section (old settings files keep their size).
-- Command palette: press **Ctrl+Shift+P** (or the search button in the title bar) and type to run any action: open SSH to a saved host (most recent first when history is on), new connection, add host, close the current tab, restore tabs closed in this run, switch theme (light, dark, follow Windows), go to hosts, sessions, remote access or settings, and check for updates. Fuzzy search ignores case and accents; arrow keys, Enter and Esc work as usual, and screen readers hear the highlighted command. Closed tabs are remembered in memory only, never saved.
-
-## [0.5.0] - 2026-10-22
-
-### Changed
-- **Remote access like AnyDesk, with no server of ours.** Each PC has a fixed 9-digit number; type a friend's number and connect. Their PC asks them, even when ClientSSH is minimized or in the tray (window to the front, on top, flashing), and they choose **Allow control**, **View only** or **Deny**, after comparing a six-digit security code. PCs find each other through the public BitTorrent DHT (and on the same network by local multicast), then connect directly (UDP hole punching), end-to-end encrypted. Video is H.264 up to Full HD at 60 fps, with the codecs built into Windows and Desktop Duplication capture. It may not connect through CGNAT or symmetric NAT, your public IP is published with your number while requests are accepted (can be turned off), and the protocol has had no outside security review.
+- Faster terminal with long output: the 5000-line scrollback is now a ring buffer that reuses lines (in a 200,000-line test, memory allocated went from 581 MB to 14.5 MB).
+- The terminal is drawn from a copy of the visible cells, so reading SSH output no longer waits for every frame to be drawn.
+- Remote access video reuses its buffers: about 3 MB less memory per encoded frame and 11 MB less per decoded frame at 1080p.
+- Large source files were split by responsibility, and view models now depend on service interfaces (no change in behavior).
 
 ### Removed
-- The two codes to swap by hand and the optional rendezvous server: the PC number replaces both.
+- The two codes to swap by hand and the optional rendezvous server for remote access: the PC number replaces both.
 
 ## [0.4.0] - 2026-10-22
 
