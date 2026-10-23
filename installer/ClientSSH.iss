@@ -1,6 +1,6 @@
 ; Inno Setup script. Build with installer\build.ps1 (it publishes the app and makes the wizard images first).
 #ifndef AppVersion
-  #define AppVersion "0.6.0"
+  #define AppVersion "0.6.1"
 #endif
 #define AppName "ClientSSH"
 #define PublishDir "..\artifacts\publish"

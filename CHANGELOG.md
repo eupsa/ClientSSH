@@ -4,6 +4,12 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-10-23
+
+### Fixed
+- Remote control: the keyboard never reached the other PC, because the remote screen could not hold keyboard focus. It now takes the keyboard as soon as the other screen appears and when you click it.
+- Remote control: releasing a mouse button outside the remote picture left it held down on the other PC.
+
 ## [0.6.0] - 2026-10-23
 
 ### Added
