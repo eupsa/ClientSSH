@@ -4,6 +4,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+### Added
+- **Local terminals:** Windows PowerShell, PowerShell 7, CMD, each WSL distro and Git Bash open in tabs, from the Hosts page or the tab bar's **+** menu. Only shells installed on the PC are listed.
+- **Terminal customization** in Settings > Terminal: color scheme (brand plus 8 built-in, and your own in `schemes.json`, Windows Terminal format), font and size, cursor shape and thickness, background opacity. A global default plus per-profile overrides (including "SSH hosts"); open terminals update live. New hosts can use a profile's look.
+- **Window background:** brand gradient, Mica or Acrylic.
+- **Profile shortcuts:** Ctrl+Shift+1..9 open profiles 1-9, each editable or off.
+
+### Changed
+- The terminal font size moved from Settings > Appearance into the new Terminal section (old settings files keep their size).
+
 ## [0.5.0] - 2026-10-22
 
 ### Changed

@@ -16,7 +16,10 @@ using Microsoft.UI.Xaml.Media;
 namespace ClientSSH.ViewModels;
 
 /// <param name="Id">"" for the global default, "ssh" for hosts, else a shell profile id.</param>
-public sealed record AppearanceTarget(string Id, string Name);
+public sealed record AppearanceTarget(string Id, string Name)
+{
+    public override string ToString() => Name; // read by screen readers
+}
 
 /// <summary>
 /// Terminal appearance editor (global default and per-profile overrides), window backdrop and profile shortcuts.

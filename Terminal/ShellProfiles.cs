@@ -15,6 +15,9 @@ public sealed record ShellProfile(string Id, string Name, ShellKind Kind, string
     public const string SshId = "ssh";
 
     public string CommandLine => Arguments.Length == 0 ? $"\"{Executable}\"" : $"\"{Executable}\" {Arguments}";
+
+    // Screen readers and list items read ToString: say the name, not the record dump.
+    public override string ToString() => Name;
 }
 
 /// <summary>Where to look for shells. Tests pass fake folders and a fake file check.</summary>
