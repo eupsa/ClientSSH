@@ -71,7 +71,7 @@
                 <TextBlock Text="{x:Bind Remote.AccessText, Mode=OneWay}" VerticalAlignment="Center" Foreground="{ThemeResource TextSecondaryBrush}" />
                 <TextBlock Text="{x:Bind Remote.SecurityText, Mode=OneWay}" VerticalAlignment="Center" Foreground="{ThemeResource AccentForegroundBrush}" />
             </StackPanel>
-            <Border x:Name="Surface" Grid.Row="1" IsTabStop="True" UseSystemFocusVisuals="False" CornerRadius="{StaticResource CardCornerRadius}"
+            <Border x:Name="Surface" Grid.Row="1" CornerRadius="{StaticResource CardCornerRadius}"
                     Background="{ThemeResource TerminalBackgroundBrush}" BorderBrush="{ThemeResource BorderBrush}" BorderThickness="1"
                     KeyDown="OnSurfaceKeyDown" KeyUp="OnSurfaceKeyUp"
                     PointerMoved="OnSurfacePointerMoved" PointerPressed="OnSurfacePointerPressed"

@@ -20,6 +20,7 @@ public sealed partial class RemotePage : Page
     public RemoteViewModel Remote { get; } = App.GetService<RemoteViewModel>();
 
     private CanvasControl? _canvas;
+    private ContentControl? _keys;
     private CanvasBitmap? _picture;
     private long _lastMove;
 
@@ -32,7 +33,14 @@ public sealed partial class RemotePage : Page
             // Win2D draws each new picture as soon as it is decoded (up to 60 per second).
             _canvas = new CanvasControl { ClearColor = Colors.Transparent, IsTabStop = false };
             _canvas.Draw += OnDraw;
-            Surface.Child = _canvas;
+            // A Border cannot hold keyboard focus: this Control does, and its keys bubble up to Surface's handlers.
+            _keys = new ContentControl
+            {
+                Content = _canvas, IsTabStop = true, UseSystemFocusVisuals = false,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch, VerticalContentAlignment = VerticalAlignment.Stretch,
+            };
+            Surface.Child = _keys;
+            Remote.PropertyChanged += OnRemoteChanged;
         };
         Unloaded += (_, _) =>
         {
@@ -40,7 +48,9 @@ public sealed partial class RemotePage : Page
             _picture = null;
             _canvas?.RemoveFromVisualTree();
             _canvas = null;
+            _keys = null;
             Surface.Child = null;
+            Remote.PropertyChanged -= OnRemoteChanged;
         };
     }
 
@@ -48,6 +58,13 @@ public sealed partial class RemotePage : Page
     {
         Remote.FrameReady -= OnFrame;
         base.OnNavigatedFrom(e);
+    }
+
+    // The other PC's screen appears: keys go to it right away, without a click first.
+    private void OnRemoteChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(RemoteViewModel.IsViewing) && Remote.IsViewing)
+            DispatcherQueue.TryEnqueue(() => _keys?.Focus(FocusState.Programmatic));
     }
 
     private void OnCopyNumber(object sender, RoutedEventArgs e)
@@ -126,15 +143,21 @@ public sealed partial class RemotePage : Page
 
     private void OnSurfacePointerPressed(object sender, PointerRoutedEventArgs e)
     {
-        Surface.Focus(FocusState.Pointer);
+        _keys?.Focus(FocusState.Pointer);
+        Surface.CapturePointer(e.Pointer); // the release must arrive even if the mouse leaves the picture
         SendButton(e, InputKind.MouseDown);
     }
 
-    private void OnSurfacePointerReleased(object sender, PointerRoutedEventArgs e) => SendButton(e, InputKind.MouseUp);
+    private void OnSurfacePointerReleased(object sender, PointerRoutedEventArgs e)
+    {
+        SendButton(e, InputKind.MouseUp);
+        Surface.ReleasePointerCapture(e.Pointer);
+    }
 
     private void SendButton(PointerRoutedEventArgs e, InputKind kind)
     {
-        if (_canvas is null || !TryMap(e, out var x, out var y)) return;
+        var mapped = TryMap(e, out var x, out var y);
+        if (_canvas is null || (!mapped && kind == InputKind.MouseDown)) return; // a release outside still lets go
         var button = e.GetCurrentPoint(_canvas).Properties.PointerUpdateKind switch
         {
             PointerUpdateKind.LeftButtonPressed or PointerUpdateKind.LeftButtonReleased => InputEvent.ButtonLeft,
@@ -144,7 +167,7 @@ public sealed partial class RemotePage : Page
         };
         if (button < 0) return;
 
-        Remote.SendInput(new InputEvent(InputKind.MouseMove, x, y)); // be at the spot before the click
+        if (mapped) Remote.SendInput(new InputEvent(InputKind.MouseMove, x, y)); // be at the spot before the click
         Remote.SendInput(new InputEvent(kind, button));
     }
 
