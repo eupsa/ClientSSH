@@ -33,7 +33,7 @@ This publishes an unpackaged, self-contained build and writes `artifacts/ClientS
 
 ## Reporting and conduct
 
-Bugs and ideas go in [issues](https://github.com/eupsa/client-ssh/issues). Security problems: see [SECURITY.md](SECURITY.md). Everyone follows the [Code of Conduct](CODE_OF_CONDUCT.md).
+Bugs and ideas go in [issues](https://github.com/eupsa/ClientSSH/issues). Security problems: see [SECURITY.md](SECURITY.md). Everyone follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Project layout
 

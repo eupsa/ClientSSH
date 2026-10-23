@@ -293,4 +293,7 @@
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>कमांड पैलेट (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कमांड पैलेट</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>टर्मिनल खोलें: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>अनइंस्टॉल करें</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>इस पीसी से ClientSSH हटाता है। आपके होस्ट और सेटिंग्स डेटा फ़ोल्डर में रहते हैं।</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>अनइंस्टॉल करें</value></data>
 </root>

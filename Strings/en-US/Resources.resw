@@ -293,4 +293,7 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Command palette (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Command palette</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Open terminal: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Uninstall</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Removes ClientSSH from this PC. Your hosts and settings stay in the data folder.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Uninstall</value></data>
 </root>

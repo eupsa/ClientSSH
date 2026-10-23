@@ -89,16 +89,8 @@ public sealed partial class MainViewModel : ObservableObject
 
         CanInstallUpdate = false;
         UpdateBarMessage = Loc.Get("Update_Downloading");
-        var installer = await _updates.DownloadAsync(_available);
-        if (installer is null)
-        {
-            UpdateBarMessage = Loc.Get("Update_DownloadFailed");
-            return;
-        }
-
-        // The installer closes this app, replaces the files and starts it again.
-        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(installer, "/SILENT") { UseShellExecute = true });
-        Microsoft.UI.Xaml.Application.Current.Exit();
+        if (await _updates.InstallAsync(_available)) Microsoft.UI.Xaml.Application.Current.Exit();
+        else UpdateBarMessage = Loc.Get("Update_DownloadFailed");
     }
 
     // Sidebar: hidden on welcome, open on hosts and settings, collapsed to the icon rail on the sessions page.

@@ -293,4 +293,7 @@ Leggilo ad alta voce allâ€™altra persona (chiamata o messaggio vocale). Se non Ã
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Riquadro comandi (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Riquadro comandi</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Apri terminale: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Disinstalla</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Rimuove ClientSSH da questo PC. Host e impostazioni restano nella cartella dati.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Disinstalla</value></data>
 </root>

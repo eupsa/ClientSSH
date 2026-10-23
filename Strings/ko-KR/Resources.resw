@@ -293,4 +293,7 @@
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>명령 팔레트 (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>명령 팔레트</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>터미널 열기: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>제거</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>이 PC에서 ClientSSH를 제거합니다. 호스트와 설정은 데이터 폴더에 남습니다.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>제거</value></data>
 </root>

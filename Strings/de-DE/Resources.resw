@@ -293,4 +293,7 @@ Lies ihn der anderen Person laut vor (Anruf oder Sprachnachricht). Wenn er auf b
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Befehlspalette (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Befehlspalette</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Terminal öffnen: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Deinstallieren</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Entfernt ClientSSH von diesem PC. Ihre Hosts und Einstellungen bleiben im Datenordner.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Deinstallieren</value></data>
 </root>

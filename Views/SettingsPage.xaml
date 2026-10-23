@@ -262,10 +262,13 @@
                                  Visibility="{x:Bind ViewModel.HasUpdateMessage, Mode=OneWay}"
                                  Severity="{x:Bind ViewModel.UpdateSeverity, Mode=OneWay}"
                                  Message="{x:Bind ViewModel.UpdateMessage, Mode=OneWay}">
-                            <InfoBar.ActionButton>
-                                <Button x:Uid="Settings_Update_Open" Visibility="{x:Bind ViewModel.HasUpdate, Mode=OneWay}"
-                                        Command="{x:Bind ViewModel.OpenReleaseCommand}" />
-                            </InfoBar.ActionButton>
+                            <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,12"
+                                        Visibility="{x:Bind ViewModel.HasUpdate, Mode=OneWay}">
+                                <Button x:Uid="Update_Install" Style="{ThemeResource AccentButtonStyle}"
+                                        Command="{x:Bind ViewModel.InstallUpdateCommand}"
+                                        IsEnabled="{x:Bind ViewModel.CanInstallUpdate, Mode=OneWay}" />
+                                <Button x:Uid="Settings_Update_Open" Command="{x:Bind ViewModel.OpenReleaseCommand}" />
+                            </StackPanel>
                         </InfoBar>
                         <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
                         <Grid Padding="20,16" ColumnSpacing="16">
@@ -283,6 +286,24 @@
                             </StackPanel>
                             <Button Grid.Column="2" x:Uid="Settings_Tour_Button" Command="{x:Bind ViewModel.Tour.StartCommand}" />
                         </Grid>
+                        <StackPanel Visibility="{x:Bind ViewModel.CanUninstall}">
+                            <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
+                            <Grid Padding="20,16" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Glyph="&#xE74D;" FontSize="20" VerticalAlignment="Center"
+                                          Foreground="{ThemeResource TextSecondaryBrush}" />
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock x:Uid="Settings_Uninstall_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                    <TextBlock x:Uid="Settings_Uninstall_Desc" TextWrapping="Wrap" FontSize="12"
+                                               Foreground="{ThemeResource TextSecondaryBrush}" />
+                                </StackPanel>
+                                <Button Grid.Column="2" x:Uid="Settings_Uninstall_Button" Command="{x:Bind ViewModel.UninstallCommand}" />
+                            </Grid>
+                        </StackPanel>
                         <Rectangle Height="1" Fill="{ThemeResource BorderBrush}" />
                         <Grid Padding="20,16" ColumnSpacing="16">
                             <Grid.ColumnDefinitions>

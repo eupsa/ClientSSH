@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -27,6 +28,9 @@ public interface IUpdateService
 
     /// <summary>Downloads the installer of an available update and checks it against SHA256SUMS.txt. Null on any failure.</summary>
     Task<string?> DownloadAsync(UpdateResult update);
+
+    /// <summary>Downloads, checks and starts the installer, which replaces the app and starts it again. False on failure.</summary>
+    Task<bool> InstallAsync(UpdateResult update);
 }
 
 /// <summary>
@@ -62,10 +66,11 @@ public sealed partial class UpdateService(ISettingsStore settings) : IUpdateServ
             if (release is null || !Version.TryParse(release.TagName.TrimStart('v', 'V'), out var latest))
                 return new UpdateResult(UpdateStatus.Failed);
 
-            // Only files of this repo's release are accepted (the repo name was validated above).
-            var prefix = $"https://github.com/{repo}/releases/download/";
-            string? Asset(Func<string, bool> match) =>
-                release.Assets?.FirstOrDefault(a => match(a.Name) && a.Url.StartsWith(prefix, StringComparison.Ordinal))?.Url;
+            // Only files of this repo's release are accepted. A renamed repo (client-ssh -> ClientSSH) answers under its
+            // new name, so the prefix comes from the release page GitHub returned, not from the setting.
+            var prefix = DownloadPrefix(release.HtmlUrl);
+            string? Asset(Func<string, bool> match) => prefix is null ? null :
+                release.Assets?.FirstOrDefault(a => match(a.Name) && a.Url.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))?.Url;
 
             var current = typeof(App).Assembly.GetName().Version ?? new Version(0, 0, 0);
             return Normalize(latest) > Normalize(current)
@@ -110,6 +115,26 @@ public sealed partial class UpdateService(ISettingsStore settings) : IUpdateServ
         {
             return null;
         }
+    }
+
+    public async Task<bool> InstallAsync(UpdateResult update)
+    {
+        var installer = await DownloadAsync(update);
+        if (installer is null) return false;
+
+        // The installer closes this app, replaces the files and starts it again.
+        Process.Start(new ProcessStartInfo(installer, "/SILENT") { UseShellExecute = true });
+        return true;
+    }
+
+    // https://github.com/<owner>/<name>/releases/tag/v1.2.3 -> https://github.com/<owner>/<name>/releases/download/
+    internal static string? DownloadPrefix(string htmlUrl)
+    {
+        if (!Uri.TryCreate(htmlUrl, UriKind.Absolute, out var url) || url.Scheme != Uri.UriSchemeHttps || url.Host != "github.com")
+            return null;
+        var parts = url.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 2 || !RepoPattern().IsMatch($"{parts[0]}/{parts[1]}")) return null;
+        return $"https://github.com/{parts[0]}/{parts[1]}/releases/download/";
     }
 
     private const string SumsName = "SHA256SUMS.txt";

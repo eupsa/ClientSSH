@@ -1,6 +1,6 @@
 ; Inno Setup script. Build with installer\build.ps1 (it publishes the app and makes the wizard images first).
 #ifndef AppVersion
-  #define AppVersion "0.5.0"
+  #define AppVersion "0.6.0"
 #endif
 #define AppName "ClientSSH"
 #define PublishDir "..\artifacts\publish"
@@ -10,7 +10,7 @@ AppId={{6B0E5C1A-3D52-4F0B-9C55-1F7A2E8D4C10}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher=ClientSSH
-AppPublisherURL=https://github.com/eupsa/client-ssh
+AppPublisherURL=https://github.com/eupsa/ClientSSH
 DefaultDirName={autopf}\{#AppName}
 DefaultGroupName={#AppName}
 ; Per-user install: no admin prompt, and the user's data (%LOCALAPPDATA%\ClientSSH) is never touched.
@@ -54,6 +54,7 @@ Source: "{#PublishDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppName}.exe"
+Name: "{group}\{cm:UninstallProgram,{#AppName}}"; Filename: "{uninstallexe}"
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
 
 [Run]

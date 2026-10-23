@@ -32,5 +32,5 @@ public sealed record AppSettings(
     // Shortcuts: action id -> key chord text ("" turns a default off). All null in older settings files.
 
     /// <summary>Open source: users can point the update check at their own fork.</summary>
-    public const string DefaultUpdateRepo = "eupsa/client-ssh";
+    public const string DefaultUpdateRepo = "eupsa/ClientSSH";
 }

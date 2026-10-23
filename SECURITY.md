@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please do not open a public issue for a security problem. Use GitHub's private reporting instead: **Security > Report a vulnerability** on the [repository page](https://github.com/eupsa/client-ssh/security/advisories/new). Include the steps to reproduce and the version. You will get an answer as soon as the maintainer can, usually within a week.
+Please do not open a public issue for a security problem. Use GitHub's private reporting instead: **Security > Report a vulnerability** on the [repository page](https://github.com/eupsa/ClientSSH/security/advisories/new). Include the steps to reproduce and the version. You will get an answer as soon as the maintainer can, usually within a week.
 
 ## Scope
 

@@ -27,13 +27,13 @@ See [ROADMAP.md](ROADMAP.md) for what is planned (visual integration with Window
 
 ## Privacy
 
-ClientSSH makes no network connection on its own, with four exceptions: the SSH sessions you start, the update check, the AI assistant (only when you send it a prompt) and remote access (while **Accept access requests** is on, the default, the app keeps this PC findable by its number in the public BitTorrent DHT; see below). The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/client-ssh`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
+ClientSSH makes no network connection on its own, with four exceptions: the SSH sessions you start, the update check, the AI assistant (only when you send it a prompt) and remote access (while **Accept access requests** is on, the default, the app keeps this PC findable by its number in the public BitTorrent DHT; see below). The check runs when you click **Check for updates** and every time the app opens (you can turn the automatic one off in Settings). It asks the GitHub API for the latest release of the repository set in Settings (default `eupsa/ClientSSH`) and sends nothing else. If a newer version exists the app only shows a notice; it downloads and installs after you click **Update now**.
 
 Data lives in `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` with hosts, favorites and history, and `settings.json`). Set the `CLIENTSSH_DATA_DIR` environment variable to use another folder.
 
 ## Install
 
-Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/client-ssh/releases) page and run it. The installer speaks your Windows language when it is one of 12 (English otherwise). It installs for your user only (no administrator rights) and does not touch your data on uninstall.
+Download `ClientSSH-Setup-<version>.exe` from the [Releases](https://github.com/eupsa/ClientSSH/releases) page and run it. The installer speaks your Windows language when it is one of 12 (English otherwise). It installs for your user only (no administrator rights) and does not touch your data on uninstall.
 
 The installer is not code-signed, so Windows SmartScreen may warn about an unknown publisher: choose **More info**, then **Run anyway**. You can verify the build yourself, see [Build the installer](CONTRIBUTING.md#build-the-installer).
 

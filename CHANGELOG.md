@@ -4,6 +4,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-23
+
+### Added
+- **Update now** in Settings: after **Check for updates** finds a new version, one click downloads it, checks it against `SHA256SUMS.txt` and installs it over the current one (hosts and settings are kept).
+- **Uninstall** in Settings, and an "Uninstall ClientSSH" entry in the Start menu. Your data folder is kept.
+
+### Fixed
+- **Update now** stayed disabled: the repository was renamed to `eupsa/ClientSSH` and the app rejected the installer links under the new name. 0.5.0 cannot update itself because of this, so install 0.6.0 by hand once.
+
 ## [0.5.0] - 2026-10-22
 
 ### Added

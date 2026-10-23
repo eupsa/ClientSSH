@@ -293,4 +293,7 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komut paleti (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komut paleti</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Terminali aç: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Kaldır</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>ClientSSH'yi bu bilgisayardan kaldırır. Sunucularınız ve ayarlarınız veri klasöründe kalır.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Kaldır</value></data>
 </root>

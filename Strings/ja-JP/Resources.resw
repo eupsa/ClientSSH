@@ -293,4 +293,7 @@
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コマンド パレット (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド パレット</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>ターミナルを開く: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>アンインストール</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>この PC から ClientSSH を削除します。ホストと設定はデータ フォルダーに残ります。</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>アンインストール</value></data>
 </root>

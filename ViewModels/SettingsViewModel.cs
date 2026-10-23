@@ -21,6 +21,11 @@ public sealed partial class SettingsViewModel : ObservableObject
     private bool _syncing;
     private readonly bool _ready;
     private string? _releaseUrl;
+    private UpdateResult? _available;
+
+    // Inno Setup leaves its uninstaller next to the exe; a dev or MSIX build has none, so the row is hidden.
+    private static readonly string Uninstaller = Path.Combine(AppContext.BaseDirectory, "unins000.exe");
+    public bool CanUninstall => File.Exists(Uninstaller);
 
     public TourViewModel Tour { get; }
 
@@ -34,6 +39,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsNotChecking))] public partial bool IsChecking { get; set; }
     [ObservableProperty] public partial string UpdateMessage { get; set; }
     [ObservableProperty] public partial bool HasUpdate { get; set; }
+    [ObservableProperty] public partial bool CanInstallUpdate { get; set; }
     [ObservableProperty] public partial string UpdateRepo { get; set; }
     [ObservableProperty] public partial bool HasUpdateMessage { get; set; }
     [ObservableProperty] public partial bool SaveHistory { get; set; }
@@ -160,6 +166,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     {
         IsChecking = true;
         HasUpdate = false;
+        CanInstallUpdate = false;
         UpdateMessage = Loc.Get("Update_Checking");
         UpdateSeverity = InfoBarSeverity.Informational;
         HasUpdateMessage = true;
@@ -167,6 +174,8 @@ public sealed partial class SettingsViewModel : ObservableObject
         var result = await _updates.CheckAsync();
         _releaseUrl = result.Url;
         HasUpdate = result.Status == UpdateStatus.Available;
+        _available = HasUpdate ? result : null;
+        CanInstallUpdate = result.InstallerUrl is not null && result.SumsUrl is not null;
         UpdateMessage = result.Status switch
         {
             UpdateStatus.UpToDate => string.Format(Loc.Get("Update_UpToDate"), result.Version),
@@ -182,6 +191,32 @@ public sealed partial class SettingsViewModel : ObservableObject
             _ => InfoBarSeverity.Warning,
         };
         IsChecking = false;
+    }
+
+    [RelayCommand]
+    private async Task InstallUpdateAsync()
+    {
+        if (_available is null) return;
+
+        CanInstallUpdate = false;
+        UpdateSeverity = InfoBarSeverity.Informational;
+        UpdateMessage = Loc.Get("Update_Downloading");
+        if (await _updates.InstallAsync(_available))
+        {
+            Microsoft.UI.Xaml.Application.Current.Exit();
+            return;
+        }
+        UpdateSeverity = InfoBarSeverity.Warning;
+        UpdateMessage = Loc.Get("Update_DownloadFailed");
+        CanInstallUpdate = true;
+    }
+
+    [RelayCommand]
+    private void Uninstall()
+    {
+        // The uninstaller asks for confirmation itself, and it can only remove the files once this app is closed.
+        Process.Start(new ProcessStartInfo(Uninstaller) { UseShellExecute = true });
+        Microsoft.UI.Xaml.Application.Current.Exit();
     }
 
     [RelayCommand]

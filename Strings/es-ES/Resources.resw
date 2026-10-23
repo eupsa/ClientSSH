@@ -293,4 +293,7 @@ Díselo en voz alta a la otra persona (llamada o mensaje de voz). Si no es el mi
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Paleta de comandos (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Paleta de comandos</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Abrir terminal: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Desinstalar</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Quita ClientSSH de este PC. Tus hosts y ajustes se quedan en la carpeta de datos.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Desinstalar</value></data>
 </root>

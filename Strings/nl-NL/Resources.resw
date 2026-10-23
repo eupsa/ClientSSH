@@ -293,4 +293,7 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Opdrachtpalet (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Opdrachtpalet</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Terminal openen: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Verwijderen</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Verwijdert ClientSSH van deze pc. Je hosts en instellingen blijven in de gegevensmap.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Verwijderen</value></data>
 </root>

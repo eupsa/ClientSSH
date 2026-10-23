@@ -26,13 +26,13 @@ O [ROADMAP.md](ROADMAP.md) lista o que está planejado (integração visual com 
 
 ## Privacidade
 
-O ClientSSH não faz conexões por conta própria, com quatro exceções: as sessões SSH que você inicia, a verificação de atualizações, o assistente de IA (só quando você envia um pedido) e o acesso remoto (enquanto **Aceitar pedidos de acesso** está ligado, o padrão, o app mantém este PC encontrável pelo número na DHT pública do BitTorrent; veja abaixo). A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/client-ssh`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
+O ClientSSH não faz conexões por conta própria, com quatro exceções: as sessões SSH que você inicia, a verificação de atualizações, o assistente de IA (só quando você envia um pedido) e o acesso remoto (enquanto **Aceitar pedidos de acesso** está ligado, o padrão, o app mantém este PC encontrável pelo número na DHT pública do BitTorrent; veja abaixo). A verificação roda quando você clica em **Verificar atualizações** e toda vez que o app abre (dá para desligar a automática em Configurações). Ela consulta a API do GitHub pela última versão do repositório definido em Configurações (padrão `eupsa/ClientSSH`) e não envia mais nada. Se houver versão nova, o app só mostra um aviso; ele baixa e instala depois que você clica em **Atualizar agora**.
 
 Os dados ficam em `%LOCALAPPDATA%\ClientSSH` (`clientssh.db` com hosts, favoritos e histórico, e `settings.json`). Defina a variável de ambiente `CLIENTSSH_DATA_DIR` para usar outra pasta.
 
 ## Instalar
 
-Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.com/eupsa/client-ssh/releases) e execute. O instalador fala o idioma do seu Windows quando é um de 12 (inglês nos demais). Ele instala só para o seu usuário (sem direitos de administrador) e não apaga seus dados ao desinstalar.
+Baixe o `ClientSSH-Setup-<versão>.exe` na página de [Releases](https://github.com/eupsa/ClientSSH/releases) e execute. O instalador fala o idioma do seu Windows quando é um de 12 (inglês nos demais). Ele instala só para o seu usuário (sem direitos de administrador) e não apaga seus dados ao desinstalar.
 
 O instalador não é assinado digitalmente, então o Windows SmartScreen pode avisar de editor desconhecido: escolha **Mais informações** e **Executar assim mesmo**. Você pode gerar o instalador você mesmo, veja [Build the installer](CONTRIBUTING.md#build-the-installer).
 

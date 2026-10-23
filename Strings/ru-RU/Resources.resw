@@ -293,4 +293,7 @@
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Палитра команд (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Палитра команд</value></data>
   <data name="Cmd_OpenProfile" xml:space="preserve"><value>Открыть терминал: {0}</value></data>
+  <data name="Settings_Uninstall_Title.Text" xml:space="preserve"><value>Удалить</value></data>
+  <data name="Settings_Uninstall_Desc.Text" xml:space="preserve"><value>Удаляет ClientSSH с этого ПК. Ваши хосты и настройки остаются в папке данных.</value></data>
+  <data name="Settings_Uninstall_Button.Content" xml:space="preserve"><value>Удалить</value></data>
 </root>
