@@ -26,7 +26,8 @@
                  Severity="{x:Bind local:SessionView.SeverityFor(Tab.NoticeIsError), Mode=OneWay}"
                  Message="{x:Bind Tab.Notice, Mode=OneWay}">
             <InfoBar.ActionButton>
-                <Button x:Uid="Terminal_Reconnect" Click="OnReconnectClick" />
+                <Button x:Uid="Terminal_Reconnect" Command="{x:Bind ReconnectCommand, Mode=OneWay}"
+                        CommandParameter="{x:Bind Tab, Mode=OneWay}" />
             </InfoBar.ActionButton>
         </InfoBar>
     </Grid>

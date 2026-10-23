@@ -13,11 +13,11 @@ namespace ClientSSH.ViewModels;
 public sealed partial class SettingsViewModel : ObservableObject
 {
     private readonly ISettingsStore _store;
-    private readonly ThemeService _theme;
+    private readonly IThemeService _theme;
     private readonly IUpdateService _updates;
     private readonly IHistoryStore _history;
     private readonly IStartupService _startup;
-    private readonly TrayService _tray;
+    private readonly ITrayService _tray;
     private bool _syncing;
     private readonly bool _ready;
     private string? _releaseUrl;
@@ -50,8 +50,8 @@ public sealed partial class SettingsViewModel : ObservableObject
 
     public IReadOnlyList<LanguageOption> Languages => LanguageOption.All;
 
-    public SettingsViewModel(ISettingsStore store, ThemeService theme, TourViewModel tour, IUpdateService updates,
-        IStartupService startup, TrayService tray, IHistoryStore history)
+    public SettingsViewModel(ISettingsStore store, IThemeService theme, TourViewModel tour, IUpdateService updates,
+        IStartupService startup, ITrayService tray, IHistoryStore history)
     {
         _store = store;
         _theme = theme;

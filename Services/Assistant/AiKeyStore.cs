@@ -4,12 +4,22 @@ using ClientSSH.Services.Storage;
 
 namespace ClientSSH.Services.Assistant;
 
+public interface IAiKeyStore
+{
+    string? Get(AiProvider provider);
+
+    bool Has(AiProvider provider);
+
+    /// <summary>Saves the key, or removes it when empty.</summary>
+    void Set(AiProvider provider, string? key);
+}
+
 /// <summary>
 /// API keys the user pasted, one per provider. They are encrypted with Windows DPAPI for the current Windows account
 /// (ai-keys.json holds only the encrypted blobs), so they are never readable as text on disk and never leave the PC
 /// except in the request to the provider the user chose.
 /// </summary>
-public sealed class AiKeyStore
+public sealed class AiKeyStore : IAiKeyStore
 {
     private const string FileName = "ai-keys.json";
 

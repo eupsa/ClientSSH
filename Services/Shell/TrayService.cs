@@ -11,8 +11,20 @@ using Microsoft.Windows.AppNotifications.Builder;
 
 namespace ClientSSH.Services.Shell;
 
+public interface ITrayService
+{
+    void Attach(Window window);
+
+    /// <summary>Call after the tray options change.</summary>
+    void Apply();
+
+    void HideToTray();
+
+    void Show();
+}
+
 /// <summary>Tray icon plus hide-on-close. The icon exists only while one of the tray options is on.</summary>
-public sealed class TrayService(ISettingsStore settings)
+public sealed class TrayService(ISettingsStore settings) : ITrayService
 {
     private TaskbarIcon? _icon;
     private Window? _window;

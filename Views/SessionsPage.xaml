@@ -33,6 +33,7 @@
 
         <!-- The tab strip only picks the session; one view below shows the selected one, so its size is ours to control. -->
         <local:SessionView x:Name="Current" Grid.Row="1" Tab="{x:Bind ViewModel.Sessions.Selected, Mode=OneWay}"
+                           ReconnectCommand="{x:Bind ViewModel.ReconnectCommand}"
                            Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}" />
 
         <StackPanel Grid.RowSpan="2" Grid.ColumnSpan="2" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center"

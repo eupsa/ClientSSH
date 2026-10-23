@@ -4,7 +4,15 @@ using Microsoft.UI.Xaml;
 
 namespace ClientSSH.Services.Shell;
 
-public sealed class ThemeService(ISettingsStore settings)
+public interface IThemeService
+{
+    void Attach(FrameworkElement root);
+
+    /// <summary>Applies the saved theme choice; call after it changes.</summary>
+    void Apply();
+}
+
+public sealed class ThemeService(ISettingsStore settings) : IThemeService
 {
     private FrameworkElement? _root;
 

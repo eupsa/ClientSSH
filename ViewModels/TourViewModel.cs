@@ -17,7 +17,7 @@ public sealed partial class TourViewModel : ObservableObject
 
     private readonly INavigationService _nav;
     private readonly ISettingsStore _settings;
-    private readonly SessionManager _sessions;
+    private readonly ISessionManager _sessions;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsActive))]
@@ -33,7 +33,7 @@ public sealed partial class TourViewModel : ObservableObject
     public bool IsStep3 => Step == 3;
     public bool IsStep4 => Step == 4;
 
-    public TourViewModel(INavigationService nav, ISettingsStore settings, SessionManager sessions)
+    public TourViewModel(INavigationService nav, ISettingsStore settings, ISessionManager sessions)
     {
         _nav = nav;
         _settings = settings;

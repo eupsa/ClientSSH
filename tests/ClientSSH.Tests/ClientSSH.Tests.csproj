@@ -15,6 +15,8 @@
   <ItemGroup>
     <!-- The parser has no UI types, so the tests compile them directly instead of referencing the WinUI project. -->
     <Compile Include="..\..\Terminal\VtScreen.cs" Link="VtScreen.cs" />
+    <Compile Include="..\..\Terminal\VtScreen.Parser.cs" Link="VtScreen.Parser.cs" />
+    <Compile Include="..\..\Terminal\Cell.cs" Link="Cell.cs" />
     <Compile Include="..\..\Terminal\ITerminalProcess.cs" Link="ITerminalProcess.cs" />
     <Compile Include="..\..\Terminal\PasteText.cs" Link="PasteText.cs" />
     <Compile Include="..\..\Terminal\SimulatedProcess.cs" Link="SimulatedProcess.cs" />

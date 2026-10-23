@@ -13,7 +13,7 @@ namespace ClientSSH.Services.Sessions;
 /// Owns every open session so they keep running while the user moves between pages. Create it on the UI
 /// thread: process events come from background threads and are marshalled back through its dispatcher.
 /// </summary>
-public sealed partial class SessionManager : ObservableObject
+public sealed partial class SessionManager : ObservableObject, ISessionManager
 {
     private const int DefaultColumns = 120, DefaultRows = 30;
 

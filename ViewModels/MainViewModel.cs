@@ -25,7 +25,7 @@ public sealed partial class MainViewModel : ObservableObject
     [ObservableProperty] public partial string UpdateBarMessage { get; set; } = "";
     [ObservableProperty] public partial bool CanInstallUpdate { get; set; }
 
-    public MainViewModel(INavigationService nav, ISettingsStore settings, SessionManager sessions, IUpdateService updates)
+    public MainViewModel(INavigationService nav, ISettingsStore settings, ISessionManager sessions, IUpdateService updates)
     {
         _nav = nav;
         _settings = settings;

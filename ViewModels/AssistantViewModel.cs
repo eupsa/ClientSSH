@@ -14,9 +14,9 @@ namespace ClientSSH.ViewModels;
 public sealed partial class AssistantViewModel : ObservableObject
 {
     private readonly IAssistantService _assistant;
-    private readonly AiKeyStore _keys;
+    private readonly IAiKeyStore _keys;
     private readonly ISettingsStore _settings;
-    private readonly SessionManager _sessions;
+    private readonly ISessionManager _sessions;
     private readonly bool _ready;
 
     public IReadOnlyList<string> ProviderNames { get; } =
@@ -42,7 +42,7 @@ public sealed partial class AssistantViewModel : ObservableObject
     /// <summary>Raised after a command was typed, so the page can give the keyboard back to the terminal.</summary>
     public event Action? CommandInserted;
 
-    public AssistantViewModel(IAssistantService assistant, AiKeyStore keys, ISettingsStore settings, SessionManager sessions)
+    public AssistantViewModel(IAssistantService assistant, IAiKeyStore keys, ISettingsStore settings, ISessionManager sessions)
     {
         _assistant = assistant;
         _keys = keys;

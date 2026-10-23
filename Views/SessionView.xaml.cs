@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Storage;
 using Microsoft.UI.Xaml;
@@ -16,6 +17,16 @@ public sealed partial class SessionView : UserControl
     {
         get => (SessionTab?)GetValue(TabProperty);
         set => SetValue(TabProperty, value);
+    }
+
+    public static readonly DependencyProperty ReconnectCommandProperty = DependencyProperty.Register(
+        nameof(ReconnectCommand), typeof(ICommand), typeof(SessionView), new PropertyMetadata(null));
+
+    /// <summary>Run with the tab when the user asks to reconnect it.</summary>
+    public ICommand? ReconnectCommand
+    {
+        get => (ICommand?)GetValue(ReconnectCommandProperty);
+        set => SetValue(ReconnectCommandProperty, value);
     }
 
     public SessionView()
@@ -44,8 +55,4 @@ public sealed partial class SessionView : UserControl
         if (e.PropertyName == nameof(SessionTab.Session)) Terminal.Session = Tab?.Session;
     }
 
-    private void OnReconnectClick(object sender, RoutedEventArgs e)
-    {
-        if (Tab is { } tab) App.GetService<SessionManager>().Reconnect(tab);
-    }
 }
