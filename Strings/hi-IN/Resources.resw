@@ -239,4 +239,37 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>यह इसी PC का अपना नंबर है।</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>कोई दूसरा PC इस PC तक पहुँच माँग रहा है। अनुमति देने या मना करने के लिए ClientSSH खोलें।</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>टर्मिनल</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>विंडो पृष्ठभूमि</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>ब्रांड ग्रेडिएंट, या Windows की Mica या ऐक्रेलिक सामग्री, जिससे डेस्कटॉप झलकता है।</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>ब्रांड ग्रेडिएंट</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>ऐक्रेलिक</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>प्रोफ़ाइल</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>सभी टर्मिनलों का डिफ़ॉल्ट बदलें, या किसी एक प्रोफ़ाइल को अनुकूलित करें।</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>इस प्रोफ़ाइल को अनुकूलित करें</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>बंद होने पर यह प्रोफ़ाइल डिफ़ॉल्ट रूप का उपयोग करती है।</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>रंग योजना</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>डेटा फ़ोल्डर में schemes.json (Windows Terminal प्रारूप) में अपनी योजनाएँ जोड़ें; लोड करने के लिए पुनः प्रारंभ करें।</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>फ़ॉन्ट</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>इस PC पर इंस्टॉल मोनोस्पेस फ़ॉन्ट, और आकार।</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>कर्सर</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>आकार, और बार या अंडरलाइन की मोटाई।</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>ब्लॉक</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>बार</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>अंडरलाइन</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>पृष्ठभूमि अपारदर्शिता</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>100% से कम होने पर विंडो की पृष्ठभूमि टर्मिनल के आर-पार दिखती है।</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>शॉर्टकट</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>इस प्रोफ़ाइल को नए टैब में खोलता है, जैसे Ctrl+Shift+1। कोई नहीं के लिए खाली छोड़ें।</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Ctrl या Alt के साथ कोई अक्षर, अंक या F1–F24 उपयोग करें।</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (ब्रांड)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>डिफ़ॉल्ट ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>डिफ़ॉल्ट (सभी टर्मिनल)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH होस्ट</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>यह शेल अब इस PC पर इंस्टॉल नहीं है।</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>स्थानीय टर्मिनल</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>टर्मिनल का रूप</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>अन्य SSH होस्ट जैसा</value></data>
 </root>

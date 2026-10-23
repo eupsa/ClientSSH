@@ -7,7 +7,7 @@
     xmlns:local="using:ClientSSH.Views"
     Title="ClientSSH">
 
-    <Grid x:Name="Root" Background="{ThemeResource AppBackgroundBrush}" Loaded="OnLoaded"
+    <Grid x:Name="Root" Background="Transparent" Loaded="OnLoaded" PreviewKeyDown="OnPreviewKeyDown"
           Opacity="0" Translation="0,28,0">
         <Grid.OpacityTransition>
             <ScalarTransition Duration="0:0:0.6" />
@@ -19,6 +19,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <!-- Brand gradient; hidden when Settings picks the Mica or Acrylic backdrop (ThemeService). -->
+        <Rectangle x:Name="BrandBackground" Grid.RowSpan="2" Fill="{ThemeResource AppBackgroundBrush}" />
 
         <TitleBar x:Name="TitleBar" Title="ClientSSH" IsBackButtonVisible="False" IsPaneToggleButtonVisible="False">
             <TitleBar.IconSource>

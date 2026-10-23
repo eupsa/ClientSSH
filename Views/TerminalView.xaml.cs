@@ -1,3 +1,5 @@
+using System.Text;
+using ClientSSH.Models;
 using ClientSSH.Terminal;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.Text;
@@ -14,8 +16,9 @@ namespace ClientSSH.Views;
 /// </summary>
 public sealed partial class TerminalView : UserControl
 {
-    private static readonly string MonoFont =
-        CanvasTextFormat.GetSystemFontFamilies().Contains("Cascadia Mono") ? "Cascadia Mono" : "Consolas";
+    private static readonly HashSet<string> SystemFonts = new(CanvasTextFormat.GetSystemFontFamilies(), StringComparer.OrdinalIgnoreCase);
+
+    public static readonly string MonoFont = SystemFonts.Contains("Cascadia Mono") ? "Cascadia Mono" : "Consolas";
 
     private readonly CursorBlink _blink = new();
     private TerminalSession? _session;
@@ -24,26 +27,31 @@ public sealed partial class TerminalView : UserControl
     private CanvasTextFormat _regular = new();
     private CanvasTextFormat _bold = new();
     private float _cellWidth = 8, _cellHeight = 16;
+    private TerminalAppearance _appearance = TerminalAppearance.BuiltIn;
+    private ColorScheme? _scheme;
     private bool _redrawQueued;
-
-    public static readonly DependencyProperty TerminalFontSizeProperty = DependencyProperty.Register(
-        nameof(TerminalFontSize), typeof(double), typeof(TerminalView),
-        new PropertyMetadata(14.0, (d, _) => ((TerminalView)d).UpdateMetrics()));
-
-    public double TerminalFontSize
-    {
-        get => (double)GetValue(TerminalFontSizeProperty);
-        set => SetValue(TerminalFontSizeProperty, value);
-    }
 
     public TerminalView()
     {
         InitializeComponent();
         UpdateMetrics();
+        ActualThemeChanged += (_, _) => _canvas?.Invalidate();
     }
 
     /// <summary>Take the keyboard when loaded (true unless another pane of the same tab has it).</summary>
     public bool FocusOnLoad { get; set; } = true;
+
+    /// <summary>Font, cursor, colours and opacity (all fields set, see <see cref="TerminalAppearance.Resolve"/>).</summary>
+    public void ApplyAppearance(TerminalAppearance appearance, ColorScheme? scheme)
+    {
+        _appearance = appearance;
+        _scheme = scheme;
+        _palette = null;
+        UpdateMetrics();
+    }
+
+    /// <summary>The colours this view draws with; the host paints its padding with the same background.</summary>
+    public TerminalPalette Palette => GetPalette();
 
     public TerminalSession? Session
     {
@@ -120,8 +128,11 @@ public sealed partial class TerminalView : UserControl
     private void UpdateMetrics()
     {
         if (_regular is null) return;
-        _regular = new CanvasTextFormat { FontFamily = MonoFont, FontSize = (float)TerminalFontSize, WordWrapping = CanvasWordWrapping.NoWrap };
-        _bold = new CanvasTextFormat { FontFamily = MonoFont, FontSize = (float)TerminalFontSize, FontWeight = Microsoft.UI.Text.FontWeights.Bold, WordWrapping = CanvasWordWrapping.NoWrap };
+        // A font that is not installed (settings copied from another PC) falls back to the default one.
+        var family = _appearance.FontFamily is { Length: > 0 } chosen && SystemFonts.Contains(chosen) ? chosen : MonoFont;
+        var size = (float)(_appearance.FontSize ?? 14);
+        _regular = new CanvasTextFormat { FontFamily = family, FontSize = size, WordWrapping = CanvasWordWrapping.NoWrap };
+        _bold = new CanvasTextFormat { FontFamily = family, FontSize = size, FontWeight = Microsoft.UI.Text.FontWeights.Bold, WordWrapping = CanvasWordWrapping.NoWrap };
         using var layout = new CanvasTextLayout(CanvasDevice.GetSharedDevice(), "M", _regular, 1000, 1000);
         _cellWidth = (float)layout.LayoutBounds.Width;
         _cellHeight = (float)Math.Ceiling(layout.LayoutBounds.Height);

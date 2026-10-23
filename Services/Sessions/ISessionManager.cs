@@ -14,6 +14,9 @@ public interface ISessionManager : INotifyPropertyChanged
     /// <summary>Opens a new tab for the host and selects it. Several tabs can share a host.</summary>
     SessionTab Open(Host host);
 
+    /// <summary>Opens a new tab running a local shell (PowerShell, CMD, WSL, Git Bash) and selects it.</summary>
+    SessionTab Open(Terminal.ShellProfile profile);
+
     /// <summary>Starts a new session in an existing pane, replacing the old one.</summary>
     void Reconnect(SessionPane pane);
 

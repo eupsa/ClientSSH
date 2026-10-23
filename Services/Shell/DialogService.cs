@@ -1,4 +1,5 @@
 using ClientSSH.Models;
+using ClientSSH.Services.Localization;
 using ClientSSH.Services.Remote;
 using ClientSSH.ViewModels;
 using ClientSSH.Views;
@@ -61,8 +62,11 @@ public sealed class DialogService : IDialogService
 
     public async Task<Host?> ShowHostEditorAsync()
     {
-        var vm = new HostEditorViewModel();
+        var vm = new HostEditorViewModel(App.GetService<Customization.ProfileService>().Profiles, Loc.Get("Editor_AppearanceSsh"));
         var dialog = new HostEditorDialog(vm) { XamlRoot = App.MainWindow.Content.XamlRoot };
-        return await dialog.ShowAsync() == ContentDialogResult.Primary ? vm.ToHost() : null;
+        if (await dialog.ShowAsync() != ContentDialogResult.Primary) return null;
+        var host = vm.ToHost();
+        if (vm.AppearanceProfileId is { } profileId) App.GetService<Customization.AppearanceService>().SetHostProfile(host.Id, profileId);
+        return host;
     }
 }

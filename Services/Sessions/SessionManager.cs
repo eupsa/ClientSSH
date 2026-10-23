@@ -24,9 +24,13 @@ public sealed partial class SessionManager : ObservableObject, ISessionManager
     [ObservableProperty] public partial SessionTab? Selected { get; set; }
 
     /// <summary>Opens a new tab for the host and selects it. Several tabs can share a host.</summary>
-    public SessionTab Open(Host host)
+    public SessionTab Open(Host host) => Add(new SessionTab(Connect(new SessionPane(host)), UniqueTitle(host.Name)));
+
+    /// <summary>Opens a new tab running a local shell (PowerShell, CMD, WSL, Git Bash) and selects it.</summary>
+    public SessionTab Open(ShellProfile profile) => Add(new SessionTab(Connect(new SessionPane(null, profile)), UniqueTitle(profile.Name)));
+
+    private SessionTab Add(SessionTab tab)
     {
-        var tab = new SessionTab(Connect(new SessionPane(host)), UniqueTitle(host.Name));
         Tabs.Add(tab);
         Selected = tab;
         return tab;
@@ -48,7 +52,7 @@ public sealed partial class SessionManager : ObservableObject, ISessionManager
 
     /// <summary>Splits the tab's focused pane; the new pane connects to the same host and takes focus.</summary>
     public void Split(SessionTab tab, bool sideBySide) =>
-        tab.Layout.Split(sideBySide, Connect(new SessionPane(tab.Focused.Host)));
+        tab.Layout.Split(sideBySide, Connect(new SessionPane(tab.Focused.Host, tab.Focused.Profile)));
 
     /// <summary>Closes one pane; closing the last one closes the tab.</summary>
     public void ClosePane(SessionTab tab, SessionPane pane)
@@ -79,7 +83,7 @@ public sealed partial class SessionManager : ObservableObject, ISessionManager
 
         try
         {
-            var session = new TerminalSession(CreateProcess(pane.Host), DefaultColumns, DefaultRows);
+            var session = new TerminalSession(CreateProcess(pane), DefaultColumns, DefaultRows);
             session.Exited += code => _ui.TryEnqueue(() =>
             {
                 pane.IsConnecting = false;
@@ -115,8 +119,17 @@ public sealed partial class SessionManager : ObservableObject, ISessionManager
         pane.JustConnected = false;
     }
 
-    private static ITerminalProcess CreateProcess(Host host)
+    private static ITerminalProcess CreateProcess(SessionPane pane)
     {
+        if (pane.Profile is { } profile)
+        {
+            // Detected at startup; check again in case the shell was uninstalled since.
+            if (!ShellProfiles.IsSafeExecutable(profile.Executable) || !File.Exists(profile.Executable))
+                throw new InvalidOperationException(Loc.Get("Terminal_ProfileMissing"));
+            return new ConPtyProcess(profile.CommandLine, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+        }
+
+        var host = pane.Host!;
         if (DemoHost.Is(host))
             return new SimulatedProcess(Loc.Get("Demo_Banner"), Loc.Get("Demo_Help"), Loc.Get("Demo_NotFound"));
 

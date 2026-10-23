@@ -1,6 +1,6 @@
 using System.Windows.Input;
+using ClientSSH.Services.Customization;
 using ClientSSH.Services.Sessions;
-using ClientSSH.Services.Storage;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -16,16 +16,18 @@ public sealed partial class SessionView : UserControl
     public static readonly DependencyProperty ShowFocusProperty = DependencyProperty.Register(
         nameof(ShowFocus), typeof(bool), typeof(SessionView), new PropertyMetadata(false));
 
+    public static readonly DependencyProperty ReconnectCommandProperty = DependencyProperty.Register(
+        nameof(ReconnectCommand), typeof(ICommand), typeof(SessionView), new PropertyMetadata(null));
+
+    private readonly AppearanceService _appearance = App.GetService<AppearanceService>();
+
     public SessionPane? Pane
     {
         get => (SessionPane?)GetValue(PaneProperty);
         set => SetValue(PaneProperty, value);
     }
 
-    public static readonly DependencyProperty ReconnectCommandProperty = DependencyProperty.Register(
-        nameof(ReconnectCommand), typeof(ICommand), typeof(SessionView), new PropertyMetadata(null));
-
-    /// <summary>Run with the tab when the user asks to reconnect it.</summary>
+    /// <summary>Run with the pane when the user asks to reconnect it.</summary>
     public ICommand? ReconnectCommand
     {
         get => (ICommand?)GetValue(ReconnectCommandProperty);
@@ -39,21 +41,42 @@ public sealed partial class SessionView : UserControl
         set => SetValue(ShowFocusProperty, value);
     }
 
-    /// <summary>The user clicked into this pane's terminal.</summary>
-    public event Action? PaneActivated;
-
-    public SessionView()
-    {
-        InitializeComponent();
-        Terminal.TerminalFontSize = App.GetService<ISettingsStore>().Current.TerminalFontSize;
-    }
-
     /// <summary>Panes of a split tab load together: only the focused one may take the keyboard.</summary>
     public bool FocusOnLoad
     {
         get => Terminal.FocusOnLoad;
         set => Terminal.FocusOnLoad = value;
     }
+
+    /// <summary>The user clicked into this pane's terminal.</summary>
+    public event Action? PaneActivated;
+
+    public SessionView() => InitializeComponent();
+
+    // Settings edits reach open terminals at once.
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        _appearance.Changed += ApplyAppearance;
+        ApplyAppearance();
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        _appearance.Changed -= ApplyAppearance;
+        if (Pane is { } pane) pane.PropertyChanged -= OnPanePropertyChanged;
+    }
+
+    private void OnActualThemeChanged(FrameworkElement sender, object args) => PaintFrame();
+
+    private void ApplyAppearance()
+    {
+        var appearance = _appearance.Resolve(_appearance.AppearanceIdFor(Pane?.Host, Pane?.Profile));
+        Terminal.ApplyAppearance(appearance, _appearance.FindScheme(appearance.Scheme));
+        PaintFrame();
+    }
+
+    // The padding around the canvas shows the same background as the terminal itself.
+    private void PaintFrame() => TerminalFrame.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Terminal.Palette.Background);
 
     public void FocusTerminal() => Terminal.Focus(FocusState.Programmatic);
 
@@ -68,6 +91,7 @@ public sealed partial class SessionView : UserControl
         if (oldPane is not null) oldPane.PropertyChanged -= OnPanePropertyChanged;
         if (newPane is null) return;
         newPane.PropertyChanged += OnPanePropertyChanged;
+        ApplyAppearance();
         Terminal.Session = newPane.Session;
     }
 
@@ -82,10 +106,4 @@ public sealed partial class SessionView : UserControl
     {
         if (Terminal.FocusState != FocusState.Programmatic) PaneActivated?.Invoke();
     }
-
-    private void OnUnloaded(object sender, RoutedEventArgs e)
-    {
-        if (Pane is { } pane) pane.PropertyChanged -= OnPanePropertyChanged;
-    }
-
 }

@@ -239,4 +239,37 @@
   <data name="Remote_OwnNumber" xml:space="preserve"><value>这是这台电脑自己的号码。</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>另一台电脑请求访问这台电脑。打开 ClientSSH 以允许或拒绝。</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>终端</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>窗口背景</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>品牌渐变，或 Windows 的 Mica 或亚克力材质，可透出桌面。</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>品牌渐变</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>亚克力</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>配置文件</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>更改所有终端的默认设置，或自定义某个配置文件。</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>自定义此配置文件</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>关闭时，此配置文件使用默认外观。</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>配色方案</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>可在数据文件夹的 schemes.json（Windows Terminal 格式）中添加自己的方案；重启后加载。</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>字体</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>此电脑上安装的等宽字体，以及字号。</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>光标</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>形状，以及竖线或下划线的粗细。</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>方块</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>竖线</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>下划线</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>背景不透明度</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>低于 100% 时，窗口背景会透过终端显示。</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>快捷键</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>在新标签页中打开此配置文件，例如 Ctrl+Shift+1。留空表示无。</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>请使用 Ctrl 或 Alt 加字母、数字或 F1–F24。</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH（品牌）</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>默认（{0}）</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>默认（所有终端）</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH 主机</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>此电脑上已不再安装此 Shell。</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>本地终端</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>终端外观</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>与其他 SSH 主机相同</value></data>
 </root>

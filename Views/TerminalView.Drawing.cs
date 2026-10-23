@@ -1,4 +1,5 @@
 using System.Text;
+using ClientSSH.Models;
 using ClientSSH.Terminal;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.UI.Xaml;
@@ -18,7 +19,8 @@ public sealed partial class TerminalView
     {
         var palette = GetPalette();
         var ds = args.DrawingSession;
-        ds.Clear(palette.Background);
+        // A see-through background is painted by the host behind the canvas; drawing it here too would double it.
+        ds.Clear(palette.Background.A == 255 ? palette.Background : Microsoft.UI.Colors.Transparent);
         if (_session is null) return;
 
         // Copy under the lock, draw without it: the reader thread is not held up while Direct2D lays out text.
@@ -39,13 +41,25 @@ public sealed partial class TerminalView
         {
             var x = cursorCol * _cellWidth;
             var y = cursorRow * _cellHeight;
+            var thickness = (_appearance.CursorSize ?? 25) / 100f;
+            var (w, h) = _appearance.Cursor switch
+            {
+                CursorShape.Bar => (Math.Max(1, MathF.Round(_cellWidth * thickness)), _cellHeight),
+                CursorShape.Underline => (_cellWidth, Math.Max(1, MathF.Round(_cellHeight * thickness))),
+                _ => (_cellWidth, _cellHeight),
+            };
+            y += _cellHeight - h;
             if (FocusState != FocusState.Unfocused)
             {
-                if (_blink.On) ds.FillRectangle(x, y, _cellWidth, _cellHeight, palette.Cursor);
+                if (_blink.On) ds.FillRectangle(x, y, w, h, palette.Cursor);
+            }
+            else if (_appearance.Cursor is CursorShape.Block or null)
+            {
+                ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
             }
             else
             {
-                ds.DrawRectangle(x + 0.5f, y + 0.5f, _cellWidth - 1, _cellHeight - 1, palette.Cursor);
+                ds.FillRectangle(x, y, w, h, palette.Cursor);
             }
         }
     }
@@ -86,7 +100,8 @@ public sealed partial class TerminalView
     {
         var fg = palette.Resolve(cell.Fg, palette.Foreground);
         var bg = palette.Resolve(cell.Bg, palette.Background);
-        if ((cell.Attr & CellAttr.Inverse) != 0) (fg, bg) = (bg, fg);
+        // Inverse text is drawn solid even on a see-through background.
+        if ((cell.Attr & CellAttr.Inverse) != 0) (fg, bg) = (TerminalPalette.Opaque(bg), fg);
         if ((cell.Attr & CellAttr.Dim) != 0) fg = TerminalPalette.Blend(fg, bg, 0.6f);
         return (fg, bg);
     }
@@ -96,7 +111,7 @@ public sealed partial class TerminalView
         if (_palette is null || _paletteTheme != ActualTheme)
         {
             _paletteTheme = ActualTheme;
-            _palette = TerminalPalette.Load(ActualTheme);
+            _palette = TerminalPalette.Load(ActualTheme, _scheme, _appearance.Opacity ?? 100);
         }
 
         return _palette;

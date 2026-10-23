@@ -59,6 +59,12 @@ Limites, com honestidade:
 
 A janela abre centralizada na primeira vez e depois lembra posição, tamanho e se estava maximizada.
 
+## Terminais locais e personalização
+
+Além dos hosts SSH, a página Hosts lista os shells encontrados neste PC: Windows PowerShell, PowerShell 7, CMD, cada distro do WSL e Git Bash (só os instalados). Um clique abre numa aba; o menu **+** da barra de abas também os lista, e **Ctrl+Shift+1..9** abre o perfil 1 a 9 (cada atalho pode ser trocado ou desligado em Configurações).
+
+Em **Configurações > Terminal** escolha o fundo da janela (degradê da marca, Mica ou Acrílico) e o visual do terminal: esquema de cores (o da marca e mais Campbell, One Half, Solarized, Dracula, Nord, Tango), fonte monoespaçada e tamanho, formato do cursor (bloco, barra, sublinhado) e espessura, e opacidade do fundo. Defina uma vez como padrão de todos os terminais ou personalize um perfil (ou "Hosts SSH"). Um host novo pode usar o visual de um perfil. Esquemas próprios vão em `schemes.json` na pasta de dados, no formato do Windows Terminal (uma lista de esquemas ou `{ "schemes": [...] }`).
+
 ## Assistente de IA
 
 Opcional. Abra o painel na barra de abas, escolha Claude, ChatGPT, Gemini ou Groq, cole a sua chave de API e descreva o que quer. O comando devolvido é digitado no prompt do terminal **sem Enter**, para você ler e decidir. Só o seu texto e uma instrução fixa vão para o provedor escolhido: nunca a saída do terminal, os hosts ou o histórico. A chave fica criptografada com o DPAPI do Windows para a sua conta e só sai do PC na requisição ao provedor.

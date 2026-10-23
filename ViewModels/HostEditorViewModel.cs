@@ -11,10 +11,22 @@ public sealed partial class HostEditorViewModel : ObservableObject
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsValid))] public partial string User { get; set; }
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsValid))] public partial double Port { get; set; }
 
-    public HostEditorViewModel()
+    private readonly IReadOnlyList<ShellProfile> _profiles;
+
+    /// <summary>Index 0: look like the other SSH hosts; then each shell profile's appearance.</summary>
+    public IReadOnlyList<string> AppearanceOptions { get; }
+
+    [ObservableProperty] public partial int AppearanceIndex { get; set; }
+
+    /// <summary>The profile whose appearance the new host uses, or null for the shared SSH appearance.</summary>
+    public string? AppearanceProfileId => AppearanceIndex > 0 ? _profiles[AppearanceIndex - 1].Id : null;
+
+    public HostEditorViewModel(IReadOnlyList<ShellProfile>? profiles = null, string sshAppearanceName = "")
     {
         Name = Address = User = "";
         Port = 22;
+        _profiles = profiles ?? [];
+        AppearanceOptions = [sshAppearanceName, .. _profiles.Select(p => p.Name)];
     }
 
     // Address and user end up on an ssh command line, so they must pass the same check as at connect time.

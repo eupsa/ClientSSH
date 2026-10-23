@@ -4,10 +4,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ClientSSH.Services.Sessions;
 
-/// <summary>One pane of a tab: the host, its live session and any status message to show over the terminal.</summary>
-public sealed partial class SessionPane(Host host) : ObservableObject
+/// <summary>One pane of a tab: an SSH host or a local shell profile, its live session and any status message to show over the terminal.</summary>
+public sealed partial class SessionPane(Host? host, ShellProfile? profile = null) : ObservableObject
 {
-    public Host Host { get; } = host;
+    /// <summary>Null for a local shell pane.</summary>
+    public Host? Host { get; } = host;
+
+    /// <summary>The local shell this pane runs; null for SSH.</summary>
+    public ShellProfile? Profile { get; } = profile;
 
     /// <summary>Null when the session could not start; the terminal keeps its last screen after it ends.</summary>
     [ObservableProperty] public partial TerminalSession? Session { get; set; }

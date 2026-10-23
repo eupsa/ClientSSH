@@ -60,6 +60,12 @@ Limits, honestly:
 
 The window opens centered the first time and then remembers its position, size and maximized state.
 
+## Local terminals and customization
+
+Besides SSH hosts, the Hosts page lists the shells found on this PC: Windows PowerShell, PowerShell 7, CMD, each WSL distro and Git Bash (only the ones installed). One click opens it in a tab; the tab bar's **+** menu lists them too, and **Ctrl+Shift+1..9** opens profile 1 to 9 (change or turn off each shortcut in Settings).
+
+In **Settings > Terminal** pick the window background (brand gradient, Mica or Acrylic) and the terminal look: color scheme (the brand one plus Campbell, One Half, Solarized, Dracula, Nord, Tango), monospace font and size, cursor shape (block, bar, underline) and thickness, and background opacity. Set it once as the default for every terminal, or customize one profile (or "SSH hosts"). A new host can use a profile's look. Your own schemes go in `schemes.json` in the data folder, in the Windows Terminal format (an array of schemes, or `{ "schemes": [...] }`).
+
 ## AI assistant
 
 Optional. Open the panel from the tab bar, pick Claude, ChatGPT, Gemini or Groq, paste your own API key and describe what you want. The command the model returns is typed at the terminal prompt **without Enter**, so you read it and decide. Only your text and a fixed instruction are sent to the provider you chose: never terminal output, hosts or history. The key is stored encrypted with Windows DPAPI for your account and never leaves the PC except in the request to that provider.
@@ -106,6 +112,8 @@ dotnet test tests/ClientSSH.Tests
 | `Services/Demo` | The tour's in-memory demo host |
 | `Services/Assistant` | AI command assistant: `AssistantService`, per-provider formats in `AiRequests`, DPAPI key store |
 | `Terminal/` | Terminal engine: ConPTY (`PseudoConsole`, P/Invoke in `.Native.cs`) and simulated processes, `VtScreen` (buffer, `.Parser.cs`, `Cell.cs`), ssh command builder |
+| `Services/Customization` | Local shell detection and terminal appearance (schemes, per-profile overrides) |
+| `Services/Shortcuts` | Configurable key chords (open profile N) |
 | `Themes/Palette.xaml` | The single source of colors and shape |
 | `Strings/` | `Resources.resw` per language (`pt-BR`, `en-US`) |
 | `brand/` | Logo and animation kit |

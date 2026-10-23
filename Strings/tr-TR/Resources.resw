@@ -239,4 +239,37 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Remote_OwnNumber" xml:space="preserve"><value>Bu, bu bilgisayarın kendi numarası.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Başka bir bilgisayar buna erişmek istiyor. İzin vermek veya reddetmek için ClientSSH'yi açın.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>Terminal</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>Pencere arka planı</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>Marka geçişi ya da masaüstünün arkadan göründüğü Windows Mica veya Akrilik malzemesi.</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>Marka geçişi</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>Akrilik</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>Profil</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>Tüm terminallerin varsayılanını değiştirin veya tek bir profili özelleştirin.</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>Bu profili özelleştir</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>Kapalıyken bu profil varsayılan görünümü kullanır.</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>Renk şeması</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>Kendi şemalarınızı veri klasöründeki schemes.json dosyasına (Windows Terminal biçimi) ekleyin; yüklemek için yeniden başlatın.</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>Yazı tipi</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>Bu bilgisayarda yüklü eş aralıklı yazı tipleri ve boyut.</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>İmleç</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>Şekil ve çubuk ya da alt çizginin kalınlığı.</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>Blok</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>Çubuk</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>Alt çizgi</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>Arka plan opaklığı</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>%100'ün altında pencere arka planı terminalin arkasından görünür.</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>Kısayol</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>Bu profili yeni bir sekmede açar, ör. Ctrl+Shift+1. Hiçbiri için boş bırakın.</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Ctrl veya Alt ile bir harf, rakam ya da F1–F24 kullanın.</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (marka)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>Varsayılan ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>Varsayılan (tüm terminaller)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>SSH ana bilgisayarları</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>Bu kabuk artık bu bilgisayarda yüklü değil.</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Yerel terminaller</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>Terminal görünümü</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Diğer SSH ana bilgisayarlarıyla aynı</value></data>
 </root>

@@ -42,13 +42,15 @@ public sealed partial class ShortcutsViewModel : ObservableObject
         HasError = false;
         item.Chord = chord;
         var overrides = ShortcutMap.Overrides(Items.ToDictionary(i => i.Action, i => i.Chord));
+        foreach (var entry in ProfileEntries()) overrides[entry.Key] = entry.Value;
         _store.Save(_store.Current with { Shortcuts = overrides.Count == 0 ? null : overrides });
     }
 
     [RelayCommand]
     private void Reset()
     {
-        _store.Save(_store.Current with { Shortcuts = null });
+        var kept = ProfileEntries().ToDictionary(e => e.Key, e => e.Value);
+        _store.Save(_store.Current with { Shortcuts = kept.Count == 0 ? null : kept });
         HasError = false;
         Load();
     }
@@ -66,6 +68,10 @@ public sealed partial class ShortcutsViewModel : ObservableObject
         Error = message;
         HasError = true;
     }
+
+    // Profile shortcuts (Services/Shortcuts/ShortcutService) share AppSettings.Shortcuts with these.
+    private IEnumerable<KeyValuePair<string, string>> ProfileEntries() =>
+        (_store.Current.Shortcuts ?? []).Where(e => e.Key.StartsWith(ShortcutService.ProfileAction, StringComparison.Ordinal));
 }
 
 public sealed partial class ShortcutItem(ShortcutAction action, string label, KeyChord chord) : ObservableObject
@@ -79,4 +85,6 @@ public sealed partial class ShortcutItem(ShortcutAction action, string label, Ke
     [ObservableProperty, NotifyPropertyChangedFor(nameof(Display))] public partial bool IsRecording { get; set; }
 
     public string Display => IsRecording ? Loc.Get("Shortcuts_PressKeys") : Chord.ToString();
+
 }
+

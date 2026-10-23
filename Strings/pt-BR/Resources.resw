@@ -239,4 +239,37 @@ Leia em voz alta para a outra pessoa (ligação ou áudio). Se não for igual na
   <data name="Remote_OwnNumber" xml:space="preserve"><value>Esse é o número deste próprio PC.</value></data>
   <data name="Remote_Notify_Body" xml:space="preserve"><value>Outro PC está pedindo para acessar este. Abra o ClientSSH para permitir ou negar.</value></data>
   <data name="Remote_Number.PlaceholderText" xml:space="preserve"><value>123 456 789</value></data>
+  <data name="Appearance_Section.Text" xml:space="preserve"><value>Terminal</value></data>
+  <data name="Appearance_Backdrop_Title.Text" xml:space="preserve"><value>Fundo da janela</value></data>
+  <data name="Appearance_Backdrop_Desc.Text" xml:space="preserve"><value>O degradê da marca, ou o material Mica ou Acrílico do Windows, que deixa a área de trabalho aparecer.</value></data>
+  <data name="Appearance_Backdrop_Brand.Content" xml:space="preserve"><value>Degradê da marca</value></data>
+  <data name="Appearance_Backdrop_Mica.Content" xml:space="preserve"><value>Mica</value></data>
+  <data name="Appearance_Backdrop_Acrylic.Content" xml:space="preserve"><value>Acrílico</value></data>
+  <data name="Appearance_Target_Title.Text" xml:space="preserve"><value>Perfil</value></data>
+  <data name="Appearance_Target_Desc.Text" xml:space="preserve"><value>Mude o padrão de todos os terminais ou personalize um perfil.</value></data>
+  <data name="Appearance_Customize_Title.Text" xml:space="preserve"><value>Personalizar este perfil</value></data>
+  <data name="Appearance_Customize_Desc.Text" xml:space="preserve"><value>Desligado, este perfil usa a aparência padrão.</value></data>
+  <data name="Appearance_PreviewText.Text" xml:space="preserve"><value>user@host:~$ ls</value></data>
+  <data name="Appearance_Scheme_Title.Text" xml:space="preserve"><value>Esquema de cores</value></data>
+  <data name="Appearance_Scheme_Desc.Text" xml:space="preserve"><value>Adicione os seus em schemes.json (formato do Windows Terminal) na pasta de dados; reinicie para carregar.</value></data>
+  <data name="Appearance_Font_Title.Text" xml:space="preserve"><value>Fonte</value></data>
+  <data name="Appearance_Font_Desc.Text" xml:space="preserve"><value>Fontes monoespaçadas instaladas neste PC, e o tamanho.</value></data>
+  <data name="Appearance_Cursor_Title.Text" xml:space="preserve"><value>Cursor</value></data>
+  <data name="Appearance_Cursor_Desc.Text" xml:space="preserve"><value>Formato, e espessura da barra ou do sublinhado.</value></data>
+  <data name="Appearance_Cursor_Block.Content" xml:space="preserve"><value>Bloco</value></data>
+  <data name="Appearance_Cursor_Bar.Content" xml:space="preserve"><value>Barra</value></data>
+  <data name="Appearance_Cursor_Underline.Content" xml:space="preserve"><value>Sublinhado</value></data>
+  <data name="Appearance_Opacity_Title.Text" xml:space="preserve"><value>Opacidade do fundo</value></data>
+  <data name="Appearance_Opacity_Desc.Text" xml:space="preserve"><value>Abaixo de 100%, o fundo da janela aparece através do terminal.</value></data>
+  <data name="Appearance_Shortcut_Title.Text" xml:space="preserve"><value>Atalho</value></data>
+  <data name="Appearance_Shortcut_Desc.Text" xml:space="preserve"><value>Abre este perfil em uma nova aba, ex.: Ctrl+Shift+1. Deixe vazio para nenhum.</value></data>
+  <data name="Appearance_Shortcut_Invalid.Text" xml:space="preserve"><value>Use Ctrl ou Alt com uma letra, um dígito ou F1–F24.</value></data>
+  <data name="Appearance_BrandScheme" xml:space="preserve"><value>ClientSSH (marca)</value></data>
+  <data name="Appearance_DefaultFont" xml:space="preserve"><value>Padrão ({0})</value></data>
+  <data name="Appearance_TargetDefault" xml:space="preserve"><value>Padrão (todos os terminais)</value></data>
+  <data name="Appearance_TargetSsh" xml:space="preserve"><value>Hosts SSH</value></data>
+  <data name="Terminal_ProfileMissing" xml:space="preserve"><value>Este shell não está mais instalado neste PC.</value></data>
+  <data name="Hosts_LocalTitle.Text" xml:space="preserve"><value>Terminais locais</value></data>
+  <data name="Editor_Appearance.Header" xml:space="preserve"><value>Aparência do terminal</value></data>
+  <data name="Editor_AppearanceSsh" xml:space="preserve"><value>Igual aos outros hosts SSH</value></data>
 </root>

@@ -8,6 +8,13 @@ Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versio
 - **Split panes.** Split a tab vertically or horizontally (tab bar buttons, the tab's right-click menu or shortcuts); each pane runs its own session to the same host. Drag the divider to resize; the focused pane has an accent outline. Only the visible tab's panes keep a terminal canvas.
 - **Rename tabs** with a double click on the title or from the tab's menu. The name lasts while the tab is open.
 - **Configurable shortcuts** for new/close/next/previous tab, split, close pane, next pane and rename (Settings > Keyboard shortcuts). Only changes from the defaults are saved (`Shortcuts` in `settings.json`); older settings files keep loading.
+- **Local terminals:** Windows PowerShell, PowerShell 7, CMD, each WSL distro and Git Bash open in tabs, from the Hosts page or the tab bar's **+** menu. Only shells installed on the PC are listed.
+- **Terminal customization** in Settings > Terminal: color scheme (brand plus 8 built-in, and your own in `schemes.json`, Windows Terminal format), font and size, cursor shape and thickness, background opacity. A global default plus per-profile overrides (including "SSH hosts"); open terminals update live. New hosts can use a profile's look.
+- **Window background:** brand gradient, Mica or Acrylic.
+- **Profile shortcuts:** Ctrl+Shift+1..9 open profiles 1-9, each editable or off.
+
+### Changed
+- The terminal font size moved from Settings > Appearance into the new Terminal section (old settings files keep their size).
 
 ## [0.5.0] - 2026-10-22
 

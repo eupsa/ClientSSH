@@ -24,6 +24,11 @@
     <Compile Include="..\..\Services\Sessions\PaneTree.cs" Link="PaneTree.cs" />
     <Compile Include="..\..\Services\Shortcuts\KeyChord.cs" Link="KeyChord.cs" />
     <Compile Include="..\..\Services\Shortcuts\ShortcutMap.cs" Link="ShortcutMap.cs" />
+    <Compile Include="..\..\Terminal\ShellProfiles.cs" Link="ShellProfiles.cs" />
+    <Compile Include="..\..\Terminal\ColorScheme.cs" Link="ColorScheme.cs" />
+    <Compile Include="..\..\Models\TerminalAppearance.cs" Link="TerminalAppearance.cs" />
+    <Compile Include="..\..\Models\AppSettings.cs" Link="AppSettings.cs" />
+    <Compile Include="..\..\Models\WindowState.cs" Link="WindowState.cs" />
     <Compile Include="..\..\Services\Updates\Sha256Sums.cs" Link="Sha256Sums.cs" />
     <Compile Include="..\..\Services\Remote\RemoteChannel.cs" Link="RemoteChannel.cs" />
     <Compile Include="..\..\Services\Remote\InputEvent.cs" Link="InputEvent.cs" />

@@ -29,7 +29,6 @@ public sealed partial class SettingsViewModel : ObservableObject
     public string Version => typeof(App).Assembly.GetName().Version?.ToString(3) ?? "";
 
     [ObservableProperty] public partial int ThemeIndex { get; set; }
-    [ObservableProperty] public partial double FontSize { get; set; }
     [ObservableProperty] public partial int LanguageIndex { get; set; }
     [ObservableProperty] public partial bool LanguageChanged { get; set; }
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsNotChecking))] public partial bool IsChecking { get; set; }
@@ -63,7 +62,6 @@ public sealed partial class SettingsViewModel : ObservableObject
         UpdateMessage = "";
         UpdateRepo = store.Current.UpdateRepo;
         ThemeIndex = (int)store.Current.Theme;
-        FontSize = store.Current.TerminalFontSize;
         LanguageIndex = Math.Max(0, LanguageOption.All.ToList().FindIndex(l => l.Tag == store.Current.Language));
         SaveHistory = store.Current.SaveHistory;
         AutoUpdateCheck = store.Current.AutoUpdateCheck;
@@ -148,12 +146,6 @@ public sealed partial class SettingsViewModel : ObservableObject
         if (!_ready || value < 0) return;
         _store.Save(_store.Current with { Language = LanguageOption.All[value].Tag });
         LanguageChanged = true;
-    }
-
-    partial void OnFontSizeChanged(double value)
-    {
-        if (!_ready || double.IsNaN(value)) return;
-        _store.Save(_store.Current with { TerminalFontSize = (int)value });
     }
 
     [RelayCommand]
