@@ -292,4 +292,5 @@
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>업데이트 확인</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>명령 팔레트 (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>명령 팔레트</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>터미널 열기: {0}</value></data>
 </root>

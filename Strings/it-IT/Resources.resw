@@ -292,4 +292,5 @@ Leggilo ad alta voce allâ€™altra persona (chiamata o messaggio vocale). Se non Ã
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Cerca aggiornamenti</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Riquadro comandi (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Riquadro comandi</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>Apri terminale: {0}</value></data>
 </root>

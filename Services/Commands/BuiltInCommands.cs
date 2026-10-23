@@ -1,9 +1,11 @@
 using System.Collections.Specialized;
 using ClientSSH.Models;
+using ClientSSH.Services.Customization;
 using ClientSSH.Services.Demo;
 using ClientSSH.Services.Localization;
 using ClientSSH.Services.Sessions;
 using ClientSSH.Services.Shell;
+using ClientSSH.Services.Shortcuts;
 using ClientSSH.Services.Storage;
 using ClientSSH.ViewModels;
 
@@ -12,7 +14,8 @@ namespace ClientSSH.Services.Commands;
 /// <summary>The commands ClientSSH ships with. Other features register theirs into <see cref="ICommandRegistry"/> the same way.</summary>
 public sealed class BuiltInCommands(
     ICommandRegistry registry, INavigationService nav, ISettingsStore settings, ThemeService theme,
-    SessionManager sessions, HostsViewModel hosts, MainViewModel main)
+    SessionManager sessions, HostsViewModel hosts, MainViewModel main, IDialogService dialogs,
+    ProfileService profiles, ProfilesViewModel profilesViewModel, ShortcutService profileShortcuts)
 {
     private const int MaxClosed = 10;
 
@@ -26,6 +29,8 @@ public sealed class BuiltInCommands(
         registry.Register(new PaletteCommand("session.new", Loc.Get("Cmd_NewConnection"),
             () => nav.NavigateTo(PageKey.Hosts), "new tab ssh connect", Glyph: ""));
         registry.Register(SessionCommands);
+        registry.Register(TabCommands);
+        registry.Register(ProfileCommands);
         registry.Register(OpenHostCommands);
         registry.Register(new PaletteCommand("host.add", Loc.Get("Cmd_AddHost"),
             () => hosts.AddCommand.Execute(null), "new host create", Glyph: ""));
@@ -64,6 +69,51 @@ public sealed class BuiltInCommands(
             .Select(h => new PaletteCommand("host.open." + h.Id, string.Format(Loc.Get("Cmd_OpenHost"), h.Name),
                 () => hosts.ConnectCommand.Execute(h), $"ssh connect {h.User}@{h.Address} {h.Group}", Glyph: h.Favorite ? "" : ""))
             .ToList();
+
+    // Tabs and panes of the selected tab, with the configured shortcut shown next to each.
+    private IEnumerable<PaletteCommand> TabCommands()
+    {
+        if (sessions.Selected is not { } tab) yield break;
+        var keys = new ShortcutMap(settings.Current.Shortcuts);
+        PaletteCommand Make(ShortcutAction action, string glyph, Action run, string keywords) =>
+            new("tab." + action, Loc.Get($"Shortcut_{action}"), run, keywords, keys[action].ToString(), glyph);
+
+        yield return Make(ShortcutAction.NewTab, "\uE710", () => OpenLike(tab.Focused), "new tab duplicate same");
+        yield return Make(ShortcutAction.SplitVertical, "\uE89F", () => sessions.Split(tab, sideBySide: true), "split vertical pane right side by side");
+        yield return Make(ShortcutAction.SplitHorizontal, "\uE8A0", () => sessions.Split(tab, sideBySide: false), "split horizontal pane below stacked");
+        if (tab.IsSplit)
+        {
+            yield return Make(ShortcutAction.ClosePane, "\uE711", () => sessions.ClosePane(tab, tab.Focused), "close pane split");
+            yield return Make(ShortcutAction.FocusNextPane, "\uE8AB", () => tab.Layout.FocusNext(+1), "next pane focus switch");
+        }
+        if (sessions.Tabs.Count > 1)
+        {
+            yield return Make(ShortcutAction.NextTab, "\uE72A", () => sessions.SelectNext(+1), "next tab switch");
+            yield return Make(ShortcutAction.PreviousTab, "\uE72B", () => sessions.SelectNext(-1), "previous tab switch");
+        }
+        yield return Make(ShortcutAction.RenameTab, "\uE8AC", () => _ = RenameAsync(tab), "rename tab title name");
+    }
+
+    // Every local shell found on this PC (PowerShell, CMD, WSL, Git Bash).
+    private IEnumerable<PaletteCommand> ProfileCommands() =>
+        profiles.Profiles
+            .Select(p => new PaletteCommand("profile.open." + p.Id, string.Format(Loc.Get("Cmd_OpenProfile"), p.Name),
+                () => profilesViewModel.OpenProfileCommand.Execute(p), $"terminal shell local open {p.Kind} {p.Name}",
+                profileShortcuts.ChordFor(p.Id), "\uE756"))
+            .ToList();
+
+    private void OpenLike(SessionPane pane)
+    {
+        if (pane.Profile is { } profile) sessions.Open(profile);
+        else if (pane.Host is { } host) sessions.Open(host);
+        nav.NavigateTo(PageKey.Sessions);
+    }
+
+    private async Task RenameAsync(SessionTab tab)
+    {
+        var name = (await dialogs.AskTextAsync(Loc.Get("Sessions_RenameTitle"), tab.Title))?.Trim();
+        if (!string.IsNullOrEmpty(name)) tab.Title = name;
+    }
 
     private void CloseTab(SessionTab tab)
     {

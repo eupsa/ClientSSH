@@ -80,7 +80,8 @@ public sealed partial class SessionsViewModel : ObservableObject, IDisposable
     [RelayCommand]
     private void NewTab()
     {
-        if (Sessions.Selected is { } tab) Sessions.Open(tab.Focused.Host);
+        if (Sessions.Selected?.Focused is { Profile: { } profile }) Sessions.Open(profile);
+        else if (Sessions.Selected?.Focused is { Host: { } host }) Sessions.Open(host);
         else NewSession();
     }
 

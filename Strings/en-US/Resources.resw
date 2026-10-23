@@ -292,4 +292,5 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Check for updates</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Command palette (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Command palette</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>Open terminal: {0}</value></data>
 </root>

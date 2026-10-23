@@ -292,4 +292,5 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Güncellemeleri denetle</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Komut paleti (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Komut paleti</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>Terminali aç: {0}</value></data>
 </root>

@@ -292,4 +292,5 @@
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>更新プログラムを確認</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>コマンド パレット (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>コマンド パレット</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>ターミナルを開く: {0}</value></data>
 </root>

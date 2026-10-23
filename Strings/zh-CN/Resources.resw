@@ -292,4 +292,5 @@
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>检查更新</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>命令面板 (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>命令面板</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>打开终端：{0}</value></data>
 </root>

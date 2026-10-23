@@ -292,4 +292,5 @@
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>التحقق من وجود تحديثات</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>لوحة الأوامر (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>لوحة الأوامر</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>فتح الطرفية: {0}</value></data>
 </root>

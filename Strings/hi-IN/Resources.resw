@@ -292,4 +292,5 @@
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>अपडेट जाँचें</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>कमांड पैलेट (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>कमांड पैलेट</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>टर्मिनल खोलें: {0}</value></data>
 </root>

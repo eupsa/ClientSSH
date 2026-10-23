@@ -292,4 +292,5 @@ Lisez-le à voix haute à l’autre personne (appel ou message vocal). S’il n�
   <data name="Cmd_CheckUpdates" xml:space="preserve"><value>Rechercher des mises à jour</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Palette de commandes (Ctrl+Shift+P)</value></data>
   <data name="Palette_Open.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Palette de commandes</value></data>
+  <data name="Cmd_OpenProfile" xml:space="preserve"><value>Ouvrir le terminal : {0}</value></data>
 </root>
