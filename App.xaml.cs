@@ -92,6 +92,7 @@ namespace ClientSSH
             .AddSingleton<RemoteViewModel>()
             .AddSingleton<TourViewModel>()
             .AddTransient<SettingsViewModel>()
+            .AddTransient<ShortcutsViewModel>()
             .AddSingleton<HostsViewModel>()
             .AddTransient<WelcomeViewModel>()
             .AddTransient<SessionsViewModel>()

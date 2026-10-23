@@ -14,8 +14,17 @@ public interface ISessionManager : INotifyPropertyChanged
     /// <summary>Opens a new tab for the host and selects it. Several tabs can share a host.</summary>
     SessionTab Open(Host host);
 
-    /// <summary>Starts a new session in an existing tab, replacing the old one.</summary>
-    void Reconnect(SessionTab tab);
+    /// <summary>Starts a new session in an existing pane, replacing the old one.</summary>
+    void Reconnect(SessionPane pane);
+
+    /// <summary>Splits the tab's focused pane: side by side, or one above the other.</summary>
+    void Split(SessionTab tab, bool sideBySide);
+
+    /// <summary>Closes one pane; closing the last one closes the tab.</summary>
+    void ClosePane(SessionTab tab, SessionPane pane);
+
+    /// <summary>Selects the next (+1) or previous (-1) tab, wrapping around.</summary>
+    void SelectNext(int step);
 
     void Close(SessionTab tab);
 

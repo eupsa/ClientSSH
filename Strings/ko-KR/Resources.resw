@@ -197,6 +197,35 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>이 공급자의 저장된 키를 삭제합니다</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>새 버전을 다운로드하고 확인한 뒤 설치합니다</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>둘러보기를 건너뛰고 호스트로 이동합니다</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>확인</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>취소</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>탭 이름 바꾸기</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>창 구분선</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>이름 바꾸기</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>세로로 분할</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>가로로 분할</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>창 닫기</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>탭 닫기</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>세로로 분할: 새 창을 오른쪽에</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>세로로 분할</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>가로로 분할: 새 창을 아래에</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>가로로 분할</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>바로 가기 키</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>탭과 창</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>바로 가기를 클릭한 다음 새 키를 누르세요. 터미널 입력이 계속 동작하도록 Ctrl 또는 Alt(또는 기능 키)를 사용하세요.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>기본값 복원</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>바로 가기에는 Ctrl 또는 Alt, 또는 기능 키(F1~F24)가 필요합니다.</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0}은(는) 이미 "{1}"에 사용 중입니다.</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>키를 누르세요...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>새 탭</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>탭 닫기</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>다음 탭</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>이전 탭</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>세로로 분할(오른쪽에 창)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>가로로 분할(아래에 창)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>창 닫기</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>다음 창</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>탭 이름 바꾸기</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>이 PC</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>이 PC에 접속할 사람에게 이 번호를 알려 주세요. 요청마다 허용할지 직접 선택합니다.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>접속 요청 받기</value></data>

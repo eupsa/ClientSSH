@@ -6,7 +6,9 @@
     xmlns:local="using:ClientSSH.Views"
     xmlns:sessions="using:ClientSSH.Services.Sessions">
 
-    <Grid Padding="16,4,16,16" RowDefinitions="Auto,*" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+    <!-- PreviewKeyDown: the tab and pane shortcuts run before the terminal turns the keys into input. -->
+    <Grid Padding="16,4,16,16" RowDefinitions="Auto,*" ColumnDefinitions="*,Auto" ColumnSpacing="12"
+          PreviewKeyDown="OnPagePreviewKeyDown">
         <TabView x:Name="Tabs"
                  TabItemsSource="{x:Bind ViewModel.Sessions.Tabs}"
                  SelectedItem="{x:Bind ViewModel.Sessions.Selected, Mode=TwoWay}"
@@ -16,25 +18,53 @@
                  GettingFocus="OnTabsGettingFocus" SelectionChanged="OnTabsSelectionChanged" Tapped="OnTabsTapped" Loaded="OnTabsLoaded">
             <TabView.TabItemTemplate>
                 <DataTemplate x:DataType="sessions:SessionTab">
-                    <TabViewItem Header="{x:Bind Title, Mode=OneWay}">
+                    <TabViewItem Header="{x:Bind Title, Mode=OneWay}" DoubleTapped="OnTabDoubleTapped">
                         <TabViewItem.IconSource>
                             <FontIconSource Glyph="&#xE756;" />
                         </TabViewItem.IconSource>
+                        <TabViewItem.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:Uid="Sessions_Rename" Tag="{x:Bind}" Click="OnRenameClick">
+                                    <MenuFlyoutItem.Icon><FontIcon Glyph="&#xE8AC;" /></MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem x:Uid="Sessions_SplitVertical" Tag="{x:Bind}" Click="OnSplitVerticalClick">
+                                    <MenuFlyoutItem.Icon><FontIcon Glyph="&#xE90D;" /></MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="Sessions_SplitHorizontal" Tag="{x:Bind}" Click="OnSplitHorizontalClick">
+                                    <MenuFlyoutItem.Icon><FontIcon Glyph="&#xE90E;" /></MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="Sessions_ClosePane" Tag="{x:Bind}" Click="OnClosePaneClick"
+                                                IsEnabled="{x:Bind IsSplit, Mode=OneWay}" />
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem x:Uid="Sessions_CloseTab" Tag="{x:Bind}" Click="OnCloseTabClick">
+                                    <MenuFlyoutItem.Icon><FontIcon Glyph="&#xE711;" /></MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </TabViewItem.ContextFlyout>
                     </TabViewItem>
                 </DataTemplate>
             </TabView.TabItemTemplate>
             <TabView.TabStripFooter>
-                <Button x:Uid="Assistant_Toggle" Command="{x:Bind Assistant.ToggleCommand}" Margin="4,0,0,0"
-                        Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}">
-                    <FontIcon Glyph="&#xE8BD;" FontSize="16" />
-                </Button>
+                <StackPanel Orientation="Horizontal" Spacing="4" Margin="4,0,0,0"
+                            Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}">
+                    <Button x:Uid="Sessions_SplitVerticalButton" Command="{x:Bind ViewModel.SplitVerticalCommand}">
+                        <FontIcon Glyph="&#xE90D;" FontSize="16" />
+                    </Button>
+                    <Button x:Uid="Sessions_SplitHorizontalButton" Command="{x:Bind ViewModel.SplitHorizontalCommand}">
+                        <FontIcon Glyph="&#xE90E;" FontSize="16" />
+                    </Button>
+                    <Button x:Uid="Assistant_Toggle" Command="{x:Bind Assistant.ToggleCommand}">
+                        <FontIcon Glyph="&#xE8BD;" FontSize="16" />
+                    </Button>
+                </StackPanel>
             </TabView.TabStripFooter>
         </TabView>
 
-        <!-- The tab strip only picks the session; one view below shows the selected one, so its size is ours to control. -->
-        <local:SessionView x:Name="Current" Grid.Row="1" Tab="{x:Bind ViewModel.Sessions.Selected, Mode=OneWay}"
-                           ReconnectCommand="{x:Bind ViewModel.ReconnectCommand}"
-                           Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}" />
+        <!-- The tab strip only picks the tab; one view below lays out the selected tab's panes, so its size is ours to control. -->
+        <local:PaneLayoutView x:Name="Current" Grid.Row="1" Margin="0,8,0,0" ReconnectCommand="{x:Bind ViewModel.ReconnectCommand}"
+                              Tab="{x:Bind ViewModel.Sessions.Selected, Mode=OneWay}"
+                              Visibility="{x:Bind ViewModel.HasTabs, Mode=OneWay}" />
 
         <StackPanel Grid.RowSpan="2" Grid.ColumnSpan="2" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Visibility="{x:Bind ViewModel.IsEmpty, Mode=OneWay}">

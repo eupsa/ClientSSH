@@ -197,6 +197,35 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Удаляет сохранённый ключ этого провайдера</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Скачивает, проверяет и устанавливает новую версию</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Пропускает тур и открывает хосты</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>ОК</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Переименовать вкладку</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Разделитель панелей</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Переименовать</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Разделить по вертикали</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Разделить по горизонтали</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Закрыть панель</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Закрыть вкладку</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Разделить по вертикали: новая панель справа</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Разделить по вертикали</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Разделить по горизонтали: новая панель снизу</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Разделить по горизонтали</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Сочетания клавиш</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Вкладки и панели</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Нажмите на сочетание, затем нажмите новые клавиши. Используйте Ctrl или Alt (или функциональную клавишу), чтобы ввод в терминале продолжал работать.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Восстановить по умолчанию</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Сочетанию нужна клавиша Ctrl или Alt либо функциональная клавиша (F1–F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} уже используется для «{1}».</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Нажмите клавиши...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Новая вкладка</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Закрыть вкладку</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Следующая вкладка</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Предыдущая вкладка</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Разделить по вертикали (панель справа)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Разделить по горизонтали (панель снизу)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Закрыть панель</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Следующая панель</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Переименовать вкладку</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Этот ПК</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Сообщите этот номер тому, кто будет подключаться к этому ПК. Каждый запрос вы разрешаете сами.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Принимать запросы на доступ</value></data>

@@ -197,6 +197,35 @@
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>删除此提供商已保存的密钥</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>下载、校验并安装新版本</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>跳过导览并转到主机</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>确定</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>取消</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>重命名标签页</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>窗格分隔条</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>重命名</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>垂直拆分</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>水平拆分</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>关闭窗格</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>关闭标签页</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>垂直拆分：新窗格在右侧</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>垂直拆分</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>水平拆分：新窗格在下方</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>水平拆分</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>键盘快捷键</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>标签页和窗格</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>点击一个快捷键，然后按下新的按键。请使用 Ctrl 或 Alt（或功能键），以免影响在终端中输入。</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>恢复默认值</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>快捷键需要包含 Ctrl 或 Alt，或使用功能键（F1 到 F24）。</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} 已被“{1}”使用。</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>请按下按键...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>新建标签页</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>关闭标签页</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>下一个标签页</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>上一个标签页</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>垂直拆分（窗格在右侧）</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>水平拆分（窗格在下方）</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>关闭窗格</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>下一个窗格</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>重命名标签页</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>这台电脑</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>把这个号码告诉要访问这台电脑的人。每个请求都由你决定是否允许。</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>接受访问请求</value></data>

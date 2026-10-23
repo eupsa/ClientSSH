@@ -17,6 +17,8 @@ A simple, fast SSH client for Windows. Open source, built with WinUI 3.
 - Real terminal: `ssh.exe` in a Windows pseudo console (ConPTY), drawn with Win2D
 - Brand animations (Lottie) for the splash, empty states and connection status
 - Tabs: several simultaneous sessions, kept running while you browse hosts and settings
+- Split panes: split a tab vertically or horizontally (each pane runs its own session), drag the divider to resize, rename tabs (double click or the tab's menu)
+- Keyboard shortcuts for tabs and panes, configurable in Settings: new tab `Ctrl+Shift+T`, close tab `Ctrl+Shift+W`, next/previous tab `Ctrl+Tab`/`Ctrl+Shift+Tab`, split vertically `Ctrl+Shift+E`, split horizontally `Ctrl+Shift+O`, close pane `Ctrl+Shift+X`, next pane `Ctrl+Shift+N`, rename tab `Ctrl+Shift+R`
 - Settings: language, theme, terminal font size, start with Windows, start minimized, keep in tray when closed
 - Update check against the GitHub releases of a repository you can change, with a one-click update (the download is checked against `SHA256SUMS.txt`)
 
@@ -99,7 +101,8 @@ dotnet test tests/ClientSSH.Tests
 | `Services/Shell` | Navigation, dialogs, theme, tray icon, start with Windows |
 | `Services/Updates` | Update check, verified download, crash marker |
 | `Services/Localization` | Reads strings for text produced in code |
-| `Services/Sessions` | `SessionManager`: the open tabs and their live sessions |
+| `Services/Sessions` | `SessionManager`: the open tabs, their panes (`PaneTree`) and live sessions |
+| `Services/Shortcuts` | `KeyChord` and `ShortcutMap`: the configurable tab and pane shortcuts |
 | `Services/Demo` | The tour's in-memory demo host |
 | `Services/Assistant` | AI command assistant: `AssistantService`, per-provider formats in `AiRequests`, DPAPI key store |
 | `Terminal/` | Terminal engine: ConPTY (`PseudoConsole`, P/Invoke in `.Native.cs`) and simulated processes, `VtScreen` (buffer, `.Parser.cs`, `Cell.cs`), ssh command builder |

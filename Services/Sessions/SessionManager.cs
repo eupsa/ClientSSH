@@ -26,72 +26,93 @@ public sealed partial class SessionManager : ObservableObject, ISessionManager
     /// <summary>Opens a new tab for the host and selects it. Several tabs can share a host.</summary>
     public SessionTab Open(Host host)
     {
-        var tab = new SessionTab(host, UniqueTitle(host.Name));
-        Connect(tab);
+        var tab = new SessionTab(Connect(new SessionPane(host)), UniqueTitle(host.Name));
         Tabs.Add(tab);
         Selected = tab;
         return tab;
     }
 
-    /// <summary>Starts a new session in an existing tab, replacing the old one.</summary>
-    public void Reconnect(SessionTab tab)
+    /// <summary>Starts a new session in an existing pane, replacing the old one.</summary>
+    public void Reconnect(SessionPane pane)
     {
-        tab.ConnectingAnimation = "reconnecting";
-        Connect(tab);
+        pane.ConnectingAnimation = "reconnecting";
+        Connect(pane);
     }
 
     public void Close(SessionTab tab)
     {
-        tab.EndSession();
+        foreach (var pane in tab.Panes) pane.EndSession();
         Tabs.Remove(tab);
         if (Selected == tab || Selected is null) Selected = Tabs.LastOrDefault();
+    }
+
+    /// <summary>Splits the tab's focused pane; the new pane connects to the same host and takes focus.</summary>
+    public void Split(SessionTab tab, bool sideBySide) =>
+        tab.Layout.Split(sideBySide, Connect(new SessionPane(tab.Focused.Host)));
+
+    /// <summary>Closes one pane; closing the last one closes the tab.</summary>
+    public void ClosePane(SessionTab tab, SessionPane pane)
+    {
+        if (tab.Layout.Find(pane) is not { } leaf) return;
+        pane.EndSession();
+        if (!tab.Layout.Close(leaf)) Close(tab);
+    }
+
+    /// <summary>Selects the next (+1) or previous (-1) tab, wrapping around.</summary>
+    public void SelectNext(int step)
+    {
+        if (Tabs.Count == 0) return;
+        var i = Selected is null ? 0 : Tabs.IndexOf(Selected);
+        Selected = Tabs[((i + step) % Tabs.Count + Tabs.Count) % Tabs.Count];
     }
 
     /// <summary>Closes the tour's demo session, if open.</summary>
     public void CloseDemo()
     {
-        foreach (var tab in Tabs.Where(t => DemoHost.Is(t.Host)).ToList()) Close(tab);
+        foreach (var tab in Tabs.Where(t => t.Panes.Any(p => DemoHost.Is(p.Host))).ToList()) Close(tab);
     }
 
-    private void Connect(SessionTab tab)
+    private SessionPane Connect(SessionPane pane)
     {
-        tab.EndSession();
-        tab.ClearNotice();
+        pane.EndSession();
+        pane.ClearNotice();
 
         try
         {
-            var session = new TerminalSession(CreateProcess(tab.Host), DefaultColumns, DefaultRows);
+            var session = new TerminalSession(CreateProcess(pane.Host), DefaultColumns, DefaultRows);
             session.Exited += code => _ui.TryEnqueue(() =>
             {
-                tab.IsConnecting = false;
-                tab.ShowNotice(string.Format(Loc.Get("Terminal_Ended"), code), isError: false);
+                pane.IsConnecting = false;
+                pane.ShowNotice(string.Format(Loc.Get("Terminal_Ended"), code), isError: false);
             });
             var firstOutput = true;
             session.Updated += () =>
             {
                 if (!firstOutput) return;
                 firstOutput = false;
-                _ui.TryEnqueue(() => ShowConnected(tab));
+                _ui.TryEnqueue(() => ShowConnected(pane));
             };
-            tab.IsConnecting = true;
+            pane.IsConnecting = true;
             session.Start();
-            tab.Session = session;
+            pane.Session = session;
         }
         catch (Exception e) when (e is Win32Exception or IOException or InvalidOperationException)
         {
-            tab.IsConnecting = false;
-            tab.ShowNotice(e is InvalidOperationException ? e.Message : string.Format(Loc.Get("Terminal_StartFailed"), e.Message), isError: true);
+            pane.IsConnecting = false;
+            pane.ShowNotice(e is InvalidOperationException ? e.Message : string.Format(Loc.Get("Terminal_StartFailed"), e.Message), isError: true);
         }
+
+        return pane;
     }
 
     // Connecting animation off, short "connected" animation on.
-    private async void ShowConnected(SessionTab tab)
+    private async void ShowConnected(SessionPane pane)
     {
-        if (!tab.IsConnecting) return;
-        tab.IsConnecting = false;
-        tab.JustConnected = true;
+        if (!pane.IsConnecting) return;
+        pane.IsConnecting = false;
+        pane.JustConnected = true;
         await Task.Delay(1400);
-        tab.JustConnected = false;
+        pane.JustConnected = false;
     }
 
     private static ITerminalProcess CreateProcess(Host host)

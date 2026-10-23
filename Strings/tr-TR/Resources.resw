@@ -197,6 +197,35 @@ Bunu karşı tarafa sesli okuyun (arama ya da sesli mesajla). İki ekranda aynı
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Bu sağlayıcı için kayıtlı anahtarı siler</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yeni sürümü indirir, doğrular ve yükler</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Turu atlar ve sunuculara gider</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>Tamam</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>İptal</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Sekmeyi yeniden adlandır</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Bölme ayırıcı</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Yeniden adlandır</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Dikey böl</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Yatay böl</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Bölmeyi kapat</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Sekmeyi kapat</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Dikey böl: yeni bölme sağda</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Dikey böl</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Yatay böl: yeni bölme altta</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Yatay böl</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Klavye kısayolları</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Sekmeler ve bölmeler</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Bir kısayola tıklayın, ardından yeni tuşlara basın. Terminalde yazmanın çalışmaya devam etmesi için Ctrl veya Alt (ya da bir işlev tuşu) kullanın.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Varsayılanları geri yükle</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Bir kısayol için Ctrl veya Alt ya da bir işlev tuşu (F1 - F24) gerekir.</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} zaten "{1}" için kullanılıyor.</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Tuşlara basın...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Yeni sekme</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Sekmeyi kapat</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Sonraki sekme</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Önceki sekme</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Dikey böl (bölme sağda)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Yatay böl (bölme altta)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Bölmeyi kapat</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Sonraki bölme</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Sekmeyi yeniden adlandır</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Bu bilgisayar</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Bu numarayı bu bilgisayara erişecek kişiye verin. Her isteğe izin verip vermeyeceğinize siz karar verirsiniz.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Erişim isteklerini kabul et</value></data>

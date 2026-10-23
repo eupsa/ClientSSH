@@ -197,6 +197,35 @@ Lees deze hardop voor aan de ander (telefoongesprek of spraakbericht). Als de co
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Verwijdert de opgeslagen sleutel van deze provider</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Downloadt, controleert en installeert de nieuwe versie</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Slaat de rondleiding over en gaat naar de hosts</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Annuleren</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Tabblad hernoemen</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Deelvensterscheiding</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Naam wijzigen</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Verticaal splitsen</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Horizontaal splitsen</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Deelvenster sluiten</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Tabblad sluiten</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Verticaal splitsen: nieuw deelvenster rechts</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Verticaal splitsen</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Horizontaal splitsen: nieuw deelvenster eronder</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Horizontaal splitsen</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Sneltoetsen</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Tabbladen en deelvensters</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Klik op een sneltoets en druk daarna op de nieuwe toetsen. Gebruik Ctrl of Alt (of een functietoets) zodat typen in de terminal blijft werken.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Standaardwaarden herstellen</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Een sneltoets heeft Ctrl of Alt nodig, of een functietoets (F1 tot F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} wordt al gebruikt door "{1}".</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Druk op de toetsen...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Nieuw tabblad</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Tabblad sluiten</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Volgend tabblad</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Vorig tabblad</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Verticaal splitsen (deelvenster rechts)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Horizontaal splitsen (deelvenster eronder)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Deelvenster sluiten</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Volgend deelvenster</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Tabblad hernoemen</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Deze pc</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Geef dit nummer aan wie deze pc moet kunnen gebruiken. Je bepaalt zelf bij elk verzoek of je het toestaat.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Toegangsverzoeken accepteren</value></data>

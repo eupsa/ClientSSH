@@ -197,6 +197,35 @@ Leggilo ad alta voce all’altra persona (chiamata o messaggio vocale). Se non �
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Elimina la chiave salvata di questo provider</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Scarica, verifica e installa la nuova versione</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Salta il tour e va agli host</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Annulla</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Rinomina scheda</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Divisore dei riquadri</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Rinomina</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Dividi in verticale</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Dividi in orizzontale</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Chiudi riquadro</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Chiudi scheda</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Dividi in verticale: nuovo riquadro a destra</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Dividi in verticale</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Dividi in orizzontale: nuovo riquadro sotto</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Dividi in orizzontale</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Scorciatoie da tastiera</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Schede e riquadri</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Fai clic su una scorciatoia, poi premi i nuovi tasti. Usa Ctrl o Alt (o un tasto funzione) perché la digitazione nel terminale continui a funzionare.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Ripristina predefiniti</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Una scorciatoia richiede Ctrl o Alt, oppure un tasto funzione (da F1 a F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} è già usata da "{1}".</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Premi i tasti...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Nuova scheda</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Chiudi scheda</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Scheda successiva</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Scheda precedente</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Dividi in verticale (riquadro a destra)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Dividi in orizzontale (riquadro sotto)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Chiudi riquadro</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Riquadro successivo</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Rinomina scheda</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Questo PC</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Dai questo numero a chi deve accedere a questo PC. Sei tu a decidere se consentire ogni richiesta.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Accetta richieste di accesso</value></data>

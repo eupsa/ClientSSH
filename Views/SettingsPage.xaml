@@ -4,7 +4,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ClientSSH.Views"
-    xmlns:models="using:ClientSSH.Models">
+    xmlns:models="using:ClientSSH.Models"
+    xmlns:vm="using:ClientSSH.ViewModels">
 
     <ScrollViewer>
         <StackPanel MaxWidth="820" Padding="40,16,40,40" Spacing="28" HorizontalAlignment="Stretch">
@@ -87,6 +88,49 @@
                             <NumberBox Grid.Column="2" Width="130" Minimum="10" Maximum="24" SmallChange="1"
                                        SpinButtonPlacementMode="Inline" Value="{x:Bind ViewModel.FontSize, Mode=TwoWay}" />
                         </Grid>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Keyboard shortcuts for tabs and panes: click a shortcut, then press the new keys. -->
+            <StackPanel Spacing="10">
+                <TextBlock x:Uid="Settings_Shortcuts" FontWeight="SemiBold" Foreground="{ThemeResource TextSecondaryBrush}" />
+                <Border Style="{StaticResource FeatureCard}" Padding="0">
+                    <StackPanel>
+                        <Grid Padding="20,16" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <FontIcon Glyph="&#xE765;" FontSize="20" VerticalAlignment="Center"
+                                      Foreground="{ThemeResource TextSecondaryBrush}" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="2">
+                                <TextBlock x:Uid="Settings_Shortcuts_Title" FontWeight="SemiBold" Foreground="{ThemeResource TextBrush}" />
+                                <TextBlock x:Uid="Settings_Shortcuts_Desc" TextWrapping="Wrap" FontSize="12"
+                                           Foreground="{ThemeResource TextSecondaryBrush}" />
+                            </StackPanel>
+                            <Button x:Uid="Settings_Shortcuts_Reset" Grid.Column="2" Command="{x:Bind Shortcuts.ResetCommand}" />
+                        </Grid>
+                        <InfoBar Margin="16,0,16,8" IsClosable="False" Severity="Warning"
+                                 IsOpen="{x:Bind Shortcuts.HasError, Mode=OneWay}" Visibility="{x:Bind Shortcuts.HasError, Mode=OneWay}"
+                                 Message="{x:Bind Shortcuts.Error, Mode=OneWay}" />
+                        <ItemsControl ItemsSource="{x:Bind Shortcuts.Items}" Margin="0,0,0,8">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:ShortcutItem">
+                                    <Grid Padding="56,6,20,6" ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{x:Bind Label}" VerticalAlignment="Center" Foreground="{ThemeResource TextBrush}" />
+                                        <Button Grid.Column="1" MinWidth="160" Tag="{x:Bind}" Content="{x:Bind Display, Mode=OneWay}"
+                                                AutomationProperties.Name="{x:Bind Label}"
+                                                Click="OnShortcutClick" PreviewKeyDown="OnShortcutKeyDown" LostFocus="OnShortcutLostFocus" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </StackPanel>
                 </Border>
             </StackPanel>

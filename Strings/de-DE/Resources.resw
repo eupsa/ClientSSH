@@ -197,6 +197,35 @@ Lies ihn der anderen Person laut vor (Anruf oder Sprachnachricht). Wenn er auf b
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Löscht den gespeicherten Schlüssel dieses Anbieters</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Lädt die neue Version herunter, prüft und installiert sie</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Überspringt die Tour und öffnet die Hosts</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Abbrechen</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Tab umbenennen</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Bereichsteiler</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Umbenennen</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Vertikal teilen</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Horizontal teilen</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Bereich schließen</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Tab schließen</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Vertikal teilen: neuer Bereich rechts</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Vertikal teilen</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Horizontal teilen: neuer Bereich unten</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Horizontal teilen</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Tastenkombinationen</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Tabs und Bereiche</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Klicken Sie auf eine Tastenkombination und drücken Sie die neuen Tasten. Verwenden Sie Strg oder Alt (oder eine Funktionstaste), damit die Eingabe im Terminal weiter funktioniert.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Standardwerte wiederherstellen</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>Eine Tastenkombination braucht Strg oder Alt oder eine Funktionstaste (F1 bis F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} wird bereits von „{1}“ verwendet.</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Tasten drücken...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>Neuer Tab</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Tab schließen</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Nächster Tab</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Vorheriger Tab</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Vertikal teilen (Bereich rechts)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Horizontal teilen (Bereich unten)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Bereich schließen</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Nächster Bereich</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Tab umbenennen</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>Dieser PC</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Gib diese Nummer der Person, die auf diesen PC zugreifen soll. Du entscheidest bei jeder Anfrage, ob du sie erlaubst.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Zugriffsanfragen annehmen</value></data>

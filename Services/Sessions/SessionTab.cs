@@ -1,45 +1,38 @@
-using ClientSSH.Models;
-using ClientSSH.Terminal;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ClientSSH.Services.Sessions;
 
-/// <summary>One open connection: the host, its live session and any status message to show on the tab.</summary>
-public sealed partial class SessionTab(Host host, string title) : ObservableObject
+/// <summary>One tab: a name the user can change and a layout of panes, each with its own session.</summary>
+public sealed partial class SessionTab : ObservableObject
 {
-    public Host Host { get; } = host;
-
-    [ObservableProperty] public partial string Title { get; set; } = title;
-
-    /// <summary>Null when the session could not start; the terminal keeps its last screen after it ends.</summary>
-    [ObservableProperty] public partial TerminalSession? Session { get; set; }
-
-    [ObservableProperty] public partial string Notice { get; set; } = "";
-    [ObservableProperty] public partial bool HasNotice { get; set; }
-    [ObservableProperty] public partial bool NoticeIsError { get; set; }
-
-    /// <summary>True from the start until the first output arrives.</summary>
-    [ObservableProperty] public partial bool IsConnecting { get; set; }
-
-    /// <summary>True for a moment after the first output, for the "connected" animation.</summary>
-    [ObservableProperty] public partial bool JustConnected { get; set; }
-
-    /// <summary>"reconnecting" after a reconnect, "connecting" the first time.</summary>
-    [ObservableProperty] public partial string ConnectingAnimation { get; set; } = "connecting";
-
-    public void ShowNotice(string message, bool isError)
+    public SessionTab(SessionPane first, string title)
     {
-        Notice = message;
-        NoticeIsError = isError;
-        HasNotice = true;
+        Title = title;
+        Layout = new PaneTree<SessionPane>(first);
+        first.IsFocused = true;
+        Layout.FocusChanged += OnFocusChanged;
+        Layout.LayoutChanged += () => OnPropertyChanged(nameof(IsSplit));
     }
 
-    public void ClearNotice() => HasNotice = false;
+    [ObservableProperty] public partial string Title { get; set; }
 
-    public void EndSession()
+    public PaneTree<SessionPane> Layout { get; }
+
+    /// <summary>The pane that gets the keyboard, the assistant's text and new splits.</summary>
+    public SessionPane Focused => Layout.Focused.Content;
+
+    public IEnumerable<SessionPane> Panes => Layout.Leaves.Select(l => l.Content);
+
+    public bool IsSplit => Layout.Root is PaneSplit<SessionPane>;
+
+    public void Focus(SessionPane pane)
     {
-        var session = Session;
-        Session = null;
-        session?.Dispose();
+        if (Layout.Find(pane) is { } leaf) Layout.Focus(leaf);
+    }
+
+    private void OnFocusChanged()
+    {
+        foreach (var pane in Panes) pane.IsFocused = pane == Focused;
+        OnPropertyChanged(nameof(Focused));
     }
 }

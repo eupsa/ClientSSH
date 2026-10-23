@@ -17,8 +17,11 @@ public sealed record AppSettings(
     AiProvider AiProvider = AiProvider.Claude,
     string AiModel = "",
     WindowState? Window = null,
-    bool RemoteListen = true)
+    bool RemoteListen = true,
+    Dictionary<string, string>? Shortcuts = null)
 {
+    // Shortcuts: action name to chord text ("NewTab": "Ctrl+Shift+T"); only the ones changed from the defaults (Services/Shortcuts).
+
     /// <summary>Open source: users can point the update check at their own fork.</summary>
     public const string DefaultUpdateRepo = "eupsa/client-ssh";
 }

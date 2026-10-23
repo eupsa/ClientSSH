@@ -197,6 +197,35 @@ Read it out loud to the other person (call or voice message). If it is not the s
   <data name="Assistant_RemoveKey.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Deletes the saved key for this provider</value></data>
   <data name="Update_Install.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Downloads, verifies and installs the new version</value></data>
   <data name="Welcome_Skip.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Skips the tour and goes to your hosts</value></data>
+  <data name="Dialog_Ok" xml:space="preserve"><value>OK</value></data>
+  <data name="Dialog_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Sessions_RenameTitle" xml:space="preserve"><value>Rename tab</value></data>
+  <data name="Sessions_Divider" xml:space="preserve"><value>Pane divider</value></data>
+  <data name="Sessions_Rename.Text" xml:space="preserve"><value>Rename</value></data>
+  <data name="Sessions_SplitVertical.Text" xml:space="preserve"><value>Split vertically</value></data>
+  <data name="Sessions_SplitHorizontal.Text" xml:space="preserve"><value>Split horizontally</value></data>
+  <data name="Sessions_ClosePane.Text" xml:space="preserve"><value>Close pane</value></data>
+  <data name="Sessions_CloseTab.Text" xml:space="preserve"><value>Close tab</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Split vertically: new pane on the right</value></data>
+  <data name="Sessions_SplitVerticalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Split vertically</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>Split horizontally: new pane below</value></data>
+  <data name="Sessions_SplitHorizontalButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Split horizontally</value></data>
+  <data name="Settings_Shortcuts.Text" xml:space="preserve"><value>Keyboard shortcuts</value></data>
+  <data name="Settings_Shortcuts_Title.Text" xml:space="preserve"><value>Tabs and panes</value></data>
+  <data name="Settings_Shortcuts_Desc.Text" xml:space="preserve"><value>Click a shortcut, then press the new keys. Use Ctrl or Alt (or a function key) so typing in the terminal keeps working.</value></data>
+  <data name="Settings_Shortcuts_Reset.Content" xml:space="preserve"><value>Restore defaults</value></data>
+  <data name="Shortcuts_NeedsModifier" xml:space="preserve"><value>A shortcut needs Ctrl or Alt, or a function key (F1 to F24).</value></data>
+  <data name="Shortcuts_InUse" xml:space="preserve"><value>{0} is already used by "{1}".</value></data>
+  <data name="Shortcuts_PressKeys" xml:space="preserve"><value>Press the keys...</value></data>
+  <data name="Shortcut_NewTab" xml:space="preserve"><value>New tab</value></data>
+  <data name="Shortcut_CloseTab" xml:space="preserve"><value>Close tab</value></data>
+  <data name="Shortcut_NextTab" xml:space="preserve"><value>Next tab</value></data>
+  <data name="Shortcut_PreviousTab" xml:space="preserve"><value>Previous tab</value></data>
+  <data name="Shortcut_SplitVertical" xml:space="preserve"><value>Split vertically (pane on the right)</value></data>
+  <data name="Shortcut_SplitHorizontal" xml:space="preserve"><value>Split horizontally (pane below)</value></data>
+  <data name="Shortcut_ClosePane" xml:space="preserve"><value>Close pane</value></data>
+  <data name="Shortcut_FocusNextPane" xml:space="preserve"><value>Next pane</value></data>
+  <data name="Shortcut_RenameTab" xml:space="preserve"><value>Rename tab</value></data>
   <data name="Remote_MyPc_Title.Text" xml:space="preserve"><value>This PC</value></data>
   <data name="Remote_MyPc_Desc.Text" xml:space="preserve"><value>Give this number to whoever should access this PC. You choose whether to allow each request.</value></data>
   <data name="Remote_Listen.Header" xml:space="preserve"><value>Accept access requests</value></data>

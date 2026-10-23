@@ -21,7 +21,7 @@ Itens abaixo ainda estão **em decisão**. Nada aqui está fechado nem implement
 ## Novos itens (em decisão)
 - **Visual moderno integrado ao Windows:** Mica/Mica Alt no fundo, `TitleBar` nativo (já em uso), opção de seguir a cor de destaque do Windows (hoje a cor é fixa: Menta), jump list e notificações do sistema. Conflito a decidir: seguir o Windows x manter a cor fixa pedida antes.
 - **Histórico e favoritos com SQLite:** FEITO (`clientssh.db`, histórico opt-in, migração do `hosts.json`). Ideia original: trocar `hosts.json` por um banco local (`Microsoft.Data.Sqlite`), com favoritos, grupos e histórico de conexões. Regras de privacidade: tudo local, histórico **opt-in** (hoje a regra é não gravar histórico por padrão), guardar só host e data/hora (nunca comandos nem saída), botão para apagar tudo, migração automática do `hosts.json`.
-- **Abas e sessões simultâneas:** feito (`TabView` + `SessionManager`). Falta: avisar ao fechar o app com sessões abertas, reordenar/dividir painéis.
+- **Abas e sessões simultâneas:** feito (`TabView` + `SessionManager`). Falta: avisar ao fechar o app com sessões abertas, reordenar abas (dividir painéis: feito).
 - **Ordem sugerida:** 1) terminal real (ConPTY + Win2D), 2) abas e sessões, 3) SQLite com favoritos e histórico, 4) ajustes de integração visual com o Windows.
 
 ## Depois do MVP
